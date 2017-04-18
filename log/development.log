@@ -1334,3 +1334,21 @@ Processing by Api::UsersController#create as */*
 Completed 422 Unprocessable Entity in 67ms (Views: 0.1ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/" for ::1 at 2017-04-18 17:58:41 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (7.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 427ms (Views: 423.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2017-04-18 17:58:49 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 27ms (Views: 24.4ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m

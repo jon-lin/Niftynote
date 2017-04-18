@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+
+user1 = User.create!(email: 'guest@example.com', password: 'password')
+
+#sample for how to use faker, gem would have to be included
+# 10.times do |i|
+#   u = User.create!(username: Faker::Name.name, password: "password")
+#   c = Cat.create!(
+#     user_id: u.id,
+#     name: Faker::Hipster.word,
+#     color: Cat::CAT_COLORS.sample,
+#     sex: ["M", "F"].sample,
+#     description: Faker::Hipster.sentence,
+#     birth_date: Faker::Date.between(10.years.ago, Date.today)
+#     )
+# end

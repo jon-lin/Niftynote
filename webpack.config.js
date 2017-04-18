@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
   entry: './frontend/niftynote.jsx',
   output: {
-    filename: './bundle.js',
+    filename: 'app/assets/javascripts/bundle.js',
   },
   module: {
     loaders: [

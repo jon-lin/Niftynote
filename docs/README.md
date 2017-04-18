@@ -52,7 +52,7 @@ Within two weeks, this app will demonstrate the following features with styling 
 
 **Objective:** Add rich text editing so note text can be bolded, italicized, hyperlinked, etc.
 
-### Phase 6: - Infinite scroll for notes index (W2 Friday)
+### Phase 6 (Bonus): - Infinite scroll for notes index (W2 Friday)
 
 **Objective:** Older notes in notes index are automatically fetched and rendered as user scrolls down
 

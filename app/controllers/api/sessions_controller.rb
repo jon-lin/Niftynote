@@ -11,7 +11,6 @@ class Api::SessionsController < ApplicationController
       render json: errors, status: 422
     end
   end
-
   def destroy
     logout!
   end

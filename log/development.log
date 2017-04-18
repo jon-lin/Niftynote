@@ -1247,3 +1247,90 @@ Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 2.2ms)
 
 
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/" for ::1 at 2017-04-18 16:55:17 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 29ms (Views: 27.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-04-18 16:55:20 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 26ms (Views: 16.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-04-18 16:55:22 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 22ms (Views: 19.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-04-18 16:55:24 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-18 16:55:37 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-18 16:55:40 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"asdf", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdf"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-18 16:55:40 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"asdf", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdf"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-18 16:55:40 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"asdf", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdf"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/users" for ::1 at 2017-04-18 16:55:42 -0400
+Processing by Api::UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdf", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdf"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 73ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/users" for ::1 at 2017-04-18 16:55:44 -0400
+Processing by Api::UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdf", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdf"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 68ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/users" for ::1 at 2017-04-18 16:55:49 -0400
+Processing by Api::UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 67ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+

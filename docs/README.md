@@ -1,7 +1,7 @@
 # Niftynote
 
 * [Heroku link](https://www.heroku.com/)
-* [Trello link](https://www.trello.com/)
+* [Trello link](https://trello.com/b/JfAYGhwV/niftynote)
 
 ## Minimum Viable Product
 

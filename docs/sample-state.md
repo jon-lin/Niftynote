@@ -2,7 +2,7 @@
 {
   session: {
     currentUser: {
-      username,
+      email,
       id
     },
     errors: {}

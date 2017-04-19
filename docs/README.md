@@ -36,9 +36,10 @@ Within two weeks, this app will demonstrate the following features with styling 
 
 **Objective:** Allow users to securely create accounts, sign in and sign out of the web application
 
-### Phase 2: Build out notes component (2 days)
+### Phase 2: Build out notes component (3 days)
 
-**Objective:** Setup CRUD (create, read, update and destroy) functionality for notes through the API
+**Objective 1:** Setup CRUD (create, read, update and destroy) functionality for notes through the API
+**Objective 2:** Add rich text editing so note text can be bolded, italicized, hyperlinked, etc.
 
 ### Phase 3: Notebooks (2 days)
 
@@ -48,11 +49,7 @@ Within two weeks, this app will demonstrate the following features with styling 
 
 **Objective:** Give users the ability to tag notes with multiple tags, untag notes and delete tags
 
-### Phase 5: Rich text editing (W2 Thursday)
-
-**Objective:** Add rich text editing so note text can be bolded, italicized, hyperlinked, etc.
-
-### Phase 6 (Bonus): - Infinite scroll for notes index (W2 Friday)
+### Phase 5 (Bonus): - Infinite scroll for notes index (W2 Friday)
 
 **Objective:** Older notes in notes index are automatically fetched and rendered as user scrolls down
 

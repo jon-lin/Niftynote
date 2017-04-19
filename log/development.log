@@ -6645,3 +6645,86 @@ Processing by Api::SessionsController#destroy as */*
 Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.0ms)
 
 
+Started GET "/" for ::1 at 2017-04-19 08:52:13 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 418ms (Views: 414.7ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-19 08:52:31 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"guest@example.com", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "guest@example.com"], ["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "pcmnGMzq0Q7Zf0jGOVt4kg"], ["updated_at", 2017-04-19 12:52:32 UTC], ["id", 11]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (6.9ms)
+Completed 200 OK in 128ms (Views: 24.7ms | ActiveRecord: 7.7ms)
+
+
+Started DELETE "/api/session" for ::1 at 2017-04-19 08:52:34 -0400
+Processing by Api::SessionsController#destroy as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "pcmnGMzq0Q7Zf0jGOVt4kg"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "guest@example.com"], ["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "VeXqIsFv2T8C97RO7aUuLQ"], ["updated_at", 2017-04-19 12:52:34 UTC], ["id", 11]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2017-04-19 08:52:53 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered static_pages/root.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 35ms (Views: 31.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-19 08:54:07 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"guest@example.com", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "guest@example.com"], ["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "gQ2v5YWllpMZKEy151FsEg"], ["updated_at", 2017-04-19 12:54:07 UTC], ["id", 11]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (3.7ms)
+Completed 200 OK in 89ms (Views: 18.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for ::1 at 2017-04-19 09:04:48 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gQ2v5YWllpMZKEy151FsEg"], ["LIMIT", 1]]
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 284ms (Views: 282.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/api/session" for ::1 at 2017-04-19 09:04:55 -0400
+Processing by Api::SessionsController#destroy as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gQ2v5YWllpMZKEy151FsEg"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "guest@example.com"], ["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "UW8K_YSH4GgyjLGSWpRs0g"], ["updated_at", 2017-04-19 13:04:55 UTC], ["id", 11]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-19 09:06:01 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"jclin2013@gmail.com", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jclin2013@gmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+

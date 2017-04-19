@@ -42,21 +42,22 @@ class AuthForm extends React.Component {
 	}
 
   render() {
-    let header, altLink, altText, text;
+    let header, altLink, altText, buttontext;
 
     switch (this.props.formType) {
       case 'splashSignUp':
-        header = 'NIFTYNOTE SIGNUP SPASH PAGE';
+        buttontext = 'SIGN UP FOR FREE';
+        header = 'NIFTYNOTE SIGNUP SPLASH PAGE';
         altLink = '/signin';
         altText = `Already signed up? Sign in.`;
         break;
       case 'plainSignUp':
-        header = text = 'Sign Up';
+        header = buttontext = 'Sign Up';
         altLink = '/signin';
         altText = `Already signed up? Sign in.`;
         break;
       case 'signin':
-        header = text = 'Sign In';
+        header = buttontext = 'Sign In';
         altLink = '/signup';
         altText = `Don't have an account? Sign Up.`;
         break;
@@ -89,7 +90,7 @@ class AuthForm extends React.Component {
             </label>
             <br/>
 
-            <input type="submit" value={text}></input>
+            <input type="submit" value={buttontext}></input>
           </form>
 
           <ul>

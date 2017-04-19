@@ -13,6 +13,7 @@ class AuthForm extends React.Component {
     this.receiveField = this.receiveField.bind(this);
     this.plainForm = this.plainForm.bind(this);
     this.splashForm = this.splashForm.bind(this);
+		this.loginAsGuest = this.loginAsGuest.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -33,8 +34,14 @@ class AuthForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state).then(() => this.props.router.push('/home'));
+    this.props.processForm(this.state)
+			.then(() => this.props.router.push('/home'));
   }
+
+	loginAsGuest() {
+		this.props.signInAsGuest()
+			.then(() => this.props.router.push('/home'));
+	}
 
 	plainForm() {
 		let text, altLink, altText;
@@ -81,6 +88,8 @@ class AuthForm extends React.Component {
 						{errors}
 					</ul>
 
+					<button onClick={this.loginAsGuest}>Sign In as Guest</button>
+
 					<Link to={altLink}>{altText}</Link>
 				</div>
 		);
@@ -88,7 +97,7 @@ class AuthForm extends React.Component {
 
 	splashForm() {
 		let errors = this.props.errors.map( (err, idx) => <li key={idx}>{err}</li> );
-		let test = (
+		return (
 				<div>
 					<h1>NIFTYNOTE SIGNUP SPASH PAGE</h1>
 
@@ -118,10 +127,11 @@ class AuthForm extends React.Component {
 						{errors}
 					</ul>
 
+					<button onClick={this.loginAsGuest}>Sign In as Guest</button>
+
 					<Link to='/signin'>Or Sign In Here</Link>
 				</div>
 		);
-		return test
 	}
 
   render() {

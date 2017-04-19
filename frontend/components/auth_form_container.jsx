@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   let processForm = ownProps.location.pathname === '/signin' ? signin : signup;
 
   return {
+    signInAsGuest: () => dispatch(signin({email: 'guest@example.com', password: 'password'})),
     processForm: (user) => dispatch(processForm(user)),
     receiveErrors: (errors) => dispatch(receiveErrors(errors))
   };

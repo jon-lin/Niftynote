@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require_session
  */
+
+
+/* --- Reset user agent styles --- */
+ html, body, header, h1, h2, nav, ul, li, a, footer, small {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font: inherit;
+   vertical-align: baseline;
+ }

@@ -13,7 +13,7 @@ class AuthFormConditional extends React.Component {
 				pathname={this.props.location.pathname}/>
 			);
 
-		let cssTag = (this.props.formType === 'splashSignUp') ? 'splashSignUp' : 'plainForm';
+		let cssTag = (this.props.formType === 'splashSignUp') ? 'splashForm' : 'plainForm';
 
 		return (<div className={cssTag}>{authForm()}</div>)
 	}

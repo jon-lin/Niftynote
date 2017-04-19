@@ -44,6 +44,15 @@ class AuthForm extends React.Component {
   render() {
     let header, altLink, altText, buttontext;
 
+    let video = (
+      <div className='videocontainer'>
+        <video className="splash" autoPlay="autoplay" loop="loop" poster="https://cdn1.evernote.com/evernote.com/img/homepage/homepage-hero-video-desktop-still@2x.jpg">
+          <source type="video/webm" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video@2x.webm"/>
+          <source type="video/mp4" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video@2x.mp4"/>
+        </video>
+      </div>
+    );
+
     switch (this.props.formType) {
       case 'splashSignUp':
         buttontext = 'SIGN UP FOR FREE';
@@ -55,11 +64,13 @@ class AuthForm extends React.Component {
         header = buttontext = 'Sign Up';
         altLink = '/signin';
         altText = `Already signed up? Sign in.`;
+        video = null;
         break;
       case 'signin':
         header = buttontext = 'Sign In';
         altLink = '/signup';
         altText = `Don't have an account? Sign Up.`;
+        video = null;
         break;
       default:
         console.log("formType isn't catching in auth_form");
@@ -68,38 +79,37 @@ class AuthForm extends React.Component {
     let errors = this.props.errors.map( (err, idx) => <li key={idx}>{err}</li> );
 
     return (
-        <div>
+        <div className="entireformpage">
           <h1>{header}</h1>
 
-          <form onSubmit={this.handleSubmit}>
-            <label>Email:
-              <input
-                type="text"
-                value={this.state.email}
-                onChange={this.receiveField('email')}>
-              </input>
-            </label>
-            <br/>
+          {video}
+          <div className="centerPanel">
+            <form onSubmit={this.handleSubmit}>
+              <label>Email:
+                <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.receiveField('email')}>
+                </input>
+              </label>
 
-            <label>Password:
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.receiveField('password')}>
-              </input>
-            </label>
-            <br/>
+              <label>Password:
+                <input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.receiveField('password')}>
+                </input>
+              </label>
 
-            <input type="submit" value={buttontext}></input>
-          </form>
+              <ul>
+                {errors}
+              </ul>
 
-          <ul>
-            {errors}
-          </ul>
-
-          <button onClick={this.loginAsGuest}>Sign In as Guest</button>
-
-          <Link to={altLink}>{altText}</Link>
+              <input type="submit" value={buttontext}></input>
+              <Link to={altLink}>{altText}</Link>
+            </form>
+            <button onClick={this.loginAsGuest}>Sign In as Guest</button>
+          </div>
         </div>
     );
   }

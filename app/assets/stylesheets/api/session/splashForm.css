@@ -1,0 +1,50 @@
+.splashForm video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 40%;
+  z-index = -1;
+}
+
+.splashForm .videocontainer {
+  position: fixed;
+  top: -48%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+}
+
+.splashForm h1 {
+  border: 1px solid red;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.splashForm input, button {
+
+}
+
+.centerPanel {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*
+.jotitdown h1 {
+  color: #fffae4;
+  font-size: 45px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  white-space: nowrap;
+}*/

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { signin, signup, receiveErrors } from '../actions/auth_actions';
-import AuthForm from './auth_form';
+import AuthFormConditional from './auth_form_conditional';
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -20,7 +20,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
-    loggedIn: !!state.session.currentUser,
+    // loggedIn: !!state.session.currentUser,
+    //not sure if loggedIn is needed..
     errors: state.session.errors,
     formType
   };
@@ -36,4 +37,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthFormConditional);

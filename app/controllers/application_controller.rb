@@ -24,5 +24,4 @@ class ApplicationController < ActionController::Base
       render json: 'No one logged in', status: 404
     end
   end
-
 end

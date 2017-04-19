@@ -43,6 +43,7 @@ Within two weeks, this app will demonstrate the following features with styling 
 ### Phase 3: Build out notes component (3 days)
 
 **Objective 1:** Setup CRUD (create, read, update and destroy) functionality for notes through the API
+
 **Objective 2:** Add rich text editing so note text can be bolded, italicized, hyperlinked, etc.
 
 ### Phase 4: Tags (1 day)

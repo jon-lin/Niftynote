@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-class SessionForm extends React.Component {
+class AuthForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -85,4 +85,4 @@ class SessionForm extends React.Component {
 
 }
 
-export default SessionForm;
+export default AuthForm;

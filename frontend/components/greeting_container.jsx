@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Greeting from './greeting';
-import { logout } from '../actions/session_actions';
+import { logout } from '../actions/auth_actions';
 import { withRouter } from 'react-router';
 
 const mapStateToProps = (state) => {

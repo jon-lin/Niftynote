@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import * as APIUtil from './util/session_api_util';
-import * as sessionActions from './actions/session_actions';
+import * as authActions from './actions/auth_actions';
 
-window.signin = sessionActions.signin;
-window.logout = sessionActions.logout;
-window.signup = sessionActions.signup;
+window.signin = authActions.signin;
+window.logout = authActions.logout;
+window.signup = authActions.signup;
 window.jon = {email: 'jclin2013@gmail.com', password: 'password'};
 
 document.addEventListener('DOMContentLoaded', () => {

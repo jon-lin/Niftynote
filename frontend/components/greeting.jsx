@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 class Greeting extends React.Component {
 
@@ -8,28 +8,24 @@ class Greeting extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (!newProps.currentUser) { hashHistory.push('/') }
+  }
+
   clickHandler() {
     this.props.logout();
   }
 
   render() {
-    if (this.props.currentUser) {
-      return (
-        <div>
-          <h2>Welcome {this.props.currentUser.email}!</h2>
-          <button onClick={this.clickHandler}>Sign Out</button>
-        </div>
-      );
-    } else {
-        return (
-          <div>
-            <Link to='/signup'>Sign Up</Link>
-            <br/>
-            <Link to='/signin'>Sign In</Link>
-          </div>
-        );
-    }
+    if (!this.props.currentUser) { return null };
+    return (
+      <div>
+        <h2>Welcome {this.props.currentUser.email}!</h2>
+        <button onClick={this.clickHandler}>Sign Out</button>
+      </div>
+    );
   }
+
 }
 
 export default Greeting;

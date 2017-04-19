@@ -8,6 +8,12 @@ import GreetingContainer from './greeting_container'
 const Root = ({ store }) => {
     let _redirectIfLoggedIn = (nextState, replace) => {
       if (store.getState().session.currentUser) {
+        replace('/home');
+      }
+    }
+
+    let _ensure_logged_in = (nextState, replace ) => {
+      if (!store.getState().session.currentUser) {
         replace('/');
       }
     }
@@ -16,9 +22,10 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ GreetingContainer } />
+          <IndexRoute onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
           <Route path="/signin" onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
           <Route path="/signup" onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
+          <Route path="/home" onEnter={ _ensure_logged_in } component={ GreetingContainer } />
         </Route>
       </Router>
     </Provider>

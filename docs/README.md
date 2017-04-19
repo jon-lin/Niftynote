@@ -36,14 +36,14 @@ Within two weeks, this app will demonstrate the following features with styling 
 
 **Objective:** Allow users to securely create accounts, sign in and sign out of the web application
 
-### Phase 2: Build out notes component (3 days)
+### Phase 2: Notebooks (2 days)
+
+**Objective:** Setup notebooks that each have many notes and can also be created, read, updated and destroyed
+
+### Phase 3: Build out notes component (3 days)
 
 **Objective 1:** Setup CRUD (create, read, update and destroy) functionality for notes through the API
 **Objective 2:** Add rich text editing so note text can be bolded, italicized, hyperlinked, etc.
-
-### Phase 3: Notebooks (2 days)
-
-**Objective:** Setup notebooks that each have many notes and can also be created, read, updated and destroyed
 
 ### Phase 4: Tags (1 day)
 

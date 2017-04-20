@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
+import * as splashContent from './splash_form_content';
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -42,35 +43,30 @@ class AuthForm extends React.Component {
 	}
 
   render() {
-    let header, altLink, altText, buttontext;
-
-    let video = (
-      <div className='videocontainer'>
-        <video className="splash" autoPlay="autoplay" loop="loop" poster="https://cdn1.evernote.com/evernote.com/img/homepage/homepage-hero-video-desktop-still@2x.jpg">
-          <source type="video/webm" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video@2x.webm"/>
-          <source type="video/mp4" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video@2x.mp4"/>
-        </video>
-      </div>
-    );
+    let header, altLink, altText, buttontext,
+      video, splashMessage, splashFooter;
 
     switch (this.props.formType) {
       case 'splashSignUp':
         buttontext = 'SIGN UP FOR FREE';
-        header = 'NIFTYNOTE SIGNUP SPLASH PAGE';
+        header = 'NIFTYNOTE';
         altLink = '/signin';
-        altText = `Already signed up? Sign in.`;
+        altText = `Sign in`;
+        video = splashContent.video;
+        splashMessage = splashContent.splashMessage;
+        splashFooter = splashContent.splashFooter;
         break;
       case 'plainSignUp':
         header = buttontext = 'Sign Up';
         altLink = '/signin';
         altText = `Already signed up? Sign in.`;
-        video = null;
+        [video, splashMessage, splashFooter] = [null, null, null];
         break;
       case 'signin':
         header = buttontext = 'Sign In';
         altLink = '/signup';
         altText = `Don't have an account? Sign Up.`;
-        video = null;
+        [video, splashMessage, splashFooter] = [null, null, null];
         break;
       default:
         console.log("formType isn't catching in auth_form");
@@ -80,36 +76,47 @@ class AuthForm extends React.Component {
 
     return (
         <div className="entireformpage">
-          <h1>{header}</h1>
+
+          <nav className="navbar">
+            <h1>{header}</h1>
+            <Link to={altLink}>{altText}</Link>
+          </nav>
 
           {video}
-          <div className="centerPanel">
-            <form onSubmit={this.handleSubmit}>
-              <label>Email:
-                <input
-                  type="text"
-                  value={this.state.email}
-                  onChange={this.receiveField('email')}>
-                </input>
-              </label>
 
-              <label>Password:
-                <input
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.receiveField('password')}>
-                </input>
-              </label>
+          <div className="centerPanelContainer">
+            <div className="centerPanel">
 
-              <ul>
-                {errors}
-              </ul>
+              { /*}{splashContent.splashMessage} */}
 
-              <input type="submit" value={buttontext}></input>
-              <Link to={altLink}>{altText}</Link>
-            </form>
-            <button onClick={this.loginAsGuest}>Sign In as Guest</button>
+              <form onSubmit={this.handleSubmit}>
+                  <input
+                    type="text"
+                    value={this.state.email}
+                    placeholder="Email"
+                    onChange={this.receiveField('email')}>
+                  </input>
+
+                  <input
+                    type="password"
+                    value={this.state.password}
+                    placeholder="Password"
+                    onChange={this.receiveField('password')}>
+                  </input>
+
+                <ul>
+                  {errors}
+                </ul>
+
+                <input type="submit" value={buttontext}></input>
+              </form>
+
+              <button onClick={this.loginAsGuest}>Sign In as Guest</button>
+
+            </div>
           </div>
+
+          {/* <footer>{splashContent.splashFooter}</footer> */}
         </div>
     );
   }

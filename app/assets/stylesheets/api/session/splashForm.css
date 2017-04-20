@@ -6,30 +6,42 @@
   bottom: 0;
   margin: auto;
   min-width: 50%;
-  min-height: 40%;
+  min-height: 50%;
   z-index = -1;
 }
 
 .splashForm .videocontainer {
   position: fixed;
-  top: -48%;
+  top: -42%;
   left: -50%;
   width: 200%;
   height: 200%;
   z-index: -1;
 }
 
-.splashForm h1 {
-  border: 1px solid red;
+.splashForm button {
+  background-color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 500;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.splashForm form  {
   display: flex;
-  justify-content: flex-start;
+  width: 570px;
+  border: 1px dotted brown;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.splashForm input, button {
-
-}
-
-.centerPanel {
+.splashForm .centerPanelContainer {
   position: fixed;
   top: -50%;
   left: -50%;
@@ -40,11 +52,52 @@
   justify-content: center;
 }
 
+.splashForm .centerPanel {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-/*
-.jotitdown h1 {
-  color: #fffae4;
-  font-size: 45px;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  white-space: nowrap;
-}*/
+.splashForm form > * {
+  display: flex;
+  justify-content: center;
+}
+
+.splashForm input:not(:last-child) {
+  width: 230px;
+  height: 38px;
+  padding 5px;
+  margin: 5px;
+  padding-left: 9.5px;
+  font-size: smaller;
+  border-radius: 3.5px;
+}
+
+.splashForm [type="submit"] {
+  background-color: #2DBE60;
+  margin: 10px;
+  width: 500px;
+  height: 40px;
+  border-radius: 4px;
+  border-style: none;
+  font-size: 15.5px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.splashForm nav h1 {
+  font-family: serif;
+  color: #2DBE60;
+  font-size: 23px;
+  margin-top: 19px;
+  margin-left: 22px;
+  font-weight: 550;
+}
+
+.splashForm nav {
+  display: flex;
+  justify-content: space-between;
+}

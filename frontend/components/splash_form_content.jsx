@@ -10,9 +10,9 @@ export const video = (
 );
 
 export const splashMessage = (
-  <div>
-    <h2>Note-taking in Style</h2>
-    <section>
+  <div className='splashMessage'>
+    <p className='notetakingheader'>Note-taking in Style</p>
+    <section className='description'>
       Never forget a nifty thought again.
       Niftynote helps you save, edit and organize
       all your ideas in one place.
@@ -20,8 +20,8 @@ export const splashMessage = (
   </div>
 );
 
-export const footerMessage = (
-  <div>
+export const splashFooter = (
+  <div className='splashFooter'>
     <p>Get organized by joining Niftynote today.</p>
   </div>
 );

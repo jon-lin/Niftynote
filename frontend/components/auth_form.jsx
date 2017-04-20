@@ -87,7 +87,7 @@ class AuthForm extends React.Component {
           <div className="centerPanelContainer">
             <div className="centerPanel">
 
-              { /*}{splashContent.splashMessage} */}
+              {splashMessage}
 
               <form onSubmit={this.handleSubmit}>
                   <input
@@ -111,12 +111,18 @@ class AuthForm extends React.Component {
                 <input type="submit" value={buttontext}></input>
               </form>
 
+              <span className="lineforOR">
+                <hr className="leftwhiteline"></hr>
+                  <p>or</p>
+                <hr className="rightwhiteline"></hr>
+              </span>
+
+
               <button onClick={this.loginAsGuest}>Sign In as Guest</button>
 
             </div>
           </div>
-
-          {/* <footer>{splashContent.splashFooter}</footer> */}
+          <footer>{splashFooter}</footer>
         </div>
     );
   }

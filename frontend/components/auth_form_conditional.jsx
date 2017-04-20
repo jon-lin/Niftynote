@@ -13,6 +13,9 @@ class AuthFormConditional extends React.Component {
 				pathname={this.props.location.pathname}/>
 			);
 
+			// baseAuthData={...this.props}
+			//consider using splat operator to transfer props
+
 		let cssTag = (this.props.formType === 'splashSignUp') ? 'splashForm' : 'plainForm';
 
 		return (<div className={cssTag}>{authForm()}</div>)

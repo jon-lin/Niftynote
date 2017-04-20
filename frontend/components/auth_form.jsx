@@ -44,7 +44,7 @@ class AuthForm extends React.Component {
 
   render() {
     let header, altLink, altText, buttontext,
-      video, splashMessage, splashFooter;
+      backgroundImg, splashMessage, splashFooter;
 
     switch (this.props.formType) {
       case 'splashSignUp':
@@ -52,7 +52,7 @@ class AuthForm extends React.Component {
         header = 'NIFTYNOTE';
         altLink = '/signin';
         altText = `Sign in`;
-        video = splashContent.video;
+        backgroundImg = splashContent.backgroundImg;
         splashMessage = splashContent.splashMessage;
         splashFooter = splashContent.splashFooter;
         break;
@@ -60,13 +60,13 @@ class AuthForm extends React.Component {
         header = buttontext = 'Sign Up';
         altLink = '/signin';
         altText = `Already signed up? Sign in.`;
-        [video, splashMessage, splashFooter] = [null, null, null];
+        [backgroundImg, splashMessage, splashFooter] = [null, null, null];
         break;
       case 'signin':
         header = buttontext = 'Sign In';
         altLink = '/signup';
         altText = `Don't have an account? Sign Up.`;
-        [video, splashMessage, splashFooter] = [null, null, null];
+        [backgroundImg, splashMessage, splashFooter] = [null, null, null];
         break;
       default:
         console.log("formType isn't catching in auth_form");
@@ -85,7 +85,7 @@ class AuthForm extends React.Component {
 
 
           <div className="centerPanelContainer">
-            {video}
+            {backgroundImg}
             <div className="centerPanel">
 
               {splashMessage}

@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export const video = (
-  <video className="splash" autoPlay="autoplay" loop="loop" poster="https://cdn1.evernote.com/evernote.com/img/homepage/homepage-hero-video-desktop-still@2x.jpg">
-    <source type="video/webm" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video@2x.webm"/>
-    <source type="video/mp4" src="https://cdn1.evernote.com/evernote.com/video/homepage/homepage-hero-video@2x.mp4"/>
-  </video>
+export const backgroundImg = (
+  <img src="/images/darkspace.jpg" height="930" width="100%"/>
 );
 
 export const splashMessage = (

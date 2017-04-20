@@ -1,4 +1,157 @@
+.splashForm .entireFormPage {
+  height: 100vh;
+  font-family: 'Yantramanav', sans-serif;
+  min-height: 800px;
+  min-width: 1300px;
+}
+
+.splashForm header {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  align-items: center;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.splashForm header h1 {
+  font-size: 40px;
+  color: #2DBE60;
+  font-weight: 500;
+}
+
+.splashForm header a {
+  text-decoration: none;
+  color: gray;
+  font-size: 18px;
+  font-weight: 300;
+  transition: all 0.3s ease 0s;
+}
+
+.splashForm header a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.splashForm .centerPanelContainer {
+  position: relative;
+}
+
 .splashForm video {
+  min-width: 100%;
+  min-height: auto;
+}
+
+.splashForm .centerPanel {
+  position: absolute;
+  width: 30%;
+  /*min-width: 315px;*/
+  top: 30%;
+  left: 35%;
+  text-align: center;
+}
+
+.splashForm .centerPanel .notetakingheader {
+  font-size: 50px;
+  text-align: center;
+  color: white;
+  font-weight: 200;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.splashForm .centerPanel .description {
+  font-size: 25px;
+  font-weight: 200;
+  text-align: center;
+  color: white;
+  margin: 8px;
+}
+
+.splashForm input:not(:last-child) {
+  width: 230px;
+  height: 38px;
+  padding 5px;
+  margin: 5px;
+  padding-left: 9.5px;
+  font-size: smaller;
+  border-radius: 3.5px;
+}
+
+.splashForm [type="submit"] {
+  background-color: #2DBE60;
+  margin: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border-style: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.splashForm [type="submit"]:hover {
+  background: #18B34E;
+}
+
+.splashForm button {
+  background-color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 500;
+  transition: all 0.3s ease 0s;
+}
+
+.splashForm button:hover {
+  background: #CCCCCC;
+}
+
+.splashForm .lineforOR {
+  display: flex;
+  justify-content: space-around;
+  margin: 13px;
+}
+
+.splashForm .lineforOR .line {
+  background: rgba(255,255,255,0.2);
+  width: 45%;
+  height: 1px;
+  display: block;
+  position: relative;
+  top: 11.5px;
+}
+
+.splashForm .lineforOR text {
+  color: white;
+  font-size: 17px;
+  font-weight: 200;
+}
+
+.splashForm .splashFooter {
+  margin-top: -7px;
+  margin-bottom: 0px;
+  border: 1px solid #414141;
+  text-align: center;
+  background-color: #414141;
+  color: white;
+  font-size: 18px;
+}
+
+.splashForm .splashFooter a {
+  color:  #2DBE60;
+  text-decoration: none;
+  cursor: pointer
+}
+
+/*.splashForm video {
   position: absolute;
   top: 0;
   left: 0;
@@ -17,10 +170,36 @@
   width: 200%;
   height: 200%;
   z-index: -1;
+  display: none;
+}*/
+
+/*.entireformpage > * {
+  display: flex;
+  */
+/*}*/
+
+/*body #root {
+  display: flex;
+  align-items: baseline;
+  background-color: yellow;
+}*/
+
+/*.splashForm .videocontainer {
+  display: flex;
+  justify-content: center;
+}*/
+
+/*calc function*/
+
+/*.splashForm nav {
+  display: block;
+  position: fixed;
+  justify-content: space-between;
+  border: 1px solid red;
 }
 
 .splashForm nav h1 {
-  position: absolute;
+  position: relative;
   font-family: serif;
   color: #2DBE60;
   font-size: 35px;
@@ -28,12 +207,16 @@
   margin-left: 22px;
   font-weight: 550;
   font-family: 'Yantramanav', sans-serif;
+  border: 1px solid red;
 }
 
-.splashForm nav {
-  display: flex;
-  justify-content: space-between;
-  z-index = 2;
+.splashForm nav a {
+  border: 1px solid red;
+  font-family: 'Yantramanav', sans-serif;
+  text-decoration: none;
+  color: gray;
+  z-index: 100;
+  font-size: 20px;
 }
 
 .splashForm form  {
@@ -41,28 +224,7 @@
   width: 570px;
   justify-content: center;
   flex-wrap: wrap;
-  /*border-bottom: solid 1px rgba(255,255,255,0.3);
-  line-height: 0.1em;
-  margin: 18px 0 12px;*/
 }
-
-/*.splashForm .whiteline1 {
-   width: 100%;
-   text-align: center;
-   border-bottom: solid 1px rgba(255,255,255,0.3);
-   line-height: 0.1em;
-   margin: 10px 0 20px;
-   z-index: -2;
-}
-
-.splashForm .whiteline1 span {
-    background: transparent;
-    color: white;
-    padding: 0 20px;
-    z-index: 1;
-    font-family: 'Yantramanav', sans-serif;
-    font-weight: 100;
-}*/
 
 .splashForm .centerPanelContainer {
   position: fixed;
@@ -107,6 +269,11 @@
   color: white;
   cursor: pointer;
   font-family: 'Yantramanav', sans-serif;
+  transition: all 0.3s ease 0s;
+}
+
+.splashForm [type="submit"]:hover {
+  background: #18B34E;
 }
 
 .splashForm button {
@@ -121,6 +288,11 @@
   font-size: 15.5px;
   font-weight: 500;
   font-family: 'Yantramanav', sans-serif;
+  transition: all 0.3s ease 0s;
+}
+
+.splashForm button:hover {
+  background: #CCCCCC;
 }
 
 .splashForm .notetakingheader, .splashForm .description {
@@ -148,31 +320,42 @@
 .splashForm .lineforOR {
   display: flex;
   justify-content: space-between;
-  margin: 16px;
+  margin: 13px;
 }
 
 .splashForm .lineforOR > * {
-  margin-left: 10px;
-  margin-right: 10px;
+ margin-left: 6px;
+ margin-right: 6px;
 }
 
-.splashForm .lineforOR p {
+.splashForm .lineforOR .line {
+  background: rgba(255,255,255,0.2);
+  width: 220px;
+  height: 1px;
+  display: block;
+  position: relative;
+  top: 11.5px;
+}
+
+.splashForm .lineforOR text {
+  color: white;
   font-family: 'Yantramanav', sans-serif;
-  font-size: 13.5px;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-.splashForm hr {
-  width: 300px;
-  border: solid 0.2px rgba(255,255,255,0.2);
+  font-size: 17px;
+  font-weight: 200;
 }
 
 .splashForm .splashFooter {
-  display: absolute;
+  position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  color: black;
-  border: 1px solid red;
+  text-align: center;
+  background-color: #414141;
+  color: white;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 18px;
 }
+
+.splashForm .splashFooter span {
+  color:  #2DBE60;
+}*/

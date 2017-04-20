@@ -75,16 +75,17 @@ class AuthForm extends React.Component {
     let errors = this.props.errors.map( (err, idx) => <li key={idx}>{err}</li> );
 
     return (
-        <div className="entireformpage">
+        <div className="entireFormPage">
 
-          <nav className="navbar">
+          <header className="navbar">
             <h1>{header}</h1>
             <Link to={altLink}>{altText}</Link>
-          </nav>
+          </header>
 
-          {video}
+
 
           <div className="centerPanelContainer">
+            {video}
             <div className="centerPanel">
 
               {splashMessage}
@@ -112,9 +113,9 @@ class AuthForm extends React.Component {
               </form>
 
               <span className="lineforOR">
-                <hr className="leftwhiteline"></hr>
-                  <p>or</p>
-                <hr className="rightwhiteline"></hr>
+                <span className="line"></span>
+                  <text>or</text>
+                <span className="line"></span>
               </span>
 
 

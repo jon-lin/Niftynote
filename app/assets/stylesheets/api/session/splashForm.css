@@ -68,7 +68,7 @@
 .splashForm input:not(:last-child) {
   width: 230px;
   height: 38px;
-  padding 5px;
+  padding: 3px;
   margin: 5px;
   padding-left: 9.5px;
   font-size: smaller;

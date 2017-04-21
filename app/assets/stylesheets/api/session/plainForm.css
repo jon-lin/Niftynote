@@ -33,16 +33,11 @@
   justify-content: center;
   border: 1px solid rgb(212, 210, 210);
   padding: 10px;
-  padding-right: 30px;
 }
 
 .plainForm .centerPanel > * {
   padding: 10px;
   margin: 8px;
-}
-
-.plainForm .centerPanel form > * {
-  margin: 5px;
 }
 
 .plainForm .centerPanel button {
@@ -56,10 +51,12 @@
 .plainForm input:not(:last-child) {
   width: 100%;
   height: 38px;
-  padding-left: 9.5px;
+  margin-bottom: 12px;
   font-size: smaller;
   border-radius: 3.5px;
-  border: 1px solid #cccccc
+  border: 1px solid #cccccc;
+  text-indent: 7px;
+  font-weight: lighter;
 }
 
 .plainForm .lineforOR {

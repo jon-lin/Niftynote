@@ -8,6 +8,10 @@
     errors: {}
   },
 
+  user: {
+    avatar: "www.photos.com/5"
+  }
+
   notes: {
     1: {
       id: 1,

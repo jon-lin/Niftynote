@@ -11,8 +11,8 @@
 #
 
 class Notebook < ApplicationRecord
-  validates :title, :author_id, presence: true
-  validates_uniqueness_of :title, scope: :author_id
+  validates :title, :author, presence: true
+  validates_uniqueness_of :title, scope: :author
 
   belongs_to :author,
     primary_key: :id,

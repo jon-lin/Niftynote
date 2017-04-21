@@ -15,9 +15,13 @@ class User < ApplicationRecord
 
   validates :email, :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  validates :email, uniqueness: true
+
+  validates :email, uniqueness: true,
+    format: { with: /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+\z/,
+      message: "has incorrect format"}
 
   after_initialize :ensure_session_token
+  after_create_commit :create_default_notebook
 
   has_many :notebooks,
     primary_key: :id,
@@ -55,8 +59,11 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64(16)
   end
 
-
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def create_default_notebook
+     self.notebooks.create(title: 'MyDefaultNotebook', defaultNotebook: true)
   end
 end

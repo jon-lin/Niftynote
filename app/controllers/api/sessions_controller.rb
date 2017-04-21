@@ -5,19 +5,19 @@ class Api::SessionsController < ApplicationController
 
     if @user
       signin!(@user)
-      render 'api/users/show'
+      render 'api/sessions/show'
     else
       case
       when email == "" && password == ""
-        errors = ["Email and password can't be blank!"]
+        errors = ["Email and password can't be blank"]
       when email == "" && password != ""
-        errors = ["Email can't be blank!"]
+        errors = ["Email can't be blank"]
       when email != "" && password == ""
-        errors = ["Password can't be blank!"]
-      when !email[0..-2].include?('@'), !email[1..-1].include?('@')
-        errors = ["Not an email address!"]
+        errors = ["Password can't be blank"]
+      when !/\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+\z/.match(email)
+        errors = ["Email has incorrect format"]
       else
-        errors = ["Invalid username/password!"]
+        errors = ["Invalid username/password"]
       end
       render json: errors, status: 422
     end

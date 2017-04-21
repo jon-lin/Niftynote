@@ -5,9 +5,10 @@ class Api::NotebooksController < ApplicationController
 
   def create
     @notebook = Notebook.new(notebook_params)
+    @notebook.author_id = current_user.id
 
     if @notebook.save
-      render :show
+      render json: [@notebook.title.to_s + ' created successfully!']
     else
       errors = @notebook.errors.full_messages
       render json: errors, status: 422
@@ -28,6 +29,7 @@ class Api::NotebooksController < ApplicationController
   def update
     @notebook = current_user.notebooks.find(params[:id])
 
+    # the below may not work, @notebook's author_id might need to be included?
     if @notebook.update(notebook_params)
       render :show
     else
@@ -39,7 +41,6 @@ class Api::NotebooksController < ApplicationController
   def destroy
     @notebook = current_user.notebooks.find(params[:id])
 
-    # this may not work
     if @notebook.destroy
       render :show
     else
@@ -51,6 +52,6 @@ class Api::NotebooksController < ApplicationController
   private
 
   def notebook_params
-    params.require(:notebook).permit(:author_id, :title)
+    params.require(:notebook).permit(:title)
   end
 end

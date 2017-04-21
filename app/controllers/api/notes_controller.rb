@@ -1,10 +1,16 @@
 class Api::NotesController < ApplicationController
   def index
-    @notes = current_user.notebooks.notes
+    @notes = current_user.notes
   end
 
   def create
     @note = Note.new(note_params)
+
+    if params[:notebook_id]
+      @note.notebook_id = params[:notebook_id]
+    else
+      @note.notebook_id = current_user.notebooks.find_by_defaultNotebook(true).id
+    end
 
     if @note.save
       render :show
@@ -15,7 +21,7 @@ class Api::NotesController < ApplicationController
   end
 
   def update
-    @note = current_user.notebooks.notes.find(params[:id])
+    @note = current_user.notes.find(params[:id])
 
     if @note.update(note_params)
       render :show
@@ -26,7 +32,7 @@ class Api::NotesController < ApplicationController
   end
 
   def show
-    @note = current_user.notebooks.notes.find(params[:id])
+    @note = current_user.notes.find(params[:id])
 
     if @note
       render :show
@@ -37,9 +43,8 @@ class Api::NotesController < ApplicationController
   end
 
   def destroy
-    @note = current_user.notebooks.notes.find(params[:id])
+    @note = current_user.notes.find(params[:id])
 
-    # this might not work
     if @note.destroy
       render :show
     else
@@ -51,6 +56,6 @@ class Api::NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :body, :notebook_id)
+    params.require(:note).permit(:title, :body)
   end
 end

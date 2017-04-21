@@ -10,7 +10,8 @@ class AuthFormConditional extends React.Component {
 				receiveErrors={this.props.receiveErrors}
 				errors={this.props.errors}
 				formType={this.props.formType}
-				pathname={this.props.location.pathname}/>
+				pathname={this.props.location.pathname}
+				router={this.props.router}/>
 			);
 
 			// baseAuthData={...this.props}

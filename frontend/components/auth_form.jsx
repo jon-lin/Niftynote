@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router';
 import * as splashContent from './splash_form_content';
 
 class AuthForm extends React.Component {
@@ -34,12 +34,12 @@ class AuthForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state)
-			.then(() => hashHistory.push('/home'));
+			.then(() => this.props.router.push('/home'));
   }
 
 	loginAsGuest() {
 		this.props.signInAsGuest()
-			.then(() => hashHistory.push('/home'));
+			.then(() => this.props.router.push('/home'));
 	}
 
   render() {

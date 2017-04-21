@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router';
 
 class Greeting extends React.Component {
 
@@ -9,7 +9,7 @@ class Greeting extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (!newProps.currentUser) { hashHistory.push('/') }
+    if (!newProps.currentUser) { this.props.router.push('/') }
   }
 
   clickHandler() {

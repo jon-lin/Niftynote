@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { signin, signup, receiveErrors } from '../actions/auth_actions';
 import AuthFormConditional from './auth_form_conditional';
+import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -37,4 +38,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthFormConditional);
+export default withRouter(
+  connect(
+    mapStateToProps, mapDispatchToProps
+  )(AuthFormConditional)
+);

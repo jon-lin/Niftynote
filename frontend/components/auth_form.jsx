@@ -16,7 +16,7 @@ class AuthForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.pathname !== newProps.pathname) {
+    if (this.props.location.pathname !== newProps.location.pathname) {
       this.setState({email: "", password: ""});
 			if (this.props.errors.length > 0) {
 				this.props.receiveErrors([]);

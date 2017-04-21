@@ -1,8 +1,10 @@
+/*some styling applies to both plain and splash forms*/
+
 .splashForm .entireFormPage {
   height: 100vh;
   font-family: 'Yantramanav', sans-serif;
   min-height: 800px;
-  min-width: 1300px;
+  min-width: 900px;
 }
 
 .splashForm header {
@@ -37,15 +39,9 @@
   position: relative;
 }
 
-.splashForm video {
-  min-width: 100%;
-  min-height: auto;
-}
-
 .splashForm .centerPanel {
   position: absolute;
   width: 30%;
-  /*min-width: 315px;*/
   top: 30%;
   left: 35%;
   text-align: center;
@@ -92,7 +88,7 @@
   transition: all 0.3s ease 0s;
 }
 
-.splashForm [type="submit"]:hover {
+[type="submit"]:hover {
   background: #18B34E;
 }
 
@@ -110,7 +106,7 @@
   transition: all 0.3s ease 0s;
 }
 
-.splashForm button:hover {
+button:hover {
   background: #CCCCCC;
 }
 
@@ -149,6 +145,16 @@
   color:  #2DBE60;
   text-decoration: none;
   cursor: pointer
+}
+
+.splashForm #plainFormAltLink, #plainFormAltHeader {
+  display: none;
+}
+
+/*for getting the errors to show up*/
+.splashForm ul {
+  color: white;
+  list-style: none;
 }
 
 /*.splashForm video {

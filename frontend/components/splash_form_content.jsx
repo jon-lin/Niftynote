@@ -7,7 +7,7 @@ export const backgroundImg = (
 
 export const splashMessage = (
   <div className='splashMessage'>
-    <p className='notetakingheader'>Note-taking in Style</p>
+    <p className='notetakingheader'>Note-taking just got noteworthy.</p>
     <section className='description'>
       Never forget a nifty thought again.
       Niftynote helps you save, edit and organize

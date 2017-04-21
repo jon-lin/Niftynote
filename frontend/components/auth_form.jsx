@@ -59,13 +59,13 @@ class AuthForm extends React.Component {
       case 'plainSignUp':
         header = buttontext = 'Sign Up';
         altLink = '/signin';
-        altText = `Already signed up? Sign in.`;
+        altText = (<div><p>Already signed up?</p><p>Sign In</p></div>);
         [backgroundImg, splashMessage, splashFooter] = [null, null, null];
         break;
       case 'signin':
         header = buttontext = 'Sign In';
         altLink = '/signup';
-        altText = `Don't have an account? Sign Up.`;
+        altText = (<div><p>Don't have an account?</p><p>Sign Up</p></div>);
         [backgroundImg, splashMessage, splashFooter] = [null, null, null];
         break;
       default:
@@ -77,12 +77,12 @@ class AuthForm extends React.Component {
     return (
         <div className="entireFormPage">
 
+        <h1 id="plainFormAltHeader">{header}</h1>
+
           <header className="navbar">
             <h1>{header}</h1>
             <Link to={altLink}>{altText}</Link>
           </header>
-
-
 
           <div className="centerPanelContainer">
             {backgroundImg}
@@ -114,17 +114,18 @@ class AuthForm extends React.Component {
 
               <span className="lineforOR">
                 <span className="line"></span>
-                  <text>or</text>
+                  <text id='ortextidforplainform'>or</text>
                 <span className="line"></span>
               </span>
 
 
               <button onClick={this.loginAsGuest}>Sign In as Guest</button>
 
+              </div>
             </div>
+            <footer>{splashFooter}</footer>
+            <Link id="plainFormAltLink" to={altLink}>{altText}</Link>
           </div>
-          <footer>{splashFooter}</footer>
-        </div>
     );
   }
 }

@@ -53,6 +53,7 @@ group :development do
   gem "guard-livereload",  :require => false
   gem "rack-livereload"
   gem "rb-fsevent",        :require => false
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

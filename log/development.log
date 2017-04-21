@@ -14257,3 +14257,418 @@ Processing by Api::SessionsController#create as */*
 Completed 422 Unprocessable Entity in 3ms (Views: 0.1ms | ActiveRecord: 1.2ms)
 
 
+  [1m[35m (29.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4782954353663796030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateNotebooks (20170421022646)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (48.7ms)[0m  [1m[35mCREATE TABLE "notebooks" ("id" serial primary key, "author_id" integer NOT NULL, "title" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_notebooks_on_author_id" ON "notebooks"  ("author_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170421022646"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotes (20170421022851)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "notes" ("id" serial primary key, "title" character varying NOT NULL, "body" text NOT NULL, "author_id" integer, "notebook_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_notes_on_author_id" ON "notes"  ("author_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_notes_on_notebook_id" ON "notes"  ("notebook_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170421022851"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4782954353663796030)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4782954353663796030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeleteAuthorIdColumnFromNotesTable (20170421041353)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (29.9ms)[0m  [1m[35mALTER TABLE "notes" DROP "author_id"[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170421041353"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4782954353663796030)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4782954353663796030);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddNullFalseToNotebookIdInNotes (20170421042844)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.3ms)[0m  [1m[35mALTER TABLE "notes" ALTER "notebook_id" SET NOT NULL[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170421042844"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4782954353663796030)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 15]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mNotebook Load (7.7ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[36mNote Load (8.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "guest@example.com"], ["password_digest", "$2a$10$X7w241x9t8Lo6g3AMxf2tOt1vK19uKi57t7oTVCT0Kkb.zt5hEtOC"], ["session_token", "8YZR2eNjz0uots9RfOt1Xg"], ["created_at", 2017-04-21 04:50:35 UTC], ["updated_at", 2017-04-21 04:50:35 UTC]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 17]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.6ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "guest@example.com"], ["password_digest", "$2a$10$ktKQiV0dAgutzkBLOnyfPuf1vSztyVBbsudwzR4Ex7vvU7.PJeEc."], ["session_token", "KlNC40ByTB8KzU2OmZKFcA"], ["created_at", 2017-04-21 04:53:41 UTC], ["updated_at", 2017-04-21 04:53:41 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 18]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.5ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "guest@example.com"], ["password_digest", "$2a$10$jI4BSNY4ejBKBuVP7W45Yu0asVRP1jkxRpmDMdxoOSCoEzVyEQA9a"], ["session_token", "p8iaa1MBUuM-x4tT-pw1rQ"], ["created_at", 2017-04-21 04:53:57 UTC], ["updated_at", 2017-04-21 04:53:57 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 19]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.6ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "guest@example.com"], ["password_digest", "$2a$10$yZTdLHEPfxzXH8XDj4CRCOE4Pis9B4kd9gcT8xO.0hZNfei27O.na"], ["session_token", "CZGtp08ItiFuzUzjfrpbAw"], ["created_at", 2017-04-21 04:57:08 UTC], ["updated_at", 2017-04-21 04:57:08 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook Test"], ["author_id", 20], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 20], ["title", "First Notebook Test"], ["created_at", 2017-04-21 04:57:08 UTC], ["updated_at", 2017-04-21 04:57:08 UTC]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "Second Notebook"], ["author_id", 20], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 20], ["title", "Second Notebook"], ["created_at", 2017-04-21 04:57:08 UTC], ["updated_at", 2017-04-21 04:57:08 UTC]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "My First Note"], ["body", "Body of First Note"], ["notebook_id", 1], ["created_at", 2017-04-21 04:57:08 UTC], ["updated_at", 2017-04-21 04:57:08 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "My Second Note"], ["body", "Body of 2nd Note"], ["notebook_id", 2], ["created_at", 2017-04-21 04:57:08 UTC], ["updated_at", 2017-04-21 04:57:08 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "My Third Note"], ["body", "Body of 3rd Note"], ["notebook_id", 1], ["created_at", 2017-04-21 04:57:08 UTC], ["updated_at", 2017-04-21 04:57:08 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[36mNotebook Load (0.7ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 1]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 2]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" ORDER BY "notes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" WHERE "notebooks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" IS NULL LIMIT $2[0m  [["title", "My First Note"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seconduser@hello.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "seconduser@hello.com"], ["password_digest", "$2a$10$PW3crFTs1UEDOsvCWjHrnO09Hz9uUwS9r8E55EP3ErNaVAaYWrn5y"], ["session_token", "u48p1wWn4EatKiFFgWVy4Q"], ["created_at", 2017-04-21 05:02:31 UTC], ["updated_at", 2017-04-21 05:02:31 UTC]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "My First Note"], ["author_id", 21], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 21], ["title", "My First Note"], ["created_at", 2017-04-21 05:02:51 UTC], ["updated_at", 2017-04-21 05:02:51 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1 ORDER BY "notebooks"."id" ASC LIMIT $2[0m  [["author_id", 21], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1 ORDER BY "notebooks"."id" ASC LIMIT $2[0m  [["author_id", 20], ["LIMIT", 1]]
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 21]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "notebooks" WHERE "notebooks"."id" = $1[0m  [["id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook Test"], ["author_id", 21], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 21], ["title", "First Notebook Test"], ["created_at", 2017-04-21 05:04:42 UTC], ["updated_at", 2017-04-21 05:04:42 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1 ORDER BY "notebooks"."id" ASC LIMIT $2[0m  [["author_id", 20], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook Test"], ["author_id", 20], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 20]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 21]]
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.6ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "notebooks" WHERE "notebooks"."id" = $1[0m  [["id", 1]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "notebooks" WHERE "notebooks"."id" = $1[0m  [["id", 2]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "notebooks" WHERE "notebooks"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "guest@example.com"], ["password_digest", "$2a$10$.aFhWhuoYVATZBIWLPf..e1hUuHkYCvKgjZjZcbHwURSDfkSjMg/."], ["session_token", "6Eik8LFfEg0VRh1mqnMFxw"], ["created_at", 2017-04-21 05:07:26 UTC], ["updated_at", 2017-04-21 05:07:26 UTC]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook"], ["author_id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 22], ["title", "First Notebook"], ["created_at", 2017-04-21 05:07:26 UTC], ["updated_at", 2017-04-21 05:07:26 UTC]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "Second Notebook"], ["author_id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 22], ["title", "Second Notebook"], ["created_at", 2017-04-21 05:07:26 UTC], ["updated_at", 2017-04-21 05:07:26 UTC]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "My First Note"], ["body", "Body of First Note"], ["notebook_id", 5], ["created_at", 2017-04-21 05:07:26 UTC], ["updated_at", 2017-04-21 05:07:26 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "My Second Note"], ["body", "Body of 2nd Note"], ["notebook_id", 6], ["created_at", 2017-04-21 05:07:26 UTC], ["updated_at", 2017-04-21 05:07:26 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "My Third Note"], ["body", "Body of 3rd Note"], ["notebook_id", 5], ["created_at", 2017-04-21 05:07:26 UTC], ["updated_at", 2017-04-21 05:07:26 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mNotebook Load (0.7ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" ORDER BY "notebooks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" IS NULL LIMIT $2[0m  [["title", "First Notebook"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" IS NULL LIMIT $2[0m  [["title", "First Notebook"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" ORDER BY "notebooks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" IS NULL LIMIT $2[0m  [["title", "Second Notebook"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" IS NULL LIMIT $2[0m  [["title", "Second Notebook"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook"], ["author_id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook"], ["author_id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook"], ["author_id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" IS NULL LIMIT $2[0m  [["title", "First Notebook"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hello@hello.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "hello@hello.com"], ["password_digest", "$2a$10$qMmW6cCir1bMG4a2xP1sUOfKbBDbIOJX.tpI.84B9zdnaLWSL48N."], ["session_token", "IglfV0VUzHPjfZ6yZjKt6g"], ["created_at", 2017-04-21 05:14:51 UTC], ["updated_at", 2017-04-21 05:14:51 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook"], ["author_id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "First Notebook"], ["author_id", 23], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 23], ["title", "First Notebook"], ["created_at", 2017-04-21 05:15:44 UTC], ["updated_at", 2017-04-21 05:15:44 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1 ORDER BY "notebooks"."id" ASC LIMIT $2[0m  [["author_id", 23], ["LIMIT", 1]]
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 22]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 22]]
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 23]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNotebook Load (0.5ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "notebooks" WHERE "notebooks"."id" = $1[0m  [["id", 5]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "notebooks" WHERE "notebooks"."id" = $1[0m  [["id", 6]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "notebooks" WHERE "notebooks"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 4]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 5]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = $1[0m  [["id", 6]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "guest@example.com"], ["password_digest", "$2a$10$5pf0OixFkh5pBlWA7Aq8Iu65NHlP18j0t2Vd/pRfL/IhAUprl9J9u"], ["session_token", "neN11f_q3GLxCmP-FkIbkg"], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "Star Wars"], ["author_id", 24], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 24], ["title", "Star Wars"], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "Friends"], ["author_id", 24], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 24], ["title", "Friends"], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNotebook Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "notebooks" WHERE "notebooks"."title" = $1 AND "notebooks"."author_id" = $2 LIMIT $3[0m  [["title", "Harry Potter"], ["author_id", 24], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notebooks" ("author_id", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 24], ["title", "Harry Potter"], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Leia Organa"], ["body", "Who's the more foolish; the fool, or the fool who follows him?"], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Borvo the Hutt"], ["body", "Truly wonderful, the mind of a child is."], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Sheev Palpatine"], ["body", "Shut him up or shut him down."], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Yoda"], ["body", "Only at the end do you realize the power of the Dark Side."], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Jabba the Hutt"], ["body", "Wars not make one great."], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Nute Gunray"], ["body", "Bounty hunters! We don't need this scum."], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Luke Skywalker"], ["body", "Would somebody get this big walking carpet out of my way?"], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Poe Dameron"], ["body", "You'll find I'm full of surprises!"], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Lando Calrissian"], ["body", "That is why you fail."], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Ben Solo"], ["body", "It's not impossible. I used to bullseye womp rats in my T-16 back home, they're not much bigger than two meters."], ["notebook_id", 8], ["created_at", 2017-04-21 05:46:00 UTC], ["updated_at", 2017-04-21 05:46:00 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Phoebe Buffay"], ["body", "Welcome to the real world. It sucks. You’re gonna love it!"], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Rachel Green"], ["body", "Oh no, two women love me. They're both gorgeous and sexy. My wallet's too small for my fifties AND MY DIAMOND SHOES ARE TOO TIGHT."], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Janice Goralnik"], ["body", "Fine judge all you want but... married a lesbian, left a man at the altar, fell in love with a gay ice dancer, threw a girl’s wooden leg in the fire, LIVE IN A BOX."], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Monica Geller"], ["body", "If the homo sapiens were, in fact, HOMO sapiens…is that why they’re extinct?"], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Janice Goralnik"], ["body", "It was summer… and it was hot. Rachel was there… A lonely grey couch…”OH LOOK!” cried Ned, and then the kingdom was his forever. The End."], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Janice Goralnik"], ["body", "It’s a moo point. It’s like a cow’s opinion; it doesn’t matter. It’s moo."], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Janice Goralnik"], ["body", "It was summer… and it was hot. Rachel was there… A lonely grey couch…”OH LOOK!” cried Ned, and then the kingdom was his forever. The End."], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Monica Geller"], ["body", "I’m not so good with the advice. Can I interest you in a sarcastic comment?"], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Monica Geller"], ["body", "It’s a moo point. It’s like a cow’s opinion; it doesn’t matter. It’s moo."], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Rachel Green"], ["body", "We were on a break!"], ["notebook_id", 9], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Poppy Pomfrey"], ["body", "You sort of start thinking anything’s possible if you’ve got enough nerve."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Madam Rosmerta"], ["body", "Things we lose have a way of coming back to us in the end, if not always in the way we expect."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Firenze"], ["body", "Of course it is happening inside your head, Harry, but why on earth should that mean that it is not real?"], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Peeves"], ["body", "We’ve all got both light and dark inside us. What matters is the part we choose to act on. That’s who we really are."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Errol"], ["body", "Harry, suffering like this proves you are still a man! This pain is part of being human … the fact that you can feel pain like this is your greatest strength."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Lavendar Brown"], ["body", "It is our choices, Harry, that show what we truly are, far more than our abilities."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Gregorovitch"], ["body", "We could all have been killed - or worse, expelled."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Mrs. Cole"], ["body", "We’ve all got both light and dark inside us. What matters is the part we choose to act on. That’s who we really are."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "George Weasley"], ["body", "You're a wizard, Harry."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notes" ("title", "body", "notebook_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "James Potter"], ["body", "If you want to know what a man’s like, take a good look at how he treats his inferiors, not his equals."], ["notebook_id", 10], ["created_at", 2017-04-21 05:46:01 UTC], ["updated_at", 2017-04-21 05:46:01 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mNotebook Load (0.7ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks"[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" ORDER BY "notebooks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT  "notebooks".* FROM "notebooks" ORDER BY "notebooks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mNote Load (7.2ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1 ORDER BY "notes"."id" DESC LIMIT $2[0m  [["notebook_id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]

@@ -19,6 +19,15 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :notebooks,
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: :Notebook
+
+  has_many :notes,
+    through: :notebooks,
+    source: :notes
+
   def self.find_by_credentials(email, password)
     user = User.find_by email: email
     return user if user && user.valid_password?(password)

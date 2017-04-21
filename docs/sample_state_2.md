@@ -16,31 +16,27 @@
     1: {
       id: 1,
       title: "The Very First Title",
-      body: "The Very First Body",
-      tags: { 0: 1, 1: 2}
+      body: "The Very First Body"
     }
 
     2: {
       id: 2,
       title: "Second Note",
-      body: "Another note",
-      tags: { 0: 1, 1: 4}
+      body: "Another note"
     }
   }
 
   notebooks: {
     1: {
       id: 1,
-      title: "My First Notebook",
-      notes: { 0: 1, 1: 2 },
+      title: "My First Notebook"
     }
   }
 
   tags: {
     1: {
       id: 1,
-      name: "Tag 1",
-      notes: { 0: 1, 1: 2, 2: 3},
+      name: "Tag 1"
     }
   }
 }

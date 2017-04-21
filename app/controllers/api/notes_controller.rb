@@ -6,6 +6,7 @@ class Api::NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
 
+    #will params present themselves in this format? may not work!
     if params[:notebook_id]
       @note.notebook_id = params[:notebook_id]
     else

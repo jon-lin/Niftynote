@@ -3,7 +3,7 @@ import App from './app';
 import React from 'react';
 import { Provider } from 'react-redux';
 import AuthFormContainer from './auth_form_container';
-import GreetingContainer from './greeting_container'
+import HomeContainer from './home_container'
 
 const Root = ({ store }) => {
     let _redirectIfLoggedIn = (nextState, replace) => {
@@ -25,7 +25,7 @@ const Root = ({ store }) => {
           <IndexRoute onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
           <Route path="/signin" onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
           <Route path="/signup" onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
-          <Route path="/home" onEnter={ _ensure_logged_in } component={ GreetingContainer } />
+          <Route path="/home" onEnter={ _ensure_logged_in } component={ HomeContainer } />
         </Route>
       </Router>
     </Provider>

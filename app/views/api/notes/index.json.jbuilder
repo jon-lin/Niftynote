@@ -6,5 +6,3 @@ end
 
 # note_created_date = note.created_at.strftime("%m/%d/%Y at %I:%M%p")
 # note_updated_date = note.updated_at.strftime("%m/%d/%Y at %I:%M%p")
-#
-# debugger

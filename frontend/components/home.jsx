@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Note from './note'
+import NoteIndex from './note_index'
 
 class Home extends React.Component {
 
@@ -24,19 +24,12 @@ class Home extends React.Component {
   render() {
     if (!this.props.currentUser) { return null };
 
-    let notesList = this.props.notes.map( note => {
-      debugger
-      return (<Note note={note} key={note.id}/>);
-    });
-
     return (
       <div>
         <h2>Welcome {this.props.currentUser.email}!</h2>
         <button onClick={this.clickHandler}>Sign Out</button>
 
-        <ul>List is here:
-          {notesList}
-        </ul>
+        <NoteIndex {...this.props} />
 
       </div>
     );

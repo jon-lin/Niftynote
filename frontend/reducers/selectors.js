@@ -4,18 +4,12 @@ const dateComparator = (objX, objY) => (
 )
 
 export const notesSelector = (notesObject) => {
-  // debugger
-
   let sorted_arr = Object.values(notesObject).sort(dateComparator)
-
-  // debugger
 
   sorted_arr.forEach(noteObj => {
     let time_diff = Math.floor(
       (Date.now() - new Date(noteObj['updated_at']))/1000
     )
-
-    debugger
 
     if (time_diff < 60) {
         noteObj['time_passed'] = time_diff + " seconds ago";

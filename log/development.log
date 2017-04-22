@@ -22784,3 +22784,113 @@ Processing by Api::NotesController#index as */*
 Completed 200 OK in 57ms (Views: 35.1ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/" for ::1 at 2017-04-21 21:33:15 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 308ms (Views: 306.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:33:18 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 32ms (Views: 30.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:33:54 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 340ms (Views: 338.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:35:57 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:36:35 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:36:38 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 295ms (Views: 293.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:37:20 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 330ms (Views: 328.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:37:35 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 35ms (Views: 33.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:38:07 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 354ms (Views: 352.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/notes" for ::1 at 2017-04-21 21:38:17 -0400
+Processing by Api::NotesController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendering api/notes/index.json.jbuilder
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 1]]
+  Rendered api/notes/index.json.jbuilder (7.9ms)
+Completed 200 OK in 52ms (Views: 32.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2017-04-21 21:39:35 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 295ms (Views: 293.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/notes" for ::1 at 2017-04-21 21:39:36 -0400
+Processing by Api::NotesController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "SSwEmskfrP-PQn2bMDKEqg"], ["LIMIT", 1]]
+  Rendering api/notes/index.json.jbuilder
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 1]]
+  Rendered api/notes/index.json.jbuilder (8.1ms)
+Completed 200 OK in 47ms (Views: 26.7ms | ActiveRecord: 1.0ms)
+
+

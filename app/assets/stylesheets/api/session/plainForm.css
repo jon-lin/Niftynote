@@ -14,21 +14,17 @@
   text-align: center;
 }
 
-.plainForm #plainFormlogo {
+.plainForm .plainHeader img {
   height: 70px;
   margin-bottom: 15px;
 }
 
-.plainForm #plainFormAltHeader {
+.plainForm .plainHeader h1 {
   display: inherit;
   margin-bottom: 25px;
   font-size: 40px;
   font-weight: 200;
   color: darkgray;
-}
-
-.plainForm header {
-  display: none;
 }
 
 .plainForm .centerPanel {

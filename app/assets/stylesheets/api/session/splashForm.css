@@ -1,5 +1,9 @@
 /*some styling applies to both plain and splash forms*/
 
+.splashForm {
+  height: 100%;
+}
+
 .splashForm header div {
   display: flex;
   align-items: center;
@@ -12,18 +16,28 @@
 
 .splashForm header div img {
   height: 36px;
-  color: #2DBE60;
-}
-
-.splashForm #plainFormlogo {
-  display: none;
 }
 
 .splashForm .entireFormPage {
-  height: 100vh;
+  position: relative;
+  height: 100%;
   font-family: 'Yantramanav', sans-serif;
   min-height: 800px;
   min-width: 745px;
+}
+
+.backgroundImg {
+  width: 100%;
+  height: 100%;
+}
+
+.splashSidebar {
+  position: absolute;
+  height: 100%;
+  background: orange;
+  z-index: 1;
+  right: 0;
+  top: 0;
 }
 
 .splashForm header {
@@ -55,6 +69,7 @@
 
 .splashForm .centerPanelContainer {
   position: relative;
+  height: 100vh;
 }
 
 .splashForm .centerPanel {
@@ -151,7 +166,7 @@ button:hover {
 }
 
 .splashForm .splashFooter {
-  margin-top: -7px;
+  margin-top: 0px;
   margin-bottom: 0px;
   border: 1px solid #414141;
   text-align: center;
@@ -166,221 +181,8 @@ button:hover {
   cursor: pointer
 }
 
-.splashForm #plainFormAltLink, #plainFormAltHeader {
-  display: none;
-}
-
 /*for getting the errors to show up*/
 .splashForm ul {
   color: white;
   list-style: none;
 }
-
-/*.splashForm video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-  z-index: -1;
-}
-
-.splashForm .videocontainer {
-  position: fixed;
-  top: -42%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  z-index: -1;
-  display: none;
-}*/
-
-/*.entireformpage > * {
-  display: flex;
-  */
-/*}*/
-
-/*body #root {
-  display: flex;
-  align-items: baseline;
-  background-color: yellow;
-}*/
-
-/*.splashForm .videocontainer {
-  display: flex;
-  justify-content: center;
-}*/
-
-/*calc function*/
-
-/*.splashForm nav {
-  display: block;
-  position: fixed;
-  justify-content: space-between;
-  border: 1px solid red;
-}
-
-.splashForm nav h1 {
-  position: relative;
-  font-family: serif;
-  color: #2DBE60;
-  font-size: 35px;
-  margin-top: 19px;
-  margin-left: 22px;
-  font-weight: 550;
-  font-family: 'Yantramanav', sans-serif;
-  border: 1px solid red;
-}
-
-.splashForm nav a {
-  border: 1px solid red;
-  font-family: 'Yantramanav', sans-serif;
-  text-decoration: none;
-  color: gray;
-  z-index: 100;
-  font-size: 20px;
-}
-
-.splashForm form  {
-  display: flex;
-  width: 570px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.splashForm .centerPanelContainer {
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.splashForm .centerPanel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.splashForm form > * {
-  display: flex;
-  justify-content: center;
-}
-
-.splashForm input:not(:last-child) {
-  width: 230px;
-  height: 38px;
-  padding 5px;
-  margin: 5px;
-  padding-left: 9.5px;
-  font-size: smaller;
-  border-radius: 3.5px;
-}
-
-.splashForm [type="submit"] {
-  background-color: #2DBE60;
-  margin: 10px;
-  width: 500px;
-  height: 40px;
-  border-radius: 4px;
-  border-style: none;
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-  font-family: 'Yantramanav', sans-serif;
-  transition: all 0.3s ease 0s;
-}
-
-.splashForm [type="submit"]:hover {
-  background: #18B34E;
-}
-
-.splashForm button {
-  background-color: #FFFFFF;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 150px;
-  height: 40px;
-  border-radius: 8px;
-  border-style: none;
-  cursor: pointer;
-  font-size: 15.5px;
-  font-weight: 500;
-  font-family: 'Yantramanav', sans-serif;
-  transition: all 0.3s ease 0s;
-}
-
-.splashForm button:hover {
-  background: #CCCCCC;
-}
-
-.splashForm .notetakingheader, .splashForm .description {
-  font-family: 'Yantramanav', sans-serif;
-  font-size: 50px;
-  text-align: center;
-  color: white;
-  font-weight: 200;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-.splashForm .description {
-  font-size: 20px;
-  text-align: center;
-  color: white;
-  margin: 8px;
-}
-
-.splashForm .splashMessage {
-  width: 500px;
-}
-
-.splashForm .lineforOR {
-  display: flex;
-  justify-content: space-between;
-  margin: 13px;
-}
-
-.splashForm .lineforOR > * {
- margin-left: 6px;
- margin-right: 6px;
-}
-
-.splashForm .lineforOR .line {
-  background: rgba(255,255,255,0.2);
-  width: 220px;
-  height: 1px;
-  display: block;
-  position: relative;
-  top: 11.5px;
-}
-
-.splashForm .lineforOR text {
-  color: white;
-  font-family: 'Yantramanav', sans-serif;
-  font-size: 17px;
-  font-weight: 200;
-}
-
-.splashForm .splashFooter {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  background-color: #414141;
-  color: white;
-  font-family: 'Yantramanav', sans-serif;
-  font-size: 18px;
-}
-
-.splashForm .splashFooter span {
-  color:  #2DBE60;
-}*/

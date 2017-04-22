@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import * as splashContent from './splash_form_content';
+import SplashSidebar from './splash_sidebar';
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -44,12 +45,11 @@ class AuthForm extends React.Component {
 
   render() {
     let header, altLink, altText, buttontext,
-      backgroundImg, splashMessage, splashFooter;
+      backgroundImg, splashMessage, splashFooter
 
     switch (this.props.formType) {
       case 'splashSignUp':
         buttontext = 'SIGN UP FOR FREE';
-        header = 'NIFTYNOTE';
         altLink = '/signin';
         altText = `Sign in`;
         backgroundImg = splashContent.backgroundImg;
@@ -57,13 +57,13 @@ class AuthForm extends React.Component {
         splashFooter = splashContent.splashFooter;
         break;
       case 'plainSignUp':
-        header = buttontext = 'Sign Up';
+        buttontext = 'Sign Up';
         altLink = '/signin';
         altText = (<div><p>Already signed up?</p><p>Sign In</p></div>);
         [backgroundImg, splashMessage, splashFooter] = [null, null, null];
         break;
       case 'signin':
-        header = buttontext = 'Sign In';
+        buttontext = 'Sign In';
         altLink = '/signup';
         altText = (<div><p>Don't have an account?</p><p>Sign Up</p></div>);
         [backgroundImg, splashMessage, splashFooter] = [null, null, null];
@@ -72,22 +72,31 @@ class AuthForm extends React.Component {
         console.log("formType isn't catching in auth_form");
     }
 
+    if (this.props.formType === 'splashSignUp') {
+      header = (
+        <header className="navbar">
+          <div>
+            <img src='/images/N.png'></img>
+            <h1>NIFTYNOTE</h1>
+          </div>
+          <Link to={altLink}>{altText}</Link>
+        </header>
+      )
+    } else {
+      header = (
+        <div className="plainHeader">
+          <img src='/images/N.png'></img>
+          <h1>{buttontext}</h1>
+        </div>
+      )
+    }
+
     let errors = this.props.errors.map( (err, idx) => <li key={idx}>{err}</li> );
 
     return (
         <div className="entireFormPage">
 
-        <img id="plainFormlogo" src='/images/N.png'></img>
-
-        <h1 id="plainFormAltHeader">{header}</h1>
-
-          <header className="navbar">
-            <div>
-              <img src='/images/N.png'></img>
-              <h1>{header}</h1>
-            </div>
-            <Link to={altLink}>{altText}</Link>
-          </header>
+          {header}
 
           <div className="centerPanelContainer">
             {backgroundImg}
@@ -130,6 +139,8 @@ class AuthForm extends React.Component {
             </div>
             <footer>{splashFooter}</footer>
             <Link id="plainFormAltLink" to={altLink}>{altText}</Link>
+
+            <SplashSidebar />
           </div>
     );
   }

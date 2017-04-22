@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 export const backgroundImg = (
-  <img src="/images/darkspace.jpg" height="930" width="100%"/>
+  <img className="backgroundImg" src="/images/darkspace.jpg"/>
 );
 
 export const splashMessage = (

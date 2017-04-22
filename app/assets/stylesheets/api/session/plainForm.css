@@ -112,7 +112,7 @@
   transition: all 0.3s ease 0s;
 }
 
-.plainForm a:last-child {
+.plainForm #plainFormAltLink {
   text-decoration: none;
   margin-top: 30px;
 }
@@ -121,12 +121,12 @@
   margin: 5px;
 }
 
-.plainForm a:last-child p:first-child {
+.plainForm #plainFormAltLink p:first-child {
   color: gray;
   font-size: 14px;
 }
 
-.plainForm a:last-child p:last-child {
+.plainForm #plainFormAltLink p:last-child {
   color: #2DBE60;
   font-size: 20px;
 }

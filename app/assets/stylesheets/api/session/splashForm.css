@@ -28,7 +28,7 @@
 
 .backgroundImg {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .splashSidebar {
@@ -78,6 +78,10 @@
   top: 15%;
   left: 25%;
   text-align: center;
+}
+
+.splashForm .centerPanel > * {
+  margin: 30px;
 }
 
 .splashForm .centerPanel .notetakingheader {
@@ -185,4 +189,8 @@ button:hover {
 .splashForm ul {
   color: white;
   list-style: none;
+}
+
+.splashForm #plainFormAltLink {
+  display: none;
 }

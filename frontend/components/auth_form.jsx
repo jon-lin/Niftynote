@@ -77,10 +77,15 @@ class AuthForm extends React.Component {
     return (
         <div className="entireFormPage">
 
-        <h1 id="plainFormAltHeader">{header}</h1>
+        <img id="plainFormlogo" src='/images/N.png'></img>
 
+        <h1 id="plainFormAltHeader">{header}</h1>
+        
           <header className="navbar">
-            <h1>{header}</h1>
+            <div>
+              <img src='/images/N.png'></img>
+              <h1>{header}</h1>
+            </div>
             <Link to={altLink}>{altText}</Link>
           </header>
 

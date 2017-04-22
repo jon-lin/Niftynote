@@ -1,4 +1,22 @@
 /*some styling applies to both plain and splash forms*/
+.splashForm header div {
+  display: flex;
+  align-items: center;
+  margin-left: 17px;
+}
+
+.splashForm header div > * {
+  margin: 3px;
+}
+
+.splashForm header div img {
+  height: 36px;
+  color: #2DBE60;
+}
+
+.splashForm #plainFormlogo {
+  display: none;
+}
 
 .splashForm .entireFormPage {
   height: 100vh;
@@ -13,7 +31,6 @@
   height: 90px;
   align-items: center;
   margin-right: 25px;
-  margin-left: 25px;
 }
 
 .splashForm header h1 {
@@ -76,7 +93,7 @@
 }
 
 .splashForm [type="submit"] {
-  background-color: #2DBE60;
+  background-color: #28A956;
   margin: 10px;
   width: 100%;
   height: 40px;
@@ -89,7 +106,7 @@
 }
 
 [type="submit"]:hover {
-  background: #18B34E;
+  background: #387a09;
 }
 
 .splashForm button {

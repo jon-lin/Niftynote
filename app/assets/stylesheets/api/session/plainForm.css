@@ -1,5 +1,6 @@
 .plainForm {
   background: #F3F3F3;
+  border-top: 3.5px solid #2DBE60;
 }
 
 .plainForm .entireFormPage {
@@ -9,8 +10,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 150px;
+  padding-top: 70px;
   text-align: center;
+}
+
+.plainForm #plainFormlogo {
+  height: 70px;
+  margin-bottom: 15px;
 }
 
 .plainForm #plainFormAltHeader {
@@ -53,7 +59,7 @@
   height: 38px;
   margin-bottom: 12px;
   font-size: smaller;
-  border-radius: 3.5px;
+  border-radius: 10px;
   border: 1px solid #cccccc;
   text-indent: 7px;
   font-weight: lighter;

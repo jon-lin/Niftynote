@@ -8,9 +8,17 @@ const NoteIndex = (props) => {
   });
 
   return (
-    <ul>List is here:
-      {notesList}
-    </ul>
+    <div>
+      <div className="notesColTop">
+        <h1>Notes</h1>
+        <text>{notesList.length} notes</text>
+        <button>Options:</button>
+      </div>
+
+      <ul>List is here:
+        {notesList}
+      </ul>
+    </div>
   )
 }
 

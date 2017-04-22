@@ -80,7 +80,7 @@ class AuthForm extends React.Component {
         <img id="plainFormlogo" src='/images/N.png'></img>
 
         <h1 id="plainFormAltHeader">{header}</h1>
-        
+
           <header className="navbar">
             <div>
               <img src='/images/N.png'></img>

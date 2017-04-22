@@ -23,7 +23,7 @@ class Home extends React.Component {
 
   render() {
     if (!this.props.currentUser) { return null };
-    
+
     let notesList = this.props.notes.map( note => {
       debugger
       return (<Note note={note} key={note.id}/>);

@@ -1,14 +1,14 @@
-import {RECEIVE_ALL_POKEMON, RECEIVE_POKEMON_DETAIL,
-  START_LOADING_ALL_POKEMON, START_LOADING_SINGLE_POKEMON} from
-  '../actions/pokemon_actions';
+import {RECEIVE_NOTES, RECEIVE_NOTE,
+  START_LOADING_ALL_NOTES, START_LOADING_NOTE} from
+  '../actions/notes_actions';
 
 const loadingReducer = (state = true, action) => {
   switch (action.type) {
-    case START_LOADING_SINGLE_POKEMON:
-    case START_LOADING_ALL_POKEMON:
+    case START_LOADING_ALL_NOTES:
+    case START_LOADING_NOTE:
       return true;
-    case RECEIVE_ALL_POKEMON:
-    case RECEIVE_POKEMON_DETAIL:
+    case RECEIVE_NOTES:
+    case RECEIVE_NOTE:
       return false;
     default:
       return state;

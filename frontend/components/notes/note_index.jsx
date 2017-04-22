@@ -16,6 +16,14 @@ class NoteIndex extends React.Component {
       return (<NoteItem noteItem={noteItem} key={noteItem.id}/>);
     });
 
+    if (this.props.loading === true) {
+      return (
+        <div className="loadingContainer">
+          <img className="loading" src="/images/loading.gif"/>
+        </div>
+      );
+    }
+
     return (
       <div className="entireNotesIndexCol">
         <div className="notesColTop">
@@ -33,3 +41,7 @@ class NoteIndex extends React.Component {
 }
 
 export default NoteIndex;
+
+// <div id="loading-notes-container">
+//   <div id="loading-notes"></div>
+// </div>

@@ -25,7 +25,7 @@ class Home extends React.Component {
         <h2>Welcome {this.props.currentUser.email}!</h2>
         <button onClick={this.clickHandler}>Sign Out</button>
 
-        <NoteIndexContainer {...this.props} />
+        <NoteIndexContainer />
 
       </div>
     );

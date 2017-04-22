@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { fetchNotes } from '../../actions/notes_actions';
+import { fetchNotes, startLoadingAllNotes } from '../../actions/notes_actions';
 import NoteIndex from './note_index';
 
 const mapStateToProps = (state) => {
-  debugger
   return {
-    notes: Object.values(state.notes)
+    notes: Object.values(state.notes),
+    loading: state.loading
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchNotes: () => dispatch(fetchNotes())
+    fetchNotes: () => dispatch(fetchNotes()),
   };
 };
 

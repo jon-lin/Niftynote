@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { signin, signup, receiveErrors } from '../actions/auth_actions';
+import { signin, signup, receiveErrors } from '../../actions/auth_actions';
 import AuthFormConditional from './auth_form_conditional';
 import { withRouter } from 'react-router';
 

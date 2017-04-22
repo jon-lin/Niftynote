@@ -1,8 +1,8 @@
 <script type="text/javascript">
-<% if current_user %>
-   window.currentUser =
-   <%= render("api/sessions/session.json.jbuilder", user: current_user).html_safe %>
-<% end  %>
+  <% if current_user %>
+     window.currentUser =
+     <%= render("api/sessions/session.json.jbuilder", user: current_user).html_safe %>
+  <% end  %>
 </script>
 
 <div id="root">React not working!</div>

@@ -2,8 +2,8 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import React from 'react';
 import { Provider } from 'react-redux';
-import AuthFormContainer from './auth_form_container';
-import HomeContainer from './home_container'
+import AuthFormContainer from './auth/auth_form_container';
+import HomeContainer from './home/home_container'
 
 const Root = ({ store }) => {
     let _redirectIfLoggedIn = (nextState, replace) => {

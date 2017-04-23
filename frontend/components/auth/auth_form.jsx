@@ -14,6 +14,7 @@ class AuthForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.receiveField = this.receiveField.bind(this);
 		this.loginAsGuest = this.loginAsGuest.bind(this);
+    this.splashSidebar = this.splashSidebar.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -43,9 +44,18 @@ class AuthForm extends React.Component {
 			.then(() => this.props.router.push('/home'));
 	}
 
+  splashSidebar() {
+    debugger
+    if (this.props.splashSidebar) {
+      this.props.stopSplashSidebar();
+    } else {
+      this.props.startSplashSidebar();
+    }
+  }
+
   render() {
     let header, altLink, altText, buttontext,
-      backgroundImg, splashMessage, splashFooter, hamburger;
+      backgroundImg, splashMessage, splashFooter, splashSidebar;
 
     switch (this.props.formType) {
       case 'splashSignUp':
@@ -73,31 +83,39 @@ class AuthForm extends React.Component {
     }
 
     if (this.props.formType === 'splashSignUp') {
-      hamburger
+        header = (
+          <header>
+            <div className="navbarLeft">
+              <img src='/images/N.png'></img>
+              <h1>NIFTYNOTE</h1>
+            </div>
+            <div className="navbarRight">
+              <Link to={altLink}>{altText}</Link>
+              <i onClick={this.splashSidebar} className="fa fa-bars" aria-hidden="true"></i>
+            </div>
+          </header>
+        );
 
-      header = (
-        <header className="navbar">
-          <div>
-            <img src='/images/N.png'></img>
-            <h1>NIFTYNOTE</h1>
-          </div>
-          <Link to={altLink}>{altText}</Link>
-        </header>
-      );
+        if (this.props.splashSidebar) {
+          splashSidebar = (<SplashSidebar />)
+        } else {
+          splashSidebar = null;
+        }
     } else {
-      header = (
-        <div className="plainHeader">
-          <img src='/images/N.png'></img>
-          <h1>{buttontext}</h1>
-        </div>
-      );
+        splashSidebar = null;
+
+        header = (
+          <div className="plainHeader">
+            <img src='/images/N.png'></img>
+            <h1>{buttontext}</h1>
+          </div>
+        );
     }
 
     let errors = this.props.errors.map( (err, idx) => <li key={idx}>{err}</li> );
 
     return (
         <div className="entireFormPage">
-
           {header}
 
           <div className="centerPanelContainer">
@@ -143,11 +161,11 @@ class AuthForm extends React.Component {
 
             <Link id="plainFormAltLink" to={altLink}>{altText}</Link>
 
+            { splashSidebar }
+
           </div>
     );
   }
 }
-
-// <SplashSidebar />
 
 export default AuthForm;

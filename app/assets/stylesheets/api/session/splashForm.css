@@ -4,20 +4,6 @@
   height: 100%;
 }
 
-.splashForm header div {
-  display: flex;
-  align-items: center;
-  margin-left: 17px;
-}
-
-.splashForm header div > * {
-  margin: 3px;
-}
-
-.splashForm header div img {
-  height: 36px;
-}
-
 .splashForm .entireFormPage {
   position: relative;
   height: 100%;
@@ -26,47 +12,35 @@
   min-width: 745px;
 }
 
-.splashForm .backgroundImg {
-  width: 100%;
-  height: 100%;
-}
-
-/*.splashForm .splashSidebar {
-  position: fixed;
-  height: 100%;
-  width: 45%;
-  background: rgba(255,255,255,0.2);
-  z-index: 1;
-  right: 0;
-  top: 0;
-  border: 1px solid red;
-  transition: all 0.3s ease 0s;
-  margin: 0;
-}*/
-
-/*.splashForm .splashSidebar:hover {
-  background: #CCCCCC;
-  position: fixed;
-  height: 100%;
-  right: -45%
-}*/
-
-/*.splashForm .splashSidebarEmptyBox {
-  position: fixed;
-  height: 100%;
-  width: 55%;
-  left: 0;
-  top: 0;
-  border: 1px solid red;
-  margin: 0;
-}*/
-
 .splashForm header {
   display: flex;
   justify-content: space-between;
   height: 90px;
   align-items: center;
   margin-right: 25px;
+}
+
+.splashForm header .navbarLeft {
+  display: flex;
+  align-items: center;
+  margin-left: 17px;
+}
+
+.splashForm header .navbarLeft > * {
+  margin: 3px;
+}
+
+.splashForm header .navbarLeft img {
+  height: 36px;
+}
+
+.splashForm header .navbarRight > * {
+  margin: 8px;
+}
+
+.splashForm header .navbarRight i:hover {
+  color: green;
+  cursor: pointer;
 }
 
 .splashForm header h1 {
@@ -88,6 +62,36 @@
   color: black;
 }
 
+.splashForm .splashSidebar {
+  position: fixed;
+  height: 100%;
+  width: 45%;
+  background: rgba(255,255,255,0.2);
+  z-index: 1;
+  right: 0;
+  top: 0;
+  border: 1px solid red;
+  transition: all 10s ease 0s;
+  margin: 0;
+}
+
+.splashForm .splashSidebar:hover {
+  background: #CCCCCC;
+  position: fixed;
+  height: 100%;
+  right: -45%
+}
+
+.splashForm .splashSidebarEmptyBox {
+  position: fixed;
+  height: 100%;
+  width: 55%;
+  left: 0;
+  top: 0;
+  border: 1px solid red;
+  margin: 0;
+}
+
 .splashForm .centerPanelContainer {
   position: relative;
   height: 100vh;
@@ -103,6 +107,11 @@
 
 .splashForm .centerPanel > * {
   margin: 30px;
+}
+
+.splashForm .backgroundImg {
+  width: 100%;
+  height: 100%;
 }
 
 .splashForm .centerPanel .notetakingheader {

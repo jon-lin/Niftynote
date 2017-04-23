@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import NoteIndexContainer from '../notes/note_index_container'
+import NoteIndexContainer from '../notes/note_index_container';
+import NotebookIndexContainer from '../notebooks/notebook_index_container';
+import ShowNote from '../notes/note_show';
 
 class Home extends React.Component {
 
@@ -26,6 +28,8 @@ class Home extends React.Component {
         <button onClick={this.clickHandler}>Sign Out</button>
 
         <NoteIndexContainer />
+        <NotebookIndexContainer />
+        <ShowNote />
 
       </div>
     );

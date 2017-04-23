@@ -6,9 +6,10 @@ export const notesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_NOTES:
-      return merge({}, state, notesSelector(action.notes));
-    // case RECEIVE_NOTE:
-    //   return merge({}, state, { notes: { action.note.id: { action.note } } });
+      return notesSelector(action.notes);
+    case RECEIVE_NOTE:
+      debugger
+      return merge({}, state, { [action.note.id]: action.note });
     default:
       return state;
   }

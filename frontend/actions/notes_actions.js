@@ -12,11 +12,25 @@ export const receiveNotes = (notes) => (
   }
 );
 
+export const receiveNote = (note) => (
+  {
+    type: RECEIVE_NOTE,
+    note
+  }
+);
+
 export const fetchNotes = () => dispatch => {
   startLoadingAllNotes()
 
   return NotesAPIUtil.fetchNotes()
     .then(notes => dispatch(receiveNotes(notes)))
+};
+
+export const fetchNote = (id) => dispatch => {
+  // startLoadingAllNotes();
+
+  return NotesAPIUtil.fetchNote(id)
+    .then(note => dispatch(receiveNote(note)))
 };
 
 export const startLoadingAllNotes = () => (

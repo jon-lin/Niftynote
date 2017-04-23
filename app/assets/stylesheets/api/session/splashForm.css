@@ -75,7 +75,7 @@
   margin: 0;
 }
 
-.splashForm .splashSidebar:hover {
+/*.splashForm .splashSidebar:hover {
   background: #CCCCCC;
   position: fixed;
   height: 100%;
@@ -90,7 +90,7 @@
   top: 0;
   border: 1px solid red;
   margin: 0;
-}
+}*/
 
 .splashForm .centerPanelContainer {
   position: relative;

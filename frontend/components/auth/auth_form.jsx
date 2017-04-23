@@ -6,15 +6,12 @@ import SplashSidebar from './splash_sidebar';
 class AuthForm extends React.Component {
   constructor(props) {
 		super(props);
-		this.state = {
-			email: "",
-			password: ""
-		};
+		this.state = {email: "", password: "", sidebar: false};
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.receiveField = this.receiveField.bind(this);
 		this.loginAsGuest = this.loginAsGuest.bind(this);
-    this.splashSidebar = this.splashSidebar.bind(this);
+		this.openSidebar = this.openSidebar.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -44,13 +41,18 @@ class AuthForm extends React.Component {
 			.then(() => this.props.router.push('/home'));
 	}
 
-  splashSidebar() {
+  // splashSidebar() {
+  //   debugger
+  //   if (this.props.splashSidebar) {
+  //     this.props.stopSplashSidebar();
+  //   } else {
+  //     this.props.startSplashSidebar();
+  //   }
+  // }
+
+  openSidebar() {
     debugger
-    if (this.props.splashSidebar) {
-      this.props.stopSplashSidebar();
-    } else {
-      this.props.startSplashSidebar();
-    }
+    this.setState({sidebar: true});
   }
 
   render() {
@@ -83,6 +85,14 @@ class AuthForm extends React.Component {
     }
 
     if (this.props.formType === 'splashSignUp') {
+        debugger
+        if (this.state.sidebar === true) {
+          splashSidebar = (<SplashSidebar />);
+          debugger
+        } else {
+          splashSidebar = null;
+        }
+
         header = (
           <header>
             <div className="navbarLeft">
@@ -91,16 +101,10 @@ class AuthForm extends React.Component {
             </div>
             <div className="navbarRight">
               <Link to={altLink}>{altText}</Link>
-              <i onClick={this.splashSidebar} className="fa fa-bars" aria-hidden="true"></i>
+              <i onClick={this.openSidebar} className="fa fa-bars" aria-hidden="true"></i>
             </div>
           </header>
         );
-
-        if (this.props.splashSidebar) {
-          splashSidebar = (<SplashSidebar />)
-        } else {
-          splashSidebar = null;
-        }
     } else {
         splashSidebar = null;
 
@@ -161,7 +165,7 @@ class AuthForm extends React.Component {
 
             <Link id="plainFormAltLink" to={altLink}>{altText}</Link>
 
-            { splashSidebar }
+
 
           </div>
     );
@@ -169,3 +173,5 @@ class AuthForm extends React.Component {
 }
 
 export default AuthForm;
+
+// {splashSidebar}

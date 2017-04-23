@@ -25,9 +25,11 @@ export const notesSelector = (notesObject) => {
     } else if (hours < 24) {
         noteObj['time_passed'] = hours + " hours ago";
     } else if (days < 2) {
-        noteObj['time_passed'] = days + " day ago";
+        noteObj['time_passed'] = "YESTERDAY";
     } else if (days < 8) {
         noteObj['time_passed'] = days + " days ago";
+    } else if (days < 14) {
+          noteObj['time_passed'] = "LAST WEEK";
     } else {
         noteObj['time_passed'] = new Date(noteObj['updated_at']).toLocaleDateString();
     }

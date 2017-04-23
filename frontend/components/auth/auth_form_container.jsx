@@ -34,9 +34,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     signInAsGuest: () => dispatch(signin({email: 'guest@example.com', password: 'password'})),
     processForm: (user) => dispatch(processForm(user)),
-    receiveErrors: (errors) => dispatch(receiveErrors(errors)),
-    startSplashSidebar: () => dispatch(startSplashSidebar()),
-    stopSplashSidebar: () => dispatch(stopSplashSidebar()),
+    receiveErrors: (errors) => dispatch(receiveErrors(errors))
   };
 };
 

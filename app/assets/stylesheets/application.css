@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  *= require_session
- *=require_loading-icon
+ *= require_loading-icon
+ *= require_home
  */
 
 

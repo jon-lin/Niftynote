@@ -62,7 +62,7 @@
   color: black;
 }
 
-.splashForm .splashSidebar {
+/*.splashForm .splashSidebar {
   position: fixed;
   height: 100%;
   width: 45%;
@@ -73,7 +73,7 @@
   border: 1px solid red;
   transition: all 10s ease 0s;
   margin: 0;
-}
+}*/
 
 /*.splashForm .splashSidebar:hover {
   background: #CCCCCC;

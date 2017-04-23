@@ -1,0 +1,18 @@
+.homeTotalLayout {
+  display: flex;
+  height: 100vh;
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.homeTotalLayout .homeSidebar {
+  width: 73px;
+}
+
+.homeTotalLayout .entireNotesIndexCol {
+  width: 350px;
+}
+
+.homeTotalLayout .showNote {
+  width: calc(100% - 73px - 350px);
+  border: 1px solid orange;
+}

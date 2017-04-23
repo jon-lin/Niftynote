@@ -8,14 +8,14 @@ class HomeSidebar extends React.Component {
 
   render() {
     return (
-      <div className="sidebar">
+      <div className="homeSidebar">
 
         <div className="imgcontainer">
           <img src='/images/N.png'></img>
         </div>
 
         <div className="top3buttons">
-          <Link to='/signin' className="addNewNote">
+          <Link className="addNewNote">
             <i className="fa fa-plus" aria-hidden="true"></i>
           </Link>
 

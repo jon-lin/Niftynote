@@ -41,15 +41,6 @@ class AuthForm extends React.Component {
 			.then(() => this.props.router.push('/home'));
 	}
 
-  // splashSidebar() {
-  //   debugger
-  //   if (this.props.splashSidebar) {
-  //     this.props.stopSplashSidebar();
-  //   } else {
-  //     this.props.startSplashSidebar();
-  //   }
-  // }
-
   openSidebar() {
     debugger
     this.setState({sidebar: true});

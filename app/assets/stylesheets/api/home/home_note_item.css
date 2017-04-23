@@ -1,0 +1,36 @@
+.noteItemBox {
+  padding: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.noteItemBox > * {
+  padding-left: 8px;
+}
+
+.noteItemTitle {
+  font-size: 18px;
+}
+
+.timePassed {
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+
+.bodySnippet {
+  font-size: 15px;
+}
+
+.noteItemBox div:not(:first-child) {
+  color: gray;
+}
+
+.noteItemBox:hover div {
+  background-color: #2DBE60;
+  color: white;
+}
+
+.noteItemBox:hover {
+  background-color: #2DBE60;
+  color: white;
+}

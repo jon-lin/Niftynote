@@ -27,12 +27,14 @@ class NoteIndex extends React.Component {
     return (
       <div className="entireNotesIndexCol">
         <div className="notesColTop">
-          <h1>Notes</h1>
-          <text>{notesList.length} notes</text>
-          <button>Options:</button>
+          <h1>NOTES</h1>
+          <div className="notesTopBarSecondRow">
+            <text>{notesList.length} notes</text>
+            <button>Options:</button>
+          </div>
         </div>
 
-        <ul>List is here:
+        <ul>
           {notesList}
         </ul>
       </div>

@@ -1,0 +1,101 @@
+.homeSidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #F8F8F8;
+  height: 100vh;
+  min-height: 600px;
+}
+
+.homeSidebar .imgcontainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.homeSidebar img {
+  height: 40px;
+  width: auto;
+  margin-top: 15px;
+}
+
+.homeSidebar button,
+.homeSidebar a {
+  font-size: 20px;
+  background-color: transparent;
+  color: #2DBE60;
+  border: none;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.homeSidebar .profile {
+  padding: 10px;
+  border-radius: 30%;
+}
+
+.homeSidebar .fa-plus {
+  border: 1px solid #2DBE60;
+  border-radius: 50%;
+  padding: 5px 7px 5px 7px;
+  background-color: white;
+}
+
+.homeSidebar .fa-search, .fa-comment {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  padding: 7px;
+  background-color: white;
+}
+
+.homeSidebar button:hover,
+.homeSidebar a:hover {
+  background-color: #2DBE60;
+  border: none;
+  transition: all 0.4s ease 0s;
+  /*padding: 8px;*/
+}
+
+.homeSidebar .fa-plus:hover,
+.fa-search:hover, .fa-comment:hover {
+  background-color: #2DBE60;
+  border: none;
+  transition: all 0.4s ease 0s;
+  /*padding: inherit;*/
+}
+
+.homeSidebar button i:hover,
+.homeSidebar a i:hover {
+  color: white;
+  border: none;
+  transition: all 0.4s ease 0s;
+}
+
+.homeSidebar .top3buttons,
+.homeSidebar .bottom4buttons,
+.homeSidebar .profilecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.homeSidebar .top3buttons {
+  margin-top: 15px;
+  flex: 3;
+}
+
+.homeSidebar .bottom4buttons {
+  flex: 6;
+}
+
+.homeSidebar .profilecontainer {
+  flex: 1;
+  justify-content: center;
+  border-top: 1px solid rgb(212, 210, 210);
+}
+
+.homeSidebar .profile {
+  font-size: 40px;
+}

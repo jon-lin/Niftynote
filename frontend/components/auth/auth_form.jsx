@@ -45,7 +45,7 @@ class AuthForm extends React.Component {
 
   render() {
     let header, altLink, altText, buttontext,
-      backgroundImg, splashMessage, splashFooter
+      backgroundImg, splashMessage, splashFooter, hamburger;
 
     switch (this.props.formType) {
       case 'splashSignUp':
@@ -73,6 +73,8 @@ class AuthForm extends React.Component {
     }
 
     if (this.props.formType === 'splashSignUp') {
+      hamburger
+
       header = (
         <header className="navbar">
           <div>
@@ -81,14 +83,14 @@ class AuthForm extends React.Component {
           </div>
           <Link to={altLink}>{altText}</Link>
         </header>
-      )
+      );
     } else {
       header = (
         <div className="plainHeader">
           <img src='/images/N.png'></img>
           <h1>{buttontext}</h1>
         </div>
-      )
+      );
     }
 
     let errors = this.props.errors.map( (err, idx) => <li key={idx}>{err}</li> );

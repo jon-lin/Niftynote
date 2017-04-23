@@ -139,13 +139,15 @@ class AuthForm extends React.Component {
 
               </div>
             </div>
-            <footer>{splashFooter}</footer>
+            {splashFooter}
+
             <Link id="plainFormAltLink" to={altLink}>{altText}</Link>
 
-            <SplashSidebar />
           </div>
     );
   }
 }
+
+// <SplashSidebar />
 
 export default AuthForm;

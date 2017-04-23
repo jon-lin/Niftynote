@@ -27,12 +27,6 @@ class NoteItem extends React.Component {
 
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     currentNote: state.currentNote
-//   };
-// };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchNote: (id) => dispatch(fetchNote(id)),

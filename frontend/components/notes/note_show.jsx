@@ -5,21 +5,9 @@ import React from 'react';
 class NoteShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {note: null};
   }
 
-  // componentDidMount() {
-  //   this.props.fetchNote(this.props.noteId)
-  //     .then(note => {
-  //       debugger
-  //       this.setState({note: note})
-  //     });
-  // }
-
   render() {
-
-    // if (typeof this.props.currentNote !== 'Object') { return null }
-    // debugger
     return (
       <div className="showNote">
         THIS IS THE SHOW NOTE THING:
@@ -36,11 +24,5 @@ const mapStateToProps = (state) => {
     currentNote: state.currentNote
   };
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchNote: (id) => dispatch(fetchNote(id))
-//   };
-// };
 
 export default connect(mapStateToProps, null)(NoteShow);

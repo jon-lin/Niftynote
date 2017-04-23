@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import * as splashContent from './splash_form_content';
-import SplashSidebar from './splash_sidebar';
+// import SplashSidebar from './splash_sidebar';
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class AuthForm extends React.Component {
 
   render() {
     let header, altLink, altText, buttontext,
-      backgroundImg, splashMessage, splashFooter, splashSidebar;
+      backgroundImg, splashMessage, splashFooter; // splashSidebar
 
     switch (this.props.formType) {
       case 'splashSignUp':
@@ -85,13 +85,13 @@ class AuthForm extends React.Component {
     }
 
     if (this.props.formType === 'splashSignUp') {
-        debugger
-        if (this.state.sidebar === true) {
-          splashSidebar = (<SplashSidebar />);
-          debugger
-        } else {
-          splashSidebar = null;
-        }
+    //     debugger
+    //     if (this.state.sidebar === true) {
+    //       splashSidebar = (<SplashSidebar />);
+    //       debugger
+    //     } else {
+    //       splashSidebar = null;
+    //     }
 
         header = (
           <header>
@@ -106,7 +106,7 @@ class AuthForm extends React.Component {
           </header>
         );
     } else {
-        splashSidebar = null;
+        // splashSidebar = null;
 
         header = (
           <div className="plainHeader">

@@ -10,10 +10,32 @@
   font-size: 20px;
   outline: none;
   border: 1px solid #2DBE60;
-  /*experiments trying to get modal to transition"*/
-  /*transition: all 10s ease-in 2s;*/
-  /*-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;*/
-  /*transition-property: background-color, color;
-  transition-duration: 1s;
-  transition-timing-function: ease-out;*/
+  -webkit-animation: fadein 1s;
 }
+
+@-webkit-keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};
+
+/*another way to have things slide in*/
+
+/*@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}*/
+
+/*experiments trying to get modal to transition"*/
+
+/*transition: all 1s ease 2s;*/
+/*-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;*/
+/*transition-property: background-color, color;
+transition-duration: 1s;
+transition-timing-function: ease-out;*/

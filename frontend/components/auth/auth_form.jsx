@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import * as splashContent from './splash_form_content';
+import SmoothCollapse from 'react-smooth-collapse';
+
 // import SplashSidebar from './splash_sidebar';
 
 class AuthForm extends React.Component {

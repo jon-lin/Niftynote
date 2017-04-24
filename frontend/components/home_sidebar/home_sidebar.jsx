@@ -110,6 +110,7 @@ class HomeSidebar extends React.Component {
           onRequestClose={this.closeModal}
           contentLabel="userDashboard"
           className="userDashboardModal"
+          style={{overlay: {backgroundColor: 'transparent'}}}
         >
         <UserDashboard />
       </Modal>

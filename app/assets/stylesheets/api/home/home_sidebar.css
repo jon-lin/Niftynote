@@ -27,6 +27,7 @@
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;
+  outline: none;
 }
 
 .homeSidebar .fa-plus {

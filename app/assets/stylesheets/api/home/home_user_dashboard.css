@@ -3,10 +3,17 @@
   bottom: 20px;
   left: 60px;
   background-color: white;
-  border: 1px solid red;
   height: 350px;
   width: 390px;
   font-family: 'Yantramanav', sans-serif;
   text-align: center;
   font-size: 20px;
+  outline: none;
+  border: 1px solid #2DBE60;
+  /*experiments trying to get modal to transition"*/
+  /*transition: all 10s ease-in 2s;*/
+  /*-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;*/
+  /*transition-property: background-color, color;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;*/
 }

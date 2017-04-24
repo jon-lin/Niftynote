@@ -8,7 +8,7 @@ export const notesReducer = (state = {}, action) => {
     case RECEIVE_NOTES:
       return notesSelector(action.notes);
     case RECEIVE_NOTE:
-      debugger
+      // debugger
       return merge({}, state, { [action.note.id]: action.note });
     default:
       return state;

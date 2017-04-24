@@ -10,7 +10,9 @@ class NoteItem extends React.Component {
   }
 
   showNote(e) {
+    debugger
     this.props.fetchNote(e.currentTarget.value);
+    // <NoteShow noteItem={this.props.noteItem} />
   }
 
   render() {

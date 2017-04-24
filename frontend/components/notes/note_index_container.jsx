@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { fetchNotes, startLoadingAllNotes } from '../../actions/notes_actions';
 import NoteIndex from './note_index';
+import { notesSelector } from './notes_to_array';
 
 const mapStateToProps = (state) => {
   return {
-    notes: Object.values(state.notes),
+    notes: notesSelector(state.notes),
     loading: state.loading
   };
 };

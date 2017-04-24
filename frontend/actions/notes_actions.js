@@ -20,17 +20,24 @@ export const receiveNote = (note) => (
 );
 
 export const fetchNotes = () => dispatch => {
+  debugger
   startLoadingAllNotes()
-
+  debugger
   return NotesAPIUtil.fetchNotes()
-    .then(notes => dispatch(receiveNotes(notes)))
+    .then(notes => {
+      debugger
+      dispatch(receiveNotes(notes));
+    });
 };
 
 export const fetchNote = (id) => dispatch => {
   // startLoadingAllNotes();
-
+  debugger
   return NotesAPIUtil.fetchNote(id)
-    .then(note => dispatch(receiveNote(note)))
+    .then(note => {
+      debugger
+      dispatch(receiveNote(note));
+    });
 };
 
 export const startLoadingAllNotes = () => (

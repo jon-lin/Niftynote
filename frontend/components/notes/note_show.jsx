@@ -8,6 +8,7 @@ class NoteShow extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="showNote">
         THIS IS THE NOTE SHOW COMPONENT
@@ -40,6 +41,7 @@ class NoteShow extends React.Component {
 
 
 const mapStateToProps = (state) => {
+  debugger
   return {
     currentNote: state.currentNote
   };

@@ -4,6 +4,7 @@ const dateComparator = (objX, objY) => (
 )
 
 export const notesSelector = (notesObject) => {
+  //does any of the below mutate the notesObject?
   let sorted_arr = Object.values(notesObject).sort(dateComparator)
 
   sorted_arr.forEach(noteObj => {

@@ -12,15 +12,11 @@ class HomeSidebar extends React.Component {
     };
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   openModal() {
     this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
   }
 
   closeModal() {
@@ -32,33 +28,6 @@ class HomeSidebar extends React.Component {
   }
 
   render() {
-    const customStyles = {
-        overlay : {
-          position          : 'fixed',
-          top               : 0,
-          left              : 0,
-          right             : 0,
-          bottom            : 0,
-          backgroundColor   : 'transparent'
-        },
-        content : {
-          position                   : 'absolute',
-          top                        : '0',
-          // left                       : '0',
-          right                      : '0',
-          // bottom                     : '0',
-          border                     : '1px solid #ccc',
-          background                 : '#fff',
-          overflow                   : 'auto',
-          WebkitOverflowScrolling    : 'touch',
-          borderRadius               : '4px',
-          outline                    : 'none',
-          padding                    : '20px',
-          width                      : '100px',
-          height                      : '100px'
-        }
-      };
-
     return (
       <div className="homeSidebar">
 
@@ -106,7 +75,6 @@ class HomeSidebar extends React.Component {
 
         <Modal
           isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           contentLabel="userDashboard"
           className="userDashboardModal"

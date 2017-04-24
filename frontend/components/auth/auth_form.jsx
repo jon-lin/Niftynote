@@ -1,19 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router';
 import * as splashContent from './splash_form_content';
-import SmoothCollapse from 'react-smooth-collapse';
-
-// import SplashSidebar from './splash_sidebar';
+import Modal from 'react-modal';
+import SplashSidebar from './splash_sidebar';
 
 class AuthForm extends React.Component {
   constructor(props) {
 		super(props);
-		this.state = {email: "", password: "", sidebar: false};
+		this.state = {email: "", password: "", modalIsOpen: false};
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.receiveField = this.receiveField.bind(this);
 		this.loginAsGuest = this.loginAsGuest.bind(this);
-		this.openSidebar = this.openSidebar.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
+  componentWillMount() {
+    Modal.setAppElement('body');
   }
 
   componentWillReceiveProps(newProps) {
@@ -43,14 +56,9 @@ class AuthForm extends React.Component {
 			.then(() => this.props.router.push('/home'));
 	}
 
-  openSidebar() {
-    debugger
-    this.setState({sidebar: true});
-  }
-
   render() {
     let header, altLink, altText, buttontext,
-      backgroundImg, splashMessage, splashFooter; // splashSidebar
+      backgroundImg, splashMessage, splashFooter, splashSidebar;
 
     switch (this.props.formType) {
       case 'splashSignUp':
@@ -78,13 +86,7 @@ class AuthForm extends React.Component {
     }
 
     if (this.props.formType === 'splashSignUp') {
-    //     debugger
-    //     if (this.state.sidebar === true) {
-    //       splashSidebar = (<SplashSidebar />);
-    //       debugger
-    //     } else {
-    //       splashSidebar = null;
-    //     }
+        splashSidebar = (<SplashSidebar closeModal={this.closeModal}/>);
 
         header = (
           <header>
@@ -94,12 +96,12 @@ class AuthForm extends React.Component {
             </div>
             <div className="navbarRight">
               <Link to={altLink}>{altText}</Link>
-              <i onClick={this.openSidebar} className="fa fa-bars" aria-hidden="true"></i>
+              <i onClick={this.openModal} className="fa fa-bars" aria-hidden="true"></i>
             </div>
           </header>
         );
     } else {
-        // splashSidebar = null;
+        splashSidebar = null;
 
         header = (
           <div className="plainHeader">
@@ -158,6 +160,15 @@ class AuthForm extends React.Component {
 
             <Link id="plainFormAltLink" to={altLink}>{altText}</Link>
 
+              <Modal
+                isOpen={this.state.modalIsOpen}
+                onRequestClose={this.closeModal}
+                className="splashSidebarModal"
+                style={{overlay: {backgroundColor: 'transparent'}}}
+              >
+
+              {splashSidebar }
+            </Modal>
 
 
           </div>
@@ -166,5 +177,3 @@ class AuthForm extends React.Component {
 }
 
 export default AuthForm;
-
-// {splashSidebar}

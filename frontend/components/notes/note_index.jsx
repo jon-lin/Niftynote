@@ -16,6 +16,7 @@ class NoteIndex extends React.Component {
       return (<NoteItem noteItem={noteItem} key={noteItem.id}/>);
     });
 
+
     if (this.props.loading === true) {
       return (
         <div className="loadingContainer">

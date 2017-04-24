@@ -62,36 +62,6 @@
   color: black;
 }
 
-/*.splashForm .splashSidebar {
-  position: fixed;
-  height: 100%;
-  width: 45%;
-  background: rgba(255,255,255,0.2);
-  z-index: 1;
-  right: 0;
-  top: 0;
-  border: 1px solid red;
-  transition: all 10s ease 0s;
-  margin: 0;
-}*/
-
-/*.splashForm .splashSidebar:hover {
-  background: #CCCCCC;
-  position: fixed;
-  height: 100%;
-  right: -45%
-}
-
-.splashForm .splashSidebarEmptyBox {
-  position: fixed;
-  height: 100%;
-  width: 55%;
-  left: 0;
-  top: 0;
-  border: 1px solid red;
-  margin: 0;
-}*/
-
 .splashForm .centerPanelContainer {
   position: relative;
   height: 100vh;

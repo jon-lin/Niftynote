@@ -18,6 +18,28 @@
   to { opacity: 1 }
 };
 
+/*
+
+#modaltofade {
+  -webkit-animation: fadeout 2s;
+  opacity: 0.5;
+}
+
+@-webkit-keyframes fadeout {
+  from { opacity: 1 }
+  to { opacity: 0 }
+};*/
+
+/*
+.ReactModalPortal div {
+  -webkit-animation: fadeout 2s;
+  background-color: yellow;
+}
+
+*/
+
+/*ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: transparent;"><div class="ReactModal__Content ReactModal__Content--after-open userDashboardModal" tabindex="-1" aria-label="userDashboard"><div><h1><!-- react-text: 5 -->Welcome <!-- /react-text --><!-- react-text: 6 -->guest@example.com<!-- /react-text --><!-- react-text: 7 -->!<!-- /react-text --></h1><button>Sign Out</button></div></div></div></div>*/
+
 /*another way to have things slide in*/
 
 /*@keyframes slidein {

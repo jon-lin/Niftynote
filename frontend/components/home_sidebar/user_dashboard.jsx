@@ -9,6 +9,11 @@ class UserDashboard extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
+  // failed attempt to add transition to userDashboardModal
+  // componentWillUnmount() {
+  //   document.getElementsByClassName('userDashboardModal')[0].setAttribute('id', 'modaltofade');
+  //   debugger
+  // }
 
   clickHandler() {
     this.props.logout();

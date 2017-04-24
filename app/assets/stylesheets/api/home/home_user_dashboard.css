@@ -10,7 +10,7 @@
   font-size: 20px;
   outline: none;
   border: 1px solid #2DBE60;
-  -webkit-animation: fadein 1s;
+  -webkit-animation: fadein 0.5s;
 }
 
 @-webkit-keyframes fadein {

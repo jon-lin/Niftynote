@@ -2,41 +2,62 @@ import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 import UserDashboard from './home_modals/user_dashboard';
-import NotebookIndexContainer from '../notebooks/notebook_index_container';
 
 class HomeSidebar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userDashboardModalIsOpen: false,
-      notebookModalIsOpen: false
+      modalIsOpen: false,
+      modalChoice: null
     };
 
-    this.openModal1 = this.openModal1.bind(this);
-    this.closeModal1 = this.closeModal1.bind(this);
-    this.openModal2 = this.openModal2.bind(this);
-    this.closeModal2 = this.closeModal2.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.modalLoader = this.modalLoader.bind(this);
+    this.modalPicker = this.modalPicker.bind(this);
   }
 
-  openModal1() {
-    this.setState({userDashboardModalIsOpen: true});
+  openModal() {
+    this.setState({modalIsOpen: true});
   }
 
-  closeModal1() {
-    this.setState({userDashboardModalIsOpen: false});
-  }
-
-  openModal2() {
-    this.setState({notebookModalIsOpen: true});
-  }
-
-  closeModal2() {
-    this.setState({notebookModalIsOpen: false});
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   componentWillMount() {
     Modal.setAppElement('body');
+  }
+
+  modalPicker(e) {
+    let modalComponent = null
+    switch (e.target.getAttribute('class')) {
+      case 'fa fa-user':
+        modalComponent = <UserDashboard />
+        break;
+      default:
+        break;
+    }
+    // debugger
+    this.modalLoader(modalComponent);
+  }
+
+  modalLoader(modalComponent = null) {
+    let modalPick = (
+      <Modal
+        isOpen={this.state.modalIsOpen}
+        onRequestClose={this.closeModal}
+        contentLabel="userDashboard"
+        className="userDashboardModal"
+        style={{overlay: {backgroundColor: 'transparent'}}}
+      >
+        {modalComponent}
+      </Modal>
+    )
+
+    this.setState({modalChoice: modalPick})
+    this.openModal();
   }
 
   render() {
@@ -70,7 +91,7 @@ class HomeSidebar extends React.Component {
             <i className="fa fa-sticky-note" aria-hidden="true"></i>
           </button>
 
-          <button className="slideNotebooks" onClick={this.openModal2}>
+          <button className="slideNotebooks">
             <i className="fa fa-book" aria-hidden="true"></i>
           </button>
 
@@ -79,31 +100,13 @@ class HomeSidebar extends React.Component {
           </button>
         </div>
 
-        <div className="profilecontainer" onClick={this.openModal1}>
+        <div className="profilecontainer" onClick={this.modalPicker}>
           <button className="profile">
             <i className="fa fa-user" aria-hidden="true"></i>
           </button>
         </div>
 
-        <Modal
-          isOpen={this.state.userDashboardModalIsOpen}
-          onRequestClose={this.closeModal1}
-          contentLabel="userDashboard"
-          className="userDashboardModal"
-          style={{overlay: {backgroundColor: 'transparent'}}}
-        >
-          <UserDashboard />
-        </Modal>
-
-        <Modal
-          isOpen={this.state.notebookModalIsOpen}
-          onRequestClose={this.closeModal2}
-          contentLabel="notebookIndexModal"
-          className="notebookModal"
-          style={{overlay: {backgroundColor: 'transparent'}}}
-        >
-          <NotebookIndexContainer />
-        </Modal>
+        {this.state.modalChoice}
 
       </div>
     );

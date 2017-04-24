@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/auth_actions';
+import { logout } from '../../../actions/auth_actions';
 
 class UserDashboard extends React.Component {
   constructor(props) {

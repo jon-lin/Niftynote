@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import NoteIndexContainer from '../notes/note_index_container';
-import NotebookIndexContainer from '../notebooks/notebook_index_container';
 import ShowNote from '../notes/note_show';
 import HomeSidebar from '../home_sidebar/home_sidebar';
 
@@ -22,7 +21,6 @@ class Home extends React.Component {
       <div className="homeTotalLayout">
         <HomeSidebar />
         <NoteIndexContainer />
-        <NotebookIndexContainer />
         <ShowNote />
       </div>
     );

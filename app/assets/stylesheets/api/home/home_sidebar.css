@@ -1,7 +1,7 @@
 .homeSidebar {
   display: flex;
   flex-direction: column;
-  background-color: #F8F8F8;
+  background-color: #e6e6e6;
   height: 100vh;
   min-height: 600px;
 }
@@ -24,15 +24,9 @@
   background-color: transparent;
   color: #2DBE60;
   border: none;
-  border: 1px solid transparent;
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;
-}
-
-.homeSidebar .profile {
-  padding: 10px;
-  border-radius: 30%;
 }
 
 .homeSidebar .fa-plus {
@@ -49,27 +43,25 @@
   background-color: white;
 }
 
-.homeSidebar button:hover,
-.homeSidebar a:hover {
+.homeSidebar .bottom4buttons button:hover,
+.homeSidebar .profilecontainer button:hover {
   background-color: #2DBE60;
-  border: none;
   transition: all 0.4s ease 0s;
-  /*padding: 8px;*/
+  color: white;
 }
 
-.homeSidebar .fa-plus:hover,
-.fa-search:hover, .fa-comment:hover {
+.homeSidebar a:hover .fa-plus,
+.homeSidebar a:hover .fa-search,
+.homeSidebar button:hover .fa-comment {
   background-color: #2DBE60;
-  border: none;
   transition: all 0.4s ease 0s;
-  /*padding: inherit;*/
-}
-
-.homeSidebar button i:hover,
-.homeSidebar a i:hover {
   color: white;
   border: none;
-  transition: all 0.4s ease 0s;
+}
+
+.homeSidebar .slideWorkChat {
+  border: 0;
+  padding: 0;
 }
 
 .homeSidebar .top3buttons,

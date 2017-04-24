@@ -1,3 +1,136 @@
-/*.notebookIndexCol {
-  display: none;
+.notebookIndexCol {
+  font-family: 'Yantramanav', sans-serif;
+  position: absolute;
+  left: 0;
+  width: 525px;
+  height: 100vh;
+  background: white;
+  z-index: 1;
+  -webkit-animation: slide2 0.7s;
+}
+
+.notebookIndexCol > * {
+  padding-left: 70px;
+}
+
+.topNotebookColBar {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(212, 210, 210);
+}
+
+.notebooksTopRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 20px 30px;
+}
+
+.notebooksTopRow text {
+  font-size: 30px;
+  font-weight: 100;
+  margin-top: 10px;
+}
+
+.notebooksTopRow button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-right: 15px;
+  /*transition: width 2s, height 2s, background-color 2s, transform 2s;*/
+}
+
+.notebooksTopRow button:hover {
+  background-color: white;
+  /*content: "Create a notebook";*/
+  cursor: pointer;
+  /*transition: content 4s;*/
+}
+
+.notebooksTopRow button:hover:after {
+  position: absolute;
+  margin-left: 5px;
+  content: "Create a notebook";
+  background-color: darkgray;
+  color: white;
+  padding: 5px;
+  /*transform: rotate(180deg);*/
+}
+
+
+
+.notebooksTopRow button > * {
+  font-size: 20px;
+  margin-left: -4px;
+}
+
+.searchField {
+  margin-left: 30px;
+  margin-bottom: 5px;
+}
+
+.searchField input {
+  outline: none;
+  padding: 0;
+  font-size: 15px;
+  height: 38px;
+  width: 395px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  text-align: center;
+  font-weight: 100;
+}
+
+.noteBookList {
+  list-style: none;
+}
+
+.noteBookList > * {
+  border-bottom: 1px solid rgb(212, 210, 210);
+  padding: 0px 0px 10px 0px;
+  padding-top: 12px;
+  padding-right: 25px;
+}
+
+.notebookTitle {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.notesCount {
+  font-size: 13px;
+}
+
+.notebook > * {
+  margin: 3px;
+  margin-left: 20px;
+}
+
+.notebook:hover {
+  background-color: #2DBE60;
+  color: white;
+  cursor: pointer;
+}
+
+@-webkit-keyframes slide2 {
+  from { left: -525px }
+  to { left: 0px }
+};
+
+/*.ReactModal__Overlay--after-open:not(.notebookIndexCol) {
+  -webkit-animation: fadeoverlay 0.7s;
 }*/
+
+/*@-webkit-keyframes fadeoverlay {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};*/
+
+/*.notebookIndexCol {
+  -webkit-animation: slide3 0.7s;
+}
+
+@-webkit-keyframes slide3 {
+  from { left: 0px; }
+  to { left: -525px; }
+};*/

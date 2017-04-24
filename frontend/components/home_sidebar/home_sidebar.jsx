@@ -100,7 +100,6 @@ class HomeSidebar extends React.Component {
           onRequestClose={this.closeModal2}
           contentLabel="notebookIndexModal"
           className="notebookModal"
-          style={{overlay: {backgroundColor: 'transparent'}}}
         >
           <NotebookIndexContainer />
         </Modal>

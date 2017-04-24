@@ -1,7 +1,8 @@
 .userDashboardModal {
   position: absolute;
-  bottom: 20px;
-  left: 60px;
+  z-index: 3;
+  bottom: 40px;
+  left: 80px;
   background-color: white;
   height: 350px;
   width: 390px;

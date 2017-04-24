@@ -30,12 +30,18 @@ class NotebookIndex extends React.Component {
         <div className="topNotebookColBar">
 
           <div className="notebooksTopRow">
-            <text>Notebooks</text>
-            <button>Add Notebook</button>
+
+            <text>NOTEBOOKS</text>
+
+            <button>
+              <i className="fa fa-book" aria-hidden="true"></i>
+              <i className="fa fa-plus" aria-hidden="true"></i>
+            </button>
+
           </div>
 
           <div className="searchField">
-            <input type="text" placeholder="Search"></input>
+            <input type="search" placeholder="Find a notebook" results="0"></input>
           </div>
 
         </div>

@@ -198,6 +198,14 @@
 //               OverLayclassName="overlay"
 //               contentLabel="Example Modal"
 //               transition={}
+                //  style={{
+                //           overlay: {
+                //             backgroundColor: 'papayawhip'
+                //           },
+                //           content: {
+                //             color: 'lightsteelblue'
+                //           }
+                //         }}
 //             >
 //
 //             <SplashSidebar />

@@ -1,3 +1,42 @@
-/*.entireNoteformTopbar*/
+.entireNoteformTopbar {
+  height: 53px;
+  display: flex;
+  justify-content: space-between;
+  border-left: 1px solid rgb(212, 210, 210);;
+}
+
+.topbarRightSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+}
+
+.topbarRightSide button {
+  padding: 20px;
+  margin: 10px;
+}
+
+/*Don't display buttons on right side
+ until features are added*/
+.topbarRightSide {
+  display: none;
+}
+
+.topbarLeftSide > * {
+  outline: none;
+  border-style: none;
+  font-size: 20px;
+  padding: 8px;
+  background-color: transparent;
+  color: gray;
+  margin: 6px;
+  cursor: pointer;
+}
+
+.topbarLeftSide > *:hover {
+  color: #2DBE60;
+  background-color: white;
+}
 
 /*53, 26 px*/

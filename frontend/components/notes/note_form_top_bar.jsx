@@ -3,6 +3,7 @@ import React from 'react';
 import { notesSelector } from './notes_to_array';
 import Modal from 'react-modal';
 import NoteInfoPage from './note_info_page';
+import { deleteNote } from '../../actions/notes_actions';
 
 class NoteFormTopbar extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class NoteFormTopbar extends React.Component {
   }
 
   deleteNote(e) {
+    debugger
     this.props.removeNote(this.props.currentNote.id);
   }
 
@@ -32,7 +34,7 @@ class NoteFormTopbar extends React.Component {
     return (
       <div>
           <div className="entireNoteformTopbar">
-              <div className="topbarRightSide">
+              <div className="topbarLeftSide">
                 <button><i className="fa fa-clock-o" aria-hidden="true"></i></button>
                 <button><i className="fa fa-star" aria-hidden="true"></i></button>
                 <button><i onClick={this.openModal} className="fa fa-info-circle" aria-hidden="true"></i></button>

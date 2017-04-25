@@ -5,10 +5,14 @@
   overflow: scroll;
 }
 
-/*this piece of CSS is to target the modal upon its appearance*/
-body > div:nth-child(4) > div {
-  z-index: 2;
+/*this piece of CSS is to target modals upon their appearance*/
+body > div:nth-child(4) > div,
+body > div:nth-child(3) > div {
+  z-index: 3;
 }
+
+/*ReactModalPortal doesn't work*/
+/*}*/
 
 .entireNotesIndexCol .notesColTop {
   border-bottom: 1px solid rgb(212, 210, 210);

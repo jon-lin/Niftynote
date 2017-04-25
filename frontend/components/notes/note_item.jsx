@@ -17,8 +17,15 @@ class NoteItem extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wholeNoteItem">
         <li onClick={this.showNote} value={this.props.noteItem.id} className="noteItemBox">
+          <buttons className="noteItemButtons">
+            <button><i id="what" className="fa fa-comments" aria-hidden="true"></i></button>
+            <button><i className="fa fa-clock-o" aria-hidden="true"></i></button>
+            <button><i className="fa fa-star" aria-hidden="true"></i></button>
+            <button><i className="fa fa-trash" aria-hidden="true"></i></button>
+          </buttons>
+
           <div className="noteItemTitle">{this.props.noteItem.title}</div>
           <div className="timePassed">{this.props.noteItem.time_passed}</div>
           <div className="bodySnippet">{this.props.noteItem.body.slice(0, 130)}</div>

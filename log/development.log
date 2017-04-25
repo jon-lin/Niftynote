@@ -29864,3 +29864,282 @@ Processing by Api::NotesController#show as */*
 Completed 200 OK in 20ms (Views: 16.4ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/" for ::1 at 2017-04-24 21:02:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "q0uM9IEPLfO_ZdbGOgDcSQ"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (1.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (51.9ms)
+Started GET "/" for ::1 at 2017-04-24 21:02:01 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "q0uM9IEPLfO_ZdbGOgDcSQ"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 837ms (Views: 826.4ms | ActiveRecord: 8.5ms)
+
+
+Completed 200 OK in 676ms (Views: 673.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/notes" for ::1 at 2017-04-24 21:02:02 -0400
+Processing by Api::NotesController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "q0uM9IEPLfO_ZdbGOgDcSQ"], ["LIMIT", 1]]
+  Rendering api/notes/index.json.jbuilder
+  [1m[36mNote Load (1.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  Rendered api/notes/index.json.jbuilder (39.5ms)
+Completed 200 OK in 116ms (Views: 52.1ms | ActiveRecord: 12.5ms)
+
+
+Started DELETE "/api/session" for ::1 at 2017-04-24 21:02:06 -0400
+Processing by Api::SessionsController#destroy as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "q0uM9IEPLfO_ZdbGOgDcSQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "guest@example.com"], ["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "KcZrBkmy_QK7oU_LpkCJnQ"], ["updated_at", 2017-04-25 01:02:06 UTC], ["id", 11]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/api/session" for ::1 at 2017-04-24 21:02:23 -0400
+Processing by Api::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"guest@example.com", "password"=>"[FILTERED]"}, "default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guest@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "guest@example.com"], ["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["updated_at", 2017-04-25 01:02:23 UTC], ["id", 11]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/sessions/show.json.jbuilder
+  Rendered api/sessions/_session.json.jbuilder (0.7ms)
+  Rendered api/sessions/show.json.jbuilder (6.8ms)
+Completed 200 OK in 103ms (Views: 26.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/notes" for ::1 at 2017-04-24 21:02:23 -0400
+Processing by Api::NotesController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notes/index.json.jbuilder
+  [1m[36mNote Load (1.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  Rendered api/notes/index.json.jbuilder (13.3ms)
+Completed 200 OK in 49ms (Views: 29.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:02:41 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.7ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (37.6ms)
+Completed 200 OK in 74ms (Views: 53.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:02:45 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.3ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (13.5ms)
+Completed 200 OK in 52ms (Views: 33.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/notes/56" for ::1 at 2017-04-24 21:03:33 -0400
+Processing by Api::NotesController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"56"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  [1m[36mNote Load (1.2ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1 AND "notes"."id" = $2 LIMIT $3[0m  [["author_id", 11], ["id", 56], ["LIMIT", 1]]
+  Rendering api/notes/show.json.jbuilder
+  Rendered api/notes/show.json.jbuilder (0.7ms)
+Completed 200 OK in 22ms (Views: 16.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/notes/55" for ::1 at 2017-04-24 21:03:33 -0400
+Processing by Api::NotesController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"55"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  [1m[36mNote Load (1.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1 AND "notes"."id" = $2 LIMIT $3[0m  [["author_id", 11], ["id", 55], ["LIMIT", 1]]
+  Rendering api/notes/show.json.jbuilder
+  Rendered api/notes/show.json.jbuilder (0.7ms)
+Completed 200 OK in 21ms (Views: 16.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/notes/54" for ::1 at 2017-04-24 21:03:33 -0400
+Processing by Api::NotesController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"54"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1 AND "notes"."id" = $2 LIMIT $3[0m  [["author_id", 11], ["id", 54], ["LIMIT", 1]]
+  Rendering api/notes/show.json.jbuilder
+  Rendered api/notes/show.json.jbuilder (0.7ms)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/notes/52" for ::1 at 2017-04-24 21:03:34 -0400
+Processing by Api::NotesController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"52"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  [1m[36mNote Load (1.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1 AND "notes"."id" = $2 LIMIT $3[0m  [["author_id", 11], ["id", 52], ["LIMIT", 1]]
+  Rendering api/notes/show.json.jbuilder
+  Rendered api/notes/show.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 15.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/notes/53" for ::1 at 2017-04-24 21:03:35 -0400
+Processing by Api::NotesController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"53"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1 AND "notes"."id" = $2 LIMIT $3[0m  [["author_id", 11], ["id", 53], ["LIMIT", 1]]
+  Rendering api/notes/show.json.jbuilder
+  Rendered api/notes/show.json.jbuilder (0.8ms)
+Completed 200 OK in 21ms (Views: 17.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/notes/54" for ::1 at 2017-04-24 21:03:35 -0400
+Processing by Api::NotesController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"54"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1 AND "notes"."id" = $2 LIMIT $3[0m  [["author_id", 11], ["id", 54], ["LIMIT", 1]]
+  Rendering api/notes/show.json.jbuilder
+  Rendered api/notes/show.json.jbuilder (0.7ms)
+Completed 200 OK in 19ms (Views: 15.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/notes/55" for ::1 at 2017-04-24 21:03:36 -0400
+Processing by Api::NotesController#show as */*
+  Parameters: {"default"=>{"format"=>:json}, "id"=>"55"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1 AND "notes"."id" = $2 LIMIT $3[0m  [["author_id", 11], ["id", 55], ["LIMIT", 1]]
+  Rendering api/notes/show.json.jbuilder
+  Rendered api/notes/show.json.jbuilder (0.7ms)
+Completed 200 OK in 20ms (Views: 16.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:03:44 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (9.5ms)
+Completed 200 OK in 45ms (Views: 25.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:03:52 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (9.9ms)
+Completed 200 OK in 44ms (Views: 26.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for ::1 at 2017-04-24 21:05:55 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendered api/sessions/_session.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 54ms (Views: 51.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/notes" for ::1 at 2017-04-24 21:05:55 -0400
+Processing by Api::NotesController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notes/index.json.jbuilder
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes" INNER JOIN "notebooks" ON "notes"."notebook_id" = "notebooks"."id" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  Rendered api/notes/index.json.jbuilder (7.4ms)
+Completed 200 OK in 40ms (Views: 23.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:06:06 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.7ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (10.4ms)
+Completed 200 OK in 48ms (Views: 28.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:06:34 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (7.9ms)
+Completed 200 OK in 42ms (Views: 24.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:07:09 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.4ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (7.7ms)
+Completed 200 OK in 41ms (Views: 23.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:07:11 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.8ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (10.8ms)
+Completed 200 OK in 46ms (Views: 28.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/notebooks" for ::1 at 2017-04-24 21:07:13 -0400
+Processing by Api::NotebooksController#index as */*
+  Parameters: {"default"=>{"format"=>:json}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2rH0zGcKRRKdbmNgYyryow"], ["LIMIT", 1]]
+  Rendering api/notebooks/index.json.jbuilder
+  [1m[36mNotebook Load (0.5ms)[0m  [1m[34mSELECT "notebooks".* FROM "notebooks" WHERE "notebooks"."author_id" = $1[0m  [["author_id", 11]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 18]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 19]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 20]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."notebook_id" = $1[0m  [["notebook_id", 21]]
+  Rendered api/notebooks/index.json.jbuilder (19.3ms)
+Completed 200 OK in 52ms (Views: 33.9ms | ActiveRecord: 2.2ms)
+
+

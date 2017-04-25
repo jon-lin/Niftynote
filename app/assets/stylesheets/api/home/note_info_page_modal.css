@@ -1,0 +1,83 @@
+/*this grabs the modal when it appears,
+but it's fragile. selector taken from
+selector tool in chrome dev tools*/
+
+body > div:nth-child(5) > div {
+  z-index: 3;
+}
+
+.noteInfoSpread {
+  outline: none;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+  font-family: 'Yantramanav', sans-serif;
+  -webkit-animation: fadein 0.5s;
+}
+
+.noteInfoSpread .noteInfoHeader3 {
+  display: flex;
+  flex-direction: column;
+  color: gray;
+}
+
+.noteInfoSpread figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(212, 210, 210);
+
+}
+
+.noteInfoSpread figure > * {
+  margin: 5px
+}
+
+.noteInfoSpread figure i {
+  font-size: 40px;
+}
+
+.noteInfoSpread figure text {
+  font-size: 15px;
+}
+
+.noteInfoSpread h1 {
+  font-size: 50px;
+}
+
+.noteInfoSpread ul {
+  margin-top: 30px;
+  list-style: none;
+}
+
+.noteInfoSpread ul li {
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.noteInfoSpread button {
+  background-color: #28A956;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border-style: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.noteInfoSpread button:hover {
+  background: #387a09;
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

@@ -23,6 +23,13 @@
   display: none;
 }
 
+/*Don't display reminder and shortcut
+buttons until they've been implemented*/
+.topbarLeftSide button:first-child,
+.topbarLeftSide button:nth-child(2) {
+  display: none;
+}
+
 .topbarLeftSide > * {
   outline: none;
   border-style: none;

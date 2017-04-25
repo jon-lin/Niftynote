@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchNote } from '../../actions/notes_actions';
+import { updateNote } from '../../actions/notes_actions';
 import React from 'react';
 import { notesSelector } from './notes_to_array';
 import ReactQuill from 'react-quill';
@@ -9,36 +9,54 @@ class NoteForm extends React.Component {
     super(props);
     this.state = {}
     this.handleChange = this.handleChange.bind(this);
+    // this.delaySave = this.delaySave.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
     this.setState(newProps.currentNote)
   }
 
-  handleChange(text) { e => {
-      this.setState({ body: text }) 
-    }
+  handleChange(text, delta, source, editor) {
+    setTimeout(this.props.updateNote(
+      {
+        body: editor.getText().trim(),
+        title: this.props.currentNote.title,
+        id: this.props.currentNote.id
+      }
+    ), 2000)
   }
 
+  // this.setState()
+  // this.delaySave({ body: text });
+
+  // delaySave(saveAction) {
+  //   setTimeout(() => this.setState(saveAction), 3000);
+  //   clearTimeout
+  // }
+
+  // delaySave() {
+  //   let timer = 0
+  //   return function(callback, ms) {
+  //     clearTimeout(timer);
+  //     timer = setTimeout(callback, ms);
+  //   }
+  // }()
+
   render() {
-    debugger
-      if (typeof this.props.currentNote === 'undefined') {
-        return (
-            <ReactQuill
-              theme="snow"
-              value=""
-              onChange={this.handleChange}/>
-          );
-      } else {
-        return (
-            <ReactQuill
-              theme="snow"
-              value={this.state.body}
-              onChange={this.handleChange}/>
-          );
-      }
+      let setValue = (typeof this.props.currentNote === 'undefined') ? "" : this.state.body
+
+      console.log(this.state)
+
+      return (
+          <ReactQuill
+            theme="snow"
+            value={setValue}
+            onChange={this.handleChange}
+            />
+        );
   }
 }
+
 
 const mapStateToProps = (state) => {
   let mostRecentNote, mostRecentNotes;
@@ -56,7 +74,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchNote: (id) => dispatch(fetchNote(id))
+    fetchNote: (id) => dispatch(fetchNote(id)),
+    updateNote: (note) => dispatch(updateNote(note))
   }
 }
 

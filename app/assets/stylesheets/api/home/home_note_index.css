@@ -1,14 +1,19 @@
 .entireNotesIndexCol {
-  display: flex;
   height: 100vh;
+  display: flex;
   flex-direction: column;
   overflow: scroll;
 }
 
+/*this piece of CSS is to target the modal upon its appearance*/
+body > div:nth-child(4) > div {
+  z-index: 2;
+}
+
 .entireNotesIndexCol .notesColTop {
   border-bottom: 1px solid rgb(212, 210, 210);
-  position: fixed;
-  z-index: 0.5;
+  position: absolute;
+  z-index: 1;
   background-color: white;
   width: 310px;
   padding: 20px 20px 13px 20px;
@@ -16,7 +21,10 @@
 }
 
 .entireNotesIndexCol ul {
-  margin-top: 103px;
+  position: relative;
+  /*z-index: -1;*/
+  list-style: none;
+  margin-top: 100px;
 }
 
 .entireNotesIndexCol .notesColTop h1 {

@@ -1,3 +1,33 @@
+.wholeNoteItem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.noteItemButtons {
+  display: none;
+  margin-right: 5px;
+}
+
+.wholeNoteItem:hover .noteItemButtons {
+  display: inherit;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.noteItemButtons > * {
+  outline: none;
+  border-style: none;
+  font-size: 20px;
+  padding: 8px;
+  background-color: #2DBE60;
+}
+
+.noteItemButtons button .fa {
+  cursor: pointer;
+}
+
 .noteItemBox {
   padding: 10px;
   padding-top: 12px;
@@ -21,16 +51,25 @@
   font-size: 15px;
 }
 
-.noteItemBox div:not(:first-child) {
+.timePassed, .bodySnippet {
   color: gray;
 }
 
-.noteItemBox:hover div {
-  background-color: #2DBE60;
+.wholeNoteItem:hover div,
+.wholeNoteItem:hover button,
+.wholeNoteItem:hover {
   color: white;
+  background-color: #2DBE60;
 }
 
-.noteItemBox:hover {
-  background-color: #2DBE60;
-  color: white;
+.wholeNoteItem .fa:hover {
+  display: inherit;
+  transform: scale(1.5);
+  color: #E6E6E6;
+}
+
+/*only show these buttons when features are developed*/
+.wholeNoteItem .fa-clock-o,
+.wholeNoteItem .fa-comments {
+  display: none;
 }

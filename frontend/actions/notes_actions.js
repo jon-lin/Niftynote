@@ -2,7 +2,10 @@ import * as NotesAPIUtil from '../util/notes_api_util'
 
 export const RECEIVE_NOTES = 'RECEIVE_NOTES';
 export const RECEIVE_NOTE = 'RECEIVE_NOTE';
+export const REMOVE_NOTE = 'REMOVE_NOTE';
 export const START_LOADING_ALL_NOTES = 'START_LOADING_ALL_NOTES';
+
+// you're not using this right now/may not need to use it
 export const START_LOADING_NOTE = 'START_LOADING_NOTE';
 
 export const receiveNotes = (notes) => (
@@ -19,24 +22,46 @@ export const receiveNote = (note) => (
   }
 );
 
+export const removeNote = (note) => (
+  {
+    type: REMOVE_NOTE,
+    note
+  }
+);
+
 export const fetchNotes = () => dispatch => {
-  debugger
   startLoadingAllNotes()
-  debugger
   return NotesAPIUtil.fetchNotes()
     .then(notes => {
-      debugger
       dispatch(receiveNotes(notes));
     });
 };
 
 export const fetchNote = (id) => dispatch => {
-  // startLoadingAllNotes();
-  debugger
   return NotesAPIUtil.fetchNote(id)
     .then(note => {
-      debugger
       dispatch(receiveNote(note));
+    });
+};
+
+export const createNote = (note) => dispatch => {
+  return NotesAPIUtil.createNote(note)
+    .then(note => {
+      dispatch(receiveNote(note));
+    });
+};
+
+export const updateNote = (note) => dispatch => {
+  return NotesAPIUtil.updateNote(note)
+    .then(note => {
+      dispatch(receiveNote(note));
+    });
+};
+
+export const deleteNote = (id) => dispatch => {
+  return NotesAPIUtil.deleteNote(id)
+    .then(note => {
+      dispatch(removeNote(note));
     });
 };
 
@@ -44,6 +69,6 @@ export const startLoadingAllNotes = () => (
   {type: START_LOADING_ALL_NOTES}
 );
 
-export const startLoadingNote= () => (
+export const startLoadingNote = () => (
   {type: START_LOADING_NOTE}
 );

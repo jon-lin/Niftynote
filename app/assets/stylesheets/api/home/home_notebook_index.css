@@ -57,8 +57,6 @@
   /*transform: rotate(180deg);*/
 }
 
-
-
 .notebooksTopRow button > * {
   font-size: 20px;
   margin-left: -4px;
@@ -101,6 +99,10 @@
   font-size: 13px;
 }
 
+.notebook {
+  position: relative;
+}
+
 .notebook > * {
   margin: 3px;
   margin-left: 20px;
@@ -110,6 +112,48 @@
   background-color: #2DBE60;
   color: white;
   cursor: pointer;
+}
+
+.notebook .notebookButtons {
+  display: none;
+  margin-right: 5px;
+}
+
+.notebook:hover .notebookButtons {
+  display: inherit;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+
+.notebookButtons > * {
+  outline: none;
+  border-style: none;
+  font-size: 20px;
+  padding: 8px;
+  background-color: #2DBE60;
+}
+
+.notebookButtons button .fa {
+  cursor: pointer;
+}
+
+.notebook:hover div,
+.notebook:hover button,
+.notebook:hover {
+  color: white;
+  background-color: #2DBE60;
+}
+
+.notebook .fa:hover {
+  display: inherit;
+  transform: scale(1.5);
+  color: #E6E6E6;
+}
+
+/*only show this button when features are developed*/
+.notebook .fa-comments {
+  display: none;
 }
 
 @-webkit-keyframes slide2 {

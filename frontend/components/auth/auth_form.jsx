@@ -165,6 +165,7 @@ class AuthForm extends React.Component {
                 onRequestClose={this.closeModal}
                 className="splashSidebarModal"
                 style={{overlay: {backgroundColor: 'transparent'}}}
+                contentLabel="splashSidebarLABEL"
               >
 
               {splashSidebar }

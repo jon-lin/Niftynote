@@ -1,50 +1,64 @@
 import { connect } from 'react-redux';
-// import { fetchNote } from '../../actions/notes_actions';
+import { fetchNote } from '../../actions/notes_actions';
 import React from 'react';
+import { notesSelector } from './notes_to_array';
 
 class NoteShow extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {note: {}}
   }
 
+  // componentWillMount() {
+    // if this.state.note !== empty, clear it
+    // if (this.props.currentNote.body) {
+    //   this.props.currentNote.body = null;
+    // }
+  // }
+
+  // componentDidMount() {
+    // let firstNote = $('#root > div > div > div.entireNotesIndexCol > ul > div:nth-child(1) > li')[0].value;
+  //   debugger
+    // this.props.fetchNote(firstNote);
+  // }
+
   render() {
-    debugger
+
+    if (!this.props.currentNote) {return null}
+
     return (
       <div className="showNote">
-        THIS IS THE NOTE SHOW COMPONENT
         <section>
+          THIS IS DEFAULT TEXT
+          <br></br>
           {this.props.currentNote.body}
+          <br></br>
+          THIS IS DEFAULT TEXT
         </section>
-
         <section>
-          Lorem ipsum dolor sit amet, amet fringilla luctus non nunc, neque sapien, hendrerit libero mauris cum lectus sed. Proin amet leo amet taciti nunc auctor, vitae lobortis rem ipsum fermentum dis egestas. Ligula nulla pellentesque ante, vestibulum condimentum molestie morbi ullamcorper amet, dui donec varius purus lectus dolor. Risus nunc pulvinar. Eu etiam in viverra massa quis, suspendisse ridiculus vitae nostra nisl id, lobortis a sed elit.
-          Enim sem, vel eu non nostra, conubia eget nunc. Ut lobortis, ac elit suscipit, nibh turpis ridiculus, dolor commodo ultrices, donec eros erat sed. Amet suspendisse duis tempus bibendum massa lorem, tincidunt nulla eget leo, ullamcorper laboriosam, habitasse accumsan elit molestie bibendum sit sed. Aliquam amet suspendisse quisque suscipit. Dapibus dis sapien turpis, bibendum voluptate a mauris interdum cursus. Sed potenti in at sollicitudin, diam eget interdum posuere adipiscing sed imperdiet, vitae egestas amet enim feugiat in suspendisse. Rutrum ullamcorper erat dolore nulla, phasellus sapien eget odio recusandae molestie morbi, in tortor vehicula tincidunt, pharetra pulvinar senectus. Sed pulvinar elementum iaculis dui mauris eu, commodo quam eu, interdum suspendisse arcu, odio turpis pellentesque ut architecto dignissim integer. Odio metus sapien.
-          Cursus dolor sapien at vestibulum nam. Leo lacus congue mauris, aliquam ultricies quam in nunc faucibus, pede pulvinar sit tempor, amet tortor accumsan est quis dapibus at, nonummy nulla luctus vel turpis. Metus dictum eros, eros porttitor condimentum sociis sapien sem convallis. Duis dolor, enim elementum vel varius sem tellus neque. Lacinia vehicula ac, libero sed in dui suscipit temporibus, nostra duis ut mi in mauris turpis, duis volutpat. Magnis elit nunc et necessitatibus odio ut, lacus egestas justo interdum dui mauris sollicitudin, euismod sapien risus, arcu felis. Fringilla nulla vulputate, morbi porttitor quis, elementum mauris felis volutpat, consectetuer ante et culpa et erat. Id integer felis suscipit et, eros vulputate consequat. Et id arcu, arcu dolor aliquam ipsum enim nulla praesent, feugiat hac, sociis volutpat in sem ut lorem, elementum ullamcorper sit sed aliquam hendrerit. Vestibulum cum et tempus libero congue, morbi tempus quis quis suspendisse quis consequat, iaculis vitae ut massa, mi ac aenean risus ut ullamcorper lacus, cras justo faucibus eu. Fusce dui vitae. Rhoncus malesuada ligula sollicitudin, vestibulum posuere, aliquet posuere ad adipiscing ultrices, felis lacinia, amet volutpat ipsum faucibus wisi donec nulla.
-          Ligula est adipiscing mauris, vitae placerat malesuada amet malesuada felis. Tempus rhoncus, nulla wisi elit donec vestibulum mattis, dolor pellentesque in vulputate tempus, egestas ut. Leo ullamcorper eu cursus maecenas adipiscing, aliquet nibh arcu eget. Nulla mauris pellentesque, montes blandit nascetur non in. In vestibulum condimentum consectetuer leo nunc sapien, pharetra hendrerit risus vel hendrerit elit nisl, lorem suscipit suspendisse commodo, quis in possimus, magna sagittis urna commodo lacus porttitor viverra. Rutrum morbi justo lectus et tellus, hac pretium risus erat vitae porttitor, adipiscing donec cras aenean amet sed tempus, quia donec. Enim arcu ac, similique libero libero porttitor imperdiet sodales donec, neque congue sollicitudin eget magna lorem, tincidunt etiam molestie turpis semper wisi cum, elit arcu. Libero donec maecenas luctus cras varius lorem, in sed arcu vehicula aenean sem, id vivamus eros viverra nec a, diam vel a odio at. Mauris sem, morbi in orci accumsan ultrices pede, placerat egestas lobortis, sapien sollicitudin in a ut suscipit, aliquet urna imperdiet eget magna gravida sed.
-          Lorem ipsum dolor sit amet, amet fringilla luctus non nunc, neque sapien, hendrerit libero mauris cum lectus sed. Proin amet leo amet taciti nunc auctor, vitae lobortis rem ipsum fermentum dis egestas. Ligula nulla pellentesque ante, vestibulum condimentum molestie morbi ullamcorper amet, dui donec varius purus lectus dolor. Risus nunc pulvinar. Eu etiam in viverra massa quis, suspendisse ridiculus vitae nostra nisl id, lobortis a sed elit.
-          Enim sem, vel eu non nostra, conubia eget nunc. Ut lobortis, ac elit suscipit, nibh turpis ridiculus, dolor commodo ultrices, donec eros erat sed. Amet suspendisse duis tempus bibendum massa lorem, tincidunt nulla eget leo, ullamcorper laboriosam, habitasse accumsan elit molestie bibendum sit sed. Aliquam amet suspendisse quisque suscipit. Dapibus dis sapien turpis, bibendum voluptate a mauris interdum cursus. Sed potenti in at sollicitudin, diam eget interdum posuere adipiscing sed imperdiet, vitae egestas amet enim feugiat in suspendisse. Rutrum ullamcorper erat dolore nulla, phasellus sapien eget odio recusandae molestie morbi, in tortor vehicula tincidunt, pharetra pulvinar senectus. Sed pulvinar elementum iaculis dui mauris eu, commodo quam eu, interdum suspendisse arcu, odio turpis pellentesque ut architecto dignissim integer. Odio metus sapien.
-          Cursus dolor sapien at vestibulum nam. Leo lacus congue mauris, aliquam ultricies quam in nunc faucibus, pede pulvinar sit tempor, amet tortor accumsan est quis dapibus at, nonummy nulla luctus vel turpis. Metus dictum eros, eros porttitor condimentum sociis sapien sem convallis. Duis dolor, enim elementum vel varius sem tellus neque. Lacinia vehicula ac, libero sed in dui suscipit temporibus, nostra duis ut mi in mauris turpis, duis volutpat. Magnis elit nunc et necessitatibus odio ut, lacus egestas justo interdum dui mauris sollicitudin, euismod sapien risus, arcu felis. Fringilla nulla vulputate, morbi porttitor quis, elementum mauris felis volutpat, consectetuer ante et culpa et erat. Id integer felis suscipit et, eros vulputate consequat. Et id arcu, arcu dolor aliquam ipsum enim nulla praesent, feugiat hac, sociis volutpat in sem ut lorem, elementum ullamcorper sit sed aliquam hendrerit. Vestibulum cum et tempus libero congue, morbi tempus quis quis suspendisse quis consequat, iaculis vitae ut massa, mi ac aenean risus ut ullamcorper lacus, cras justo faucibus eu. Fusce dui vitae. Rhoncus malesuada ligula sollicitudin, vestibulum posuere, aliquet posuere ad adipiscing ultrices, felis lacinia, amet volutpat ipsum faucibus wisi donec nulla.
-          Ligula est adipiscing mauris, vitae placerat malesuada amet malesuada felis. Tempus rhoncus, nulla wisi elit donec vestibulum mattis, dolor pellentesque in vulputate tempus, egestas ut. Leo ullamcorper eu cursus maecenas adipiscing, aliquet nibh arcu eget. Nulla mauris pellentesque, montes blandit nascetur non in. In vestibulum condimentum consectetuer leo nunc sapien, pharetra hendrerit risus vel hendrerit elit nisl, lorem suscipit suspendisse commodo, quis in possimus, magna sagittis urna commodo lacus porttitor viverra. Rutrum morbi justo lectus et tellus, hac pretium risus erat vitae porttitor, adipiscing donec cras aenean amet sed tempus, quia donec. Enim arcu ac, similique libero libero porttitor imperdiet sodales donec, neque congue sollicitudin eget magna lorem, tincidunt etiam molestie turpis semper wisi cum, elit arcu. Libero donec maecenas luctus cras varius lorem, in sed arcu vehicula aenean sem, id vivamus eros viverra nec a, diam vel a odio at. Mauris sem, morbi in orci accumsan ultrices pede, placerat egestas lobortis, sapien sollicitudin in a ut suscipit, aliquet urna imperdiet eget magna gravida sed.
-          Lorem ipsum dolor sit amet, amet fringilla luctus non nunc, neque sapien, hendrerit libero mauris cum lectus sed. Proin amet leo amet taciti nunc auctor, vitae lobortis rem ipsum fermentum dis egestas. Ligula nulla pellentesque ante, vestibulum condimentum molestie morbi ullamcorper amet, dui donec varius purus lectus dolor. Risus nunc pulvinar. Eu etiam in viverra massa quis, suspendisse ridiculus vitae nostra nisl id, lobortis a sed elit.
-          Enim sem, vel eu non nostra, conubia eget nunc. Ut lobortis, ac elit suscipit, nibh turpis ridiculus, dolor commodo ultrices, donec eros erat sed. Amet suspendisse duis tempus bibendum massa lorem, tincidunt nulla eget leo, ullamcorper laboriosam, habitasse accumsan elit molestie bibendum sit sed. Aliquam amet suspendisse quisque suscipit. Dapibus dis sapien turpis, bibendum voluptate a mauris interdum cursus. Sed potenti in at sollicitudin, diam eget interdum posuere adipiscing sed imperdiet, vitae egestas amet enim feugiat in suspendisse. Rutrum ullamcorper erat dolore nulla, phasellus sapien eget odio recusandae molestie morbi, in tortor vehicula tincidunt, pharetra pulvinar senectus. Sed pulvinar elementum iaculis dui mauris eu, commodo quam eu, interdum suspendisse arcu, odio turpis pellentesque ut architecto dignissim integer. Odio metus sapien.
-          Cursus dolor sapien at vestibulum nam. Leo lacus congue mauris, aliquam ultricies quam in nunc faucibus, pede pulvinar sit tempor, amet tortor accumsan est quis dapibus at, nonummy nulla luctus vel turpis. Metus dictum eros, eros porttitor condimentum sociis sapien sem convallis. Duis dolor, enim elementum vel varius sem tellus neque. Lacinia vehicula ac, libero sed in dui suscipit temporibus, nostra duis ut mi in mauris turpis, duis volutpat. Magnis elit nunc et necessitatibus odio ut, lacus egestas justo interdum dui mauris sollicitudin, euismod sapien risus, arcu felis. Fringilla nulla vulputate, morbi porttitor quis, elementum mauris felis volutpat, consectetuer ante et culpa et erat. Id integer felis suscipit et, eros vulputate consequat. Et id arcu, arcu dolor aliquam ipsum enim nulla praesent, feugiat hac, sociis volutpat in sem ut lorem, elementum ullamcorper sit sed aliquam hendrerit. Vestibulum cum et tempus libero congue, morbi tempus quis quis suspendisse quis consequat, iaculis vitae ut massa, mi ac aenean risus ut ullamcorper lacus, cras justo faucibus eu. Fusce dui vitae. Rhoncus malesuada ligula sollicitudin, vestibulum posuere, aliquet posuere ad adipiscing ultrices, felis lacinia, amet volutpat ipsum faucibus wisi donec nulla.
-          Ligula est adipiscing mauris, vitae placerat malesuada amet malesuada felis. Tempus rhoncus, nulla wisi elit donec vestibulum mattis, dolor pellentesque in vulputate tempus, egestas ut. Leo ullamcorper eu cursus maecenas adipiscing, aliquet nibh arcu eget. Nulla mauris pellentesque, montes blandit nascetur non in. In vestibulum condimentum consectetuer leo nunc sapien, pharetra hendrerit risus vel hendrerit elit nisl, lorem suscipit suspendisse commodo, quis in possimus, magna sagittis urna commodo lacus porttitor viverra. Rutrum morbi justo lectus et tellus, hac pretium risus erat vitae porttitor, adipiscing donec cras aenean amet sed tempus, quia donec. Enim arcu ac, similique libero libero porttitor imperdiet sodales donec, neque congue sollicitudin eget magna lorem, tincidunt etiam molestie turpis semper wisi cum, elit arcu. Libero donec maecenas luctus cras varius lorem, in sed arcu vehicula aenean sem, id vivamus eros viverra nec a, diam vel a odio at. Mauris sem, morbi in orci accumsan ultrices pede, placerat egestas lobortis, sapien sollicitudin in a ut suscipit, aliquet urna imperdiet eget magna gravida sed.
-          Lorem ipsum dolor sit amet, amet fringilla luctus non nunc, neque sapien, hendrerit libero mauris cum lectus sed. Proin amet leo amet taciti nunc auctor, vitae lobortis rem ipsum fermentum dis egestas. Ligula nulla pellentesque ante, vestibulum condimentum molestie morbi ullamcorper amet, dui donec varius purus lectus dolor. Risus nunc pulvinar. Eu etiam in viverra massa quis, suspendisse ridiculus vitae nostra nisl id, lobortis a sed elit.
-          Enim sem, vel eu non nostra, conubia eget nunc. Ut lobortis, ac elit suscipit, nibh turpis ridiculus, dolor commodo ultrices, donec eros erat sed. Amet suspendisse duis tempus bibendum massa lorem, tincidunt nulla eget leo, ullamcorper laboriosam, habitasse accumsan elit molestie bibendum sit sed. Aliquam amet suspendisse quisque suscipit. Dapibus dis sapien turpis, bibendum voluptate a mauris interdum cursus. Sed potenti in at sollicitudin, diam eget interdum posuere adipiscing sed imperdiet, vitae egestas amet enim feugiat in suspendisse. Rutrum ullamcorper erat dolore nulla, phasellus sapien eget odio recusandae molestie morbi, in tortor vehicula tincidunt, pharetra pulvinar senectus. Sed pulvinar elementum iaculis dui mauris eu, commodo quam eu, interdum suspendisse arcu, odio turpis pellentesque ut architecto dignissim integer. Odio metus sapien.
-          Cursus dolor sapien at vestibulum nam. Leo lacus congue mauris, aliquam ultricies quam in nunc faucibus, pede pulvinar sit tempor, amet tortor accumsan est quis dapibus at, nonummy nulla luctus vel turpis. Metus dictum eros, eros porttitor condimentum sociis sapien sem convallis. Duis dolor, enim elementum vel varius sem tellus neque. Lacinia vehicula ac, libero sed in dui suscipit temporibus, nostra duis ut mi in mauris turpis, duis volutpat. Magnis elit nunc et necessitatibus odio ut, lacus egestas justo interdum dui mauris sollicitudin, euismod sapien risus, arcu felis. Fringilla nulla vulputate, morbi porttitor quis, elementum mauris felis volutpat, consectetuer ante et culpa et erat. Id integer felis suscipit et, eros vulputate consequat. Et id arcu, arcu dolor aliquam ipsum enim nulla praesent, feugiat hac, sociis volutpat in sem ut lorem, elementum ullamcorper sit sed aliquam hendrerit. Vestibulum cum et tempus libero congue, morbi tempus quis quis suspendisse quis consequat, iaculis vitae ut massa, mi ac aenean risus ut ullamcorper lacus, cras justo faucibus eu. Fusce dui vitae. Rhoncus malesuada ligula sollicitudin, vestibulum posuere, aliquet posuere ad adipiscing ultrices, felis lacinia, amet volutpat ipsum faucibus wisi donec nulla.
-          Ligula est adipiscing mauris, vitae placerat malesuada amet malesuada felis. Tempus rhoncus, nulla wisi elit donec vestibulum mattis, dolor pellentesque in vulputate tempus, egestas ut. Leo ullamcorper eu cursus maecenas adipiscing, aliquet nibh arcu eget. Nulla mauris pellentesque, montes blandit nascetur non in. In vestibulum condimentum consectetuer leo nunc sapien, pharetra hendrerit risus vel hendrerit elit nisl, lorem suscipit suspendisse commodo, quis in possimus, magna sagittis urna commodo lacus porttitor viverra. Rutrum morbi justo lectus et tellus, hac pretium risus erat vitae porttitor, adipiscing donec cras aenean amet sed tempus, quia donec. Enim arcu ac, similique libero libero porttitor imperdiet sodales donec, neque congue sollicitudin eget magna lorem, tincidunt etiam molestie turpis semper wisi cum, elit arcu. Libero donec maecenas luctus cras varius lorem, in sed arcu vehicula aenean sem, id vivamus eros viverra nec a, diam vel a odio at. Mauris sem, morbi in orci accumsan ultrices pede, placerat egestas lobortis, sapien sollicitudin in a ut suscipit, aliquet urna imperdiet eget magna gravida sed.
         </section>
       </div>
     );
   }
 }
 
-
 const mapStateToProps = (state) => {
-  debugger
-  return {
-    currentNote: state.currentNote
-  };
+  let mostRecentNote;
+
+  if (jQuery.isEmptyObject(state.currentNote)) {
+    debugger
+    mostRecentNote = notesSelector(state.notes)[0];
+    debugger
+    return { currentNote: mostRecentNote };
+  }
+
+  return { currentNote: state.currentNote };
 };
 
-export default connect(mapStateToProps, null)(NoteShow);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchNote: (id) => dispatch(fetchNote(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NoteShow);

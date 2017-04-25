@@ -7,7 +7,7 @@ class NoteIndex extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchNotes();
   }
 

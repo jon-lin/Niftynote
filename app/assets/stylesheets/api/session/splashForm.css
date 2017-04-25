@@ -110,7 +110,14 @@
   padding-left: 9.5px;
   font-size: smaller;
   border-radius: 3.5px;
+  outline-color: #2DBE60;
+  /*transition: all 0.2s fadein 1s;*/
 }
+
+/*.splashForm input:not(:last-child):hover {
+  border-color: #2DBE60;
+  border-width: 3px;
+}*/
 
 .splashForm [type="submit"] {
   background-color: #28A956;

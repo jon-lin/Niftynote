@@ -16,7 +16,7 @@ class UserDashboard extends React.Component {
   // }
 
   clickHandler() {
-    this.props.logout();
+    this.props.logout()
   }
 
   render() {

@@ -16,14 +16,36 @@ class NoteForm extends React.Component {
     this.setState(newProps.currentNote)
   }
 
+  //this doesn't work, can't seem to store input locally
+  // handleChange(text, delta, source, editor) {
+  //   this.setState(
+  //       {
+  //         body: editor.getText().trim(),
+  //         title: this.props.currentNote.title,
+  //         id: this.props.currentNote.id
+  //       }
+  //     );
+  //   }
+
+//original working, albeit very fragile version
+  // handleChange(text, delta, source, editor) {
+  //   setTimeout(this.props.updateNote(
+  //     {
+  //       body: editor.getText().trim(),
+  //       title: this.props.currentNote.title,
+  //       id: this.props.currentNote.id
+  //     }
+  //   ), 2000);
+  // }
+
   handleChange(text, delta, source, editor) {
-    setTimeout(this.props.updateNote(
-      {
-        body: editor.getText().trim(),
-        title: this.props.currentNote.title,
-        id: this.props.currentNote.id
-      }
-    ), 2000)
+    this.props.updateNote(
+        {
+          body: editor.getText().trim(),
+          title: this.props.currentNote.title,
+          id: this.props.currentNote.id
+        }
+      );
   }
 
   // this.setState()
@@ -52,10 +74,18 @@ class NoteForm extends React.Component {
             theme="snow"
             value={setValue}
             onChange={this.handleChange}
+
             />
         );
-  }
+    }
 }
+
+// onKeyPress={
+//   function() {
+//     this.delaySave(
+//       function() {this.props.updateNote(this.state)}, 5000
+//     );}
+//   }
 
 
 const mapStateToProps = (state) => {

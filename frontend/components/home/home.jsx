@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import NoteIndexContainer from '../notes/note_index_container';
-import ShowNote from '../notes/note_show';
+import NoteForm from '../notes/note_form';
+import NoteFormTopbar from '../notes/note_form_top_bar';
 import HomeSidebar from '../home_sidebar/home_sidebar';
 
 class Home extends React.Component {
@@ -21,7 +22,10 @@ class Home extends React.Component {
       <div className="homeTotalLayout">
         <HomeSidebar />
         <NoteIndexContainer />
-        <ShowNote />
+        <div className="noteTopbarANDnoteForm">
+          <NoteFormTopbar />
+          <NoteForm />
+        </div>
       </div>
     );
   }

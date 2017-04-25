@@ -97,7 +97,7 @@
   font-size: 15.5px;
   font-weight: 300;
   transition: all 0.3s ease 0s;
-  border: 1px solid #cccccc
+  border: 1px solid #cccccc;
 }
 
 .plainForm [type="submit"] {

@@ -2,6 +2,11 @@
   display: flex;
   height: 100vh;
   font-family: 'Yantramanav', sans-serif;
+  border: 2px solid red;
+}
+
+#root {
+  border: 5px solid orange;
 }
 
 .homeTotalLayout .homeSidebar {
@@ -12,7 +17,17 @@
   width: 350px;
 }
 
-.homeTotalLayout .showNote {
-  width: calc(100% - 73px - 350px);
-  border: 1px solid orange;
+.homeTotalLayout .noteTopbarANDnoteForm {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
+
+
+
+/*.homeTotalLayout .quill {*/
+  /*display: none;*/
+  /*width: calc(100% - 73px - 350px);
+  margin: 0;
+  border: 1px solid orange;
+}*/

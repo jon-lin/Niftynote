@@ -1,5 +1,5 @@
 import React from 'react';
-import ShowNote from './note_show';
+import NoteForm from './note_form';
 import { connect } from 'react-redux';
 import { fetchNote, deleteNote } from '../../actions/notes_actions';
 
@@ -15,7 +15,6 @@ class NoteItem extends React.Component {
   }
 
   deleteNote(e) {
-    debugger
     this.props.removeNote(e.currentTarget.getAttribute('value'));
     e.stopPropagation();
   }

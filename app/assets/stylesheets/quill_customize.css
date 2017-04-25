@@ -1,0 +1,24 @@
+/*.ql-blank {
+  border-color: transparent;
+  border: 1px solid red;
+}*/
+
+/*.quill {
+  border: red;
+}*/
+
+
+/*.homeTotalLayout .quill {*/
+  /*display: none;*/
+  /*width: calc(100% - 73px - 350px);
+  margin: 0;
+  border: 1px solid orange;
+}*/
+
+
+/*.ql-editor {
+  border: transparent;
+}*/
+
+/*#root > div > div > div.noteTopbarANDnoteForm > div.quill > div.ql-toolbar.ql-snow*/
+/*<div class="ql-editor ql-blank" contenteditable="true"><p><br></p></div>*/

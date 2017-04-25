@@ -35,12 +35,13 @@ class NoteForm extends React.Component {
   // }
 
   render() {
-  return (
-    <ReactQuill
-        theme="snow"
-        value={this.state.text}
-        onChange={this.handleChange} />
-        )
+      if (!this.props.currentNote) {return null}
+      return (
+        <ReactQuill
+            theme="snow"
+            value={this.props.currentNote.body}
+            onChange={this.handleChange} />
+            )
       }
     }
 

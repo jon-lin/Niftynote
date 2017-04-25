@@ -24,6 +24,11 @@ body > div:nth-child(3) > div {
   color: gray;
 }
 
+/*hide the options button until feature is implemented*/
+.entireNotesIndexCol .notesColTop button {
+  display: none;
+}
+
 .entireNotesIndexCol ul {
   position: relative;
   list-style: none;

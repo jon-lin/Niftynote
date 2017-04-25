@@ -10,12 +10,25 @@ class NoteForm extends React.Component {
     // let {title, body} = this.props.currentNote;
     // this.state = { title, body };
     // this.receiveFields = this.receiveFields.bind(this
-    this.state = { text: '' }
+    // this.state = { text: '' }
+    this.state = this.props.currentNote;
+    this.handleChange = this.handleChange.bind(this);
+    // this.printConsoleLog = this.printConsoleLog.bind(this);
   }
 
-  handleChange(value) {
-    this.setState({ text: value })
+  componentDidMount() {
+    this.props.fetchNote(this.props.currentNote.id)
   }
+
+  component
+
+  handleChange(value) {
+    this.setState({ body: value });
+  }
+  //
+  // printConsoleLog() {
+  //   console.log("A KEY WAS PRESSED AND RELEASED!");
+  // }
 
   // componentWillMount() {
     // if this.state.note !== empty, clear it
@@ -35,16 +48,24 @@ class NoteForm extends React.Component {
   // }
 
   render() {
-      if (!this.props.currentNote) {return null}
+      if (!this.state) {return null}
+
       return (
         <ReactQuill
-            theme="snow"
-            value={this.props.currentNote.body}
-            onChange={this.handleChange} />
-            )
-      }
-    }
+          theme="snow"
+          value={this.state.body}
+          onChange={this.handleChange}/>
+        )
+  }
+}
 
+// this.props.currentNote.body
+          // className="testquillclassUsertest"
+          // id="QUILLTEST"
+        // placeholder="Begin typing your note here!"
+          // onKeyPress={this.printConsoleLog}
+
+// style={backgroundColor: 'yellow'}
   // render() {
     // if (!this.props.currentNote) {return null}
 

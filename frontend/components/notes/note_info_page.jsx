@@ -3,6 +3,44 @@ import React from 'react';
 class NoteInfoPage extends React.Component {
   constructor(props) {
     super(props);
+    this.roughSizeOfObject = this.roughSizeOfObject.bind(this);
+  }
+
+    roughSizeOfObject( object ) {
+
+      var objectList = [];
+
+      var recurse = function( value )
+      {
+          var bytes = 0;
+
+          if ( typeof value === 'boolean' ) {
+              bytes = 4;
+          }
+          else if ( typeof value === 'string' ) {
+              bytes = value.length * 2;
+          }
+          else if ( typeof value === 'number' ) {
+              bytes = 8;
+          }
+          else if
+          (
+              typeof value === 'object'
+              && objectList.indexOf( value ) === -1
+          )
+          {
+              objectList[ objectList.length ] = value;
+              let i;
+              for( i in value ) {
+                  bytes+= 8; // an assumed existence overhead
+                  bytes+= recurse( value[i] )
+              }
+          }
+
+          return bytes;
+      }
+
+      return recurse( object );
   }
 
   render() {
@@ -18,8 +56,9 @@ class NoteInfoPage extends React.Component {
         </div>
 
          <ul>
-           <li>CREATED: {(new Date(this.props.note.created_at).toLocaleString())}</li>
-           <li>UPDATED: {(new Date(this.props.note.updated_at).toLocaleString())}</li>
+           <li>Created: {(new Date(this.props.note.created_at).toLocaleString())}</li>
+           <li>Updated: {(new Date(this.props.note.updated_at).toLocaleString())}</li>
+           <li>Size: {this.roughSizeOfObject(this.props.note)} bytes</li>
          </ul>
          <button onClick={this.props.closeModal}>CLOSE</button>
       </div>

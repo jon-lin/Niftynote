@@ -26,7 +26,6 @@ body > div:nth-child(3) > div {
 
 .entireNotesIndexCol ul {
   position: relative;
-  /*z-index: -1;*/
   list-style: none;
   margin-top: 100px;
 }

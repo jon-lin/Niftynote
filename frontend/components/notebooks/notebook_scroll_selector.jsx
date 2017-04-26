@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchNotebooks, fetchNotebook } from '../../actions/notebooks_actions';
 import { updateNote } from '../../actions/notes_actions';
 import { Link } from 'react-router';
-import Notebook from './notebook';
+import NotebookItem from './notebook_item';
 
 class NotebookScrollSelector extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class NotebookScrollSelector extends React.Component {
 
     render() {
       let notebooksList = this.props.sortedNotebooks.map( notebook => {
-        return (<Notebook formType="dropdown"
+        return (<NotebookItem formType="dropdown"
                           title={notebook.title}
                           key={notebook.id}
                           notebookId={notebook.id}/>)

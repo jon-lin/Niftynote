@@ -1,5 +1,5 @@
 import React from 'react';
-import Notebook from './notebook';
+import NotebookItem from './notebook_item';
 
 class NotebookIndex extends React.Component {
 
@@ -13,7 +13,7 @@ class NotebookIndex extends React.Component {
 
   render() {
     let notebooksList = this.props.notebooks.map( notebook => {
-      return (<Notebook formType="panel" notebook={notebook} key={notebook.id}/>);
+      return (<NotebookItem formType="panel" notebook={notebook} key={notebook.id}/>);
     });
 
     // if (this.props.loading === true) {

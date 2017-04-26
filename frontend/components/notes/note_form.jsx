@@ -14,9 +14,11 @@ class NoteForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (!this.props.currentNote) {return null}
-    if (this.props.currentNote.id !== newProps.currentNote.id)
-      {this.props.fetchNote(newProps.currentNote.id);
-      this.setState(newProps.currentNote);}
+
+    if (this.props.currentNote.id !== newProps.currentNote.id) {
+        this.props.fetchNote(newProps.currentNote.id);
+        this.setState(newProps.currentNote);
+    }
   }
 
   handleChange(text, delta, source, editor) {
@@ -28,10 +30,7 @@ class NoteForm extends React.Component {
   }
 
   render() {
-    debugger
       if (!this.props.currentNote) {return null}
-
-      console.log(this.state)
 
       return (
           <ReactQuill

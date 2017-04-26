@@ -7,9 +7,8 @@ import Notebook from './notebook';
 class NotebookScrollSelector extends React.Component {
   constructor(props) {
      super(props);
-     this.state = {value: this.props.currentNote.title};
+     this.state = {value: this.props.selectedNotebook.title};
      this.handleChange = this.handleChange.bind(this);
-     this.handleSubmit = this.handleSubmit.bind(this);
    }
 
    componentDidMount() {
@@ -17,7 +16,7 @@ class NotebookScrollSelector extends React.Component {
    }
 
   //  THIS CODE IS FOR MAKING DISTINCTION BETWEEN WHETHER TO SET SELECTED
-  // NOTEBOOK OR DEFAULT NOTEBOOK   
+  // NOTEBOOK OR DEFAULT NOTEBOOK
   //  componentWillMount() {
   //    if (this.props.formType === 'homeDropDown') {
   //      this.setState({value: this.props.currentNotebookTitle});
@@ -25,36 +24,26 @@ class NotebookScrollSelector extends React.Component {
   //  }
 
     componentWillReceiveProps(newProps) {
-      if (jQuery.isEmptyObject(newProps.currentNote)) { return null }
+      // if (jQuery.isEmptyObject(newProps.currentNote)) { return null }
 
         this.setState({
-          value: this.props.currentNotebookTitle
+          value: newProps.selectedNotebook.title
         });
     }
 
    handleChange(e) {
      this.setState({value: e.target.value});
-   }
-
-   handleSubmit(e) {
-     e.preventDefault();
-     debugger
-     this.props.updateNotebook({
-
-      });
+     let { id, title, body } = this.props.selectedNotebook;
+     this.props.updateNotebook({ id, title, body });
+     console.log("Notebook was updated!")
    }
 
     render() {
-      // debugger
-      // if (typeof this.props.sortedNotebooks === 'undefined') {return null}
-
       let notebooksList = this.props.sortedNotebooks.map( notebook => {
         return (<Notebook formType="dropdown"
                           title={notebook.title}
                           key={notebook.id}/>)
                 });
-
-      debugger
 
       return (
         <div className="notebookScrollSelector">
@@ -71,7 +60,6 @@ class NotebookScrollSelector extends React.Component {
                  {notebooksList}
                </select>
              </label>
-             <input type="submit" value="Submit" />
            </form>
         </div>
       );
@@ -88,11 +76,17 @@ const mapStateToProps = (state) => {
   let sorted_notebooks_arr = Object.values(state.notebooks).sort(dateComparator);
 
   let currentNotebook = state.notebooks[state.currentNote.notebookId]
-  let currentNotebookTitle = currentNotebook ? currentNotebook.title: ""
+
+  let selectedNotebook;
+  if (currentNotebook) {
+      selectedNotebook = currentNotebook
+  } else {
+      selectedNotebook = {title: "", body: ""}
+  }
 
   return {
     sortedNotebooks: sorted_notebooks_arr,
-    currentNotebookTitle: currentNotebookTitle,
+    selectedNotebook: selectedNotebook,
     currentNote: state.currentNote
   };
 };

@@ -21,11 +21,12 @@ class Notebook extends React.Component {
           </li>
         );
     } else {
-      return (
-          <option value={this.props.title}>
-            {this.props.title}
-          </option>
-      );
+          return (
+            <option value={this.props.notebookId}>
+              {this.props.title}
+            </option>
+          )
+
     }
   }
 }

@@ -26,7 +26,6 @@ class NoteFormTopbar extends React.Component {
   }
 
   deleteNote(e) {
-    debugger
     this.props.removeNote(this.props.currentNote.id);
   }
 

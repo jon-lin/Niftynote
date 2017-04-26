@@ -8,7 +8,7 @@ class NotebookShow extends React.Component {
 
   render () {
     return (
-      <div>TEST</div>
+      <div>NOTEBOOKSHOWCONTAINER</div>
     )
   }
 

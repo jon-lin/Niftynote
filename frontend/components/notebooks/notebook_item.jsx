@@ -1,15 +1,22 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 class NotebookItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.openNotebook = this.openNotebook.bind(this);
+  }
+
+  openNotebook(e) {
+    this.props.closeModal();
+    this.props.router.push(`/home/notebooks/${e.currentTarget.value}`);
   }
 
   render() {
 
     if (this.props.formType === "panel") {
       return (
-          <li className="notebook">
+          <li onClick={this.openNotebook} value={this.props.notebook.id} className="notebook">
             <buttons className="notebookButtons">
               <button><i className="fa fa-comments" aria-hidden="true"></i></button>
               <button><i className="fa fa-star" aria-hidden="true"></i></button>
@@ -31,5 +38,4 @@ class NotebookItem extends React.Component {
   }
 }
 
-
-export default NotebookItem;
+export default withRouter(NotebookItem);

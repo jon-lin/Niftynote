@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { fetchNotebooks } from '../../actions/notebooks_actions';
 import NotebookIndex from './notebook_index';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    notebooks: Object.values(state.notebooks)
+    notebooks: Object.values(state.notebooks),
+    closeModal: ownProps.closeModal
   };
 };
 

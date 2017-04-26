@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import AuthFormContainer from './auth/auth_form_container';
 import HomeContainer from './home/home_container';
 import NotebookShowContainer from './notebooks/notebook_show_container';
+import NoteIndexContainer from './notes/note_index_container';
 
 const Root = ({ store }) => {
     let _redirectIfLoggedIn = (nextState, replace) => {
@@ -26,12 +27,16 @@ const Root = ({ store }) => {
           <IndexRoute onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
           <Route path="/signin" onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
           <Route path="/signup" onEnter={ _redirectIfLoggedIn } component={ AuthFormContainer } />
-          <Route path="/home" onEnter={ _ensure_logged_in } component={ HomeContainer } />
-          <Route path="/notebooks/:notebookId" onEnter={ _ensure_logged_in } component={ NotebookShowContainer }/>
+          <Route path="/home" onEnter={ _ensure_logged_in } component={ HomeContainer }>
+            <IndexRoute onEnter={ _ensure_logged_in } component={ NoteIndexContainer } />
+            <Route path="/home/notebooks/:notebookId" onEnter={ _ensure_logged_in } component={ NotebookShowContainer }/>
+          </Route>
         </Route>
       </Router>
     </Provider>
   )
 }
+// <Route path="/home/tags/:tagId" onEnter={ _ensure_logged_in } component={ TagShowContainer }/>
+// <Route path="/notes" onEnter={ _ensure_logged_in } component={ NotebookShowContainer }/>/
 
 export default Root;

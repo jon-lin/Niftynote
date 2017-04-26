@@ -21,11 +21,12 @@ class Home extends React.Component {
     if (!this.props.currentUser) { return null };
 
     let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNotebookDropDown';
+
     return (
       <div className="homeTotalLayout">
         <HomeSidebar />
-        <NoteIndexContainer />
 
+            {this.props.children}
 
             <NotebookScrollSelector formType={formType}/>
 

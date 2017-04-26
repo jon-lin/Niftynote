@@ -41,12 +41,13 @@ class NotebookScrollbar extends React.Component {
             <input type="search" placeholder="Find a notebook" results="0"></input>
           </div>
 
-          <div value="Create new notebook"></div>
+
 
           <form className="selectNotebookPartofScrollMenu" onSubmit={this.handleSubmit}>
              <label>
                Notebooks:
                <select value={this.state.value} onChange={this.handleChange}>
+                 <div value="Create new notebook"></div>
                  {notebooksList}
                </select>
              </label>

@@ -1,5 +1,7 @@
 import React from 'react';
-import NoteItem from './note_item'
+import NoteIndexCopy from './note_index_copy';
+import NotebookShowContainer from '../notebooks/notebook_show_container';
+import TagShowContainer from '../tags/tag_show_container';
 
 class NoteIndex extends React.Component {
 
@@ -12,11 +14,6 @@ class NoteIndex extends React.Component {
   }
 
   render() {
-    let notesList = this.props.notes.map( noteItem => {
-      return (<NoteItem noteItem={noteItem} key={noteItem.id}/>);
-    });
-
-
     if (this.props.loading === true) {
       return (
         <div className="loadingContainer">
@@ -25,21 +22,29 @@ class NoteIndex extends React.Component {
       );
     }
 
-    return (
-      <div className="entireNotesIndexCol">
-        <div className="notesColTop">
-          <h1>NOTES</h1>
-          <div className="notesTopBarSecondRow">
-            <text>{notesList.length} notes</text>
-            <button>Options:</button>
-          </div>
-        </div>
+    let component;
+    switch (this.props.route.colType) {
+      case "notesIndex":
+        component = <NoteIndexCopy {...this.props} />
+        debugger
+        break;
+      case "showNotebookNotes":
+        component = <NotebookShowContainer />
+        break;
+      case "showTagNotes":
+        component = <TagShowContainer />
+        break;
+      default:
+        console.log("Switch failed to catch column type!");
+    }
 
-        <ul>
-          {notesList}
-        </ul>
+    debugger
+
+    return (
+      <div>
+        {component}
       </div>
-    )
+    );
   }
 }
 

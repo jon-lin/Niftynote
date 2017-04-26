@@ -10,7 +10,6 @@ class Home extends React.Component {
 
   constructor(props) {
     super(props);
-
   }
 
   componentWillReceiveProps(newProps) {
@@ -53,3 +52,25 @@ export default Home;
 // <Tags />
 // <Notes />
 // <Note />
+
+
+//experimentating with getting a initial currentNote laoded isn't working..
+// componentWillReceiveProps(newProps) {
+//   if (!this.props.currentNote) {return null}
+//
+//   if (this.props.currentNote.id !== newProps.currentNote.id) {
+//       this.props.fetchNote(newProps.currentNote.id);
+//   }
+// }
+
+// componentDidMount() {
+//   debugger
+//   this.props.fetchNote(this.props.currentNote);
+// }
+  // if (!this.props.currentNote) {return null}
+  //
+  // if (this.props.currentNote) {
+  //   if (this.props.currentNote.id !== newProps.currentNote.id) {
+  //     this.props.fetchNote(newProps.currentNote.id);
+  //   }
+  // }

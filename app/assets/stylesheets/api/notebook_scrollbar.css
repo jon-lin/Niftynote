@@ -1,0 +1,10 @@
+.notebookScrollSelector {
+  display: absolute;
+  z-index: 100;
+  right: 0;
+  width: 500px;
+}
+
+.notebookScrollSelector selector {
+  width: 500px;
+}

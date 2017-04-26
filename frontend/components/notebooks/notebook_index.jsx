@@ -13,7 +13,7 @@ class NotebookIndex extends React.Component {
 
   render() {
     let notebooksList = this.props.notebooks.map( notebook => {
-      return (<Notebook notebook={notebook} key={notebook.id}/>);
+      return (<Notebook formType="panel" notebook={notebook} key={notebook.id}/>);
     });
 
     // if (this.props.loading === true) {

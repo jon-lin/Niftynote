@@ -61,9 +61,7 @@ const mapStateToProps = (state) => {
 
   if (jQuery.isEmptyObject(state.currentNote)) {
     mostRecentNotes = notesSelector(state.notes);
-    debugger
     mostRecentNote = mostRecentNotes[0];
-    debugger
     return { currentNote: mostRecentNote };
   }
 

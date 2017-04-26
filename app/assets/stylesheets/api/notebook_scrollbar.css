@@ -1,10 +1,15 @@
-.notebookScrollSelector {
+/*remove this after done tesing with scrollbar*/
+/*.entireNoteformTopbar, .ql-snow, .entireNotebookScrollMenu {
+  display: none;
+}*/
+
+.entireNotebookScrollMenu {
   display: absolute;
   z-index: 100;
   right: 0;
   width: 800px;
 }
 
-.notebookScrollSelector selector {
+.entireNotebookScrollMenu selector {
   width: 800px;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class NoteInfoPage extends React.Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class NoteInfoPage extends React.Component {
            <li>Created: {(new Date(this.props.note.created_at).toLocaleString())}</li>
            <li>Updated: {(new Date(this.props.note.updated_at).toLocaleString())}</li>
            <li>Size: {this.roughSizeOfObject(this.props.note)} bytes</li>
+           <li>Belongs to Notebook: {this.props.notebooksObj[this.props.note.notebook_id].title}</li>
          </ul>
          <button onClick={this.props.closeModal}>CLOSE</button>
       </div>
@@ -66,4 +68,10 @@ class NoteInfoPage extends React.Component {
   }
 }
 
-export default NoteInfoPage;
+const mapStateToProps = (state) => {
+  return {
+    notebooksObj: state.notebooks
+  }
+}
+
+export default connect(mapStateToProps, null)(NoteInfoPage);

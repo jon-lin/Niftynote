@@ -5,7 +5,7 @@ import { updateNote } from '../../actions/notes_actions';
 import { Link } from 'react-router';
 import NotebookItem from './notebook_item';
 
-class NotebookScrollSelector extends React.Component {
+class NotebookScrollbar extends React.Component {
   constructor(props) {
      super(props);
      this.state = {value: this.props.selectedNotebook.id};
@@ -36,14 +36,14 @@ class NotebookScrollSelector extends React.Component {
                 });
 
       return (
-        <div className="notebookScrollSelector">
+        <div className="entireNotebookScrollMenu">
           <div className="searchField">
             <input type="search" placeholder="Find a notebook" results="0"></input>
           </div>
 
           <div value="Create new notebook"></div>
 
-          <form className="NotebookScrollSelector" onSubmit={this.handleSubmit}>
+          <form className="selectNotebookPartofScrollMenu" onSubmit={this.handleSubmit}>
              <label>
                Notebooks:
                <select value={this.state.value} onChange={this.handleChange}>
@@ -89,7 +89,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NotebookScrollSelector);
+export default connect(mapStateToProps, mapDispatchToProps)(NotebookScrollbar);
 
 //  THIS CODE IS FOR MAKING DISTINCTION BETWEEN WHETHER TO SET SELECTED
 // NOTEBOOK OR DEFAULT NOTEBOOK

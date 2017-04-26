@@ -4,7 +4,7 @@ import NoteIndexContainer from '../notes/note_index_container';
 import NoteForm from '../notes/note_form';
 import NoteFormTopbar from '../notes/note_form_top_bar';
 import HomeSidebar from '../home_sidebar/home_sidebar';
-import NotebookScrollSelector from '../notebooks/notebook_scroll_selector';
+import NotebookScrollbar from '../notebooks/notebook_scrollbar';
 
 class Home extends React.Component {
 
@@ -28,7 +28,7 @@ class Home extends React.Component {
 
             {this.props.children}
 
-            <NotebookScrollSelector formType={formType}/>
+            <NotebookScrollbar formType={formType}/>
 
             <div className="noteTopbarANDnoteForm">
               <NoteFormTopbar />

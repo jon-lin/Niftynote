@@ -16,21 +16,21 @@ notebook1 = user1.notebooks.create!(title: 'Star Wars')
 notebook2 = user1.notebooks.create!(title: 'Friends')
 notebook3 = user1.notebooks.create!(title: 'Harry Potter')
 
-10.times do |i|
+20.times do |i|
   notebook1.notes.create!(
     title: Faker::StarWars.character,
     body: Faker::StarWars.quote
   )
 end
 
-10.times do |i|
+20.times do |i|
   notebook2.notes.create!(
     title: Faker::Friends.character,
     body: Faker::Friends.quote
   )
 end
 
-10.times do |i|
+20.times do |i|
   notebook3.notes.create!(
     title: Faker::HarryPotter.character,
     body: Faker::HarryPotter.quote

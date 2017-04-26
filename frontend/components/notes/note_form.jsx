@@ -7,20 +7,13 @@ import ReactQuill from 'react-quill';
 class NoteForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = props.currentNote;
     this.state = {};
     this.handleChange = this.handleChange.bind(this);
     this.receiveField = this.receiveField.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (this.state === null) { return null }
-  //   this.props.fetchNote(this.state.id)
-  // }
-
   componentWillReceiveProps(newProps) {
     if (!this.props.currentNote) {return null}
-    // debugger
     if (this.props.currentNote.id !== newProps.currentNote.id)
       {this.props.fetchNote(newProps.currentNote.id);
       this.setState(newProps.currentNote);}
@@ -37,8 +30,6 @@ class NoteForm extends React.Component {
   render() {
     debugger
       if (!this.props.currentNote) {return null}
-
-      // let setValue = (typeof this.props.currentNote === 'undefined') ? "" : this.state.body
 
       console.log(this.state)
 

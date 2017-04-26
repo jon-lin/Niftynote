@@ -16,35 +16,29 @@ class NotebookScrollSelector extends React.Component {
      this.props.fetchNotebooks();
    }
 
+  //  THIS CODE IS FOR MAKING DISTINCTION BETWEEN WHETHER TO SET SELECTED
+  // NOTEBOOK OR DEFAULT NOTEBOOK   
   //  componentWillMount() {
   //    if (this.props.formType === 'homeDropDown') {
-  //      this.setState({value: this.props.currentNote.title});
+  //      this.setState({value: this.props.currentNotebookTitle});
   //    }
   //  }
 
     componentWillReceiveProps(newProps) {
-
-      // this.setState({
-      //     value: this.props.NotebooksObj[newProps.currentNote.notebookId].title})
-
       if (jQuery.isEmptyObject(newProps.currentNote)) { return null }
 
-      // if (!!newProps.currentNote) {
         this.setState({
           value: this.props.currentNotebookTitle
         });
-      // }
     }
 
    handleChange(e) {
-     debugger
      this.setState({value: e.target.value});
    }
 
    handleSubmit(e) {
      e.preventDefault();
      debugger
-
      this.props.updateNotebook({
 
       });

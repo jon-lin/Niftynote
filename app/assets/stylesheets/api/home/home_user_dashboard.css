@@ -1,3 +1,8 @@
+/*CSS below apparently necessary to target modal's z-index*/
+body > div:nth-child(3) > div {
+  z-index: 3;
+}
+
 .userDashboardModal {
   position: absolute;
   z-index: 3;

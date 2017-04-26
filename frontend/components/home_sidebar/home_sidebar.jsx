@@ -13,26 +13,35 @@ class HomeSidebar extends React.Component {
       notebookModalIsOpen: false
     };
 
-    this.openModal1 = this.openModal1.bind(this);
-    this.closeModal1 = this.closeModal1.bind(this);
-    this.openModal2 = this.openModal2.bind(this);
-    this.closeModal2 = this.closeModal2.bind(this);
+    this.openUserDashboard = this.openUserDashboard.bind(this);
+    this.closeUserDashboard = this.closeUserDashboard.bind(this);
+    this.openNotebookIndex = this.openNotebookIndex.bind(this);
+    this.closeNotebookIndex = this.closeNotebookIndex.bind(this);
+    this.closeAllModals = this.closeAllModals.bind(this);
     this.showNotesIndex = this.showNotesIndex.bind(this);
   }
 
-  openModal1() {
-    this.setState({userDashboardModalIsOpen: true});
+  openUserDashboard() {
+    this.closeAllModals();
+
+    if (!this.state.userDashboardModalIsOpen) {
+      this.setState({userDashboardModalIsOpen: true});
+    }
   }
 
-  closeModal1() {
+  closeUserDashboard() {
     this.setState({userDashboardModalIsOpen: false});
   }
 
-  openModal2() {
-    this.setState({notebookModalIsOpen: true});
+  openNotebookIndex() {
+    this.closeAllModals();
+
+    if (!this.state.notebookModalIsOpen) {
+      this.setState({notebookModalIsOpen: true});
+    }
   }
 
-  closeModal2() {
+  closeNotebookIndex() {
     this.setState({notebookModalIsOpen: false});
   }
 
@@ -40,7 +49,13 @@ class HomeSidebar extends React.Component {
     Modal.setAppElement('body');
   }
 
+  closeAllModals() {
+    this.closeNotebookIndex();
+    this.closeUserDashboard();
+  }
+
   showNotesIndex() {
+    this.closeAllModals();
     this.props.router.push('/home');
   }
 
@@ -75,7 +90,7 @@ class HomeSidebar extends React.Component {
             <i className="fa fa-sticky-note" aria-hidden="true"></i>
           </button>
 
-          <button className="slideNotebooks" onClick={this.openModal2}>
+          <button className="slideNotebooks" onClick={this.openNotebookIndex}>
             <i className="fa fa-book" aria-hidden="true"></i>
           </button>
 
@@ -84,7 +99,7 @@ class HomeSidebar extends React.Component {
           </button>
         </div>
 
-        <div className="profilecontainer" onClick={this.openModal1}>
+        <div className="profilecontainer" onClick={this.openUserDashboard}>
           <button className="profile">
             <i className="fa fa-user" aria-hidden="true"></i>
           </button>
@@ -92,7 +107,7 @@ class HomeSidebar extends React.Component {
 
         <Modal
           isOpen={this.state.userDashboardModalIsOpen}
-          onRequestClose={this.closeModal1}
+          onRequestClose={this.closeUserDashboard}
           contentLabel="userDashboard"
           className="userDashboardModal"
           style={{overlay: {backgroundColor: 'transparent'}}}
@@ -102,11 +117,11 @@ class HomeSidebar extends React.Component {
 
         <Modal
           isOpen={this.state.notebookModalIsOpen}
-          onRequestClose={this.closeModal2}
+          onRequestClose={this.closeNotebookIndex}
           contentLabel="notebookIndexModal"
           className="notebookModal"
         >
-          <NotebookIndexContainer closeModal={this.closeModal2}/>
+          <NotebookIndexContainer closeModal={this.closeNotebookIndex}/>
         </Modal>
 
       </div>

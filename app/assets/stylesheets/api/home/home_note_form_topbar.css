@@ -7,9 +7,9 @@
 
 
 /*remove this after done tesing with scrollbar*/
-/*.entireNoteformTopbar, .ql-snow {
+.entireNoteformTopbar, .ql-snow, .notebookScrollSelector {
   display: none;
-}*/
+}
 
 .topbarRightSide {
   display: flex;

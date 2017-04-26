@@ -38,14 +38,14 @@ class NoteForm extends React.Component {
     debugger
       if (!this.props.currentNote) {return null}
 
-      let setValue = (typeof this.props.currentNote === 'undefined') ? "" : this.state.body
+      // let setValue = (typeof this.props.currentNote === 'undefined') ? "" : this.state.body
 
       console.log(this.state)
 
       return (
           <ReactQuill
             theme="snow"
-            value={setValue}
+            value={this.props.currentNote.body}
             onChange={this.handleChange}
 
             />

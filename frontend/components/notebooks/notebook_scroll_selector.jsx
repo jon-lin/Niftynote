@@ -7,7 +7,7 @@ import Notebook from './notebook';
 class NotebookScrollSelector extends React.Component {
   constructor(props) {
      super(props);
-     this.state = {};
+     this.state = {value: this.props.currentNote.title};
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
    }
@@ -16,17 +16,25 @@ class NotebookScrollSelector extends React.Component {
      this.props.fetchNotebooks();
    }
 
-   componentWillMount() {
-     if (this.props.formType === 'homeDropDown') {
-       this.setState(this.props.currentNote.notebook_id)
-     }
-   }
+  //  componentWillMount() {
+  //    if (this.props.formType === 'homeDropDown') {
+  //      this.setState({value: this.props.currentNote.title});
+  //    }
+  //  }
 
-    // componentWillReceiveProps(newProps) {
-    //   if (this.newProps.currentNote) {
-    //     this.props.fetchNotebook(this.newProps.currentNote.notebookId);
-    //   }
-    // }
+    componentWillReceiveProps(newProps) {
+
+      // this.setState({
+      //     value: this.props.NotebooksObj[newProps.currentNote.notebookId].title})
+
+      if (jQuery.isEmptyObject(newProps.currentNote)) { return null }
+
+      // if (!!newProps.currentNote) {
+        this.setState({
+          value: this.props.currentNotebookTitle
+        });
+      // }
+    }
 
    handleChange(e) {
      debugger
@@ -43,11 +51,13 @@ class NotebookScrollSelector extends React.Component {
    }
 
     render() {
-      let notebooksList = this.props.notebooks.map( notebook => {
+      // debugger
+      // if (typeof this.props.sortedNotebooks === 'undefined') {return null}
+
+      let notebooksList = this.props.sortedNotebooks.map( notebook => {
         return (<Notebook formType="dropdown"
                           title={notebook.title}
-                          notebookId={notebook.id}
-                          key={notebook.id}/>);
+                          key={notebook.id}/>)
                 });
 
       debugger
@@ -80,10 +90,15 @@ const dateComparator = (objX, objY) => (
 );
 
 const mapStateToProps = (state) => {
+
   let sorted_notebooks_arr = Object.values(state.notebooks).sort(dateComparator);
 
+  let currentNotebook = state.notebooks[state.currentNote.notebookId]
+  let currentNotebookTitle = currentNotebook ? currentNotebook.title: ""
+
   return {
-    notebooks: sorted_notebooks_arr,
+    sortedNotebooks: sorted_notebooks_arr,
+    currentNotebookTitle: currentNotebookTitle,
     currentNote: state.currentNote
   };
 };

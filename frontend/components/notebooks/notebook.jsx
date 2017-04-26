@@ -22,7 +22,7 @@ class Notebook extends React.Component {
         );
     } else {
       return (
-          <option value={this.props.notebookId}>
+          <option value={this.props.title}>
             {this.props.title}
           </option>
       );

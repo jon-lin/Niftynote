@@ -2,9 +2,9 @@
   display: absolute;
   z-index: 100;
   right: 0;
-  width: 500px;
+  width: 800px;
 }
 
 .notebookScrollSelector selector {
-  width: 500px;
+  width: 800px;
 }

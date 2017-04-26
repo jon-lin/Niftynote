@@ -5,6 +5,12 @@
   border-left: 1px solid rgb(212, 210, 210);;
 }
 
+
+/*remove this after done tesing with scrollbar*/
+/*.entireNoteformTopbar, .ql-snow {
+  display: none;
+}*/
+
 .topbarRightSide {
   display: flex;
   justify-content: center;

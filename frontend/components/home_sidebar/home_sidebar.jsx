@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import Modal from 'react-modal';
 import UserDashboard from './home_modals/user_dashboard';
 import NotebookIndexContainer from '../notebooks/notebook_index_container';
@@ -17,6 +17,7 @@ class HomeSidebar extends React.Component {
     this.closeModal1 = this.closeModal1.bind(this);
     this.openModal2 = this.openModal2.bind(this);
     this.closeModal2 = this.closeModal2.bind(this);
+    this.showNotesIndex = this.showNotesIndex.bind(this);
   }
 
   openModal1() {
@@ -37,6 +38,10 @@ class HomeSidebar extends React.Component {
 
   componentWillMount() {
     Modal.setAppElement('body');
+  }
+
+  showNotesIndex() {
+    this.props.router.push('/home');
   }
 
   render() {
@@ -66,7 +71,7 @@ class HomeSidebar extends React.Component {
             <i className="fa fa-star" aria-hidden="true"></i>
           </button>
 
-          <button className="showNotesIndex">
+          <button className="showNotesIndex" onClick={this.showNotesIndex}>
             <i className="fa fa-sticky-note" aria-hidden="true"></i>
           </button>
 
@@ -109,4 +114,4 @@ class HomeSidebar extends React.Component {
   }
 }
 
-export default HomeSidebar;
+export default withRouter(HomeSidebar);

@@ -18,7 +18,7 @@ class NotebookScrollSelector extends React.Component {
 
     componentWillReceiveProps(newProps) {
         this.setState({
-          value: newProps.selectedNotebook.title
+          value: newProps.selectedNotebook.id
         });
     }
 

@@ -22,8 +22,8 @@ class NewNotebook extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="newNoteHeader">
+      <div className="newNotebookPage">
+        <div className="newNotebookHeader">
           <i className="fa fa-book" aria-hidden="true"></i>
           <h1>Create Notebook</h1>
         </div>

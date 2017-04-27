@@ -7,12 +7,6 @@ class Api::NotebooksController < ApplicationController
     @notebook = Notebook.new(notebook_params)
     @notebook.author_id = current_user.id
 
-    if params[:notebook][:defaultNotebook]
-      prev_default = current_user.notebooks.find_by_defaultNotebook(true)
-      prev_default.defaultNotebook = false
-      @notebook.defaultNotebook = true
-    end
-
     if @notebook.save
       render json: [@notebook.title + ' saved!']
     else
@@ -35,7 +29,14 @@ class Api::NotebooksController < ApplicationController
   def update
     @notebook = current_user.notebooks.find(params[:id])
 
+    if params[:notebook][:defaultNotebook] == "true"
+      prev_default = current_user.notebooks.find_by_defaultNotebook(true)
+      prev_default.update({defaultNotebook: false})
+    end
+
     # the below may not work, @notebook's author_id might need to be included?
+    # ANS: shouldn't have to be included because the editor IS the current user,
+    # and the notebook already exists and has association to the current user
     if @notebook.update(notebook_params)
       render :show
     else
@@ -54,10 +55,14 @@ class Api::NotebooksController < ApplicationController
     end
 
     if @notebook.destroy
+      default_notebook_id = current_user.notebooks.find_by_defaultNotebook(true).id
+
       @notebook.notes.each do |note|
-        note.notebook = current_user.notebooks.find_by_defaultNotebook(true)
+        debugger
+        note.update({notebook_id: default_notebook_id})
       end
 
+      debugger
       render :show
     else
       errors = @notebook.errors.full_messages

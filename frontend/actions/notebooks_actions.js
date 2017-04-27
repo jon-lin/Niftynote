@@ -52,7 +52,10 @@ export const updateNotebook = (notebook) => dispatch => {
 
 export const deleteNotebook = (id) => dispatch => {
   return NotebooksAPIUtil.deleteNotebook(id)
-    .then(notebook => {
-      dispatch(removeNotebook(notebook));
-    });
+    .then(
+      notebook => dispatch(removeNotebook(notebook)))
+      // errors => {
+      //   debugger
+      //   console.log(errors)
+      // })
 };

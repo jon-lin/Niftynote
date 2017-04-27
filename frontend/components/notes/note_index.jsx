@@ -1,15 +1,31 @@
 import React from 'react';
 import TagShowContainer from '../tags/tag_show_container';
-import NoteItem from './note_item'
+import NoteItem from './note_item';
+import NotebookInfo from '../notebooks/notebook_info_page';
+import Modal from 'react-modal';
 
 class NoteIndex extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = { notebookInfoIsOpen: false };
+
+    this.openNotebookInfo = this.openNotebookInfo.bind(this);
+    this.closeNotebookInfo = this.closeNotebookInfo.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchNotes();
+    Modal.setAppElement('body');
+  }
+
+  openNotebookInfo() {
+    this.setState({notebookInfoIsOpen: true});
+  }
+
+  closeNotebookInfo() {
+    this.setState({notebookInfoIsOpen: false});
   }
 
   render() {
@@ -30,7 +46,7 @@ class NoteIndex extends React.Component {
     if (this.props.location.pathname.match(/home\/notebooks\/\d+/)) {
       colHeaderPart = (
                       <div className="showNotebookNotesBlackBox">
-                        <i className="fa fa-info-circle" aria-hidden="true"></i>
+                        <i onClick={this.openNotebookInfo} className="fa fa-info-circle" aria-hidden="true"></i>
                         <h1>{this.props.notebook.title}</h1>
                         <button>Share</button>
                       </div>
@@ -54,6 +70,21 @@ class NoteIndex extends React.Component {
         <ul>
           {notesList}
         </ul>
+
+        <Modal
+              isOpen={this.state.notebookInfoIsOpen}
+              onRequestClose={this.closeNotebookInfo}
+              contentLabel="noteBookInfo"
+              className="noteBookInfoModal"
+              style={{overlay: {backgroundColor: 'white'}}}
+              shouldCloseOnOverlayClick={false}
+            >
+              <NotebookInfo
+                closeNotebookInfo={this.closeNotebookInfo}
+                title={this.props.notebook.title}
+
+                />
+          </Modal>
 
       </div>
     );

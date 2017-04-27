@@ -7,6 +7,10 @@ class Api::NotebooksController < ApplicationController
     @notebook = Notebook.new(notebook_params)
     @notebook.author_id = current_user.id
 
+    if params[:notebook][:defaultNotebook]
+      @notebook.defaultNotebook = true
+    end
+
     if @notebook.save
       render json: [@notebook.title + ' saved!']
     else
@@ -52,6 +56,6 @@ class Api::NotebooksController < ApplicationController
   private
 
   def notebook_params
-    params.require(:notebook).permit(:title)
+    params.require(:notebook).permit(:title, :defaultNotebook)
   end
 end

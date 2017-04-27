@@ -10,23 +10,25 @@ class NotebookInfo extends React.Component {
 
     this.state = {
       title: "",
-      defaultNotebook: false,
+      defaultNotebook: false
     }
 
-    this.handleTitle = this.handleTitle.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
 
     this.deleteNotebook = this.deleteNotebook.bind(this);
     this.updateNotebook = this.updateNotebook.bind(this);
   }
 
-  handleTitle(e) {
-    this.setState({title: e.currentTarget.value});
-  }
+  handleInputChange(event) {
+    debugger
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
-  handleCheckbox(e) {
-    let result = !this.state.defaultNotebook
-    this.setState({defaultNotebook: result});
+    this.setState({
+      [name]: value
+    });
+    debugger
   }
 
   updateNotebook() {
@@ -36,11 +38,30 @@ class NotebookInfo extends React.Component {
 
   deleteNotebook() {
     debugger
-    this.props.deleteNotebook(this.props.params.notebookId)
+    this.props.deleteNotebook(this.props.notebook.id)
       .then(this.props.closeNotebookInfo);
   }
 
   render() {
+
+    // let notebook
+    //  notebookTitle, notebookId, notebookNoteCount
+    //     notebookCreatedAt, notebookUpdatedAt;
+    //
+    let title, id, note_count, created_at, updated_at;
+    if (this.props.notebook) {
+      ({title, id, note_count, created_at, updated_at} = this.props.notebook);
+    } else  {
+      title = id = note_count = created_at = updated_at = null;
+    }
+
+    debugger
+
+    // let notebookTitle = this.props.notebook ? this.props.notebook.title : null;
+    // let notebookId = this.props.notebook ? this.props.notebook.Id : null;
+    // let notebookTitle = this.props.notebook ? this.props.notebook.title : null;
+    // let notebookTitle = this.props.notebook ? this.props.notebook.title : null;
+
     return (
       <div className="notebookInfoPage">
         <div className="notebookInfoHeader">
@@ -51,8 +72,9 @@ class NotebookInfo extends React.Component {
         <div className="editNotebookSection">
 
           <input type="text"
-              onChange={this.handleTitle}
-              placeholder={this.props.notebook.title}
+              name="title"
+              onChange={this.handleInputChange}
+              placeholder={title}
               value={this.state.title}>
           </input>
 
@@ -62,10 +84,10 @@ class NotebookInfo extends React.Component {
               type="checkbox"
               name="defaultNotebook"
               checked={this.state.defaultNotebook}
-              onChange={this.handleCheckbox}/>
+              onChange={this.handleInputChange}/>
           </label>
 
-          <button onClick={this.removeNotebook}>Delete notebook</button>
+          <button onClick={this.deleteNotebook}>Delete notebook</button>
 
         </div>
           <button onClick={this.props.closeNotebookInfo}>Cancel</button>

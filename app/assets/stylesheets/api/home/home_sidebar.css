@@ -19,6 +19,7 @@
   height: 40px;
   width: auto;
   margin-top: 15px;
+  cursor: pointer;
 }
 
 .homeSidebar button,

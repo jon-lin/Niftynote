@@ -43,7 +43,7 @@ class NoteIndex extends React.Component {
 
     let colHeaderPart = <h1 className="notesIndexColHeaderPart">NOTES</h1>
 
-    if (this.props.location.pathname.match(/home\/notebooks\/\d+/)) {
+    if (this.props.notebook) {
       colHeaderPart = (
                       <div className="showNotebookNotesBlackBox">
                         <i onClick={this.openNotebookInfo} className="fa fa-info-circle" aria-hidden="true"></i>
@@ -55,6 +55,8 @@ class NoteIndex extends React.Component {
     // else if (this.props.location.pathname.match(/home\/tags\/\d+/)) {
     //     colHeaderPart = <h1>TAG: {this.props.tag.name}</h1>
     // }
+
+    let notebook = this.props.notebook ? this.props.notebook : null;
 
     return (
       <div className="entireNotesIndexCol">
@@ -81,8 +83,7 @@ class NoteIndex extends React.Component {
             >
               <NotebookInfo
                 closeNotebookInfo={this.closeNotebookInfo}
-                title={this.props.notebook}
-
+                notebook={notebook}
                 />
           </Modal>
 

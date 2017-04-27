@@ -8,6 +8,8 @@ class Api::NotebooksController < ApplicationController
     @notebook.author_id = current_user.id
 
     if params[:notebook][:defaultNotebook]
+      prev_default = current_user.notebooks.find_by_defaultNotebook(true)
+      prev_default.defaultNotebook = false
       @notebook.defaultNotebook = true
     end
 
@@ -45,7 +47,17 @@ class Api::NotebooksController < ApplicationController
   def destroy
     @notebook = current_user.notebooks.find(params[:id])
 
+    if @notebook == current_user.notebooks.find_by_defaultNotebook(true)
+      errors = ["Cannot delete your default notebook!"]
+      render json: errors, status: 422
+      return
+    end
+
     if @notebook.destroy
+      @notebook.notes.each do |note|
+        note.notebook = current_user.notebooks.find_by_defaultNotebook(true)
+      end
+
       render :show
     else
       errors = @notebook.errors.full_messages

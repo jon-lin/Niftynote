@@ -1,0 +1,17 @@
+/*remove this after done tesing with scrollbar*/
+.ql-snow, .entireNotebookScrollMenu {
+  display: none;
+}
+
+/*.entireNoteformTopbar*/
+
+.entireNotebookScrollMenu {
+  display: absolute;
+  z-index: 100;
+  right: 0;
+  width: 800px;
+}
+
+.entireNotebookScrollMenu selector {
+  width: 800px;
+}

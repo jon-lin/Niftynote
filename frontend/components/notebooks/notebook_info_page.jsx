@@ -47,6 +47,20 @@ class NotebookInfo extends React.Component {
       title = id = note_count = created_at = updated_at = defaultNotebook = null;
     }
 
+    let defaultNotebookCheckBox = null;
+    if (defaultNotebook === false) {
+      defaultNotebookCheckBox = (
+        <label>
+          Set as default notebook
+          <input
+            type="checkbox"
+            name="defaultNotebook"
+            checked={this.state.defaultNotebook}
+            onChange={this.handleInputChange}/>
+        </label>
+      )
+    }
+
     return (
       <div className="notebookInfoPage">
         <div className="notebookInfoHeader">
@@ -56,34 +70,32 @@ class NotebookInfo extends React.Component {
 
         <div className="editNotebookSection">
 
-          <input type="text"
-              name="title"
-              onChange={this.handleInputChange}
-              placeholder={title}
-              value={this.state.title}>
-          </input>
-
-          <ul>
-            <li>Note count: {note_count}</li>
-            <li>Created: {created_at}</li>
-            <li>Updated: {updated_at}</li>
-            <li>This notebook <strong>{defaultNotebook ? "is" : "is not"}</strong> the default notebook.</li>
-          </ul>
-
-          <label>
-            Set as default notebook
-            <input
-              type="checkbox"
-              name="defaultNotebook"
-              checked={this.state.defaultNotebook}
-              onChange={this.handleInputChange}/>
+          <label><strong>Title:</strong>
+            <input type="text"
+                name="title"
+                onChange={this.handleInputChange}
+                placeholder={title}
+                value={this.state.title}>
+            </input>
           </label>
 
-          <button onClick={this.deleteNotebook}>Delete notebook</button>
+          <ul>
+            <li><strong>Note count</strong>: {note_count}</li>
+            <li><strong>Created</strong>: {new Date(created_at).toLocaleString()}</li>
+            <li><strong>Updated</strong>: {new Date(updated_at).toLocaleString()}</li>
+            <li>This notebook <strong>{defaultNotebook ? "is" : "is not"} the default notebook.</strong></li>
+          </ul>
+
+          {defaultNotebookCheckBox}
+
+          <a href="" onClick={this.deleteNotebook}>Delete notebook</a>
 
         </div>
-          <button onClick={this.props.closeNotebookInfo}>Cancel</button>
-          <button onClick={this.updateNotebook}>Save</button>
+
+          <div className="buttons">
+            <button onClick={this.props.closeNotebookInfo}>Cancel</button>
+            <button onClick={this.updateNotebook}>Save</button>
+          </div>
       </div>
     );
   }

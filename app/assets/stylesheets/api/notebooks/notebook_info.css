@@ -1,0 +1,122 @@
+/*this grabs the modal when it appears,
+but it's fragile. selector taken from
+selector tool in chrome dev tools*/
+
+
+
+body > div:nth-child(5) > div {
+  z-index: 4;
+}
+
+.notebookInfoPage {
+  outline: none;
+  height: 100vh;
+  display: flex;
+  padding-top: 190px;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  -webkit-animation: fadein 0.5s;
+}
+
+.notebookInfoPage .notebookInfoHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgb(212, 210, 210);
+}
+
+.notebookInfoPage .notebookInfoHeader > * {
+  padding-top: 20px;
+}
+
+.editNotebookSection {
+  margin-top: 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  text-align: center;
+
+  width: 545px;
+}
+
+/* .editNotebookSection > div > * {
+  margin: 10px;
+} */
+
+.notebookInfoPage a {
+  text-decoration: none;
+  color:  #28A956;
+}
+
+.notebookInfoPage i {
+  font-size: 40px;
+}
+
+.notebookInfoPage ul {
+  list-style: none;
+}
+
+.notebookInfoPage ul li {
+  font-weight: 300;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.notebookInfoPage button {
+  background-color: #28A956;
+  width: 190px;
+  height: 40px;
+  margin: 20px 5px 5px 5px;
+  border-radius: 4px;
+  border-style: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.notebookInfoPage input[type="text"] {
+  margin: 10px;
+  height: 35px;
+  width: 450px;
+  border-radius: 4px;
+  border-style: none;
+  border: 1px solid  rgba(206, 206, 206, 0.62);
+  font-size: 18px;
+  outline: none;
+}
+
+.notebookInfoPage input[type="checkbox"] {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.notebookInfoPage button:first-of-type  {
+  background-color: rgba(206, 206, 206, 0.62);
+  color: gray;
+}
+
+.notebookInfoPage button:last-of-type:hover {
+  background: #387a09;
+}
+
+.notebookInfoPage button:first-of-type:hover {
+  background: lightgray;
+  color: white;
+}
+
+.notebookInfoPage .buttons {
+  display: flex;
+  margin-top: 30px;
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

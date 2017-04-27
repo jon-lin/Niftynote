@@ -19,6 +19,9 @@ body > div:nth-child(4) > div {
 }
 
 .topNotebookColBar {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
@@ -82,6 +85,12 @@ body > div:nth-child(4) > div {
   border: 1px solid #cccccc;
   text-align: center;
   font-weight: 100;
+}
+
+.noteBookListContainer {
+  height: calc(100% - 135px);
+  margin-top: 135px;
+  overflow: auto;
 }
 
 .noteBookList {

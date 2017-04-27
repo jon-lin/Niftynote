@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNotebook } from '../../actions/notebooks_actions';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+// import { withRouter } from 'react-router';
 
 class NewNotebook extends React.Component {
   constructor(props) {
@@ -11,22 +11,9 @@ class NewNotebook extends React.Component {
     this.state = {title: ""};
   }
 
-//   delayFunc(time) {
-//     return new Promise(function())
-//   }
-//
-//   function delay(t) {
-//    return new Promise(function(resolve) {
-//        setTimeout(resolve, t)
-//    });
-// }
-
-  createNotebook(e) {
-    debugger
+  createNotebook() {
     this.props.createNotebook(this.state)
       .then(this.props.closeNewNotebookModal)
-      .then(setTimeout(null, 3000))
-      .then(this.props.router.push(`/home/notebooks/${this.props.notebooks[this.props.notebooks.length-1].id}`))
   }
 
   receiveTitle(e) {
@@ -51,15 +38,6 @@ class NewNotebook extends React.Component {
 
 }
 
-
-// <form onSubmit={this.createNotebook}>
-//
-//
-//
-// </form>
-// <button onClick={this.props.closeModal}>Cancel</button>
-
-
 const mapStateToProps = (state) => {
   return {
     notebooks: Object.values(state.notebooks)
@@ -72,4 +50,33 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewNotebook));
+export default connect(mapStateToProps, mapDispatchToProps)(NewNotebook);
+
+//interesting experiment with .then and setTimeout
+
+// const delayFunc = (time) => {
+//   return new Promise(function(resolve) {
+//     setTimeout(resolve, time)
+//   });
+// }
+
+// .then(
+//   () => {
+//   let that = this;
+//   return delayFunc(2000)
+//     .then(() => {
+//       that.props.closeNewNotebookModal;
+//       that.props.router.push(`/home/notebooks/3`);
+//     });
+// }
+// )
+
+//this is kind of not working
+// this.props.router.push(`/home/notebooks/${this.props.notebooks[this.props.notebooks.length-1].id}`)
+  // .then(this.props.router.push(`/home/notebooks/${this.props.notebooks[this.props.notebooks.length-1].id}`))
+// <form onSubmit={this.createNotebook}>
+//
+//
+//forms don't work in react components!!!
+// </form>
+// <button onClick={this.props.closeModal}>Cancel</button>

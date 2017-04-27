@@ -71,9 +71,11 @@ class NotebookIndex extends React.Component {
 
         </div>
 
-        <ul className="noteBookList">
-          {notebooksList}
-        </ul>
+        <div className="noteBookListContainer">
+          <ul className="noteBookList">
+            {notebooksList}
+          </ul>
+        </div>
 
         <Modal
               isOpen={this.state.newNotebookModalIsOpen}

@@ -20,7 +20,6 @@ class NotebookInfo extends React.Component {
   }
 
   handleInputChange(event) {
-    debugger
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -28,7 +27,6 @@ class NotebookInfo extends React.Component {
     this.setState({
       [name]: value
     });
-    debugger
   }
 
   updateNotebook() {
@@ -37,30 +35,17 @@ class NotebookInfo extends React.Component {
   }
 
   deleteNotebook() {
-    debugger
     this.props.deleteNotebook(this.props.notebook.id)
       .then(this.props.closeNotebookInfo);
   }
 
   render() {
-
-    // let notebook
-    //  notebookTitle, notebookId, notebookNoteCount
-    //     notebookCreatedAt, notebookUpdatedAt;
-    //
-    let title, id, note_count, created_at, updated_at;
+    let title, id, note_count, created_at, updated_at, defaultNotebook;
     if (this.props.notebook) {
-      ({title, id, note_count, created_at, updated_at} = this.props.notebook);
+      ({title, id, note_count, created_at, updated_at, defaultNotebook} = this.props.notebook);
     } else  {
-      title = id = note_count = created_at = updated_at = null;
+      title = id = note_count = created_at = updated_at = defaultNotebook = null;
     }
-
-    debugger
-
-    // let notebookTitle = this.props.notebook ? this.props.notebook.title : null;
-    // let notebookId = this.props.notebook ? this.props.notebook.Id : null;
-    // let notebookTitle = this.props.notebook ? this.props.notebook.title : null;
-    // let notebookTitle = this.props.notebook ? this.props.notebook.title : null;
 
     return (
       <div className="notebookInfoPage">
@@ -77,6 +62,13 @@ class NotebookInfo extends React.Component {
               placeholder={title}
               value={this.state.title}>
           </input>
+
+          <ul>
+            <li>Note count: {note_count}</li>
+            <li>Created: {created_at}</li>
+            <li>Updated: {updated_at}</li>
+            <li>This notebook <strong>{defaultNotebook ? "is" : "is not"}</strong> the default notebook.</li>
+          </ul>
 
           <label>
             Set as default notebook

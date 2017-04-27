@@ -28,7 +28,7 @@ class Api::NotebooksController < ApplicationController
 
   def update
     @notebook = current_user.notebooks.find(params[:id])
-
+    debugger
     if params[:notebook][:defaultNotebook] == "true"
       prev_default = current_user.notebooks.find_by_defaultNotebook(true)
       prev_default.update({defaultNotebook: false})
@@ -58,11 +58,9 @@ class Api::NotebooksController < ApplicationController
       default_notebook_id = current_user.notebooks.find_by_defaultNotebook(true).id
 
       @notebook.notes.each do |note|
-        debugger
         note.update({notebook_id: default_notebook_id})
       end
 
-      debugger
       render :show
     else
       errors = @notebook.errors.full_messages

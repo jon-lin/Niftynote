@@ -46,10 +46,6 @@
   margin: 10px 10px 5px 20px;
 }
 
-.entireNotesIndexCol .noteItemBox {
-  border-bottom: 1px solid rgb(212, 210, 210);
-}
-
 /*styling for the notebook show page*/
 
 .entireNotesIndexCol .showNotebookNotesBlackBox {

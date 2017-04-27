@@ -1,6 +1,4 @@
 import React from 'react';
-import NoteIndexCopy from './note_index_copy';
-import NotebookShowContainer from '../notebooks/notebook_show_container';
 import TagShowContainer from '../tags/tag_show_container';
 import NoteItem from './note_item'
 

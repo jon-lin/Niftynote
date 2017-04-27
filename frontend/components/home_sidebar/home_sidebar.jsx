@@ -64,7 +64,7 @@ class HomeSidebar extends React.Component {
       <div className="homeSidebar">
 
         <div className="imgcontainer">
-          <img src='/images/N.png'></img>
+          <img onClick={() => this.props.router.push('/home')} src='/images/N.png'></img>
         </div>
 
         <div className="top3buttons">

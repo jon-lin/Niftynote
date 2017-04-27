@@ -81,7 +81,7 @@ class NoteIndex extends React.Component {
             >
               <NotebookInfo
                 closeNotebookInfo={this.closeNotebookInfo}
-                title={this.props.notebook.title}
+                title={this.props.notebook}
 
                 />
           </Modal>

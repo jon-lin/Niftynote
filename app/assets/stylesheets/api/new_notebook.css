@@ -1,10 +1,19 @@
-/*this piece of CSS is to target NewNotebook modal's z-index upon appearance*/
+/*this piece of CSS is to target NewNotebook modal's z-index upon appearance
+it appears to be very fragile */
 
-body > div:nth-child(6) > div {
+.ReactModal__Overlay {
   z-index: 4;
 }
 
+/*the below is what needs to be targeted*/
+/*class="ReactModal__Overlay ReactModal__Overlay--after-open"*/
+
+/*this works but is brittle:
+/*body > div:nth-child(7) > div > div*/
+
 .newNotebookPage {
+  /*position: absolute;
+  z-index: 4;*/
   outline: none;
   height: 100vh;
   display: flex;

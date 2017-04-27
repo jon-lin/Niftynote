@@ -52,7 +52,7 @@ class NotebookInfo extends React.Component {
 
           <input type="text"
               onChange={this.handleTitle}
-              placeholder={this.props.title}
+              placeholder={this.props.notebook.title}
               value={this.state.title}>
           </input>
 

@@ -10,21 +10,13 @@ class NotebookItem extends React.Component {
     this.deleteNotebook = this.deleteNotebook.bind(this);
   }
 
-  // componentWillReceiveProps(newProps) {
-    // debugger
-    // if newProps.notebook
-    // this.props.router.push(`/home/notebooks`)
-  // }
-
   openNotebook(e) {
     this.props.closeNotebookIndex();
     this.props.router.push(`/home/notebooks/${e.currentTarget.value}`);
   }
 
   deleteNotebook(e) {
-    debugger
     this.props.deleteNotebook(e.currentTarget.getAttribute('value'))
-      // .then(`/home/notebooks/${}`)
     e.stopPropagation();
   }
 

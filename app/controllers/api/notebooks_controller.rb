@@ -28,15 +28,17 @@ class Api::NotebooksController < ApplicationController
 
   def update
     @notebook = current_user.notebooks.find(params[:id])
-    debugger
+
+    # if the user is looking just to update the defaultNotebook status, maybe allow it with the following?
+    # if (params[:notebook][:title] == "") && (params[:notebook][:defaultNotebook] == "true") && (@notebook.title != "")
+    #   notebook_params[:title] = @notebook.title
+    # end
+    #
     if params[:notebook][:defaultNotebook] == "true"
       prev_default = current_user.notebooks.find_by_defaultNotebook(true)
       prev_default.update({defaultNotebook: false})
     end
 
-    # the below may not work, @notebook's author_id might need to be included?
-    # ANS: shouldn't have to be included because the editor IS the current user,
-    # and the notebook already exists and has association to the current user
     if @notebook.update(notebook_params)
       render :show
     else

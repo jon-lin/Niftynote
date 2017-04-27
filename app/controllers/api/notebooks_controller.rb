@@ -8,7 +8,7 @@ class Api::NotebooksController < ApplicationController
     @notebook.author_id = current_user.id
 
     if @notebook.save
-      render json: [@notebook.title + ' saved!']
+      render :show
     else
       errors = @notebook.errors.full_messages
       render json: errors, status: 422

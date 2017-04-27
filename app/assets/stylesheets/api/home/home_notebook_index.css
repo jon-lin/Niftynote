@@ -123,6 +123,8 @@ body > div:nth-child(4) > div {
   margin-left: 20px;
 }
 
+
+
 .notebook:hover {
   background-color: #2DBE60;
   color: white;
@@ -166,8 +168,9 @@ body > div:nth-child(4) > div {
   color: #E6E6E6;
 }
 
-/*only show this button when features are developed*/
-.notebook .fa-comments {
+/*only show these buttons when features are developed*/
+.notebook .fa-comments,
+.notebook .fa-star {
   display: none;
 }
 

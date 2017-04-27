@@ -1,13 +1,14 @@
 import React from 'react';
 import { createNotebook } from '../../actions/notebooks_actions';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 
 class NewNotebook extends React.Component {
   constructor(props) {
     super(props);
     this.createNotebook = this.createNotebook.bind(this);
     this.receiveTitle = this.receiveTitle.bind(this);
+    this.closeNewNotebookWindow = this.closeNewNotebookWindow.bind(this);
     this.state = {title: ""};
   }
 
@@ -20,6 +21,14 @@ class NewNotebook extends React.Component {
     this.setState({title: e.currentTarget.value});
   }
 
+  closeNewNotebookWindow() {
+    if (this.props.location.pathname === '/newnotebook') {
+      this.props.router.push('/home');
+    } else {
+      this.props.closeNewNotebookModal();
+    }
+  }
+
   render() {
     return (
       <div className="newNotebookPage">
@@ -29,7 +38,7 @@ class NewNotebook extends React.Component {
         </div>
         <input value={this.state.title} onChange={this.receiveTitle} placeholder="Title your notebook" type="text"></input>
         <div className="buttons">
-          <button onClick={this.props.closeNewNotebookModal}>Cancel</button>
+          <button onClick={this.closeNewNotebookWindow}>Cancel</button>
           <button onClick={this.createNotebook}>Create notebook</button>
         </div>
       </div>
@@ -50,7 +59,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewNotebook);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewNotebook));
 
 //interesting experiment with .then and setTimeout
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNotebooks, fetchNotebook } from '../../actions/notebooks_actions';
 import { updateNote } from '../../actions/notes_actions';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import NotebookItem from './notebook_item';
 
 class NotebookScrollbar extends React.Component {
@@ -10,6 +10,7 @@ class NotebookScrollbar extends React.Component {
      super(props);
      this.state = {value: this.props.selectedNotebook.id};
      this.handleChange = this.handleChange.bind(this);
+    //  this.createNewNotebook = this.createNewNotebook.bind(this);
    }
 
    componentDidMount() {
@@ -22,9 +23,17 @@ class NotebookScrollbar extends React.Component {
         });
     }
 
+    // createNewNotebook() {
+    //   console.log("hello");
+    // }
+
    handleChange(e) {
-     this.setState({value: e.target.value});
-     this.props.updateNote({id: this.props.currentNote.id, notebook_id: e.target.value});
+     if (e.target.value !== "Create new notebook") {
+       this.setState({value: e.target.value});
+       this.props.updateNote({id: this.props.currentNote.id, notebook_id: e.target.value});
+     } else {
+       this.props.router.push('/newnotebook');
+     }
    }
 
     render() {
@@ -47,8 +56,10 @@ class NotebookScrollbar extends React.Component {
              <label>
                Notebooks:
                <select value={this.state.value} onChange={this.handleChange}>
-                 <div value="Create new notebook"></div>
-                 {notebooksList}
+                   <option value="Create new notebook">
+                     Create new notebook
+                   </option>
+                   {notebooksList}
                </select>
              </label>
            </form>
@@ -90,7 +101,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NotebookScrollbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NotebookScrollbar));
 
 //  THIS CODE IS FOR MAKING DISTINCTION BETWEEN WHETHER TO SET SELECTED
 // NOTEBOOK OR DEFAULT NOTEBOOK

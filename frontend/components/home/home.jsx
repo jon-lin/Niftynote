@@ -26,12 +26,12 @@ class Home extends React.Component {
 
           {this.props.children}
 
-          <NotebookScrollbar formType={formType}/>
-
-          <div className="noteTopbarANDnoteForm">
+          <div className="homeRightSide">
             <NoteFormTopbar />
+            <NotebookScrollbar formType={formType}/>
             <NoteForm />
           </div>
+
       </div>
     );
   }
@@ -50,6 +50,8 @@ export default Home;
 // <Notes />
 // <Note />
 
+// <div className="noteTopbarANDnoteForm">
+// </div>
 
 //experimentating with getting a initial currentNote laoded isn't working..
 // componentWillReceiveProps(newProps) {

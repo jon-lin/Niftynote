@@ -50,13 +50,14 @@ class Api::NotebooksController < ApplicationController
     #   mod_params = notebook_params
     # end
     #
-    # prev_default = current_user.notebooks.find_by_defaultNotebook(true)
+    prev_default = current_user.notebooks.find_by_defaultNotebook(true)
 
     # if @notebook.update(mod_params)
     if @notebook.update(notebook_params)
       # if prev_default && (mod_params[:defaultNotebook] == true)
-      #   prev_default.update({defaultNotebook: false})
-      # end
+      if prev_default && (params[:defaultNotebook] == "true")
+        prev_default.update({defaultNotebook: false})
+      end
       render :show
     else
       errors = @notebook.errors.full_messages

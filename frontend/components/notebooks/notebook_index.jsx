@@ -1,14 +1,33 @@
 import React from 'react';
 import NotebookItem from './notebook_item';
+import NewNotebook from './new_notebook';
+import Modal from 'react-modal';
 
 class NotebookIndex extends React.Component {
-
   constructor(props) {
     super(props);
+    this.state = { newNotebookModalIsOpen: false };
+
+    this.openNewNotebookModal = this.openNewNotebookModal.bind(this);
+    this.closeNewNotebookModal = this.closeNewNotebookModal.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchNotebooks();
+  }
+
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
+
+  openNewNotebookModal() {
+    // if (!this.state.newNotebookModalIsOpen) {
+      this.setState({newNotebookModalIsOpen: true});
+    // }
+  }
+
+  closeNewNotebookModal() {
+    this.setState({newNotebookModalIsOpen: false});
   }
 
   render() {
@@ -17,7 +36,7 @@ class NotebookIndex extends React.Component {
                   formType="panel"
                   notebook={notebook}
                   key={notebook.id}
-                  closeModal={this.props.closeModal}
+                  closeNotebookIndex={this.props.closeNotebookIndex}
                 />
               );
     });
@@ -39,7 +58,7 @@ class NotebookIndex extends React.Component {
 
             <text>NOTEBOOKS</text>
 
-            <button>
+            <button onClick={this.openNewNotebookModal}>
               <i className="fa fa-book" aria-hidden="true"></i>
               <i className="fa fa-plus" aria-hidden="true"></i>
             </button>
@@ -55,6 +74,17 @@ class NotebookIndex extends React.Component {
         <ul className="noteBookList">
           {notebooksList}
         </ul>
+
+        <Modal
+              isOpen={this.state.newNotebookModalIsOpen}
+              onRequestClose={this.closeNewNotebookModal}
+              contentLabel="newNotebook"
+              className="newNotebookModal"
+              style={{overlay: {backgroundColor: 'white'}}}
+              shouldCloseOnOverlayClick={false}
+            >
+              <NewNotebook closeNewNotebookModal={this.closeNewNotebookModal} />
+          </Modal>
 
       </div>
     );

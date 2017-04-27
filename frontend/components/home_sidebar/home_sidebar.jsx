@@ -121,7 +121,7 @@ class HomeSidebar extends React.Component {
           contentLabel="notebookIndexModal"
           className="notebookModal"
         >
-          <NotebookIndexContainer closeModal={this.closeNotebookIndex}/>
+          <NotebookIndexContainer closeNotebookIndex={this.closeNotebookIndex}/>
         </Modal>
 
       </div>

@@ -5,7 +5,7 @@ import NotebookIndex from './notebook_index';
 const mapStateToProps = (state, ownProps) => {
   return {
     notebooks: Object.values(state.notebooks),
-    closeModal: ownProps.closeModal
+    closeNotebookIndex: ownProps.closeNotebookIndex
   };
 };
 

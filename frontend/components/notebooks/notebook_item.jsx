@@ -8,7 +8,7 @@ class NotebookItem extends React.Component {
   }
 
   openNotebook(e) {
-    this.props.closeModal();
+    this.props.closeNotebookIndex();
     this.props.router.push(`/home/notebooks/${e.currentTarget.value}`);
   }
 

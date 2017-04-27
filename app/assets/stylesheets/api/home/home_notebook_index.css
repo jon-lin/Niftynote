@@ -1,5 +1,4 @@
 /*this piece of CSS is to target notebook index modal's z-index upon appearance*/
-
 body > div:nth-child(4) > div {
   z-index: 3;
 }

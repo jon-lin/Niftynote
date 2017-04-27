@@ -1,0 +1,15 @@
+/*this piece of CSS is to target NewNotebook modal's z-index upon appearance*/
+body > div:nth-child(6) > div {
+  z-index: 6;
+  border: 2px solid red;
+}
+
+
+.newNotebookModal {
+  /*position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;*/
+}

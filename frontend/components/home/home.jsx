@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import NoteIndexContainer from '../notes/note_index_container';
 import NoteForm from '../notes/note_form';
 import NoteFormTopbar from '../notes/note_form_top_bar';
 import HomeSidebar from '../home_sidebar/home_sidebar';
@@ -23,18 +22,16 @@ class Home extends React.Component {
 
     return (
       <div className="homeTotalLayout">
-        <HomeSidebar />
+          <HomeSidebar />
 
-            {this.props.children}
+          {this.props.children}
 
-            <NotebookScrollbar formType={formType}/>
+          <NotebookScrollbar formType={formType}/>
 
-            <div className="noteTopbarANDnoteForm">
-              <NoteFormTopbar />
-              <NoteForm />
-            </div>
-
-
+          <div className="noteTopbarANDnoteForm">
+            <NoteFormTopbar />
+            <NoteForm />
+          </div>
       </div>
     );
   }

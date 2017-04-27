@@ -1,7 +1,7 @@
 /*remove this after done tesing with scrollbar*/
-/*.entireNoteformTopbar, .ql-snow, .entireNotebookScrollMenu {
+.entireNoteformTopbar, .ql-snow, .entireNotebookScrollMenu {
   display: none;
-}*/
+}
 
 .entireNotebookScrollMenu {
   display: absolute;

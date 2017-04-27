@@ -1,4 +1,5 @@
 .entireNotesIndexCol {
+  /*position: relative;*/
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,12 +14,16 @@
   position: absolute;
   z-index: 1;
   background-color: white;
-  width: 310px;
-  padding: 20px 20px 13px 20px;
+  width: 338px;
+  height: auto;
   color: gray;
 }
 
-/*hide the options button until feature is implemented*/
+.entireNotesIndexCol .notesIndexColHeaderPart {
+  padding: 20px 20px 10px 20px;
+}
+
+/*this hides the options button until feature is implemented*/
 .entireNotesIndexCol .notesColTop button {
   display: none;
 }
@@ -38,9 +43,47 @@
 .notesTopBarSecondRow {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin: 10px 10px 5px 20px;
 }
 
 .entireNotesIndexCol .noteItemBox {
   border-bottom: 1px solid rgb(212, 210, 210);
+}
+
+/*styling for the notebook show page*/
+
+.entireNotesIndexCol .showNotebookNotesBlackBox {
+  position: relative;
+  background-color: #393D41;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.entireNotesIndexCol .showNotebookNotesBlackBox i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.entireNotesIndexCol .showNotebookNotesBlackBox > *:not(i) {
+  margin: 10px;
+}
+
+.entireNotesIndexCol .showNotebookNotesBlackBox h1 {
+  margin-top: 30px;
+  font-size: 35px;
+}
+
+/*only display the button after it works/does something*/
+.entireNotesIndexCol .showNotebookNotesBlackBox button {
+  display: none;
 }

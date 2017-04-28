@@ -1,0 +1,113 @@
+/*take out all buttons that don't do anything*/
+
+.homeSidebar .fa-star,
+.homeSidebar .slideWorkChat,
+.homeSidebar .fa-search,
+.homeSidebar .fa-tags,
+#root > div > div > div.homeLeftSide > div.homeSidebar > div.bottom4buttons > button.slideShortcuts {
+  display: none;
+}
+
+.homeSidebar {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  background-color: #F8F8F8;
+  height: 100vh;
+  min-height: 600px;
+  border-right: 1px solid lightgray;
+}
+
+.homeSidebar .imgcontainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.homeSidebar img {
+  height: 40px;
+  width: auto;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.homeSidebar button,
+.homeSidebar a {
+  font-size: 20px;
+  background-color: transparent;
+  color: #2DBE60;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.homeSidebar .fa-plus {
+  border: 1px solid #2DBE60;
+  border-radius: 50%;
+  padding: 5px 7px 5px 7px;
+  background-color: white;
+}
+
+.homeSidebar .fa-search, .fa-comment {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  padding: 7px;
+  background-color: white;
+}
+
+.homeSidebar .bottom4buttons button:hover,
+.homeSidebar .profilecontainer button:hover {
+  background-color: #2DBE60;
+  transition: all 0.4s ease 0s;
+  color: white;
+}
+
+.homeSidebar a:hover .fa-plus,
+.homeSidebar a:hover .fa-search,
+.homeSidebar button:hover .fa-comment {
+  background-color: #2DBE60;
+  transition: all 0.4s ease 0s;
+  color: white;
+  border: none;
+}
+
+/*.homeSidebar .fa-plus:hover:after {
+  content: "Create a note";
+  position: absolute;
+}*/
+
+.homeSidebar .slideWorkChat {
+  border: 0;
+  padding: 0;
+}
+
+.homeSidebar .top3buttons,
+.homeSidebar .bottom4buttons,
+.homeSidebar .profilecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.homeSidebar .top3buttons {
+  margin-top: 15px;
+  flex: 3;
+}
+
+.homeSidebar .bottom4buttons {
+  flex: 6;
+}
+
+.homeSidebar .profilecontainer {
+  flex: 1;
+  justify-content: center;
+  border-top: 1px solid rgb(212, 210, 210);
+}
+
+.homeSidebar .profile {
+  font-size: 40px;
+}

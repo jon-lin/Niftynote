@@ -1,0 +1,13 @@
+.loadingContainer {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  width: 350px;
+}
+
+/*.loadingContainer img {
+  width: 50px;
+  height: auto;
+}*/

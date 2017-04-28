@@ -56,12 +56,8 @@ class NotebookScrollbar extends React.Component {
           <form className="selectNotebookPartofScrollMenu" onSubmit={this.handleSubmit}>
              <label>
                <select id="soflow-color" value={this.state.value} onChange={this.handleChange}>
-                 <option default >
-                   Move your note into another notebook or make a new one
-                 </option>
-
                  <option value="Create new notebook">
-                   Create new notebook
+                   CREATE NEW NOTEBOOK
                  </option>
                    {notebooksList}
                </select>

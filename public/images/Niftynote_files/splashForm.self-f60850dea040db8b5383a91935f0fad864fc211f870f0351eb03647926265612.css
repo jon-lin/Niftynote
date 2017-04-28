@@ -1,0 +1,204 @@
+/*some styling applies to both plain and splash forms*/
+
+
+.splashForm {
+  height: 100%;
+}
+
+.splashForm .entireFormPage {
+  position: relative;
+  height: 100%;
+  font-family: 'Yantramanav', sans-serif;
+  min-height: 800px;
+  min-width: 745px;
+}
+
+.splashForm header {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.splashForm header .navbarLeft {
+  display: flex;
+  align-items: center;
+  margin-left: 17px;
+}
+
+.splashForm header .navbarLeft > * {
+  margin: 3px;
+}
+
+.splashForm header .navbarLeft img {
+  height: 36px;
+}
+
+.splashForm header .navbarRight > * {
+  margin: 8px;
+}
+
+.splashForm header .navbarRight i:hover {
+  color: green;
+  cursor: pointer;
+}
+
+.splashForm header h1 {
+  font-size: 40px;
+  color: #2DBE60;
+  font-weight: 500;
+}
+
+.splashForm header a {
+  text-decoration: none;
+  color: gray;
+  font-size: 18px;
+  font-weight: 300;
+  transition: all 0.3s ease 0s;
+}
+
+.splashForm header a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.splashForm .centerPanelContainer {
+  position: relative;
+  height: 100vh;
+}
+
+.splashForm .centerPanel {
+  position: absolute;
+  width: 50%;
+  top: 15%;
+  left: 25%;
+  text-align: center;
+}
+
+.splashForm .centerPanel > * {
+  margin: 30px;
+}
+
+.splashForm .backgroundImg {
+  width: 100%;
+  height: 100%;
+}
+
+.splashForm .centerPanel .notetakingheader {
+  font-size: 50px;
+  text-align: center;
+  color: white;
+  font-weight: 200;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.splashForm .centerPanel .description {
+  font-size: 25px;
+  font-weight: 200;
+  text-align: center;
+  color: white;
+  margin: 8px;
+}
+
+.splashForm input:not(:last-child) {
+  width: 230px;
+  height: 38px;
+  padding: 3px;
+  margin: 5px;
+  padding-left: 9.5px;
+  font-size: smaller;
+  border-radius: 3.5px;
+  outline-color: #2DBE60;
+  /*transition: all 0.2s fadein 1s;*/
+}
+
+/*.splashForm input:not(:last-child):hover {
+  border-color: #2DBE60;
+  border-width: 3px;
+}*/
+
+.splashForm [type="submit"] {
+  background-color: #28A956;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border-style: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+[type="submit"]:hover {
+  background: #387a09;
+}
+
+.splashForm button {
+  background-color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 500;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background: #CCCCCC;
+}
+
+.splashForm .lineforOR {
+  display: flex;
+  justify-content: space-around;
+  margin: 13px;
+}
+
+.splashForm .lineforOR .line {
+  background: rgba(255,255,255,0.2);
+  width: 45%;
+  height: 1px;
+  display: block;
+  position: relative;
+  top: 11.5px;
+}
+
+.splashForm .lineforOR text {
+  color: white;
+  font-size: 17px;
+  font-weight: 200;
+}
+
+.splashForm .splashFooter {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 1px solid #414141;
+  text-align: center;
+  background-color: #414141;
+  color: white;
+  font-size: 18px;
+}
+
+.splashForm .splashFooter a {
+  color:  #2DBE60;
+  text-decoration: none;
+  cursor: pointer
+}
+
+/*for getting the errors to show up*/
+.splashForm ul {
+  color: white;
+  list-style: none;
+}
+
+.splashForm #plainFormAltLink {
+  display: none;
+}

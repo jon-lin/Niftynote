@@ -69,7 +69,7 @@ class HomeSidebar extends React.Component {
 
         <div className="top3buttons">
           <Link className="addNewNote">
-            <i className="fa fa-plus" aria-hidden="true"></i>
+            <i  onClick={() => this.props.router.push('/newnote')} className="fa fa-plus" aria-hidden="true"></i>
           </Link>
 
           <Link className="searchNotebooks">

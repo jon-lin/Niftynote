@@ -10,11 +10,22 @@ class NoteForm extends React.Component {
   constructor(props) {
 
     let delayTimer = () => setTimeout(() => {
+
+
+      //these lines are a temporary fix for initial render problems
+      let noteId;
+      if (this.props.currentNote) {
+        noteId = this.props.currentNote.id
+      } else {
+        return null
+      }
+
+
       return this.props.updateNote(
             {
               body: this.state.body,
               title: this.state.title,
-              id: this.props.currentNote.id
+              id: noteId
             }
           )
     }, 1000)

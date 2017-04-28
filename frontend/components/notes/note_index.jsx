@@ -17,7 +17,7 @@ class NoteIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchNotes()
-      .then(() => this.props.fetchNote(this.props.notes[0].id))
+      // .then(() => this.props.fetchNote(this.props.notes[0].id))
       .then(() => Modal.setAppElement('body'));
 
       // this line below is necessary to refresh the 'currentNote' in the store,

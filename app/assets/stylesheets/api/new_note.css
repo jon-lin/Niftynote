@@ -1,0 +1,62 @@
+.quill2bigContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quillContainer2 {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  min-width: 300px;
+  height: 100%;
+}
+
+.quillContainer2 > div.quill > div.ql-container.ql-snow > div.ql-editor {
+  margin-top: 60px;
+}
+
+.quillContainer2 > div.quill > div.ql-toolbar.ql-snow {
+  min-width: 570px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-top: -10px;
+}
+
+.ql-editor {
+  height: 70vh;
+  font-size: 30px;
+}
+
+.ql-container.ql-snow {
+  height: 70vh;
+}
+
+/*margin-top: 60px;*/
+
+.quillContainer2 {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+}
+
+.quillContainer2 > input[type="text"] {
+  /*border: 10px solid blue;*/
+  /*width: 100%;*/
+  outline: none;
+  color: #2DBE60;
+  font-size: 45px;
+  font-weight: 200;
+  /*padding: 0px 15px 0px 15px;*/
+  overflow: hidden;
+  position: absolute;
+  top: 60px;
+  width: 100%;
+}
+
+.quillContainer2 button:last-child {
+  margin: 1px;
+}

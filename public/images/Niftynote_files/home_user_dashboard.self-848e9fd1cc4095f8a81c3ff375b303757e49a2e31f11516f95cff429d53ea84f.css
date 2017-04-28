@@ -1,0 +1,95 @@
+/*CSS below apparently necessary to target modal's z-index*/
+
+body > div:nth-child(3) > div {
+  z-index: 3;
+}
+
+.userDashboardModal {
+  position: absolute;
+  z-index: 3;
+  bottom: 40px;
+  left: 80px;
+  background-color: white;
+  font-family: 'Yantramanav', sans-serif;
+  text-align: center;
+  font-size: 20px;
+  outline: none;
+  border: 2px solid rgba(41, 179, 91, 0.36);
+  -webkit-animation: fadein 0.5s;
+}
+
+.userDashboardModal button {
+  background-color: #28A956;
+  width: 160px;
+  height: 40px;
+  border-radius: 4px;
+  border-style: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.userDashboardModal > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDashboardModal > div > * {
+  margin: 15px;
+}
+
+.userDashboardModal img {
+  height: 80px;
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};
+
+/*
+
+#modaltofade {
+  -webkit-animation: fadeout 2s;
+  opacity: 0.5;
+}
+
+@-webkit-keyframes fadeout {
+  from { opacity: 1 }
+  to { opacity: 0 }
+};*/
+
+/*
+.ReactModalPortal div {
+  -webkit-animation: fadeout 2s;
+  background-color: yellow;
+}
+
+*/
+
+/*ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: transparent;"><div class="ReactModal__Content ReactModal__Content--after-open userDashboardModal" tabindex="-1" aria-label="userDashboard"><div><h1><!-- react-text: 5 -->Welcome <!-- /react-text --><!-- react-text: 6 -->guest@example.com<!-- /react-text --><!-- react-text: 7 -->!<!-- /react-text --></h1><button>Sign Out</button></div></div></div></div>*/
+
+/*another way to have things slide in*/
+
+/*@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}*/
+
+/*experiments trying to get modal to transition"*/
+
+/*transition: all 1s ease 2s;*/
+/*-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;*/
+/*transition-property: background-color, color;
+transition-duration: 1s;
+transition-timing-function: ease-out;*/

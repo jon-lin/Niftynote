@@ -1,0 +1,138 @@
+.plainForm {
+  background: #F3F3F3;
+  border-top: 3.5px solid #2DBE60;
+}
+
+.plainForm .entireFormPage {
+  height: 100vh;
+  font-family: 'Yantramanav', sans-serif;
+  min-height: 660px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+  text-align: center;
+}
+
+.plainForm .plainHeader img {
+  height: 70px;
+  margin-bottom: 15px;
+}
+
+.plainForm .plainHeader h1 {
+  display: inherit;
+  margin-bottom: 25px;
+  font-size: 40px;
+  font-weight: 200;
+  color: darkgray;
+}
+
+.plainForm .centerPanel {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(212, 210, 210);
+  padding: 10px;
+}
+
+.plainForm .centerPanel > * {
+  padding: 10px;
+  margin: 8px;
+}
+
+.plainForm .centerPanel button {
+  order: -2;
+}
+
+.plainForm .centerPanel .lineforOR {
+  order: -1;
+}
+
+.plainForm input:not(:last-child) {
+  width: 100%;
+  height: 38px;
+  margin-bottom: 12px;
+  font-size: smaller;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  text-indent: 7px;
+  font-weight: lighter;
+  outline-color: #2DBE60;
+}
+
+.plainForm .lineforOR {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+.plainForm .lineforOR .line {
+  background: darkgray;
+  width: 150px;
+  height: 1px;
+  display: block;
+  position: relative;
+  top: 11.5px;
+}
+
+.plainForm #ortextidforplainform {
+  color: darkgray;
+  font-size: 17px;
+  font-weight: 200;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.plainForm button {
+  background-color: #FFFFFF;
+  color: #808080;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 85%;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 300;
+  transition: all 0.3s ease 0s;
+  border: 1px solid #cccccc;
+}
+
+.plainForm [type="submit"] {
+  margin-top: 20px;
+  background-color: #2DBE60;
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border-style: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.plainForm #plainFormAltLink {
+  text-decoration: none;
+  margin-top: 30px;
+}
+
+.plainForm p {
+  margin: 5px;
+}
+
+.plainForm #plainFormAltLink p:first-child {
+  color: gray;
+  font-size: 14px;
+}
+
+.plainForm #plainFormAltLink p:last-child {
+  color: #2DBE60;
+  font-size: 20px;
+}
+
+/*for showing errors*/
+.plainForm ul {
+  list-style: none;
+}

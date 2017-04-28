@@ -1,0 +1,101 @@
+.homeTotalLayout {
+  display: flex;
+  height: 100vh;
+  font-family: 'Yantramanav', sans-serif;
+  min-width: 800px;
+  /*border: 2px solid red;*/
+}
+
+/*#root {
+  border: 5px solid orange;
+}*/
+
+.homeTotalLayout .homeSidebar {
+  width: 75px;
+}
+
+.homeTotalLayout .entireNotesIndexCol {
+  width: 350px;
+}
+
+.homeLeftSide {
+  display: flex;
+}
+
+.outerhomeRightSide {
+  display: flex;
+  /*width: calc(100% - 425px);*/
+  min-width: 360px;
+  width: 100%;
+}
+
+.innerhomeRightSide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.innerhomeRightSide .noteFormTopBarContainer {
+  position: relative;
+  width: 100%;
+  height: 50px;
+}
+
+.innerhomeRightSide .noteFormTopBarContainer > * {
+  position: absolute;
+}
+
+.quillContainer > * {
+  /*border: 1px solid red;*/
+}
+
+.quillContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  min-width: 300px;
+  height: 100%;
+  margin-left: 70px;
+}
+
+#root > div > div > div.outerhomeRightSide > div > div.quillContainer > div.quill > div.ql-container.ql-snow > div.ql-editor {
+  margin-top: 60px;
+}
+
+#root > div > div > div.outerhomeRightSide > div > div.quillContainer > div.quill > div.ql-toolbar.ql-snow {
+  min-width: 570px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-top: -10px;
+}
+
+.ql-editor {
+  /*border: 1px solid red;*/
+  height: 70vh;
+}
+
+.ql-container.ql-snow {
+  /*border: 1px solid red;*/
+  height: 70vh;
+}
+
+
+
+
+
+
+/*.entireNotesIndexCol {
+  overflow: hidden;
+}*/
+
+/*.innerhomeRightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}*/
+
+/*.homeRightSide .entireNotebookScrollMenu {
+  margin-top: 50px;
+}*/

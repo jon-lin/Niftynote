@@ -27,6 +27,17 @@
 .homeTotalLayout .homeRightSide {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  height: 50vh;
   width: 770px;
+}
+
+.homeRightSide .quill {
+  height: 300px;
+  width: 600px;
+}
+
+.homeTotalLayout .homeRightSide > * {
+  margin: 10px;
 }

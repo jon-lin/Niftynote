@@ -10,14 +10,24 @@ class NewNote extends React.Component {
 
     super(props)
 
-    let delayTimerCreate = () => setTimeout(() => {
-      return this.props.createNote(
+    let delayTimerCreateThenUpdate = () => setTimeout(() => {
+      this.props.createNote(
             {
               body: this.state.body,
               title: this.state.title,
               notebookId: this.state.notebookId
             }
           )
+
+        return () => setTimeout(() => {
+          return this.props.updateNote(
+            {
+              body: this.state.body,
+              title: this.state.title,
+              notebookId: this.props.currentNote.id
+            }
+          );
+        }, 1000)
     }, 1000)
 
     let delayTimerUpdate = () => setTimeout(() => {

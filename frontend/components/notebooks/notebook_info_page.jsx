@@ -30,7 +30,6 @@ class NotebookInfo extends React.Component {
   }
 
   updateNotebook() {
-    debugger
     this.props.updateNotebook(Object.assign({}, this.state, {id: this.props.notebook.id}))
       .then(this.props.closeNotebookInfo);
   }

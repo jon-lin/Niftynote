@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import NoteForm from '../notes/note_form';
 import NoteFormTopbar from '../notes/note_form_top_bar';
 import HomeSidebar from '../home_sidebar/home_sidebar';
-import NotebookScrollbar from '../notebooks/notebook_scrollbar';
+
 
 class Home extends React.Component {
 
@@ -18,8 +18,6 @@ class Home extends React.Component {
   render() {
     if (!this.props.currentUser) { return null };
 
-    let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNotebookDropDown';
-
     return (
       <div className="homeTotalLayout">
 
@@ -28,14 +26,11 @@ class Home extends React.Component {
           {this.props.children}
         </div>
 
-        <div>
-          <NoteFormTopbar />
-        </div>
-
           <div className="outerhomeRightSide">
             <div className="innerhomeRightSide">
-              <NotebookScrollbar formType={formType}/>
+              <NoteFormTopbar />
               <NoteForm />
+
             </div>
           </div>
 

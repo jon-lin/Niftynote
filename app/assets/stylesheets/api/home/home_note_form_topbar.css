@@ -1,16 +1,17 @@
 .entireNoteformTopbar {
-  height: 50px;
-  position: fixed;
+  /*height: 50px;*/
+  /*position: fixed;*/
   display: flex;
   justify-content: space-between;
+  z-index: 1;
   border-left: 1px solid rgb(212, 210, 210);;
+  border: 1px solid red;
 }
 
 .topbarRightSide {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
 }
 
 .topbarRightSide button {

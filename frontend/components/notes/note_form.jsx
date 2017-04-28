@@ -3,6 +3,8 @@ import React from 'react';
 import { updateNote, fetchNote } from '../../actions/notes_actions';
 import { connect } from 'react-redux';
 import { notesSelector } from './notes_to_array';
+import NotebookScrollbar from '../notebooks/notebook_scrollbar';
+import { withRouter } from 'react-router';
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -68,9 +70,12 @@ class NoteForm extends React.Component {
           ['clean']                                         // remove formatting button
         ];
 
+    let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNotebookDropDown';
+
     return (
       <div className="quillContainer">
         <input type="text" value={this.state.title} onChange={this.handleInputChange}></input>
+        <NotebookScrollbar formType={formType}/>
         <ReactQuill value={this.state.body}
                     onChange={this.handleInputChange}
                     modules={ {toolbar: toolbarOptions} }/>
@@ -104,7 +109,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NoteForm));
 
 // import { connect } from 'react-redux';
 // import { updateNote, fetchNote } from '../../actions/notes_actions';

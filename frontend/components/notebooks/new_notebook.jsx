@@ -13,8 +13,8 @@ class NewNotebook extends React.Component {
   }
 
   createNotebook() {
+    this.props.closeNewNotebookModal();
     this.props.createNotebook(this.state)
-      .then(this.props.closeNewNotebookModal)
   }
 
   receiveTitle(e) {

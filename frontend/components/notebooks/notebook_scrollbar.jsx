@@ -28,13 +28,16 @@ class NotebookScrollbar extends React.Component {
     // }
 
    handleChange(e) {
-     if (e.target.value !== "Create new notebook") {
-       this.setState({value: e.target.value});
-       this.props.updateNote({id: this.props.currentNote.id, notebook_id: e.target.value});
-     } else {
+     if (e.target.value === "Create new notebook") {
        this.props.router.push('/newnotebook');
+     } else if (e.target.value === "Move your note into another notebook or make a new one") {
+       return null;
      }
-   }
+       else {
+         this.setState({value: e.target.value});
+         this.props.updateNote({id: this.props.currentNote.id, notebook_id: e.target.value});
+       }
+     }
 
     render() {
       let notebooksList = this.props.sortedNotebooks.map( notebook => {
@@ -53,8 +56,8 @@ class NotebookScrollbar extends React.Component {
           <form className="selectNotebookPartofScrollMenu" onSubmit={this.handleSubmit}>
              <label>
                <select id="soflow-color" value={this.state.value} onChange={this.handleChange}>
-                 <option value="Select">
-                   Select
+                 <option default >
+                   Move your note into another notebook or make a new one
                  </option>
 
                  <option value="Create new notebook">

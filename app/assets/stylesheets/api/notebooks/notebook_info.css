@@ -2,10 +2,8 @@
 but it's fragile. selector taken from
 selector tool in chrome dev tools*/
 
-
-
-body > div:nth-child(5) > div {
-  z-index: 4;
+body > div:nth-child(6) > div {
+  z-index: 20;
 }
 
 .notebookInfoPage {

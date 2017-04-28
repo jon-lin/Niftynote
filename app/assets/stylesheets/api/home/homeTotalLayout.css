@@ -24,16 +24,22 @@
 }
 
 .outerhomeRightSide {
+  /*display: flex;*/
+  /*justify-content: center;*/
   width: calc(100% - 425px);
-  right: 0;
   min-width: 360px;
+  border: 4px solid orange;
 }
 
-.innerhomeRightSide {
+.outerhomeRightSide > * {
+  border: 1px solid red;
+}
+
+/*.innerhomeRightSide {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+}*/
 
 /*.homeRightSide .entireNotebookScrollMenu {
   margin-top: 50px;

@@ -1,13 +1,56 @@
 .quill {
-  height: 85vh;
+  height: 80vh;
   max-width: 950px;
   min-width: 290px;
-  margin-top: 40px;
-  border: 1px solid red;
+  display: flex;
+  border: 2px solid blue;
 }
 
 .ql-editor {
-  border: 1px solid blue;
+  /*align-self: flex-start;*/
+  margin-top: 80px;
+  border: 2px solid blue;
+  /*height: calc(100%-300px)*/
+}
+
+#root > div > div > div.outerhomeRightSide > div > div.quillContainer > div > div.ql-toolbar.ql-snow {
+  position: absolute;
+  left: 0;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  width: 935px;
+  z-index: 10;
+  border: 2px solid blue;
+}
+
+.quillContainer > * {
+}
+
+.quillContainer {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  border: 2px solid blue;
+}
+
+.ql-blank {
+
+}
+
+.outerhomeRightSide > * {
+}
+
+.outerhomeRightSide input {
+  height: 65px;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #2DBE60;
+  font-size: 30px;
+  font-weight: 100;
+  padding: 0px 15px 0px 15px;
+  overflow: hidden;
+  margin-top: 55px;
 }
 
 /*.homeRightSide {

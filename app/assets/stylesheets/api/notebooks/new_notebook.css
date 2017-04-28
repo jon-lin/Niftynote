@@ -3,7 +3,7 @@ it appears to be very fragile */
 
 /*this applies to notebook info AS WELL*/
 .ReactModal__Overlay {
-  z-index: 4;
+  z-index: 15;
 }
 
 /*the below is what needs to be targeted*/

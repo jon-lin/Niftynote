@@ -1,6 +1,6 @@
 /*this piece of CSS is to target notebook index modal's z-index upon appearance*/
 body > div:nth-child(4) > div {
-  z-index: 3;
+  z-index: 11;
 }
 
 .notebookIndexCol {
@@ -10,7 +10,7 @@ body > div:nth-child(4) > div {
   width: 525px;
   height: 100vh;
   background: white;
-  z-index: 1;
+  z-index: 11;
   -webkit-animation: slide2 0.7s;
   border-right: 1px solid rgb(212, 210, 210);
 }

@@ -6,6 +6,7 @@ import AuthFormContainer from './auth/auth_form_container';
 import HomeContainer from './home/home_container';
 import NoteIndicesContainer from './notes/note_indices_container';
 import NewNotebook from './notebooks/new_notebook';
+import NoteForm from './notes/note_form';
 // import TagShowContainer from './tags/tag_show_container';
 
 const Root = ({ store }) => {
@@ -34,6 +35,7 @@ const Root = ({ store }) => {
             <Route path="/home/tags/:tagId" onEnter={ _ensure_logged_in } component={ NoteIndicesContainer }/>
           </Route>
           <Route path="/newnotebook" onEnter={ _ensure_logged_in } component={ NewNotebook } />
+          <Route path="/newnote" onEnter={ _ensure_logged_in } component={ NoteForm } />
         </Route>
       </Router>
     </Provider>

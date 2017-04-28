@@ -15,7 +15,7 @@ class NoteForm extends React.Component {
               id: this.props.currentNote.id
             }
           )
-    }, 2000)
+    }, 1000)
 
     super(props)
     this.state = { text: '', delayTimer: delayTimer, timerId: delayTimer() }

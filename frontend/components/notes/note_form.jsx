@@ -2,6 +2,7 @@ import ReactQuill from 'react-quill';
 import React from 'react';
 import { updateNote, fetchNote } from '../../actions/notes_actions';
 import { connect } from 'react-redux';
+import { notesSelector } from './notes_to_array';
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class NoteForm extends React.Component {
               id: this.props.currentNote.id
             }
           )
-    }, 3000)
+    }, 2000)
 
     super(props)
     this.state = { text: '', delayTimer: delayTimer, timerId: delayTimer() }
@@ -38,16 +39,47 @@ class NoteForm extends React.Component {
   }
 
   render() {
+      let toolbarOptions = [
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+
+          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+          [{ 'direction': 'rtl' }],                         // text direction
+
+          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+
+          ['clean']                                         // remove formatting button
+        ];
+
     return (
       <ReactQuill value={this.state.text}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}
+                  modules={ {toolbar: toolbarOptions} }/>
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  let mostRecentNote, mostRecentNotes;
+
+  if (jQuery.isEmptyObject(state.currentNote)) {
+    mostRecentNotes = notesSelector(state.notes);
+    mostRecentNote = mostRecentNotes[0];
+    return { currentNote: mostRecentNote };
+  }
+
   return { currentNote: state.currentNote };
 };
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

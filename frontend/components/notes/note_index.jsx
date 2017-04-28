@@ -15,9 +15,14 @@ class NoteIndex extends React.Component {
     this.closeNotebookInfo = this.closeNotebookInfo.bind(this);
   }
 
-  componentWillMount() {
-    this.props.fetchNotes();
-    Modal.setAppElement('body');
+  componentDidMount() {
+    // debugger
+    this.props.fetchNotes()
+      .then(() => this.props.fetchNote(this.props.notes[0].id))
+      .then(Modal.setAppElement('body'));
+
+      // this line below is necessary to refresh the 'currentNote' in the store,
+      // so it's displayed
   }
 
   openNotebookInfo() {

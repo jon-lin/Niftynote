@@ -23,10 +23,7 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // if (this.state === null) {
-    // debugger
-      this.setState({text: newProps.currentNote.body})
-    // }
+    this.setState({text: newProps.currentNote.body})
   }
 
   handleChange(value) {

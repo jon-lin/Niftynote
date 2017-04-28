@@ -21,3 +21,19 @@ class Notebook < ApplicationRecord
 
   has_many :notes
 end
+
+#consider db and model level validations to make sure only one default
+#notebook is possible
+# validate :only_one_default_notebook_possible
+#
+# def only_one_default_notebook_possible
+#   if Notebook.all
+# end
+# validate :expiration_date_cannot_be_in_the_past,
+#    :discount_cannot_be_greater_than_total_value
+#
+#  def expiration_date_cannot_be_in_the_past
+#    if expiration_date.present? && expiration_date < Date.today
+#      errors.add(:expiration_date, "can't be in the past")
+#    end
+#  end

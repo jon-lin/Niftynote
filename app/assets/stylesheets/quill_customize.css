@@ -1,17 +1,20 @@
 .quill {
-  height: 80vh;
+  /*height: 80vh;
   max-width: 950px;
   min-width: 290px;
-  display: flex;
-  border: 2px solid blue;
+  display: flex;*/
+
+  /*border: 2px solid blue;*/
 }
 
 .ql-editor {
   /*align-self: flex-start;*/
-  margin-top: 80px;
-  border: 2px solid blue;
+  /*margin-top: 80px;*/
+  /*border: 2px solid blue;*/
   /*height: calc(100%-300px)*/
 }
+
+/*
 
 #root > div > div > div.outerhomeRightSide > div > div.quillContainer > div > div.ql-toolbar.ql-snow {
   position: absolute;
@@ -22,6 +25,8 @@
   z-index: 10;
   border: 2px solid blue;
 }
+
+*/
 
 .quillContainer > * {
 }
@@ -40,8 +45,15 @@
 .outerhomeRightSide > * {
 }
 
+.innerhomeRightSide {
+  /*border: 15px solid blue;*/
+}
+
+.innerhomeRightSide > * > *:nth-child(1) {
+  /*border: 3px solid red;*/
+}
+
 .outerhomeRightSide input {
-  height: 65px;
   width: 100%;
   outline: none;
   border: none;
@@ -50,7 +62,6 @@
   font-weight: 100;
   padding: 0px 15px 0px 15px;
   overflow: hidden;
-  margin-top: 55px;
 }
 
 /*.homeRightSide {

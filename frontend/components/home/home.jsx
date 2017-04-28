@@ -28,7 +28,7 @@ class Home extends React.Component {
 
           <div className="outerhomeRightSide">
             <div className="innerhomeRightSide">
-              <NoteFormTopbar />
+              <div className="noteFormTopBarContainer"><NoteFormTopbar /></div>
               <NoteForm />
 
             </div>

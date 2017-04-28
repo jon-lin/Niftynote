@@ -27,7 +27,7 @@ body > div:nth-child(3) > div {
   color: white;
   cursor: pointer;
   transition: all 0.3s ease 0s;
-}*/
+}
 
 .userDashboardModal > div {
   display: flex;

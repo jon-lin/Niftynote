@@ -1,3 +1,19 @@
+.quill {
+  border: 1px solid blue;
+  height: 100vh;
+}
+
+.ql-editor {
+  border: 1px solid red;
+  width: 100vh;
+  height: calc(100% - 40px;
+}
+
+.quillOuterContainer {
+  position: relative;
+  width: 100%;
+}
+
 /*.ql-blank {
   border-color: transparent;
   border: 1px solid red;

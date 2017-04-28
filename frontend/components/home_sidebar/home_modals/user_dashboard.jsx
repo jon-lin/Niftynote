@@ -23,7 +23,8 @@ class UserDashboard extends React.Component {
 
     return (
       <div>
-        <h1>Welcome {this.props.currentUser.email}!</h1>
+        <img src='/images/earth.jpg'></img>
+        <h1>{this.props.currentUser.email}</h1>
         <button onClick={this.clickHandler}>Sign Out</button>
       </div>
     )

@@ -52,7 +52,6 @@ class NotebookScrollbar extends React.Component {
 
           <form className="selectNotebookPartofScrollMenu" onSubmit={this.handleSubmit}>
              <label>
-               Notebooks:
                <select id="soflow-color" value={this.state.value} onChange={this.handleChange}>
                  <option value="Select">
                    Select

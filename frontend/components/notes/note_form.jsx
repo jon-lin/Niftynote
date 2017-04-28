@@ -57,9 +57,13 @@ class NoteForm extends React.Component {
         ];
 
     return (
-      <ReactQuill value={this.state.text}
-                  onChange={this.handleChange}
-                  modules={ {toolbar: toolbarOptions} }/>
+      <div className="quillOuterContainer">
+        <div className="quillInnerContainer">
+        <ReactQuill value={this.state.text}
+                    onChange={this.handleChange}
+                    modules={ {toolbar: toolbarOptions} }/>
+        </div>
+    </div>
     )
   }
 }

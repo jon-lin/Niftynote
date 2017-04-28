@@ -1,6 +1,8 @@
 .entireNotesIndexCol {
   /*position: relative;*/
   height: 100vh;
+  width: 330px;
+  min-width: 330px;
   display: flex;
   flex-direction: column;
 }
@@ -13,7 +15,7 @@
   position: absolute;
   z-index: 1;
   background-color: white;
-  width: 338px;
+  width: 315px;
   height: auto;
   color: gray;
 }

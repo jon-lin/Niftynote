@@ -26,3 +26,7 @@ select#soflow-color {
    border-radius: 20px;
    padding-left: 15px;
 }
+
+.entireNotebookScrollMenu input {
+  display: none;
+}

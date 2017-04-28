@@ -1,3 +1,8 @@
+/*hide this until feature is implemented*/
+.wholeNoteItem .fa-star {
+  display: none;
+}
+
 .wholeNoteItem {
   position: relative;
   width: 100%;

@@ -10,34 +10,9 @@
 }*/
 
 .homeTotalLayout .homeSidebar {
-  width: 73px;
+  width: 75px;
 }
 
 .homeTotalLayout .entireNotesIndexCol {
   width: 350px;
-}
-
-.homeTotalLayout .noteTopbarANDnoteForm {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: calc(100% - 73px - 350px);
-}
-
-.homeTotalLayout .homeRightSide {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 50vh;
-  width: 770px;
-}
-
-.homeRightSide .quill {
-  height: 300px;
-  width: 600px;
-}
-
-.homeTotalLayout .homeRightSide > * {
-  margin: 10px;
 }

@@ -1,3 +1,11 @@
+/*take out all buttons that don't do anything*/
+.homeSidebar .fa-star,
+.homeSidebar .slideWorkChat,
+.homeSidebar .fa-search,
+.homeSidebar .fa-tags {
+  display: none;
+}
+
 .homeSidebar {
   position: relative;
   z-index: 4;

@@ -1,7 +1,9 @@
 .homeTotalLayout {
+
   display: flex;
   height: 100vh;
   font-family: 'Yantramanav', sans-serif;
+  min-width: 800px;
   /*border: 2px solid red;*/
 }
 
@@ -16,3 +18,23 @@
 .homeTotalLayout .entireNotesIndexCol {
   width: 350px;
 }
+
+.homeLeftSide {
+  display: flex;
+}
+
+.outerhomeRightSide {
+  width: calc(100% - 425px);
+  right: 0;
+  min-width: 360px;
+}
+
+.innerhomeRightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*.homeRightSide .entireNotebookScrollMenu {
+  margin-top: 50px;
+}*/

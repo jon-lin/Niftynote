@@ -22,14 +22,21 @@ class Home extends React.Component {
 
     return (
       <div className="homeTotalLayout">
+
+        <div className="homeLeftSide">
           <HomeSidebar />
-
           {this.props.children}
+        </div>
 
-          <div className="homeRightSide">
-            <NoteFormTopbar />
-            <NotebookScrollbar formType={formType}/>
-            <NoteForm />
+        <div>
+          <NoteFormTopbar />
+        </div>
+
+          <div className="outerhomeRightSide">
+            <div className="innerhomeRightSide">
+              <NotebookScrollbar formType={formType}/>
+              <NoteForm />
+            </div>
           </div>
 
       </div>

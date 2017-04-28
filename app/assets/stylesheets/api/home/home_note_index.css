@@ -1,5 +1,6 @@
 .entireNotesIndexCol {
   /*position: relative;*/
+  /*border: 1px solid red;*/
   height: 100vh;
   width: 330px;
   min-width: 330px;
@@ -18,6 +19,7 @@
   width: 315px;
   height: auto;
   color: gray;
+  /*border: 1px solid red;*/
 }
 
 .entireNotesIndexCol .notesIndexColHeaderPart {

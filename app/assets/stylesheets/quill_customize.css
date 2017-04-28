@@ -1,18 +1,31 @@
 .quill {
-  border: 1px solid blue;
-  height: 100vh;
+  height: 85vh;
+  max-width: 950px;
+  min-width: 290px;
+  margin-top: 40px;
+  border: 1px solid red;
 }
 
 .ql-editor {
-  border: 1px solid red;
-  width: 100vh;
-  height: calc(100% - 40px;
+  border: 1px solid blue;
 }
 
-.quillOuterContainer {
-  position: relative;
-  width: 100%;
-}
+/*.homeRightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;*/
+  /*position: absolute;
+  right: 0;*/
+
+  /*align-items: flex-start;*/
+/*}*/
+
+/*div.quillOuterContainer > div > div > div.ql-toolbar.ql-snow {*/
+  /*min-width: 1492px;*/
+/*}*/
+
+/*.entire*/
 
 /*.ql-blank {
   border-color: transparent;

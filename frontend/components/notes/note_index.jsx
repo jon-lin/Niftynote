@@ -73,7 +73,7 @@ class NoteIndex extends React.Component {
           </div>
         </div>
 
-        <ul>
+        <ul className="listOfNotes">
           {notesList}
         </ul>
 

@@ -28,41 +28,26 @@
 
 */
 
-.quillContainer > * {
-}
-
 .quillContainer {
   position: relative;
   width: 100%;
   z-index: 0;
-  border: 2px solid blue;
 }
 
-.ql-blank {
-
-}
-
-.outerhomeRightSide > * {
-}
-
-.innerhomeRightSide {
-  /*border: 15px solid blue;*/
-}
-
-.innerhomeRightSide > * > *:nth-child(1) {
-  /*border: 3px solid red;*/
-}
-
-.outerhomeRightSide input {
+#root > div > div > div.outerhomeRightSide > div > div.quillContainer > input[type="text"] {
   width: 100%;
   outline: none;
   border: none;
   color: #2DBE60;
   font-size: 30px;
-  font-weight: 100;
+  font-weight: 200;
   padding: 0px 15px 0px 15px;
   overflow: hidden;
+  position: absolute;
+  top: 115px;
+  width: 100%;
 }
+
 
 /*.homeRightSide {
   display: flex;

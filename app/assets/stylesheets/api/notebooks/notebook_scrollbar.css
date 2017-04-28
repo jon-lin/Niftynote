@@ -17,27 +17,39 @@
   width: 800px;
 }*/
 
+/*
 select#soflow-color {
    color: #fff;
-   /*background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);*/
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
    background-color: #2DBE60;
    -webkit-border-radius: 20px;
    -moz-border-radius: 20px;
    border-radius: 20px;
    padding-left: 15px;
 }
+*/
 
 .entireNotebookScrollMenu input {
   display: none;
 }
 
-select {
-  outline: none;
-  font-size: 12px;
-  font-family: 'Yantramanav', sans-serif;
-  background-color: #2DBE60;
-  border: none;
+#root > div > div > div.outerhomeRightSide > div > div.quillContainer > div.entireNotebookScrollMenu > form {
+  margin: 0px 0px 0px 10px;
 }
+
+#soflow-color {
+  outline: none;
+  font-family: 'Yantramanav', sans-serif;
+  /*background-color: #2DBE60;*/
+  background-color: transparent;
+  border: 1px solid gray;
+  font-size: 15px;
+  margin: 0px 10px 10px 0px;
+  width: 30%;
+}
+
+
+
 
 /*.entireNotebookScrollMenu {
   position: absolute;

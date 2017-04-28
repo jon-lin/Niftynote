@@ -1,11 +1,10 @@
 .entireNoteformTopbar {
-  /*height: 50px;*/
-  /*position: fixed;*/
+  height: 50px;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   z-index: 1;
   border-left: 1px solid rgb(212, 210, 210);;
-  border: 1px solid red;
 }
 
 .topbarRightSide {
@@ -40,6 +39,7 @@ buttons until they've been implemented*/
   color: gray;
   margin: 6px;
   cursor: pointer;
+  margin-left: 16px
 }
 
 .topbarLeftSide > *:hover {

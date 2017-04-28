@@ -32,7 +32,7 @@ class NoteItem extends React.Component {
 
           <div className="noteItemTitle">{this.props.noteItem.title}</div>
           <div className="timePassed">{this.props.noteItem.time_passed}</div>
-          <div className="bodySnippet">{this.props.noteItem.body.slice(0, 130)}</div>
+          <div className="bodySnippet">{this.props.noteItem.body.slice(0, 100)}</div>
         </li>
       </div>
     );

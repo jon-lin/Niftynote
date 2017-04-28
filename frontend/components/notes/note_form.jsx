@@ -10,30 +10,42 @@ class NoteForm extends React.Component {
     let delayTimer = () => setTimeout(() => {
       return this.props.updateNote(
             {
-              body: this.state.text,
-              title: this.props.currentNote.title,
+              body: this.state.body,
+              title: this.state.title,
               id: this.props.currentNote.id
             }
           )
     }, 1000)
 
     super(props)
-    this.state = { text: '', delayTimer: delayTimer, timerId: delayTimer() }
-    this.handleChange = this.handleChange.bind(this);
+    this.state = { body: '', title: '', delayTimer: delayTimer, timerId: delayTimer() }
+    // this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({text: newProps.currentNote.body})
+    this.setState({body: newProps.currentNote.body, title: newProps.currentNote.title})
   }
 
-  handleChange(value) {
-    this.setState(
-      { text: value },
-      clearTimeout(this.state.timerId)
-    );
+  handleInputChange(event) {
+    let param;
+    if (typeof event.target === 'undefined') {
+      param = {body: event};
+    } else {
+      param = {title: event.target.value};
+    }
 
+    this.setState(param, clearTimeout(this.state.timerId));
     this.setState({timerId: this.state.delayTimer()});
   }
+
+  // handleChange(value) {
+  //   this.setState(
+    //   { body: value },
+    //   clearTimeout(this.state.timerId)
+    // );
+  //   this.setState({timerId: this.state.delayTimer()});
+  // }
 
   render() {
       let toolbarOptions = [
@@ -57,16 +69,20 @@ class NoteForm extends React.Component {
         ];
 
     return (
-      <div className="quillOuterContainer">
-        <div className="quillInnerContainer">
-        <ReactQuill value={this.state.text}
-                    onChange={this.handleChange}
+      <div className="quillContainer">
+        <input type="text" value={this.state.title} onChange={this.handleInputChange}></input>
+        <ReactQuill value={this.state.body}
+                    onChange={this.handleInputChange}
                     modules={ {toolbar: toolbarOptions} }/>
-        </div>
     </div>
     )
   }
 }
+
+
+
+
+
 
 const mapStateToProps = (state) => {
   let mostRecentNote, mostRecentNotes;

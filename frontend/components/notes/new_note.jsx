@@ -8,33 +8,34 @@ import { withRouter } from 'react-router';
 class NewNote extends React.Component {
   constructor(props) {
 
-    super(props)
+    super(props);
 
-    let delayTimerCreateThenUpdate = () => setTimeout(() => {
-      this.props.createNote(
-            {
-              body: this.state.body,
-              title: this.state.title,
-              notebookId: this.state.notebookId
-            }
-          )
+    // let delayTimerCreateThenUpdate = () => setTimeout(() => {
+    //   this.props.createNote(
+    //         {
+    //           body: this.state.body,
+    //           title: this.state.title,
+    //           notebookId: this.state.notebookId
+    //         }
+    //       )
+    //
+    //     return () => setTimeout(() => {
+    //       return this.props.updateNote(
+    //         {
+    //           body: this.state.body,
+    //           title: this.state.title,
+    //           notebookId: this.props.currentNote.id
+    //         }
+    //       );
+    //     }, 1000)
+    // }, 1000)
 
-        return () => setTimeout(() => {
-          return this.props.updateNote(
-            {
-              body: this.state.body,
-              title: this.state.title,
-              notebookId: this.props.currentNote.id
-            }
-          );
-        }, 1000)
-    }, 1000)
-
-    let delayTimerUpdate = () => setTimeout(() => {
+    let delayTimer = () => setTimeout(() => {
       return this.props.updateNote(
             {
               body: this.state.body,
               title: this.state.title,
+              id: this.state.notebookId
             }
           )
     }, 1000)
@@ -43,11 +44,20 @@ class NewNote extends React.Component {
                   title: '',
                   delayTimer: delayTimer,
                   timerId: delayTimer(),
-                  notebookId: 0
+                  notebookId: null
                  }
     // this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.leaveNewNotePage = this.leaveNewNotePage.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.createNote(
+          {
+            body: "Type the body here",
+            title: "Type the title here"
+          }
+        )
   }
 
   // componentDidMount() {
@@ -62,10 +72,13 @@ class NewNote extends React.Component {
   //   this.setState({notebookId: defaultNotebookId});
   // }
 
-  // componentWillReceiveProps(newProps) {
-  //   debugger
-  //   this.setState({body: this.state.body, title: this.state.title})
-  // }
+  componentWillReceiveProps(newProps) {
+    this.setState({
+                  body: newProps.currentNote.body,
+                  title: newProps.currentNote.title,
+                  notebookId: newProps.currentNote.id
+                })
+  }
 
   handleInputChange(event) {
     let param;
@@ -124,7 +137,10 @@ class NewNote extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { notebooks: Object.values(state.notebooks) };
+  return {
+    notebooks: Object.values(state.notebooks),
+    currentNote: state.currentNote
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

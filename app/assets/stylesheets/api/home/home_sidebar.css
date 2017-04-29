@@ -71,11 +71,33 @@
   transition: all 0.4s ease 0s;
   color: white;
   border: none;
+
+}
+
+.homeSidebar a:hover .fa-plus.title {
+  transition: all 0.4s ease 0s;
+  background-color: yellow;
 }
 
 /*.homeSidebar .fa-plus:hover:after {
-  content: "Create a note";
+  content: "NEW NOTE";
   position: absolute;
+  background-color: darkgray;
+  margin-left: 10px;
+  padding: 5px;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 12px;
+  transition-delay: content 2s;
+}*/
+
+/*.notebooksTopRow button:hover:after {
+  position: absolute;
+  margin-left: 5px;
+  content: "Create a notebook";
+  background-color: darkgray;
+  color: white;
+  padding: 5px;
+  transform: rotate(180deg);
 }*/
 
 .homeSidebar .slideWorkChat {

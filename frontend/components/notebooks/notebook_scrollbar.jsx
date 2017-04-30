@@ -30,9 +30,10 @@ class NotebookScrollbar extends React.Component {
    handleChange(e) {
      if (e.target.value === "Create new notebook") {
        this.props.router.push('/newnotebook');
-     } else if (e.target.value === "Move your note into another notebook or make a new one") {
-       return null;
      }
+    //  else if (e.target.value === "Move your note into another notebook or make a new one") {
+    //    return null;
+    //  }
        else {
          this.setState({value: e.target.value});
          this.props.updateNote({id: this.props.currentNote.id, notebook_id: e.target.value});

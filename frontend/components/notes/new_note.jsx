@@ -10,46 +10,6 @@ class NewNote extends React.Component {
 
     super(props);
 
-    // let delayTimerCreateThenUpdate = () => setTimeout(() => {
-    //   this.props.createNote(
-    //         {
-    //           body: this.state.body,
-    //           title: this.state.title,
-    //           notebookId: this.state.notebookId
-    //         }
-    //       )
-    //
-    //     return () => setTimeout(() => {
-    //       return this.props.updateNote(
-    //         {
-    //           body: this.state.body,
-    //           title: this.state.title,
-    //           notebookId: this.props.currentNote.id
-    //         }
-    //       );
-    //     }, 1000)
-    // }, 1000)
-
-    let createNoteThenUpdate = () => {
-      this.props.createNote(
-            {
-              body: "Type the body here",
-              title: "Type the title here"
-            }
-          )
-
-      return () =>
-        setTimeout(() => {
-        return this.props.updateNote(
-              {
-                body: this.state.body,
-                title: this.state.title,
-                id: this.state.notebookId
-              }
-            )
-      }, 1000)
-    }
-
     let delayTimer = () => setTimeout(() => {
       return this.props.updateNote(
             {
@@ -64,35 +24,16 @@ class NewNote extends React.Component {
                   title: '',
                   delayTimer: delayTimer,
                   timerId: delayTimer(),
-                  notebookId: null
+                  notebookId: null,
+                  noteCreated: false
                  }
-    // this.handleChange = this.handleChange.bind(this);
+
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.leaveNewNotePage = this.leaveNewNotePage.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.createNote(
-  //         {
-  //           body: "Type the body here",
-  //           title: "Type the title here"
-  //         }
-  //       )
-  // }
-
-  // componentDidMount() {
-  //
-  //   debugger
-  //   let defaultNotebookId = this.props.notebooks.filter( (notebookObj) => {
-  //     return notebookObj.defaultNotebook === true;
-  //   })[0].id;
-  //
-  //   debugger
-  //
-  //   this.setState({notebookId: defaultNotebookId});
-  // }
-
   componentWillReceiveProps(newProps) {
+    if (!this.state.noteCreated) {return null}
+
     this.setState({
                   body: newProps.currentNote.body,
                   title: newProps.currentNote.title,
@@ -108,14 +49,24 @@ class NewNote extends React.Component {
       param = {title: event.target.value};
     }
 
-    console.log(this.state)
+    if (this.state.noteCreated) {
+        this.setState(param, clearTimeout(this.state.timerId));
+        this.setState({timerId: this.state.delayTimer()});
+    } else {
+        let noteHasBeenCreated = !this.state.noteCreated;
+        this.setState(
 
-    this.setState(param, clearTimeout(this.state.timerId));
-    this.setState({timerId: this.state.delayTimer()});
-  }
+          Object.assign({}, param, {noteCreated: noteHasBeenCreated}),
 
-  leaveNewNotePage() {
-    this.props.router.push('/home');
+          () => {
+                    this.props.createNote(
+                        {
+                          body: this.state.body,
+                          title: this.state.title
+                        })
+              }
+          );
+      }
   }
 
   render() {
@@ -152,7 +103,7 @@ class NewNote extends React.Component {
                       onChange={this.handleInputChange}
                       modules={ {toolbar: toolbarOptions} }/>
         </div>
-        <button className="newNoteDoneButton" onClick={this.leaveNewNotePage}>Done</button>
+        <button className="newNoteDoneButton" onClick={() => this.props.router.push('/home')}>Done</button>
       </div>
     )
   }
@@ -169,8 +120,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createNote: (note) => dispatch(createNote(note)),
     updateNote: (note) => dispatch(updateNote(note))
-    // fetchNotebooks: (notebooks) => dispatch(fetchNotebooks(notebooks))
   }
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewNote));
+
+//failed attempt to get notebookId after note is initially created locally
+// .then(note => {
+//       debugger
+//       this.setState({notebookId: note.notebook_id})
+//     })

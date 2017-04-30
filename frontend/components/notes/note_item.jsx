@@ -20,6 +20,13 @@ class NoteItem extends React.Component {
   }
 
   render() {
+    let bodyPreview;
+    if (this.props.noteItem.body) {
+      bodyPreview = this.props.noteItem.body.slice(0, 100);
+    } else {
+      bodyPreview = "";
+    }
+
     return (
       <div className="wholeNoteItem">
         <li onClick={this.showNote} value={this.props.noteItem.id} className="noteItemBox">
@@ -32,7 +39,7 @@ class NoteItem extends React.Component {
 
           <div className="noteItemTitle">{this.props.noteItem.title}</div>
           <div className="timePassed">{this.props.noteItem.time_passed}</div>
-          <div className="bodySnippet">{this.props.noteItem.body.slice(0, 100)}</div>
+          <div className="bodySnippet">{bodyPreview}</div>
         </li>
       </div>
     );

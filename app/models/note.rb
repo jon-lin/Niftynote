@@ -11,7 +11,7 @@
 #
 
 class Note < ApplicationRecord
-  validates :title, :body, :notebook, presence: true
+  validates :title, :notebook, presence: true
 
   belongs_to :notebook
 

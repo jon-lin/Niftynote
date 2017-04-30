@@ -50,7 +50,7 @@ class NewNote extends React.Component {
   }
 
   handleInputChange(event) {
-    
+
     let param;
     if (typeof event.currentTarget === 'undefined') {
       param = {body: event};
@@ -117,15 +117,17 @@ class NewNote extends React.Component {
         <div className="quillContainer2">
 
           <div>
-             <select id="newNoteDropdownSelectNotebook" value={this.state.value} onChange={this.handleInputChange}>
-               <option value="Select...">
-                 Select...
-               </option>
-               <option value="Create new notebook">
-                 CREATE NEW NOTEBOOK
-               </option>
-                 {notebooksList}
-             </select>
+            <form className="newNotePickNotebook">
+               <select id="newNoteDropdownSelectNotebook" value={this.state.value} onChange={this.handleInputChange}>
+                 <option value="Select...">
+                   Select...
+                 </option>
+                 <option value="Create new notebook">
+                   CREATE NEW NOTEBOOK
+                 </option>
+                   {notebooksList}
+               </select>
+             </form>
           </div>
 
           <input type="text" id="newNoteTitleInput" className="quill2InputTitle" placeholder="Title your note" value={this.state.title} onChange={this.handleInputChange}></input>

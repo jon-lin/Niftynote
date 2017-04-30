@@ -25,3 +25,32 @@
   font-size: 15px;
   width: 30%;
 }
+
+.homePageScrollbarMoveNote:hover:after,
+.newNotePickNotebook:hover:after {
+  position: absolute;
+  color: white;
+  background-color: darkgray;
+  margin-left: -250px;
+  margin-top: -30px;
+  padding: 5px;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 12px;
+  width: 220px;
+  text-align: center;
+  -webkit-animation: fadein 1s;
+}
+
+.homePageScrollbarMoveNote:hover:after {
+  content: "MOVE NOTE TO ANOTHER NOTEBOOK";
+}
+
+.newNotePickNotebook:hover:after {
+  content: "PICK A NOTEBOOK FOR YOUR NOTE";
+  width: 180px;
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

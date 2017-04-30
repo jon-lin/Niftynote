@@ -23,12 +23,9 @@ class NotebookScrollbar extends React.Component {
     }
 
    handleChange(e) {
-     if (e.target.value === "Create new notebook") {
-       this.props.router.push('/newnotebook');
-     }
-    //  else if (e.target.value === "Move your note into another notebook or make a new one") {
-    //    return null;
-    //  }
+       if (e.target.value === "Create new notebook") {
+         this.props.router.push('/newnotebook');
+       }
        else {
          this.setState({value: e.target.value});
          this.props.updateNote({id: this.props.currentNote.id, notebook_id: e.target.value});
@@ -51,7 +48,7 @@ class NotebookScrollbar extends React.Component {
 
           <form className="selectNotebookPartofScrollMenu" onSubmit={this.handleSubmit}>
              <label>
-               <select id="soflow-color" value={this.state.value} onChange={this.handleChange}>
+               <select id="homePageNotebookScrollbar" value={this.state.value} onChange={this.handleChange}>
                  <option value="Create new notebook">
                    CREATE NEW NOTEBOOK
                  </option>
@@ -98,11 +95,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NotebookScrollbar));
-
-//  THIS CODE IS FOR MAKING DISTINCTION BETWEEN WHETHER TO SET SELECTED
-// NOTEBOOK OR DEFAULT NOTEBOOK
-//  componentWillMount() {
-//    if (this.props.formType === 'homeDropDown') {
-//      this.setState({value: this.props.currentNotebookTitle});
-//    }
-//  }

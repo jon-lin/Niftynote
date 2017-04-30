@@ -6,6 +6,7 @@
   min-width: 330px;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid rgb(212, 210, 210);
 }
 
 /*ReactModalPortal doesn't work*/
@@ -16,7 +17,7 @@
   position: absolute;
   z-index: 1;
   background-color: white;
-  width: 315px;
+  width: 350px;
   height: auto;
   color: gray;
 }
@@ -57,7 +58,7 @@
   background-color: #393D41;
   height: 150px;
   display: flex;
-  width: 350px;
+  width: 351px;
   flex-direction: column;
   align-items: center;
   color: white;

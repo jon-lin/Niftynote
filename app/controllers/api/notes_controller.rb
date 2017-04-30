@@ -12,9 +12,7 @@ class Api::NotesController < ApplicationController
     @note = Note.new(note_params)
 
     #will params present themselves in this format? may not work!
-    if params[:note][:notebook_id]
-      @note.notebook_id = params[:note][:notebook_id]
-    else
+    if !params[:note][:notebook_id] || params[:note][:notebook_id] == ""
       @note.notebook_id = current_user.notebooks.find_by_defaultNotebook(true).id
     end
 
@@ -35,8 +33,14 @@ class Api::NotesController < ApplicationController
 
     mod_note_params = note_params
 
-    if params[:note][:title] == ''
-      mod_note_params = {title: 'Untitled', body: params[:note][:body]}
+    default_notebook_id = current_user.notebooks.find_by_defaultNotebook(true).id
+
+    if params[:note][:title] == '' && params[:note][:notebook_id] == ''
+      mod_note_params = {title: 'Untitled', body: params[:note][:body], notebook_id: default_notebook_id}
+    elsif params[:note][:title] == '' && params[:note][:notebook_id] != ''
+      mod_note_params = {title: 'Untitled', body: params[:note][:body], notebook_id: params[:note][:notebook_id]}
+    elsif params[:note][:title] != '' && params[:note][:notebook_id] == ''
+      mod_note_params = {title: params[:note][:title], body: params[:note][:body], notebook_id: default_notebook_id}
     end
 
     if @note.update(mod_note_params)

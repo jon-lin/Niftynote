@@ -1,9 +1,10 @@
 import ReactQuill from 'react-quill';
 import React from 'react';
 import { createNote, updateNote } from '../../actions/notes_actions';
+import { fetchNotebooks } from '../../actions/notebooks_actions';
 import { connect } from 'react-redux';
-import NotebookScrollbar from '../notebooks/notebook_scrollbar';
 import { withRouter } from 'react-router';
+import NotebookItem from '../notebooks/notebook_item';
 
 class NewNote extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class NewNote extends React.Component {
             {
               body: this.state.body,
               title: this.state.title,
-              id: this.state.notebookId
+              notebook_id: this.state.value,
+              id: this.state.id
             }
           )
     }, 500)
@@ -24,11 +26,16 @@ class NewNote extends React.Component {
                   title: '',
                   delayTimer: delayTimer,
                   timerId: delayTimer(),
-                  notebookId: null,
-                  noteCreated: false
+                  noteCreated: false,
+                  value: '',
+                  id: null
                  }
 
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchNotebooks();
   }
 
   componentWillReceiveProps(newProps) {
@@ -37,20 +44,27 @@ class NewNote extends React.Component {
     this.setState({
                   body: newProps.currentNote.body,
                   title: newProps.currentNote.title,
-                  notebookId: newProps.currentNote.id
+                  id: newProps.currentNote.id,
+                  value: newProps.currentNote.notebook_id
                 })
   }
 
   handleInputChange(event) {
+
+    debugger
+
     let param;
-    if (typeof event.target === 'undefined') {
+    if (typeof event.currentTarget === 'undefined') {
       param = {body: event};
-    } else {
-      param = {title: event.target.value};
+    } else if (event.currentTarget.id === 'newNoteDropdownSelectNotebook') {
+      param = {value: event.currentTarget.value};
+    } else if (event.currentTarget.id === 'newNoteTitleInput') {
+      param = {title: event.currentTarget.value};
     }
 
     if (this.state.noteCreated) {
-        this.setState(param, clearTimeout(this.state.timerId));
+        debugger
+        this.setState(Object.assign({}, param, {id: this.state.id}), clearTimeout(this.state.timerId));
         this.setState({timerId: this.state.delayTimer()});
     } else {
         let noteHasBeenCreated = !this.state.noteCreated;
@@ -62,47 +76,63 @@ class NewNote extends React.Component {
                     this.props.createNote(
                         {
                           body: this.state.body,
-                          title: this.state.title
-                        })
+                          title: this.state.title,
+                          notebook_id: this.state.value
+                        }).then(() => this.setState({id: this.props.currentNote.id}))
               }
           );
       }
   }
 
   render() {
-      let toolbarOptions = [
-          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-          ['blockquote', 'code-block'],
+    let toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
 
-          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-          [{ 'direction': 'rtl' }],                         // text direction
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
 
-          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
-          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-          [{ 'font': [] }],
-          [{ 'align': [] }],
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
 
-          ['clean']                                         // remove formatting button
-        ];
+        ['clean']                                         // remove formatting button
+      ];
 
-    let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNoteDropDown';
+    let notebooksList = this.props.notebooks.map( notebook => {
+      return (<NotebookItem formType="dropdown"
+                        title={notebook.title}
+                        key={notebook.id}
+                        notebookId={notebook.id}/>)
+              });
 
     return (
       <div className="quill2bigContainer">
+
         <div className="quillContainer2">
 
-          <NotebookScrollbar formType={formType}/>
-          <input type="text" className="quill2InputTitle" placeholder="Title your note" value={this.state.title} onChange={this.handleInputChange}></input>
+          <div>
+             <select id="newNoteDropdownSelectNotebook" value={this.state.value} onChange={this.handleInputChange}>
+               <option value="Create new notebook">
+                 CREATE NEW NOTEBOOK
+               </option>
+                 {notebooksList}
+             </select>
+          </div>
+
+          <input type="text" id="newNoteTitleInput" className="quill2InputTitle" placeholder="Title your note" value={this.state.title} onChange={this.handleInputChange}></input>
           <ReactQuill value={this.state.body}
                       placeholder="Just start typing"
                       onChange={this.handleInputChange}
                       modules={ {toolbar: toolbarOptions} }/>
         </div>
+
         <button className="newNoteDoneButton" onClick={() => this.props.router.push('/home')}>Done</button>
       </div>
     )
@@ -119,7 +149,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createNote: (note) => dispatch(createNote(note)),
-    updateNote: (note) => dispatch(updateNote(note))
+    updateNote: (note) => dispatch(updateNote(note)),
+    fetchNotebooks: () => dispatch(fetchNotebooks())
   }
 }
 

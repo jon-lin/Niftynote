@@ -82,12 +82,10 @@ class NoteForm extends React.Component {
           ['clean']                                         // remove formatting button
         ];
 
-    let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNoteDropDown';
-
     return (
       <div className="quillContainer">
 
-        <NotebookScrollbar formType={formType}/>
+        <NotebookScrollbar/>
         <input type="text" value={this.state.title} onChange={this.handleInputChange}></input>
         <ReactQuill value={this.state.body}
                     onChange={this.handleInputChange}

@@ -28,10 +28,11 @@
 
 */
 
-.quillContainer {
+/*.quillContainer {
   position: relative;
   width: 100%;
   z-index: 0;
+  border: 1px solid red;
 }
 
 #root > div > div > div.outerhomeRightSide > div > div.quillContainer > input[type="text"] {
@@ -46,7 +47,8 @@
   position: absolute;
   top: 115px;
   width: 100%;
-}
+  border: 1px solid red;
+}*/
 
 
 /*.homeRightSide {

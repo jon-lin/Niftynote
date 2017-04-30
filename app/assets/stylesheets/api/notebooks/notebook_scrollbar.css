@@ -33,11 +33,7 @@ select#soflow-color {
   display: none;
 }
 
-#root > div > div > div.outerhomeRightSide > div > div.quillContainer > div.entireNotebookScrollMenu > form {
-  margin: 0px 0px 0px 10px;
-}
-
-#soflow-color {
+#homePageNotebookScrollbar, #newNoteDropdownSelectNotebook {
   outline: none;
   font-family: 'Yantramanav', sans-serif;
   /*background-color: #2DBE60;*/
@@ -46,6 +42,7 @@ select#soflow-color {
   font-size: 15px;
   margin: 0px 10px 10px 0px;
   width: 30%;
+  margin: 0px 0px 0px 10px;
 }
 
 

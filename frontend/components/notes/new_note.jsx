@@ -50,12 +50,12 @@ class NewNote extends React.Component {
   }
 
   handleInputChange(event) {
-
-    debugger
-
+    
     let param;
     if (typeof event.currentTarget === 'undefined') {
       param = {body: event};
+    } else if (event.currentTarget.value === 'Select...') {
+      return null;
     } else if (event.currentTarget.id === 'newNoteDropdownSelectNotebook') {
       param = {value: event.currentTarget.value};
     } else if (event.currentTarget.id === 'newNoteTitleInput') {
@@ -63,7 +63,6 @@ class NewNote extends React.Component {
     }
 
     if (this.state.noteCreated) {
-        debugger
         this.setState(Object.assign({}, param, {id: this.state.id}), clearTimeout(this.state.timerId));
         this.setState({timerId: this.state.delayTimer()});
     } else {
@@ -119,6 +118,9 @@ class NewNote extends React.Component {
 
           <div>
              <select id="newNoteDropdownSelectNotebook" value={this.state.value} onChange={this.handleInputChange}>
+               <option value="Select...">
+                 Select...
+               </option>
                <option value="Create new notebook">
                  CREATE NEW NOTEBOOK
                </option>

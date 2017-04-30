@@ -47,4 +47,31 @@ buttons until they've been implemented*/
   background-color: white;
 }
 
-/*53, 26 px*/
+.topbarLeftSide .fa-info-circle:hover:after,
+.topbarLeftSide .fa-trash:hover:after  {
+  font-family: 'Yantramanav', sans-serif;
+  position: absolute;
+  margin-left: -40px;
+  margin-top: 22px;
+  content: "Note info";
+  background-color: darkgray;
+  color: white;
+  padding: 5px;
+  -webkit-animation: fadein 1s;
+  width: 60px;
+  font-size: 14px;
+}
+
+.topbarLeftSide .fa-info-circle:hover:after {
+  content: "Note info";
+}
+
+.topbarLeftSide .fa-trash:hover:after {
+  content: "Delete note";
+  width: 65px;
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

@@ -72,34 +72,43 @@
   transition: all 0.4s ease 0s;
   color: white;
   border: none;
-
 }
 
-.homeSidebar a:hover .fa-plus.title {
-  transition: all 0.4s ease 0s;
-  background-color: yellow;
-}
-
-/*.homeSidebar .fa-plus:hover:after {
-  content: "NEW NOTE";
+.homeSidebar .fa-plus:hover:after,
+.homeSidebar .fa-sticky-note:hover:after,
+.homeSidebar .fa-book:hover:after,
+.homeSidebar .fa-user:hover:after {
   position: absolute;
   background-color: darkgray;
   margin-left: 10px;
   padding: 5px;
   font-family: 'Yantramanav', sans-serif;
   font-size: 12px;
-  transition-delay: content 2s;
-}*/
+  width: 60px;
+  -webkit-animation: fadein 1s;
+}
 
-/*.notebooksTopRow button:hover:after {
-  position: absolute;
-  margin-left: 5px;
-  content: "Create a notebook";
-  background-color: darkgray;
-  color: white;
-  padding: 5px;
-  transform: rotate(180deg);
-}*/
+.homeSidebar .fa-plus:hover:after {
+  content: "NEW NOTE";
+}
+
+.homeSidebar .fa-sticky-note:hover:after {
+  content: "NOTES";
+  width: 35px;
+}
+
+.homeSidebar .fa-book:hover:after {
+  content: "NOTEBOOKS";
+}
+
+.homeSidebar .fa-user:hover:after {
+  content: "ACCOUNT";
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};
 
 .homeSidebar .slideWorkChat {
   border: 0;
@@ -133,3 +142,30 @@
 .homeSidebar .profile {
   font-size: 40px;
 }
+
+/*.homeSidebar .fa-plus:hover:after {
+  content: "hello";
+  animation: pulse 5s infinite;
+  animation-delay: 5s;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #001F3F;
+
+  }
+  100% {
+    background-color: #FF4136;
+
+  }
+}*/
+
+/*.notebooksTopRow button:hover:after {
+  position: absolute;
+  margin-left: 5px;
+  content: "Create a notebook";
+  background-color: darkgray;
+  color: white;
+  padding: 5px;
+  transform: rotate(180deg);
+}*/

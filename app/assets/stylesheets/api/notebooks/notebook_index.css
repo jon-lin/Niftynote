@@ -59,13 +59,21 @@ body > div:nth-child(4) > div {
 
 .notebooksTopRow button:hover:after {
   position: absolute;
-  margin-left: 5px;
+  margin-left: -70px;
+  margin-top: 22px;
   content: "Create a notebook";
   background-color: darkgray;
   color: white;
   padding: 5px;
-  /*transform: rotate(180deg);*/
+  -webkit-animation: fadein 1s;
+  width: 110px;
+  font-size: 14px;
 }
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};
 
 .notebooksTopRow button > * {
   font-size: 20px;

@@ -62,6 +62,9 @@
   border-top: none;
   border-left: none;
   border-right: none;
+  /*border: 1px solid red;*/
+  padding-left: 0;
+  /*margin-left: 0;*/
 }
 
 .quillContainer #updateNoteTitle {

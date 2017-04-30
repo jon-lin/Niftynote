@@ -30,6 +30,26 @@ class NewNote extends React.Component {
     //     }, 1000)
     // }, 1000)
 
+    // let createNoteThenUpdate = () => {
+    //   this.props.createNote(
+    //         {
+    //           body: "Type the body here",
+    //           title: "Type the title here"
+    //         }
+    //       )
+    //
+    //   return () =>
+    //     setTimeout(() => {
+    //     return this.props.updateNote(
+    //           {
+    //             body: this.state.body,
+    //             title: this.state.title,
+    //             id: this.state.notebookId
+    //           }
+    //         )
+    //   }, 1000)
+    // }
+
     let delayTimer = () => setTimeout(() => {
       return this.props.updateNote(
             {
@@ -51,14 +71,14 @@ class NewNote extends React.Component {
     this.leaveNewNotePage = this.leaveNewNotePage.bind(this);
   }
 
-  componentDidMount() {
-    this.props.createNote(
-          {
-            body: "Type the body here",
-            title: "Type the title here"
-          }
-        )
-  }
+  // componentDidMount() {
+  //   this.props.createNote(
+  //         {
+  //           body: "Type the body here",
+  //           title: "Type the title here"
+  //         }
+  //       )
+  // }
 
   // componentDidMount() {
   //
@@ -122,16 +142,18 @@ class NewNote extends React.Component {
     let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNotebookDropDown';
 
     return (
-      <div className="quillContainer">
+      <div className="quill2bigContainer">
+        <div className="quillContainer2">
 
-        <NotebookScrollbar formType={formType}/>
-        <input type="text" value={this.state.title} onChange={this.handleInputChange}></input>
-        <ReactQuill value={this.state.body}
-                    onChange={this.handleInputChange}
-                    modules={ {toolbar: toolbarOptions} }/>
-
-                  <button onClick={this.leaveNewNotePage}>Done</button>
-    </div>
+          <NotebookScrollbar formType={formType}/>
+          <input type="text" className="quill2InputTitle" placeholder="Title your note" value={this.state.title} onChange={this.handleInputChange}></input>
+          <ReactQuill value={this.state.body}
+                      placeholder="Just start typing"
+                      onChange={this.handleInputChange}
+                      modules={ {toolbar: toolbarOptions} }/>
+        </div>
+        <button className="newNoteDoneButton" onClick={this.leaveNewNotePage}>Done</button>
+      </div>
     )
   }
 }

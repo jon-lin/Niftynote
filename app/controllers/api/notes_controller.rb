@@ -3,6 +3,11 @@ class Api::NotesController < ApplicationController
     @notes = current_user.notes
   end
 
+  def new
+    @note = Note.new
+    @note.notebook_id = current_user.notebooks.find_by_defaultNotebook(true).id
+  end
+
   def create
     @note = Note.new(note_params)
 
@@ -24,7 +29,13 @@ class Api::NotesController < ApplicationController
   def update
     @note = current_user.notes.find(params[:id])
 
-    if @note.update(note_params)
+    mod_note_params = note_params
+
+    if params[:note][:title] == ''
+      mod_note_params = {title: 'Untitled', body: params[:note][:body]}
+    end
+
+    if @note.update!(mod_note_params)
       render :show
     else
       errors = @note.errors.full_messages

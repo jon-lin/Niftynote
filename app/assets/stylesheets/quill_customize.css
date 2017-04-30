@@ -1,18 +1,18 @@
-.quill {
-  /*height: 80vh;
+/*.quill {
+  height: 80vh;
   max-width: 950px;
   min-width: 290px;
-  display: flex;*/
+  display: flex;
 
-  /*border: 2px solid blue;*/
-}
+  border: 2px solid blue;
+}*/
 
-.ql-editor {
-  /*align-self: flex-start;*/
-  /*margin-top: 80px;*/
-  /*border: 2px solid blue;*/
-  /*height: calc(100%-300px)*/
-}
+/*.ql-editor {
+  align-self: flex-start;
+  margin-top: 80px;
+  border: 2px solid blue;
+  height: calc(100%-300px)
+}*/
 
 /*
 
@@ -25,8 +25,8 @@
   z-index: 10;
   border: 2px solid blue;
 }
-
 */
+
 
 /*.quillContainer {
   position: relative;
@@ -55,18 +55,16 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;*/
-  /*position: absolute;
-  right: 0;*/
+  align-items: flex-start;
+  position: absolute;
+  right: 0;
 
-  /*align-items: flex-start;*/
-/*}*/
+  align-items: flex-start;
+}*/
 
-/*div.quillOuterContainer > div > div > div.ql-toolbar.ql-snow {*/
-  /*min-width: 1492px;*/
-/*}*/
-
-/*.entire*/
+/*div.quillOuterContainer > div > div > div.ql-toolbar.ql-snow {
+  min-width: 1492px;
+}*/
 
 /*.ql-blank {
   border-color: transparent;
@@ -82,9 +80,9 @@
 }*/
 
 
-/*.homeTotalLayout .quill {*/
-  /*display: none;*/
-  /*width: calc(100% - 73px - 350px);
+/*.homeTotalLayout .quill {
+  display: none;
+  width: calc(100% - 73px - 350px);
   margin: 0;
   border: 1px solid orange;
 }*/

@@ -30,25 +30,25 @@ class NewNote extends React.Component {
     //     }, 1000)
     // }, 1000)
 
-    // let createNoteThenUpdate = () => {
-    //   this.props.createNote(
-    //         {
-    //           body: "Type the body here",
-    //           title: "Type the title here"
-    //         }
-    //       )
-    //
-    //   return () =>
-    //     setTimeout(() => {
-    //     return this.props.updateNote(
-    //           {
-    //             body: this.state.body,
-    //             title: this.state.title,
-    //             id: this.state.notebookId
-    //           }
-    //         )
-    //   }, 1000)
-    // }
+    let createNoteThenUpdate = () => {
+      this.props.createNote(
+            {
+              body: "Type the body here",
+              title: "Type the title here"
+            }
+          )
+
+      return () =>
+        setTimeout(() => {
+        return this.props.updateNote(
+              {
+                body: this.state.body,
+                title: this.state.title,
+                id: this.state.notebookId
+              }
+            )
+      }, 1000)
+    }
 
     let delayTimer = () => setTimeout(() => {
       return this.props.updateNote(

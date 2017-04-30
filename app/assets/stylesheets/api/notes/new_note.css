@@ -7,7 +7,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   font-family: 'Yantramanav', sans-serif;
   min-height: 620px;
 }
@@ -32,7 +31,8 @@
   flex-direction: column;
   max-width: 960px;
   min-width: 300px;
-  min-height: 420px;
+  margin-left: 50px;
+  margin-top: 30px;
 }
 
 .quillContainer2 > div.quill > div.ql-container.ql-snow > div.ql-editor {

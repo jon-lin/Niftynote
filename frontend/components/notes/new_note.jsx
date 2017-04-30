@@ -18,7 +18,7 @@ class NewNote extends React.Component {
               id: this.state.notebookId
             }
           )
-    }, 1000)
+    }, 500)
 
     this.state = { body: '',
                   title: '',

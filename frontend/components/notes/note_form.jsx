@@ -12,23 +12,25 @@ class NoteForm extends React.Component {
     let delayTimer = () => setTimeout(() => {
 
 
-      //these lines are a temporary fix for initial render problems
-      let noteId;
-      if (this.props.currentNote) {
-        noteId = this.props.currentNote.id
-      } else {
-        return null
-      }
+      //these lines can be used as temporary fix in case of initial render problems,
+      //specifically when this.props.currentNote is undefined...
+      //
+      // let noteId;
+      // if (this.props.currentNote) {
+      //   noteId = this.props.currentNote.id
+      // } else {
+      //   return null
+      // }
 
 
       return this.props.updateNote(
             {
               body: this.state.body,
               title: this.state.title,
-              id: noteId
+              id: this.props.currentNote.id
             }
           )
-    }, 1000)
+    }, 500)
 
     super(props)
     this.state = { body: '', title: '', delayTimer: delayTimer, timerId: delayTimer() }
@@ -38,6 +40,16 @@ class NoteForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.setState({body: newProps.currentNote.body, title: newProps.currentNote.title})
+  }
+
+  componentWillUnmount() {
+    this.props.updateNote(
+          {
+            body: this.state.body,
+            title: this.state.title,
+            id: this.props.currentNote.id
+          }
+        );
   }
 
   handleInputChange(event) {

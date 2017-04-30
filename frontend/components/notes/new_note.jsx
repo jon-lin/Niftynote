@@ -90,7 +90,7 @@ class NewNote extends React.Component {
           ['clean']                                         // remove formatting button
         ];
 
-    let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNotebookDropDown';
+    let formType = (this.props.location.pathname === '/home') ? 'homeDropDown' : 'newNoteDropDown';
 
     return (
       <div className="quill2bigContainer">

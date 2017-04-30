@@ -3,7 +3,8 @@
 .homeSidebar .slideWorkChat,
 .homeSidebar .fa-search,
 .homeSidebar .fa-tags,
-#root > div > div > div.homeLeftSide > div.homeSidebar > div.bottom4buttons > button.slideShortcuts {
+#root > div > div > div.homeLeftSide > div.homeSidebar > div.bottom4buttons > button.slideShortcuts,
+#root > div > div > div.homeLeftSide > div.homeSidebar > div.bottom4buttons > button.slideTags {
   display: none;
 }
 

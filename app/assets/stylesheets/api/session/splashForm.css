@@ -64,7 +64,8 @@
 
 .splashForm .centerPanelContainer {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 90px - 60px);
+  min-height: 800px;
 }
 
 .splashForm .centerPanel {

@@ -10,7 +10,6 @@ class NotebookScrollbar extends React.Component {
      super(props);
      this.state = {value: this.props.selectedNotebook.id};
      this.handleChange = this.handleChange.bind(this);
-    //  this.createNewNotebook = this.createNewNotebook.bind(this);
    }
 
    componentDidMount() {
@@ -22,10 +21,6 @@ class NotebookScrollbar extends React.Component {
           value: newProps.selectedNotebook.id
         });
     }
-
-    // createNewNotebook() {
-    //   console.log("hello");
-    // }
 
    handleChange(e) {
      if (e.target.value === "Create new notebook") {

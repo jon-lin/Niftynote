@@ -3,11 +3,6 @@ class Api::NotesController < ApplicationController
     @notes = current_user.notes
   end
 
-  def new
-    @note = Note.new
-    @note.notebook_id = current_user.notebooks.find_by_defaultNotebook(true).id
-  end
-
   def create
     @note = Note.new(note_params)
 

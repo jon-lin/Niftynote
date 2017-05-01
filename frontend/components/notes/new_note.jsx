@@ -86,20 +86,18 @@ class NewNote extends React.Component {
         this.setState(Object.assign({}, param, {id: this.state.id}), clearTimeout(this.state.timerId));
         this.setState({timerId: this.state.delayTimer()});
     } else {
-      debugger
         let noteHasBeenCreated = !this.state.noteCreated;
         this.setState(
 
           Object.assign({}, param, {noteCreated: noteHasBeenCreated}),
 
           () => {
-                    debugger
-                    this.props.createNote(
-                        {
-                          body: this.state.body,
-                          title: this.state.title,
-                          notebook_id: this.state.value
-                        }).then(() => this.setState({id: this.props.currentNote.id}))
+                  this.props.createNote(
+                      {
+                        body: this.state.body,
+                        title: this.state.title,
+                        notebook_id: this.state.value
+                      }).then(() => this.setState({id: this.props.currentNote.id}))
               }
           );
       }

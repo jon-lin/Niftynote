@@ -21,7 +21,6 @@ class NewNotebook extends React.Component {
   }
 
   postCreationAction() {
-    debugger
     if (this.props.creationRequestOrigin === 'homePage') {
         this.props.updateNote({id: this.props.currentNote.id, notebook_id: this.props.currentNotebook.id })
           .then(this.closeNewNotebookWindow)
@@ -30,17 +29,13 @@ class NewNotebook extends React.Component {
         this.props.closeNotebookIndexModal();
         this.props.router.push(`/home/notebooks/${this.props.currentNotebook.id}`);
     } else if (this.props.creationRequestOrigin === 'newNote') {
-
-        debugger
         let that = this;
         let pickNewNotebook = {currentTarget: {value: this.props.currentNotebook.id, id: 'newNoteDropdownSelectNotebook'}};
 
-        debugger
         this.props.fetchNotebooks().then(
           () => that.props.newNoteHandleInputChange(pickNewNotebook)
         );
 
-        debugger
         this.closeNewNotebookWindow();
     }
   }

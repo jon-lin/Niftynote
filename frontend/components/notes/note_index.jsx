@@ -19,22 +19,21 @@ class NoteIndex extends React.Component {
     Modal.setAppElement('body');
   }
 
-  // componentWillReceiveProps(newProps) {
-  //   if (newProps.currentNote && this.props.notes) {
-  //     if (newProps.currentNote.id !== this.props.notes[0].id) {
-  //       this.props.fetchNote(newProps.currentNote.id);
-  //     }
-  //   }
-  // }
+  componentWillReceiveProps(newProps) {
+    if (newProps.notebook) {
+      debugger
+      if (newProps.notes && this.props.notes) {
+        debugger
+        if (newProps.notes[0].id !== this.props.notes[0].id) {
+          debugger
+          this.props.fetchNote(newProps.notes[0].id);
+        }
+      }
+    }
+  }
 
   componentDidMount() {
-    debugger
-    let that = this;
-    this.props.fetchNotes()
-      // .then(() => {
-      //   debugger
-      //   that.props.fetchNote(that.props.notes[0].id);
-      // });
+    this.props.fetchNotes();
   }
 
   openNotebookInfo() {

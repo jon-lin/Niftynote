@@ -31,13 +31,21 @@ class NoteIndex extends React.Component {
     //     }
     //   }
     // }
+
     if (newProps.notebook) {
       if (newProps.notes && this.props.notes) {
-          if (newProps.notes[0].id !== this.props.notes[0].id) {
-            this.props.fetchNote(newProps.notes[0].id);
+        if (newProps.notes[0].id !== this.props.notes[0].id) {
+          this.props.fetchNote(newProps.notes[0].id);
         }
       }
     }
+    // else {
+    //   if (newProps.notes && this.props.notes) {
+    //     if (newProps.notes.length !== this.props.notes.length) {
+    //       this.props.fetchNote(newProps.notes[0].id);
+    //     }
+    //   }
+    // }
 
     //need to create else statement for going back to homepage from notebook show page
     //need to create exception for new notebook without any notes

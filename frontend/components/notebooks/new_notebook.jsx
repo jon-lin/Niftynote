@@ -23,11 +23,12 @@ class NewNotebook extends React.Component {
   postCreationAction() {
     debugger
     if (this.props.creationRequestOrigin === 'homePage') {
-        this.props.updateNote({id: this.props.currentNote.id, notebook_id: this.props.currentNotebook.id }).then(
-          this.closeNewNotebookWindow
-        )
+        this.props.updateNote({id: this.props.currentNote.id, notebook_id: this.props.currentNotebook.id })
+          .then(this.closeNewNotebookWindow)
     } else if (this.props.creationRequestOrigin === 'notebookIndex') {
-        this.props.router.push(`/notebooks/${this.state.notebookId}`);
+        this.props.closeNewNotebookModal();
+        this.props.closeNotebookIndexModal();
+        this.props.router.push(`/home/notebooks/${this.props.currentNotebook.id}`);
     } else if (this.props.creationRequestOrigin === 'newNote') {
       this.props.currentNote.updateNote({notebook_id: null }).then(
         this.closeNewNotebookWindow

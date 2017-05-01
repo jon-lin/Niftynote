@@ -85,7 +85,11 @@ class NotebookIndex extends React.Component {
               style={{overlay: {backgroundColor: 'white'}}}
               shouldCloseOnOverlayClick={false}
             >
-              <NewNotebook closeNewNotebookModal={this.closeNewNotebookModal} />
+              <NewNotebook
+                creationRequestOrigin="notebookIndex"
+                closeNewNotebookModal={this.closeNewNotebookModal}
+                closeNotebookIndexModal={this.props.closeNotebookIndex}
+                />
           </Modal>
 
       </div>

@@ -4,6 +4,7 @@ import NoteItem from './note_item';
 import NotebookInfo from '../notebooks/notebook_info_page';
 import Modal from 'react-modal';
 
+
 class NoteIndex extends React.Component {
 
   constructor(props) {
@@ -20,20 +21,32 @@ class NoteIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    // if (jQuery.isEmptyObject(newProps.currentNote)) { return null }
+    //
+    // if (newProps.notebook) {
+    //   if (newProps.notes && this.props.notes) {
+    //     if (newProps.notes.length === 0 && this.props.notes.length === 0) {
+    //       this.props.resetCurrentNote();
+    //       return null;
+    //     }
+    //   }
+    // }
     if (newProps.notebook) {
-      debugger
       if (newProps.notes && this.props.notes) {
-        debugger
-        if (newProps.notes[0].id !== this.props.notes[0].id) {
-          debugger
-          this.props.fetchNote(newProps.notes[0].id);
+          if (newProps.notes[0].id !== this.props.notes[0].id) {
+            this.props.fetchNote(newProps.notes[0].id);
         }
       }
     }
+
+    //need to create else statement for going back to homepage from notebook show page
+    //need to create exception for new notebook without any notes
   }
 
   componentDidMount() {
-    this.props.fetchNotes();
+    // if (this.props.notes.length > 0) {
+      this.props.fetchNotes();
+    // }
   }
 
   openNotebookInfo() {

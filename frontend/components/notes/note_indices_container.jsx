@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { fetchNotes, fetchNote, startLoadingAllNotes } from '../../actions/notes_actions';
 import NoteIndex from './note_index';
 import { notesSelector } from './notes_to_array';
+import { resetCurrentNote } from '../../actions/notes_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let processed_notes = state.notes;
@@ -37,7 +38,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchNotes: () => dispatch(fetchNotes()),
-    fetchNote: (id) => dispatch(fetchNote(id))
+    fetchNote: (id) => dispatch(fetchNote(id)),
+    resetCurrentNote: () => dispatch(resetCurrentNote())
   };
 };
 

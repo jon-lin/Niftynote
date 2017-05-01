@@ -14,26 +14,34 @@ class NoteForm extends React.Component {
     //
     super(props)
 
-    // let noteId;
-    // if (this.props.currentNote) {
-    //   noteId = this.props.currentNote.id;
-    // } else {
-    //   noteId = null;
-    // }
-
     let delayTimer = () => setTimeout(() => {
+      let noteId;
+      if (this.props.currentNote) {
+        noteId = this.props.currentNote.id;
+      } else {
+        noteId = null;
+      }
+
       return this.props.updateNote(
             {
               body: this.state.body,
               title: this.state.title,
-              id: this.props.currentNote.id
+              id: noteId
             }
           )
     }, 500)
 
     this.state = { body: '', title: '', delayTimer: delayTimer, timerId: delayTimer() }
+
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  // componentWillMount() {
+  //   if (this.props.currentNote) {
+  //     let timerId = this.state.delayTimer()
+  //     this.setState({timerId: timerId});
+  //   }
+  // }
 
   componentWillReceiveProps(newProps) {
     this.setState({body: newProps.currentNote.body, title: newProps.currentNote.title})

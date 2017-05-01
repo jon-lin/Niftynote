@@ -3,6 +3,8 @@ import * as NotebooksAPIUtil from '../util/notebooks_api_util'
 export const RECEIVE_NOTEBOOKS = 'RECEIVE_NOTEBOOKS';
 export const RECEIVE_NOTEBOOK = 'RECEIVE_NOTEBOOK';
 export const REMOVE_NOTEBOOK = 'REMOVE_NOTEBOOK';
+export const RESET_CURRENT_NOTEBOOK = 'RESET_CURRENT_NOTEBOOK';
+
 
 export const receiveNotebooks = (notebooks) => (
   {
@@ -24,6 +26,8 @@ export const removeNotebook = (notebook) => (
     notebook
   }
 );
+
+export const resetCurrentNotebook = () => ({type: RESET_CURRENT_NOTEBOOK});
 
 export const fetchNotebooks = () => dispatch => {
   return NotebooksAPIUtil.fetchNotebooks()

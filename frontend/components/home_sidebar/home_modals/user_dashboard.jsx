@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/auth_actions';
+import { resetCurrentNote } from '../../../actions/notes_actions';
+import { resetCurrentNotebook } from '../../../actions/notebooks_actions';
 
 class UserDashboard extends React.Component {
   constructor(props) {
@@ -16,7 +18,9 @@ class UserDashboard extends React.Component {
   // }
 
   clickHandler() {
-    this.props.logout()
+    this.props.resetCurrentNote();
+    this.props.resetCurrentNotebook();
+    this.props.logout();
   }
 
   render() {
@@ -40,7 +44,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    resetCurrentNote: () => dispatch(resetCurrentNote()),
+    resetCurrentNotebook: () => dispatch(resetCurrentNotebook())
   };
 };
 

@@ -3,6 +3,7 @@ import * as NotesAPIUtil from '../util/notes_api_util'
 export const RECEIVE_NOTES = 'RECEIVE_NOTES';
 export const RECEIVE_NOTE = 'RECEIVE_NOTE';
 export const REMOVE_NOTE = 'REMOVE_NOTE';
+export const RESET_CURRENT_NOTE = 'RESET_CURRENT_NOTE';
 export const START_LOADING_ALL_NOTES = 'START_LOADING_ALL_NOTES';
 
 // you're not using this right now/may not need to use it
@@ -28,6 +29,8 @@ export const removeNote = (note) => (
     note
   }
 );
+
+export const resetCurrentNote = () => ({type: RESET_CURRENT_NOTE});
 
 export const fetchNotes = () => dispatch => {
   startLoadingAllNotes()

@@ -20,7 +20,12 @@ class NoteIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchNotes();
+    let that = this;
+    this.props.fetchNotes()
+      // .then(() => {
+      //   debugger
+      //   that.props.fetchNote(that.props.notes[0].id);
+      // });
   }
 
   openNotebookInfo() {

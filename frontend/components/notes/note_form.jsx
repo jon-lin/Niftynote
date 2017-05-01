@@ -14,18 +14,18 @@ class NoteForm extends React.Component {
       //these lines can be used as temporary fix in case of initial render problems,
       //specifically when this.props.currentNote is undefined...
       //
-      // let noteId;
-      // if (this.props.currentNote) {
-      //   noteId = this.props.currentNote.id
-      // } else {
-      //   return null
-      // }
+      let noteId;
+      if (this.props.currentNote) {
+        noteId = this.props.currentNote.id
+      } else {
+        return null
+      }
 
       return this.props.updateNote(
             {
               body: this.state.body,
               title: this.state.title,
-              id: this.props.currentNote.id
+              id: noteId
             }
           )
     }, 500)
@@ -40,13 +40,8 @@ class NoteForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.updateNote(
-          {
-            body: this.state.body,
-            title: this.state.title,
-            id: this.props.currentNote.id
-          }
-        );
+    clearTimeout(this.state.timerId);
+    this.setState({});
   }
 
   handleInputChange(event) {

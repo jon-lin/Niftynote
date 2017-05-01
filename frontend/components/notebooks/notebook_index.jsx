@@ -21,9 +21,7 @@ class NotebookIndex extends React.Component {
   }
 
   openNewNotebookModal() {
-    // if (!this.state.newNotebookModalIsOpen) {
-      this.setState({newNotebookModalIsOpen: true});
-    // }
+    this.setState({newNotebookModalIsOpen: true});
   }
 
   closeNewNotebookModal() {

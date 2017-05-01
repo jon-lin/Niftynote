@@ -15,13 +15,12 @@ class NoteIndex extends React.Component {
     this.closeNotebookInfo = this.closeNotebookInfo.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchNotes()
-      // .then(() => this.props.fetchNote(this.props.notes[0].id))
-      .then(() => Modal.setAppElement('body'));
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
 
-      // this line below is necessary to refresh the 'currentNote' in the store,
-      // so it's displayed
+  componentDidMount() {
+    this.props.fetchNotes();
   }
 
   openNotebookInfo() {
@@ -41,9 +40,24 @@ class NoteIndex extends React.Component {
       );
     }
 
-    let notesList = this.props.notes.map( noteItem => {
+    let notesListItems = this.props.notes.map( noteItem => {
       return (<NoteItem noteItem={noteItem} key={noteItem.id}/>);
     });
+
+    let notesList;
+    if (this.props.params.notebookId) {
+        notesList = (
+          <ul className="notebookShowPageNotesList">
+            {notesListItems}
+          </ul>
+        )
+    } else {
+        notesList = (
+          <ul className="homePageListofAllNotes">
+            {notesListItems}
+          </ul>
+        )
+    }
 
     let colHeaderPart = <h1 className="notesIndexColHeaderPart">NOTES</h1>
 
@@ -68,14 +82,12 @@ class NoteIndex extends React.Component {
         <div className="notesColTop">
           {colHeaderPart}
           <div className="notesTopBarSecondRow">
-            <text>{notesList.length} notes</text>
+            <text>{notesListItems.length} notes</text>
             <button>Options:</button>
           </div>
         </div>
 
-        <ul className="listOfNotes">
-          {notesList}
-        </ul>
+        {notesList}
 
         <Modal
               isOpen={this.state.notebookInfoIsOpen}

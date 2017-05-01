@@ -7,7 +7,7 @@ class Api::NotebooksController < ApplicationController
     @notebook = Notebook.new(notebook_params)
     @notebook.author_id = current_user.id
 
-    if @notebook.save
+    if @notebook.save!
       render :show
     else
       errors = @notebook.errors.full_messages

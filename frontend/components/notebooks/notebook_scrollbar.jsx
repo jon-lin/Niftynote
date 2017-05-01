@@ -4,12 +4,23 @@ import { fetchNotebooks, fetchNotebook } from '../../actions/notebooks_actions';
 import { updateNote } from '../../actions/notes_actions';
 import { Link, withRouter } from 'react-router';
 import NotebookItem from './notebook_item';
+import NewNotebook from './new_notebook';
+import Modal from 'react-modal';
 
 class NotebookScrollbar extends React.Component {
   constructor(props) {
      super(props);
-     this.state = {value: this.props.selectedNotebook.id};
+     this.state = {
+                    value: this.props.selectedNotebook.id,
+                    newNotebookModalIsOpen: false
+                  };
      this.handleChange = this.handleChange.bind(this);
+     this.openNewNotebookModal = this.openNewNotebookModal.bind(this);
+     this.closeNewNotebookModal = this.closeNewNotebookModal.bind(this);
+   }
+
+   componentWillMount() {
+     Modal.setAppElement('body');
    }
 
    componentDidMount() {
@@ -24,13 +35,21 @@ class NotebookScrollbar extends React.Component {
 
    handleChange(e) {
        if (e.target.value === "Create new notebook") {
-         this.props.router.push('/newnotebook');
+         this.openNewNotebookModal();
        }
        else {
          this.setState({value: e.target.value});
          this.props.updateNote({id: this.props.currentNote.id, notebook_id: e.target.value});
        }
      }
+
+   openNewNotebookModal() {
+     this.setState({newNotebookModalIsOpen: true});
+   }
+
+   closeNewNotebookModal() {
+     this.setState({newNotebookModalIsOpen: false});
+   }
 
     render() {
       let notebooksList = this.props.sortedNotebooks.map( notebook => {
@@ -56,6 +75,17 @@ class NotebookScrollbar extends React.Component {
                </select>
              </label>
            </form>
+
+           <Modal
+                   isOpen={this.state.newNotebookModalIsOpen}
+                   onRequestClose={this.closeNewNotebookModal}
+                   contentLabel="newNotebook"
+                   className="newNotebookModal"
+                   style={{overlay: {backgroundColor: 'white'}}}
+                   shouldCloseOnOverlayClick={false}
+                 >
+                   <NewNotebook creationRequestOrigin="homePage" closeNewNotebookModal={this.closeNewNotebookModal} />
+             </Modal>
         </div>
       );
     }
@@ -75,7 +105,7 @@ const mapStateToProps = (state) => {
   if (currentNotebook) {
       selectedNotebook = currentNotebook
   } else {
-      selectedNotebook = {title: "", body: ""}
+      selectedNotebook = {title: ""}
   }
 
   return {

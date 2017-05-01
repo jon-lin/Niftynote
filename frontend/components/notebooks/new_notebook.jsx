@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNotebook } from '../../actions/notebooks_actions';
+import { updateNote } from '../../actions/notes_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
@@ -9,12 +10,29 @@ class NewNotebook extends React.Component {
     this.createNotebook = this.createNotebook.bind(this);
     this.receiveTitle = this.receiveTitle.bind(this);
     this.closeNewNotebookWindow = this.closeNewNotebookWindow.bind(this);
+    this.postCreationAction = this.postCreationAction.bind(this);
     this.state = {title: ""};
   }
 
   createNotebook() {
-    this.props.closeNewNotebookModal();
+    let that = this;
     this.props.createNotebook(this.state)
+      .then(that.postCreationAction);
+  }
+
+  postCreationAction() {
+    debugger
+    if (this.props.creationRequestOrigin === 'homePage') {
+        this.props.updateNote({id: this.props.currentNote.id, notebook_id: this.props.currentNotebook.id }).then(
+          this.closeNewNotebookWindow
+        )
+    } else if (this.props.creationRequestOrigin === 'notebookIndex') {
+        this.props.router.push(`/notebooks/${this.state.notebookId}`);
+    } else if (this.props.creationRequestOrigin === 'newNote') {
+      this.props.currentNote.updateNote({notebook_id: null }).then(
+        this.closeNewNotebookWindow
+      )
+    }
   }
 
   receiveTitle(e) {
@@ -22,11 +40,7 @@ class NewNotebook extends React.Component {
   }
 
   closeNewNotebookWindow() {
-    if (this.props.location.pathname === '/newnotebook') {
-      this.props.router.push('/home');
-    } else {
-      this.props.closeNewNotebookModal();
-    }
+    this.props.closeNewNotebookModal();
   }
 
   render() {
@@ -47,45 +61,47 @@ class NewNotebook extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
+const dateComparator = (objX, objY) => (
+  new Date(objY.updated_at) - new Date(objX.updated_at)
+);
+
+const mapStateToProps = (state, myProps) => {
+  // let sorted_notebooks_arr = Object.values(state.notebooks).sort(dateComparator);
+  // let mostRecentNotebook = state.notebooks[state.currentNote.notebook_id]
+  // let currentNotebook;
+  //
+  // if (mostRecentNotebook) {
+  //     currentNotebook = mostRecentNotebook;
+  // } else {
+  //     currentNotebook = {title: ""};
+  // }
+
   return {
-    notebooks: Object.values(state.notebooks)
+    currentNote: state.currentNote,
+    creationRequestOrigin: myProps.creationRequestOrigin,
+    closeNewNotebookModal: myProps.closeNewNotebookModal,
+    currentNotebook: state.currentNotebook
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createNotebook: (notebook) => dispatch(createNotebook(notebook))
+    createNotebook: (notebook) => dispatch(createNotebook(notebook)),
+    updateNote: (note) => dispatch(updateNote(note))
   };
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewNotebook));
 
-//interesting experiment with .then and setTimeout
-
-// const delayFunc = (time) => {
-//   return new Promise(function(resolve) {
-//     setTimeout(resolve, time)
-//   });
-// }
-
-// .then(
-//   () => {
-//   let that = this;
-//   return delayFunc(2000)
-//     .then(() => {
-//       that.props.closeNewNotebookModal;
-//       that.props.router.push(`/home/notebooks/3`);
-//     });
-// }
-// )
-
-//this is kind of not working
-// this.props.router.push(`/home/notebooks/${this.props.notebooks[this.props.notebooks.length-1].id}`)
-  // .then(this.props.router.push(`/home/notebooks/${this.props.notebooks[this.props.notebooks.length-1].id}`))
-// <form onSubmit={this.createNotebook}>
+// if you create a new notebook from the notebook index sliding panel, you go to that notebook's show page afterward, this can be a MODAL, looks for a prop passed in that identifies the origin of request
 //
+// creationRequestOrigin="notebookIndex"
 //
-//forms don't work in react components!!!
-// </form>
-// <button onClick={this.props.closeModal}>Cancel</button>
+// if you create one from the dropdown on the homepage, that note is moved into that notebook that you just created, and you stay on the homepage. MODAL, looks for whether the URL is /home
+//
+// creationRequestOrigin="homePage"
+//
+// if you create one from the dropdown in the new note page, the note is moved into the just created notebook and you stay on the new note page.  MODAL, looks for whether the URL is /newnote
+//
+// creationRequestOrigin="newNote"
+//

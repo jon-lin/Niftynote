@@ -5,13 +5,15 @@ import { notesReducer } from './notes_reducer';
 import loadingReducer from './loading_reducer';
 import { notebooksReducer } from './notebooks_reducer';
 import { currentNoteReducer } from './current_note_reducer';
+import { currentNotebookReducer } from './current_notebook_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   notes: notesReducer,
   loading: loadingReducer,
   notebooks: notebooksReducer,
-  currentNote: currentNoteReducer
+  currentNote: currentNoteReducer,
+  currentNotebook: currentNotebookReducer
 });
 
 export default rootReducer;

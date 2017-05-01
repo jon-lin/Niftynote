@@ -1,5 +1,5 @@
 import React from 'react';
-import { createNotebook } from '../../actions/notebooks_actions';
+import { createNotebook, fetchNotebooks } from '../../actions/notebooks_actions';
 import { updateNote } from '../../actions/notes_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -26,13 +26,22 @@ class NewNotebook extends React.Component {
         this.props.updateNote({id: this.props.currentNote.id, notebook_id: this.props.currentNotebook.id })
           .then(this.closeNewNotebookWindow)
     } else if (this.props.creationRequestOrigin === 'notebookIndex') {
-        this.props.closeNewNotebookModal();
+        this.closeNewNotebookWindow();
         this.props.closeNotebookIndexModal();
         this.props.router.push(`/home/notebooks/${this.props.currentNotebook.id}`);
     } else if (this.props.creationRequestOrigin === 'newNote') {
-      this.props.currentNote.updateNote({notebook_id: null }).then(
-        this.closeNewNotebookWindow
-      )
+
+        debugger
+        let that = this;
+        let pickNewNotebook = {currentTarget: {value: this.props.currentNotebook.id, id: 'newNoteDropdownSelectNotebook'}};
+
+        debugger
+        this.props.fetchNotebooks().then(
+          () => that.props.newNoteHandleInputChange(pickNewNotebook)
+        );
+
+        debugger
+        this.closeNewNotebookWindow();
     }
   }
 
@@ -88,6 +97,7 @@ const mapStateToProps = (state, myProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createNotebook: (notebook) => dispatch(createNotebook(notebook)),
+    fetchNotebooks: () => dispatch(fetchNotebooks()),
     updateNote: (note) => dispatch(updateNote(note))
   };
 };

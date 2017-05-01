@@ -5,6 +5,8 @@ import { fetchNotebooks } from '../../actions/notebooks_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import NotebookItem from '../notebooks/notebook_item';
+import NewNotebook from '../notebooks/new_notebook';
+import Modal from 'react-modal';
 
 class NewNote extends React.Component {
   constructor(props) {
@@ -28,10 +30,17 @@ class NewNote extends React.Component {
                   timerId: delayTimer(),
                   noteCreated: false,
                   value: '',
-                  id: null
+                  id: null,
+                  newNotebookModalIsOpen: false
                  }
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.openNewNotebookModal = this.openNewNotebookModal.bind(this);
+    this.closeNewNotebookModal = this.closeNewNotebookModal.bind(this);
+  }
+
+  componentWillMount() {
+    Modal.setAppElement('body');
   }
 
   componentDidMount() {
@@ -49,29 +58,42 @@ class NewNote extends React.Component {
                 })
   }
 
+  openNewNotebookModal() {
+    this.setState({newNotebookModalIsOpen: true});
+  }
+
+  closeNewNotebookModal() {
+    this.setState({newNotebookModalIsOpen: false});
+  }
+
   handleInputChange(event) {
 
     let param;
     if (typeof event.currentTarget === 'undefined') {
-      param = {body: event};
+        param = {body: event};
     } else if (event.currentTarget.value === 'Select...') {
-      return null;
+        return null;
+    } else if (event.currentTarget.value === 'Create new notebook') {
+        this.openNewNotebookModal();
+        return null;
     } else if (event.currentTarget.id === 'newNoteDropdownSelectNotebook') {
-      param = {value: event.currentTarget.value};
+        param = {value: event.currentTarget.value};
     } else if (event.currentTarget.id === 'newNoteTitleInput') {
-      param = {title: event.currentTarget.value};
+        param = {title: event.currentTarget.value};
     }
 
     if (this.state.noteCreated) {
         this.setState(Object.assign({}, param, {id: this.state.id}), clearTimeout(this.state.timerId));
         this.setState({timerId: this.state.delayTimer()});
     } else {
+      debugger
         let noteHasBeenCreated = !this.state.noteCreated;
         this.setState(
 
           Object.assign({}, param, {noteCreated: noteHasBeenCreated}),
 
           () => {
+                    debugger
                     this.props.createNote(
                         {
                           body: this.state.body,
@@ -138,6 +160,19 @@ class NewNote extends React.Component {
         </div>
 
         <button className="newNoteDoneButton" onClick={() => this.props.router.push('/home')}>Done</button>
+
+          <Modal
+              isOpen={this.state.newNotebookModalIsOpen}
+              onRequestClose={this.closeNewNotebookModal}
+              contentLabel="newNotebook"
+              className="newNotebookModal"
+              style={{overlay: {backgroundColor: 'white'}}}
+              shouldCloseOnOverlayClick={false}
+            >
+              <NewNotebook creationRequestOrigin="newNote"
+                           closeNewNotebookModal={this.closeNewNotebookModal}
+                           newNoteHandleInputChange={this.handleInputChange}/>
+          </Modal>
       </div>
     )
   }

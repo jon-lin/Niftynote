@@ -9,28 +9,28 @@ import { withRouter } from 'react-router';
 class NoteForm extends React.Component {
   constructor(props) {
 
+    //these lines can be used as temporary fix in case of initial render problems,
+    //specifically when this.props.currentNote is undefined...
+    //
+    super(props)
+
+    // let noteId;
+    // if (this.props.currentNote) {
+    //   noteId = this.props.currentNote.id;
+    // } else {
+    //   noteId = null;
+    // }
+
     let delayTimer = () => setTimeout(() => {
-
-      //these lines can be used as temporary fix in case of initial render problems,
-      //specifically when this.props.currentNote is undefined...
-      //
-      let noteId;
-      if (this.props.currentNote) {
-        noteId = this.props.currentNote.id
-      } else {
-        return null
-      }
-
       return this.props.updateNote(
             {
               body: this.state.body,
               title: this.state.title,
-              id: noteId
+              id: this.props.currentNote.id
             }
           )
     }, 500)
 
-    super(props)
     this.state = { body: '', title: '', delayTimer: delayTimer, timerId: delayTimer() }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -41,7 +41,7 @@ class NoteForm extends React.Component {
 
   componentWillUnmount() {
     clearTimeout(this.state.timerId);
-    this.setState({});
+    // this.setState({});
   }
 
   handleInputChange(event) {

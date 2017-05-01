@@ -74,6 +74,20 @@
   padding: 10px;
 }
 
+.entireNotesIndexCol .showNotebookNotesBlackBox .fa-info-circle:hover:after {
+  font-family: 'Yantramanav', sans-serif;
+  position: absolute;
+  margin-left: -120px;
+  margin-top: -7px;
+  content: "Notebook info";
+  background-color: darkgray;
+  color: white;
+  padding: 5px;
+  -webkit-animation: fadein 1s;
+  width: 90px;
+  font-size: 14px;
+}
+
 .entireNotesIndexCol .showNotebookNotesBlackBox > *:not(i) {
   margin: 10px;
 }
@@ -92,3 +106,8 @@
 .entireNotesIndexCol .showNotebookNotesBlackBox button {
   display: none;
 }
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

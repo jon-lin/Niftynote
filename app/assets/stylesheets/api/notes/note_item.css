@@ -12,11 +12,13 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid lightgray;
+  cursor: pointer;
 }
 
 .noteItemButtons {
   display: none;
   margin-right: 5px;
+
 }
 
 .wholeNoteItem:hover .noteItemButtons {
@@ -32,6 +34,7 @@
   font-size: 20px;
   padding: 8px;
   background-color: #2DBE60;
+  cursor: pointer;
 }
 
 .noteItemButtons button .fa {

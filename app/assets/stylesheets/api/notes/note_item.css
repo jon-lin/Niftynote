@@ -6,7 +6,12 @@
 .wholeNoteItem {
   position: relative;
   width: 100%;
+  height: 120px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid lightgray;
 }
 
 .noteItemButtons {
@@ -34,17 +39,11 @@
 }
 
 .noteItemBox {
-  height: 120px;
-  border-bottom: 1px solid lightgray;
-}
-
-.noteItemBox > * {
-  padding-left: 20px;
+  height: 98px;
 }
 
 .noteItemTitle {
   font-size: 18px;
-  padding-top: 13px;
 }
 
 .timePassed {
@@ -55,6 +54,7 @@
 
 .bodySnippet {
   font-size: 13px;
+  width: 310px;
 }
 
 .timePassed, .bodySnippet {

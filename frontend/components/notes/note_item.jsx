@@ -2,6 +2,7 @@ import React from 'react';
 import NoteForm from './note_form';
 import { connect } from 'react-redux';
 import { fetchNote, deleteNote } from '../../actions/notes_actions';
+import htmlToText from 'html-to-text';
 
 class NoteItem extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class NoteItem extends React.Component {
   render() {
     let bodyPreview;
     if (this.props.noteItem.body) {
-      bodyPreview = this.props.noteItem.body.slice(0, 100);
+      bodyPreview = htmlToText.fromString(this.props.noteItem.body).slice(0, 135);
     } else {
       bodyPreview = "";
     }

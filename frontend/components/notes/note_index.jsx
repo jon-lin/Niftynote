@@ -21,7 +21,6 @@ class NoteIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    debugger
     if (newProps.mostRecentNoteId !== this.props.mostRecentNoteId) {
       if (newProps.mostRecentNotebookId !== this.props.mostRecentNotebookId) {
         $('#root > div > div > div:nth-child(2)')[0].className = "outerhomeRightSide";

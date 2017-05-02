@@ -79,3 +79,21 @@
 .wholeNoteItem .fa-comments {
   display: none;
 }
+
+.wholeNoteItem .fa-trash:hover:after  {
+  font-family: 'Yantramanav', sans-serif;
+  position: absolute;
+  margin-left: -72px;
+  background-color: darkgray;
+  color: white;
+  padding: 3px;
+  -webkit-animation: fadein 1s;
+  width: 3s0px;
+  font-size: 10px;
+  content: "Delete note";
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

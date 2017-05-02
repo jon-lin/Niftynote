@@ -28,33 +28,14 @@ class Api::NotebooksController < ApplicationController
 
   def update
     @notebook = current_user.notebooks.find(params[:id])
-
-    # intermediary code here allows default to be set
-    # even if no title was entered; if no title is entered;
-    # the existing title of the notebook is passed in.
-
-    # otherwise, if a new title AND default notebook are passed in,
-    # both of them are used.
-
-    #if just a title is passed in, that will also work
-
-    # in both cases, the existing default notebook toggles to not being the
-    # default, using the prev_default stuff
-
-    # if @notebook && (params[:notebook][:title] == "") && (params[:notebook][:defaultNotebook] == "true")
-    #   mod_params = {
-    #                 title: @notebook.title,
-    #                 defaultNotebook: true
-    #               }
-    # else
-    #   mod_params = notebook_params
-    # end
-    #
+    mod_params = notebook_params
     prev_default = current_user.notebooks.find_by_defaultNotebook(true)
 
-    # if @notebook.update(mod_params)
-    if @notebook.update(notebook_params)
-      # if prev_default && (mod_params[:defaultNotebook] == true)
+    if @notebook == prev_default
+      mod_params = {title: params[:notebook][:title], defaultNotebook: true}
+    end
+
+    if @notebook.update!(mod_params)
       if @notebook != prev_default && (params[:notebook][:defaultNotebook] == "true")
         prev_default.update({defaultNotebook: false})
       end

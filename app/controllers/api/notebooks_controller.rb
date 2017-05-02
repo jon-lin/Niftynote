@@ -55,7 +55,7 @@ class Api::NotebooksController < ApplicationController
     # if @notebook.update(mod_params)
     if @notebook.update(notebook_params)
       # if prev_default && (mod_params[:defaultNotebook] == true)
-      if prev_default && (params[:defaultNotebook] == "true")
+      if prev_default && (params[:notebook][:defaultNotebook] == "true")
         prev_default.update({defaultNotebook: false})
       end
       render :show

@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { deleteNotebook } from '../../actions/notebooks_actions';
+import { deleteNotebook, fetchNotebooks } from '../../actions/notebooks_actions';
+import { fetchNotes }  from '../../actions/notes_actions';
 import { connect } from 'react-redux';
 
 class NotebookItem extends React.Component {
@@ -17,6 +18,9 @@ class NotebookItem extends React.Component {
 
   deleteNotebook(e) {
     this.props.deleteNotebook(e.currentTarget.getAttribute('value'))
+      .then(this.props.fetchNotes)
+      .then(this.props.fetchNotebooks);
+
     e.stopPropagation();
   }
 
@@ -48,7 +52,9 @@ class NotebookItem extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteNotebook: (id) => dispatch(deleteNotebook(id))
+    deleteNotebook: (id) => dispatch(deleteNotebook(id)),
+    fetchNotes: () => dispatch(fetchNotes()),
+    fetchNotebooks: () => dispatch(fetchNotebooks())
   };
 };
 

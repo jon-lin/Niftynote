@@ -92,9 +92,16 @@
   margin: 10px;
 }
 
-.entireNotesIndexCol .showNotebookNotesBlackBox h1 {
-  margin-top: 30px;
+.entireNotesIndexCol .showNotebookNotesBlackBox p {
+  font-weight: 200;
   font-size: 35px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 310px;
+  height: 45px;
+  text-overflow: ellipsis;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .entireNotesIndexCol .notebookShowPageNotesList {

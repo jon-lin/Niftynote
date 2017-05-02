@@ -77,7 +77,7 @@ class NoteIndex extends React.Component {
       colHeaderPart = (
                       <div className="showNotebookNotesBlackBox">
                         <i onClick={this.openNotebookInfo} className="fa fa-info-circle" aria-hidden="true"></i>
-                        <h1>{this.props.notebook.title}</h1>
+                        <p>{this.props.notebook.title}</p>
                         <button>Share</button>
                       </div>
                   );

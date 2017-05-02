@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { fetchNotes, fetchNote, startLoadingAllNotes } from '../../actions/notes_actions';
 import NoteIndex from './note_index';
 import { notesSelector } from './notes_to_array';
-import { resetCurrentNote } from '../../actions/notes_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let processed_notes = state.notes;
@@ -27,8 +26,19 @@ const mapStateToProps = (state, ownProps) => {
   //   tag = state.tags[ownProps.params.tagId]
   // }
 
+  let sortedAndProcessedNotes = notesSelector(processed_notes)
+
+  let mostRecentNoteId = null;
+  let mostRecentNotebookId = null;
+  if (sortedAndProcessedNotes[0]) {
+    mostRecentNoteId = sortedAndProcessedNotes[0].id;
+    mostRecentNotebookId = sortedAndProcessedNotes[0].notebook_id;
+  }
+
   return {
-    notes: notesSelector(processed_notes),
+    notes: sortedAndProcessedNotes,
+    mostRecentNoteId: mostRecentNoteId,
+    mostRecentNotebookId: mostRecentNotebookId,
     loading: state.loading,
     notebook: notebook,
     tag: tag
@@ -38,8 +48,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchNotes: () => dispatch(fetchNotes()),
-    fetchNote: (id) => dispatch(fetchNote(id)),
-    resetCurrentNote: () => dispatch(resetCurrentNote())
+    fetchNote: (id) => dispatch(fetchNote(id))
   };
 };
 

@@ -21,40 +21,19 @@ class NoteIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // if (jQuery.isEmptyObject(newProps.currentNote)) { return null }
-    //
-    // if (newProps.notebook) {
-    //   if (newProps.notes && this.props.notes) {
-    //     if (newProps.notes.length === 0 && this.props.notes.length === 0) {
-    //       this.props.resetCurrentNote();
-    //       return null;
-    //     }
-    //   }
-    // }
-
-    if (newProps.notebook) {
-      if (newProps.notes && this.props.notes) {
-        if (newProps.notes[0].id !== this.props.notes[0].id) {
-          this.props.fetchNote(newProps.notes[0].id);
-        }
+    debugger
+    if (newProps.mostRecentNoteId !== this.props.mostRecentNoteId) {
+      if (newProps.mostRecentNotebookId !== this.props.mostRecentNotebookId) {
+        $('#root > div > div > div:nth-child(2)')[0].className = "outerhomeRightSide";
+        this.props.fetchNote(newProps.mostRecentNoteId);
       }
+    } else if (newProps.mostRecentNoteId === null && this.props.mostRecentNoteId === null) {
+        $('#root > div > div > div:nth-child(2)')[0].className = "blankOutRightSideWhenNoNotesInNotebook";
     }
-    // else {
-    //   if (newProps.notes && this.props.notes) {
-    //     if (newProps.notes.length !== this.props.notes.length) {
-    //       this.props.fetchNote(newProps.notes[0].id);
-    //     }
-    //   }
-    // }
-
-    //need to create else statement for going back to homepage from notebook show page
-    //need to create exception for new notebook without any notes
   }
 
   componentDidMount() {
-    // if (this.props.notes.length > 0) {
-      this.props.fetchNotes();
-    // }
+    this.props.fetchNotes();
   }
 
   openNotebookInfo() {
@@ -143,7 +122,3 @@ class NoteIndex extends React.Component {
 }
 
 export default NoteIndex;
-
-// <div id="loading-notes-container">
-//   <div id="loading-notes"></div>
-// </div>

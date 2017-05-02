@@ -8,19 +8,18 @@ import { withRouter } from 'react-router';
 
 class NoteForm extends React.Component {
   constructor(props) {
-
-    //these lines can be used as temporary fix in case of initial render problems,
-    //specifically when this.props.currentNote is undefined...
-    //
     super(props)
 
     let delayTimer = () => setTimeout(() => {
+
+      //this conditional can be used as temporary fix in case of initial render problems,
+      //specifically when this.props.currentNote is undefined...
       let noteId;
-      if (this.props.currentNote) {
+      // if (this.props.currentNote) {
         noteId = this.props.currentNote.id;
-      } else {
-        noteId = null;
-      }
+      // } else {
+      //   noteId = null;
+      // }
 
       return this.props.updateNote(
             {
@@ -44,6 +43,7 @@ class NoteForm extends React.Component {
   // }
 
   componentWillReceiveProps(newProps) {
+    debugger
     this.setState({body: newProps.currentNote.body, title: newProps.currentNote.title})
   }
 
@@ -99,10 +99,10 @@ class NoteForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   let mostRecentNote, mostRecentNotes;
 
-  if (jQuery.isEmptyObject(state.currentNote)) {
+  if (jQuery.isEmptyObject(state.currentNote) && ownProps.location.pathname === '/home') {
     mostRecentNotes = notesSelector(state.notes);
     mostRecentNote = mostRecentNotes[0];
     return { currentNote: mostRecentNote };

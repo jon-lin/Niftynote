@@ -83,3 +83,9 @@
 .quillContainer .ql-container.ql-snow {
   height: 70vh;
 }
+
+
+/*the following disables user from editing the currentNote when going to a notebook without any notes*/
+.blankOutRightSideWhenNoNotesInNotebook {
+  display: none;
+}

@@ -48,6 +48,8 @@ class NotebookInfo extends React.Component {
     }
 
     let defaultNotebookCheckBox = null;
+    let deleteNotebookLink = null;
+
     if (defaultNotebook === false) {
       defaultNotebookCheckBox = (
         <label>
@@ -58,7 +60,15 @@ class NotebookInfo extends React.Component {
             checked={this.state.defaultNotebook}
             onChange={this.handleInputChange}/>
         </label>
-      )
+      );
+
+      deleteNotebookLink = (
+        <a href="" onClick={this.deleteNotebook}>Delete notebook</a>
+      );
+    } else {
+      deleteNotebookLink = (
+        <p>To delete this notebook, set another notebook as your default notebook first.</p>
+      );
     }
 
     return (
@@ -88,7 +98,7 @@ class NotebookInfo extends React.Component {
 
           {defaultNotebookCheckBox}
 
-          <a href="" onClick={this.deleteNotebook}>Delete notebook</a>
+          {deleteNotebookLink}
 
         </div>
 

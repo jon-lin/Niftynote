@@ -65,6 +65,12 @@
   /*border: 1px solid red;*/
   padding-left: 0;
   /*margin-left: 0;*/
+  visibility: hidden;
+}
+
+.quillContainer #makeQuillToolbarVisible {
+  visibility: visible;
+  -webkit-animation: fadein 1s;
 }
 
 .quillContainer #updateNoteTitle {
@@ -89,3 +95,8 @@
 .blankOutRightSideWhenNoNotesInNotebook {
   display: none;
 }
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

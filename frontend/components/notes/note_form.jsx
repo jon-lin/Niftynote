@@ -84,17 +84,29 @@ class NoteForm extends React.Component {
           ['clean']                                         // remove formatting button
         ];
 
-    return (
-      <div className="quillContainer">
 
-        <NotebookScrollbar/>
-        <input id="updateNoteTitle" type="text" value={this.state.title} onChange={this.handleInputChange}></input>
-        <ReactQuill value={this.state.body}
-                    onChange={this.handleInputChange}
-                    modules={ {toolbar: toolbarOptions} }/>
+      //use jquery to make the toolbar disappear or appear based on whether the user
+      //has selected the textbook
+      $('.quillContainer .ql-editor').click(
+        () => $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'makeQuillToolbarVisible')
+      )
 
-    </div>
-    )
+      $(document).click(function(event) {
+        if(!$(event.target).closest('.quillContainer').length) {
+          $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'hideQuillToolbar');
+        }
+      })
+
+      return (
+        <div className="quillContainer">
+
+          <NotebookScrollbar/>
+          <input id="updateNoteTitle" type="text" value={this.state.title} onChange={this.handleInputChange}></input>
+          <ReactQuill value={this.state.body}
+                      onChange={this.handleInputChange}
+                      modules={ {toolbar: toolbarOptions} }/>
+      </div>
+      )
   }
 }
 

@@ -70,7 +70,7 @@
 
 .quillContainer #makeQuillToolbarVisible {
   visibility: visible;
-  -webkit-animation: fadein 1s;
+  -webkit-animation: slider 1s;
 }
 
 .quillContainer #updateNoteTitle {
@@ -96,7 +96,9 @@
   display: none;
 }
 
-@keyframes fadein {
+@-webkit-keyframes slider {
   from { opacity: 0 }
   to { opacity: 1 }
+  /*from { position: absolute; right: calc(-1*(100% - 430px)); }*/
+  /*to { position: absolute; right: 0px; }*/
 };

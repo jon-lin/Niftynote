@@ -9,15 +9,11 @@
 #
 
 class Tag < ApplicationRecord
-  # validates_uniqueness_of :name, scope: :author
+  validates :name, presence: true, uniqueness: true
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
 
   has_many :notes,
     through: :taggings,
     source: :note
-
-  # has_one :author,
-  #   through: :notes,
-  #   source: :author
 end

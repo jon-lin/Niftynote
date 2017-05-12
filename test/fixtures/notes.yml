@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  title       :string           not null
-#  body        :text             not null
+#  body        :text
 #  notebook_id :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

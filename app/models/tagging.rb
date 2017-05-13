@@ -15,4 +15,8 @@ class Tagging < ApplicationRecord
 
   belongs_to :note
   belongs_to :tag
+
+  has_one :author,
+    through: :note,
+    source: :author
 end

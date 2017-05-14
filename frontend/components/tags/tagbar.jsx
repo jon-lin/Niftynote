@@ -16,6 +16,7 @@ class Tagbar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.state.tags = newProps.currentNote.tags;
+    this.setState({newTag: ''})
   }
 
   removeTag(e) {
@@ -45,7 +46,6 @@ class Tagbar extends React.Component {
   }
 
   render() {
-
     let placeholderText = 'New tag...';
 
     let formatTags = this.state.tags.map(tag =>

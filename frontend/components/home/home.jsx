@@ -21,6 +21,16 @@ class Home extends React.Component {
   render() {
     if (!this.props.currentUser) { return null };
 
+    //this code detects clicks outside of tag bar.
+    //it caused problems when used in the tag bar componenent.
+    //there, the click would fire hundreds of times.
+    //here, there's no access to tag bar methods...so not sure what to do with this.
+    // $(document).click(event => {
+    //   if(!$(event.target).closest('.entireTagBar').length) {
+    //     console.log('trip');
+    //   }
+    // });
+
     return (
       <div className="homeTotalLayout">
 

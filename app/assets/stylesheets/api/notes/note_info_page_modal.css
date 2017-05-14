@@ -13,7 +13,7 @@ body > div:nth-child(5) > div {
   justify-content: center;
   padding-top: 10%;
   font-family: 'Yantramanav', sans-serif;
-  -webkit-animation: fadein 0.5s;
+  -webkit-animation: fadein 1.5s;
 }
 
 .noteInfoSpread .noteInfoHeader3 {

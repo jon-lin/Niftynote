@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { notesSelector } from './notes_to_array';
 import NotebookScrollbar from '../notebooks/notebook_scrollbar';
 import { withRouter } from 'react-router';
+import Tagbar from '../tags/tagbar';
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -101,9 +102,10 @@ class NoteForm extends React.Component {
         <div className="quillContainer">
 
           <div className="scrollbarAndTags">
+            <Tagbar />
             <NotebookScrollbar/>
           </div>
-          
+
           <input id="updateNoteTitle" type="text" value={this.state.title} onChange={this.handleInputChange}></input>
           <ReactQuill value={this.state.body}
                       onChange={this.handleInputChange}

@@ -6,6 +6,7 @@
   justify-content: center;
   font-family: 'Yantramanav', sans-serif;
   min-height: 620px;
+  -webkit-animation: fadein 1.5s;
 }
 
 .quill2bigContainer .newNoteDoneButton {
@@ -82,3 +83,8 @@
 .quillContainer2 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #2DBE60;
 }
+
+@-webkit-keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};

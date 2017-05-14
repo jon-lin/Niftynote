@@ -4,6 +4,7 @@ it appears to be very fragile */
 /*this applies to notebook info AS WELL*/
 .ReactModal__Overlay {
   z-index: 15;
+  -webkit-animation: fadein 1.5s;
 }
 
 /*the below is what needs to be targeted*/
@@ -22,7 +23,7 @@ it appears to be very fragile */
   padding-top: 230px;
   align-items: center;
   font-family: 'Yantramanav', sans-serif;
-  -webkit-animation: fadein 0.5s;
+  -webkit-animation: fadein 1.5s;
 }
 
 .newNotebookPage > * {

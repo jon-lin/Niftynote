@@ -16,7 +16,7 @@ body > div:nth-child(6) > div {
   font-family: 'Yantramanav', sans-serif;
   font-size: 17px;
   font-weight: 300;
-  -webkit-animation: fadein 0.5s;
+  -webkit-animation: fadein 1.5s;
 }
 
 .notebookInfoPage .notebookInfoHeader {

@@ -4,11 +4,14 @@ import NoteForm from '../notes/note_form';
 import NoteFormTopbar from '../notes/note_form_top_bar';
 import HomeSidebar from '../home_sidebar/home_sidebar';
 
-
 class Home extends React.Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchAllTags();
   }
 
   componentWillReceiveProps(newProps) {

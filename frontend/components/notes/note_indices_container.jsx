@@ -26,7 +26,7 @@ const mapStateToProps = (state, ownProps) => {
   //   tag = state.tags[ownProps.params.tagId]
   // }
 
-  let sortedAndProcessedNotes = notesSelector(processed_notes)
+  let sortedAndProcessedNotes = notesSelector(processed_notes);
 
   let mostRecentNoteId = null;
   let mostRecentNotebookId = null;

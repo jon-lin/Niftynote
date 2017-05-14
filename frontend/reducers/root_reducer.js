@@ -6,6 +6,7 @@ import loadingReducer from './loading_reducer';
 import { notebooksReducer } from './notebooks_reducer';
 import { currentNoteReducer } from './current_note_reducer';
 import { currentNotebookReducer } from './current_notebook_reducer';
+import { tagsReducer } from './tags_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   loading: loadingReducer,
   notebooks: notebooksReducer,
   currentNote: currentNoteReducer,
-  currentNotebook: currentNotebookReducer
+  currentNotebook: currentNotebookReducer,
+  tags: tagsReducer
 });
 
 export default rootReducer;

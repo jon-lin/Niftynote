@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Home from './home';
+import { fetchAllTags } from '../../actions/tags_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -7,7 +8,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchAllTags: () => dispatch(fetchAllTags()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 //experimentation with getting initial currentNote to load isn't working
 

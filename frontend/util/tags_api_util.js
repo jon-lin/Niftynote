@@ -5,13 +5,14 @@ export const fetchAllTags = () => (
   })
 );
 
-export const fetchIndividualNoteTags = (note_id) => (
-  $.ajax({
-    method: 'GET',
-    url: 'api/tags/1',
-    data: {tag: {note_id: note_id}}
-  })
-);
+//this should turn out unnecessary, because current note will have its tags
+// export const fetchIndividualNoteTags = (note_id) => (
+//   $.ajax({
+//     method: 'GET',
+//     url: 'api/tags/1',
+//     data: {tag: {note_id: note_id}}
+//   })
+// );
 
 // $.ajax({method: 'GET', url: 'api/tags/1', data: {tag: {note_id: X}}})
 

@@ -12,15 +12,21 @@ class Api::TagsController < ApplicationController
       new_tags_ids << tag_id_to_add
     end
 
+    ids_of_destroyed_tags =
+      current_user.notes.find(tag_params[:note_id]).tag_ids - new_tags_ids
+
     current_user.notes.find(tag_params[:note_id]).tag_ids = new_tags_ids
 
+    @destroyed_tags_to_update = Tag.where(id: ids_of_destroyed_tags)
+
     @tags = current_user.notes.find(tag_params[:note_id]).tags
-    render :show
+    render :create
   end
 
-  def show
-    @tags = current_user.notes.find(tag_params[:note_id]).tags
-  end
+  # this shouldn't be necessary because note.tags works
+  # def show
+  #   @tags = current_user.notes.find(tag_params[:note_id]).tags
+  # end
 
   def update
     proposed_tag_name = JSON.parse(tag_params[:names])[0]

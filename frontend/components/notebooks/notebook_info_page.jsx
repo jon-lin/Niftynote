@@ -9,7 +9,7 @@ class NotebookInfo extends React.Component {
     super(props);
 
     this.state = {
-      title: "",
+      title: this.props.currentNotebook.title,
       defaultNotebook: false
     }
 
@@ -111,6 +111,10 @@ class NotebookInfo extends React.Component {
   }
 }
 
+const mapStateToProps = (state, OwnProps) => {
+  return { currentNotebook: OwnProps.notebook };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteNotebook: (id) => dispatch(deleteNotebook(id)),
@@ -118,4 +122,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(NotebookInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(NotebookInfo);

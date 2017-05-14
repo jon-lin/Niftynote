@@ -53,6 +53,8 @@ class Api::TagsController < ApplicationController
     end
 
     render :single_tag
+
+    # $.ajax({method: 'DELETE', url: 'api/tags/2'}).then(deleted_tag => console.log(deleted_tag))
   end
 
   private

@@ -4,19 +4,24 @@ import { connect } from 'react-redux';
 class Tagbar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      initialTags: []
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.state.initialTags = newProps.currentNote.tags
   }
 
   render() {
 
-    // let tags = this.props.currentNote.tags;
-    // let string = '';
-    //
-    // tags.forEach(tag => string += tag.name);
+    let string = '';
+    this.state.initialTags.forEach(tag => string += tag.name);
 
     return (
       <div className='entireTagBar'>
         <i className="fa fa-tags" aria-hidden="true"></i>
-        <input placeholder='New tag...' value={'hi'}></input>
+        <input placeholder='New tag...' value={string}></input>
       </div>
     )
   }

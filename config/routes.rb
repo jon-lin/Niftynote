@@ -1,20 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'tags/index'
-  end
-
-  namespace :api do
-    get 'tags/create'
-  end
-
-  namespace :api do
-    get 'tags/update'
-  end
-
-  namespace :api do
-    get 'tags/destroy'
-  end
-
   root to: 'static_pages#root'
 
   namespace :api, default: { format: :json } do
@@ -22,5 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :notebooks, except: [:new, :edit]
     resources :notes, except: [:new, :edit]
+    resources :tags, except: [:new, :edit]
   end
 end

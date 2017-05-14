@@ -62,16 +62,14 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  /*border: 1px solid red;*/
   padding-left: 0;
-  /*margin-left: 0;*/
-  visibility: hidden;
+  /*visibility: hidden;*/
 }
 
-.quillContainer #makeQuillToolbarVisible {
+/*.quillContainer #makeQuillToolbarVisible {
   visibility: visible;
   -webkit-animation: slider 1s;
-}
+}*/
 
 .quillContainer #updateNoteTitle {
   width: 100%;
@@ -96,9 +94,9 @@
   display: none;
 }
 
-@-webkit-keyframes slider {
+/*@-webkit-keyframes slider {
   from { opacity: 0 }
   to { opacity: 1 }
-  /*from { position: absolute; right: calc(-1*(100% - 430px)); }*/
-  /*to { position: absolute; right: 0px; }*/
-};
+  from { position: absolute; right: calc(-1*(100% - 430px)); }
+  to { position: absolute; right: 0px; }
+};*/

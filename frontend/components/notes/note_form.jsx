@@ -87,15 +87,15 @@ class NoteForm extends React.Component {
 
       //use jquery to make the toolbar disappear or appear based on whether the user
       //has selected the textbook
-      $('.quillContainer .ql-editor').click(
-        () => $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'makeQuillToolbarVisible')
-      )
-
-      $(document).click(function(event) {
-        if(!$(event.target).closest('.quillContainer').length) {
-          $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'hideQuillToolbar');
-        }
-      })
+      // $('.quillContainer .ql-editor').click(
+      //   () => $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'makeQuillToolbarVisible')
+      // )
+      //
+      // $(document).click(function(event) {
+      //   if(!$(event.target).closest('.quillContainer').length) {
+      //     $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'hideQuillToolbar');
+      //   }
+      // })
 
       return (
         <div className="quillContainer">

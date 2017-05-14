@@ -1,0 +1,17 @@
+/*.tagsIndexCol {
+  font-family: 'Yantramanav', sans-serif;
+  position: absolute;
+  left: 0;
+  width: 525px;
+  height: 100vh;
+  background: white;
+  z-index: 11;
+  -webkit-animation: slide2 0.7s;
+  border-right: 1px solid rgb(212, 210, 210);
+}*/
+
+.tagsIndexCol {
+  position: absolute;
+  border: 20px solid blue;
+  top: 200px;
+}

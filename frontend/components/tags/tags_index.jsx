@@ -12,10 +12,6 @@ class TagsIndex extends React.Component {
     this.closeNewTagModal = this.closeNewTagModal.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchAllTags();
-  }
-
   componentWillMount() {
     Modal.setAppElement('body');
   }
@@ -27,14 +23,6 @@ class TagsIndex extends React.Component {
   closeNewTagModal() {
     this.setState({newTagModalIsOpen: false});
   }
-
-  // if (!charRecord.includes(firstChar)) {
-  //
-  //   charRecord = [];
-  //   charRecord.push(firstChar);
-  // } else {
-  //
-  // }
 
   render() {
     let tags = this.props.tags;
@@ -62,31 +50,15 @@ class TagsIndex extends React.Component {
       }
 
       i--;
-      arrOfUls.push(<ul><li>{firstChar}</li>{arrOfLis}</ul>);
+      arrOfUls.push(
+        <ul className='tagsIndexAlphabetBlock'>
+          <li className='tagsIndexLetterHeader'>{firstChar}</li>
+          {arrOfLis}
+        </ul>
+      );
 
       if (breakLabel === true) { break; }
     }
-
-
-    // this.props.tags.map(tag, idx => {
-    //
-    //                 let currentTag = tag;
-    //                 let arrOfLis = [];
-    //                 let firstChar = tag.name.slice(1);
-    //
-    //                 while (firstChar === currentTag.name.slice(1)) {
-    //                   arrOfLis.push(
-    //                     <li className='tagItem' key={currentTag.id}>
-    //                       {currentTag.name} {currentTag.notesCount}
-    //                     </li>
-    //                   );
-    //                   currentTag = this.props.tags[idx + 1];
-    //                 }
-    //
-    //                 return (
-    //
-    //                         );
-    //               });
 
     return(
       <div className="tagsIndexCol">

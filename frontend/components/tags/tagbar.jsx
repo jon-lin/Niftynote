@@ -5,23 +5,27 @@ class Tagbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialTags: []
+      tags: []
     }
   }
 
   componentWillReceiveProps(newProps) {
-    this.state.initialTags = newProps.currentNote.tags
+    this.state.tags = newProps.currentNote.tags
   }
 
   render() {
 
-    let string = '';
-    this.state.initialTags.forEach(tag => string += tag.name);
+    let placeholderText = 'New tag...';
+    let formatTags = this.state.tags.map(tag => <li>{tag.name}</li>);
+    if (formatTags.length !== 0) { placeholderText = '+'; }
 
     return (
       <div className='entireTagBar'>
         <i className="fa fa-tags" aria-hidden="true"></i>
-        <input placeholder='New tag...' value={string}></input>
+        <ul className='existingTagsList'>
+          {formatTags}
+        </ul>
+        <input placeholder={placeholderText}></input>
       </div>
     )
   }

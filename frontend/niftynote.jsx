@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-// import * as APIUtil from './util/session_api_util';
-// import * as authActions from './actions/auth_actions';
+import * as TagsAPIUtil from './util/tags_api_util';
 
-// window.signin = authActions.signin;
-// window.logout = authActions.logout;
-// window.signup = authActions.signup;
-// window.jon = {email: 'jclin2013@gmail.com', password: 'password'};
+
+window.fetchAllTags = TagsAPIUtil.fetchAllTags;
+window.fetchIndividualNoteTags = TagsAPIUtil.fetchIndividualNoteTags;
+window.createTags = TagsAPIUtil.createTags;
+window.updateTag = TagsAPIUtil.updateTag;
+window.deleteTag = TagsAPIUtil.deleteTag;
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

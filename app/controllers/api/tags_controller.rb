@@ -16,14 +16,10 @@ class Api::TagsController < ApplicationController
 
     @tags = current_user.notes.find(tag_params[:note_id]).tags
     render :show
-
-    # $.ajax({method: 'POST', url: 'api/tags', data: {tag: {names: JSON.stringify(['tag1', 'tag2', 'tag3', 'yetanothernewtag']), note_id: 1}}})
   end
 
   def show
     @tags = current_user.notes.find(tag_params[:note_id]).tags
-
-    # $.ajax({method: 'GET', url: 'api/tags/1', data: {tag: {note_id: X}}})
   end
 
   def update
@@ -39,9 +35,6 @@ class Api::TagsController < ApplicationController
     end
 
     render :single_tag
-
-    # $.ajax({method: 'PATCH', url: 'api/tags/11', data: {tag: {names: JSON.stringify(['tag1'])}} }).then(succ => console.log(succ), fail => console.log('fail'))
-    # in react, you're going to want to GET INDEX to refresh after you update taggings
   end
 
   def destroy
@@ -53,8 +46,6 @@ class Api::TagsController < ApplicationController
     end
 
     render :single_tag
-
-    # $.ajax({method: 'DELETE', url: 'api/tags/2'}).then(deleted_tag => console.log(deleted_tag))
   end
 
   private

@@ -3,8 +3,26 @@
   display: none;
 }*/
 
-.entireNotebookScrollMenu input {
+.entireNotebookScrollMenu .searchField {
   display: none;
+  width: 0;
+  height: 0;
+}
+
+.entireNotebookScrollMenu {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.entireNotebookScrollMenu > * {
+  margin-right: 5px;
+  color: gray;
+}
+
+.entireNotebookScrollMenu i {
+  position: relative;
+  top: 3.5px;
+  left: 6px;
 }
 
 #newNoteDropdownSelectNotebook {
@@ -21,12 +39,13 @@
   outline: none;
   font-family: 'Yantramanav', sans-serif;
   background-color: transparent;
-  border: 1px solid gray;
+  border: none;
   font-size: 15px;
-  width: 30%;
+  position: relative;
+  top: 2px;
 }
 
-.homePageScrollbarMoveNote:hover:after,
+.entireNotebookScrollMenu:hover:after,
 .newNotePickNotebook:hover:after {
   position: absolute;
   color: white;
@@ -39,10 +58,12 @@
   width: 220px;
   text-align: center;
   -webkit-animation: fadein 1s;
+  z-index: 100;
 }
 
-.homePageScrollbarMoveNote:hover:after {
+.entireNotebookScrollMenu:hover:after {
   content: "MOVE NOTE TO ANOTHER NOTEBOOK";
+  margin-left: -20px;
 }
 
 .newNotePickNotebook:hover:after {

@@ -8,7 +8,10 @@ class Tagbar extends React.Component {
   render() {
 
     return (
-      <div>TAG BAR</div>
+      <div className='entireTagBar'>
+        <i className="fa fa-tags" aria-hidden="true"></i>
+        <input placeholder='New tag...'></input>
+      </div>
     )
   }
 }

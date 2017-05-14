@@ -49,12 +49,48 @@
   min-width: 300px;
   height: 100%;
   margin-left: 50px;
+  /*border: 1px solid red;*/
 }
 
 .quillContainer .ql-editor {
   margin-top: 60px;
   height: 70vh;
   padding-left: 3px;
+}
+
+.quillContainer .scrollbarAndTags {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 2px;
+  /*border: 1px solid blue;*/
+}
+
+.quillContainer .scrollbarAndTags > * {
+  margin-right: 10px;
+}
+
+.quillContainer .entireTagBar {
+  /*border: 1px solid red;*/
+  width: 100%;
+}
+
+.quillContainer .entireTagBar i {
+  color: gray;
+  position: relative;
+  top: 4px;
+}
+
+.quillContainer .entireTagBar > * {
+  margin-right: 6px;
+}
+
+.quillContainer .entireTagBar input {
+  position: relative;
+  top: 2.5px;
+  outline: none;
+  border: none;
+  width: calc(100% - 40px);
+  font-size: 13px;
 }
 
 .quillContainer .ql-toolbar.ql-snow {

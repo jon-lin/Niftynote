@@ -102,8 +102,8 @@ class NoteForm extends React.Component {
         <div className="quillContainer">
 
           <div className="scrollbarAndTags">
-            <Tagbar />
             <NotebookScrollbar/>
+            <Tagbar />
           </div>
 
           <input id="updateNoteTitle" type="text" value={this.state.title} onChange={this.handleInputChange}></input>

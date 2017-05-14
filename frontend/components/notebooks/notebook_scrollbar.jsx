@@ -61,6 +61,8 @@ class NotebookScrollbar extends React.Component {
 
       return (
         <div className="entireNotebookScrollMenu">
+          <i className="fa fa-book" aria-hidden="true"></i>
+
           <div className="searchField">
             <input type="search" placeholder="Find a notebook" results="0"></input>
           </div>

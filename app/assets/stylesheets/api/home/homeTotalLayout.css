@@ -88,6 +88,16 @@
   line-height: 22px;
   border-radius: 5px;
   background-color: #F8F8F8;
+  display: flex;
+}
+
+.quillContainer .entireTagBar .existingTagsList li button {
+  margin-left: 3px;
+  background-color: transparent;
+  /*border: 1px solid red;*/
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  -webkit-transform: scaleY(0.7);
 }
 
 .quillContainer .entireTagBar i {
@@ -107,6 +117,7 @@
   font-size: 13px;
   position: relative;
   right: 3px;
+  cursor: pointer;
 }
 
 .quillContainer .entireTagBar input::-webkit-input-placeholder { /* WebKit, Blink, Edge */

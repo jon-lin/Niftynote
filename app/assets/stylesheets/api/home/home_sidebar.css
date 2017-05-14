@@ -2,9 +2,7 @@
 .homeSidebar .fa-star,
 .homeSidebar .slideWorkChat,
 .homeSidebar .fa-search,
-.homeSidebar .fa-tags,
-#root > div > div > div.homeLeftSide > div.homeSidebar > div.bottom4buttons > button.slideShortcuts,
-#root > div > div > div.homeLeftSide > div.homeSidebar > div.bottom4buttons > button.slideTags {
+#root > div > div > div.homeLeftSide > div.homeSidebar > div.bottom4buttons > button.slideShortcuts {
   display: none;
 }
 

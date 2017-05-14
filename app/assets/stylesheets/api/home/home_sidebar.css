@@ -75,7 +75,8 @@
 .homeSidebar .fa-plus:hover:after,
 .homeSidebar .fa-sticky-note:hover:after,
 .homeSidebar .fa-book:hover:after,
-.homeSidebar .fa-user:hover:after {
+.homeSidebar .fa-user:hover:after,
+.homeSidebar .fa-tags:hover:after {
   position: absolute;
   background-color: darkgray;
   margin-left: 10px;
@@ -101,6 +102,11 @@
 
 .homeSidebar .fa-user:hover:after {
   content: "ACCOUNT";
+}
+
+.homeSidebar .fa-tags:hover:after {
+  content: "TAGS";
+  width: 30px;
 }
 
 @keyframes fadein {

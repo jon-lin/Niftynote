@@ -138,6 +138,21 @@
    color:    rgba(0, 0, 0, 0.5);
 }
 
+.quillContainer .entireTagBar:hover:after {
+  position: absolute;
+  color: white;
+  background-color: darkgray;
+  margin-top: -30px;
+  padding: 5px;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 12px;
+  width: 30px;
+  text-align: center;
+  z-index: 100;
+  content: "TAGS";
+  -webkit-animation: fadein 1s;
+}
+
 .quillContainer .ql-toolbar.ql-snow {
   min-width: 570px;
   border-top: none;
@@ -174,6 +189,11 @@
 .blankOutRightSideWhenNoNotesInNotebook {
   display: none;
 }
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};
 
 /*@-webkit-keyframes slider {
   from { opacity: 0 }

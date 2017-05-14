@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router';
 import Modal from 'react-modal';
 import UserDashboard from './home_modals/user_dashboard';
 import NotebookIndexContainer from '../notebooks/notebook_index_container';
+import TagsIndex from '../tags/tags_index';
 
 class HomeSidebar extends React.Component {
   constructor(props) {
@@ -10,13 +11,19 @@ class HomeSidebar extends React.Component {
 
     this.state = {
       userDashboardModalIsOpen: false,
-      notebookModalIsOpen: false
+      notebookModalIsOpen: false,
+      tagsModalIsOpen: false
     };
 
     this.openUserDashboard = this.openUserDashboard.bind(this);
     this.closeUserDashboard = this.closeUserDashboard.bind(this);
+
     this.openNotebookIndex = this.openNotebookIndex.bind(this);
     this.closeNotebookIndex = this.closeNotebookIndex.bind(this);
+
+    this.openTagsIndex = this.openTagsIndex.bind(this);
+    this.closeTagsIndex = this.closeTagsIndex.bind(this);
+
     this.closeAllModals = this.closeAllModals.bind(this);
     this.showNotesIndex = this.showNotesIndex.bind(this);
   }
@@ -45,6 +52,18 @@ class HomeSidebar extends React.Component {
     this.setState({notebookModalIsOpen: false});
   }
 
+  openTagsIndex() {
+    this.closeAllModals();
+
+    if (!this.state.tagsModalIsOpen) {
+      this.setState({tagsModalIsOpen: true});
+    }
+  }
+
+  closeTagsIndex() {
+    this.setState({tagsModalIsOpen: false});
+  }
+
   componentWillMount() {
     Modal.setAppElement('body');
   }
@@ -52,6 +71,7 @@ class HomeSidebar extends React.Component {
   closeAllModals() {
     this.closeNotebookIndex();
     this.closeUserDashboard();
+    this.closeTagsIndex();
   }
 
   showNotesIndex() {
@@ -94,7 +114,7 @@ class HomeSidebar extends React.Component {
             <i className="fa fa-book" aria-hidden="true"></i>
           </button>
 
-          <button className="slideTags">
+          <button className="slideTags" onClick={this.openTagsIndex}>
             <i className="fa fa-tags" aria-hidden="true"></i>
           </button>
         </div>
@@ -122,6 +142,15 @@ class HomeSidebar extends React.Component {
           className="notebookModal"
         >
           <NotebookIndexContainer closeNotebookIndex={this.closeNotebookIndex}/>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.tagsModalIsOpen}
+          onRequestClose={this.closeTagsIndex}
+          contentLabel="tagsIndexModal"
+          className="tagsModal"
+        >
+          <TagsIndex closeTagsIndex={this.closeTagsIndex}/>
         </Modal>
 
       </div>

@@ -80,9 +80,11 @@ body > div:nth-child(4) > div {
   margin-left: -4px;
 }
 
+/*make the searchField hidden until it's opearational*/
 .searchField {
   margin-left: 30px;
   margin-bottom: 5px;
+  visibility: hidden;
 }
 
 .searchField input {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { fetchAllTags } from '../../actions/tags_actions';
+import { fetchAllTags, deleteTag } from '../../actions/tags_actions';
 
 class TagsIndex extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class TagsIndex extends React.Component {
 
     this.openNewTagModal = this.openNewTagModal.bind(this);
     this.closeNewTagModal = this.closeNewTagModal.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentWillMount() {
@@ -24,9 +25,22 @@ class TagsIndex extends React.Component {
     this.setState({newTagModalIsOpen: false});
   }
 
+  handleUpdate(e) {
+    debugger
+    let tagId = parseInt(e.currentTarget.getAttribute('value'));
+
+    $(e.currentTarget);
+  }
+
   render() {
     let tags = this.props.tags;
     let arrOfUls = [];
+
+    function randomString(length, chars) {
+      let result = '';
+      for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+      return result;
+    }
 
     for (let i = 0; i < tags.length; i++) {
       let breakLabel = false;
@@ -35,16 +49,17 @@ class TagsIndex extends React.Component {
       let firstChar = currentTag.name[0];
 
       while (firstChar === currentTag.name[0]) {
+        let tagId = currentTag.id;
         arrOfLis.push(
           <div className='tagItem' key={currentTag.id}>
-            <div className='tagItemText'>
+            <div id={tagId + 'changeDOMEl'} className='tagItemText'>
               <text className='tagIndexItemTagName'>{currentTag.name}</text>
               <text className='tagIndexItemNotesCount'>{currentTag.notesCount}</text>
             </div>
             <div className='tagItemButtons'>
+              <i value={tagId} onClick={this.handleUpdate} className="fa fa-pencil" aria-hidden="true"></i>
+              <i onClick={() => this.props.deleteTag(tagId)} className="fa fa-trash" aria-hidden="true"></i>
               <i className="fa fa-star" aria-hidden="true"></i>
-              <i className="fa fa-pencil" aria-hidden="true"></i>
-              <i className="fa fa-trash" aria-hidden="true"></i>
             </div>
           </div>
         );
@@ -58,8 +73,9 @@ class TagsIndex extends React.Component {
       }
 
       i--;
+      let rString = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
       arrOfUls.push(
-        <ul className='tagsIndexAlphabetBlock'>
+        <ul key={rString} className='tagsIndexAlphabetBlock'>
           <li className='tagsIndexLetterHeader'>{firstChar}</li>
           {arrOfLis}
         </ul>
@@ -108,11 +124,6 @@ class TagsIndex extends React.Component {
   }
 }
 
-// <NewTag
-//   closeNewTagModal={this.closeNewTagModal}
-//   closeTagsIndexModal={this.props.closeTagsIndex}
-//   />
-
 const mapStateToProps = (state, ownProps) => {
   let alphabetizeComparator = (tagObj1, tagObj2) => {
     if (tagObj1.name > tagObj2.name) { return 1; }
@@ -128,7 +139,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllTags: () => dispatch(fetchAllTags())
+    fetchAllTags: () => dispatch(fetchAllTags()),
+    deleteTag: (tagId) => dispatch(deleteTag(tagId))
   };
 };
 

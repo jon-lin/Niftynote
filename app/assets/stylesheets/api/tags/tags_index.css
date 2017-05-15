@@ -90,7 +90,6 @@ body > div:nth-child(5) > div {
 .tagsListContainer {
   height: calc(100% - 150px);
   overflow: auto;
-  border: 1px solid red;
   margin: 133px 0px 0px 40px;
   width: auto;
 }
@@ -100,7 +99,6 @@ body > div:nth-child(5) > div {
 }
 
 .tagsList .tagsIndexAlphabetBlock {
-  border: 1px solid purple;
   margin-top: 20px;
 }
 
@@ -121,7 +119,8 @@ body > div:nth-child(5) > div {
   line-height: 22px;
   border-radius: 5px;
   background-color: #F8F8F8;
-  margin: 0px 8px 10px 0px;
+  margin: 0px 0px 10px 0px;
+  cursor: pointer;
 }
 
 .tagsList .tagItem .tagItemText > * {
@@ -129,8 +128,35 @@ body > div:nth-child(5) > div {
 }
 
 .tagsList .tagItem .tagItemButtons {
+  display: none;
+}
+
+.tagItem:hover .tagItemButtons {
+  display: inherit;
   position: relative;
   top: 5px;
+  -webkit-animation: fadein 0.5s;
+  color: gray;
+}
+
+.tagItem .tagItemButtons > *:hover {
+  color: #2DBE60;
+}
+
+.tagItem:hover .tagItemText {
+  background-color: #2DBE60;
+  color: white;
+  font-weight: 100;
+  border: none;
+}
+
+.tagsList .tagIndexItemNotesCount {
+  color: #2DBE60;
+}
+
+.tagItem:hover .tagItemText .tagIndexItemNotesCount {
+  color: white;
+  font-weight: 100;
 }
 
 .tagsList .tagItem .tagItemButtons > * {
@@ -138,8 +164,10 @@ body > div:nth-child(5) > div {
   cursor: pointer;
 }
 
-.tagsList .tagIndexItemNotesCount {
-  color: #2DBE60;
+/*hide the star button until that functionality
+becomes available*/
+.tagItem .tagItemButtons > *:last-child {
+  display: none;
 }
 
 @keyframes fadein {

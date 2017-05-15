@@ -110,21 +110,68 @@ body > div:nth-child(5) > div {
 
 .tagsList .tagItem {
   display: flex;
+  justify-content: flex-start;
 }
 
-.tagsList .tagItem .tagItemText {
-  border: 1px solid lightgray;
-  padding: 2px 5px 2px 5px;
+.tagItemInput::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    black;
+}
+.tagItemInput:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    black;
+   opacity:  1;
+}
+.tagItemInput::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    black;
+   opacity:  1;
+}
+.tagItemInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    black;
+}
+.tagItemInput::-ms-input-placeholder { /* Microsoft Edge */
+   color:    black;
+}
+
+.tagsList .tagItem .tagItemInput {
   font-size: 14px;
-  line-height: 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-style: none;
+  outline: none;
+  position: relative;
+  top: -1px;
+}
+
+.tagItem .tagItemInputAndCount {
+  display: flex;
   border-radius: 5px;
   background-color: #F8F8F8;
+  border: 1px solid lightgray;
+  color: #2DBE60;
+  padding: 1px 10px 1px 10px;
   margin: 0px 0px 10px 0px;
   cursor: pointer;
 }
 
-.tagsList .tagItem .tagItemText > * {
-  margin: 0px 3px 0px 3px;
+.tagItem .tagItemInputAndCount:hover input {
+  background-color: #2DBE60;
+  border: none;
+  color: white;
+}
+
+.tagItem .tagItemInputAndCount:hover {
+  background-color: #2DBE60;
+  border: none;
+  color: white;
+  font-weight: 100;
+}
+
+.tagItemInputAndCount:hover .tagItemInput::-webkit-input-placeholder {
+  color: white;
+  font-weight: 100;
+}
+
+.tagItemInput:focus::-webkit-input-placeholder {
+  color: transparent;
 }
 
 .tagsList .tagItem .tagItemButtons {
@@ -135,28 +182,12 @@ body > div:nth-child(5) > div {
   display: inherit;
   position: relative;
   top: 5px;
-  -webkit-animation: fadein 0.5s;
   color: gray;
+  -webkit-animation: fadein 0.5s;
 }
 
 .tagItem .tagItemButtons > *:hover {
   color: #2DBE60;
-}
-
-.tagItem:hover .tagItemText {
-  background-color: #2DBE60;
-  color: white;
-  font-weight: 100;
-  border: none;
-}
-
-.tagsList .tagIndexItemNotesCount {
-  color: #2DBE60;
-}
-
-.tagItem:hover .tagItemText .tagIndexItemNotesCount {
-  color: white;
-  font-weight: 100;
 }
 
 .tagsList .tagItem .tagItemButtons > * {
@@ -169,6 +200,18 @@ becomes available*/
 .tagItem .tagItemButtons > *:last-child {
   display: none;
 }
+
+/*the below transition is fine for one input, but not many*/
+/*.tagItemInput {
+    width: 100px;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+}
+
+.tagItemInput:focus {
+  width: 300px;
+}*/
+
 
 @keyframes fadein {
   from { opacity: 0 }

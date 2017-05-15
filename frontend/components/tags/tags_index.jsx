@@ -1,20 +1,38 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { fetchAllTags, deleteTag } from '../../actions/tags_actions';
+import { fetchAllTags, deleteTag, updateTag } from '../../actions/tags_actions';
 
 class TagsIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { newTagModalIsOpen: false };
+    this.state = { newTagModalIsOpen: false, tagText: '', tagId: null };
 
     this.openNewTagModal = this.openNewTagModal.bind(this);
     this.closeNewTagModal = this.closeNewTagModal.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleUpdateClick = this.handleUpdateClick.bind(this);
+    this.openTagShowPage = this.openTagShowPage.bind(this);
+    this.inputChangeHandler = this.inputChangeHandler.bind(this);
+    this.blurAnimation = this.blurAnimation.bind(this);
+    this.enterKeystrokeUpdateNote = this.enterKeystrokeUpdateNote.bind(this);
   }
 
   componentWillMount() {
     Modal.setAppElement('body');
+  }
+
+  componentDidMount() {
+    let that = this;
+    $('.tagItemInput').each(function() {
+      $('#' + this.id).attr('size', this.placeholder.length + 1);
+      // this.setAttribute('size', this.placeholder.length + 1);
+      $('#' + this.id).on('click', that.openTagShowPage);
+      $('#' + this.id).on('focus', () => $('#' + this.id).animate({width: '300px'}, 500, 'linear'));
+      $('#' + this.id).on('keypress', that.enterKeystrokeUpdateNote);
+      $('#' + this.id).on('blur', that.blurAnimation);
+      $('#' + this.id).on('change', that.inputChangeHandler);
+    });
   }
 
   openNewTagModal() {
@@ -25,11 +43,54 @@ class TagsIndex extends React.Component {
     this.setState({newTagModalIsOpen: false});
   }
 
-  handleUpdate(e) {
-    debugger
-    let tagId = parseInt(e.currentTarget.getAttribute('value'));
+  openTagShowPage(e) {
+    e.stopPropagation();
+    console.log('i got clicked');
+  }
 
-    $(e.currentTarget);
+  handleUpdateClick(e) {
+    let tagId = parseInt(e.currentTarget.getAttribute('value'));
+    $('#' + tagId).off('click');
+    console.log('i got edit buttoned');
+    $(`.tagitemNotesCount.${tagId}`).toggle();
+  }
+
+  inputChangeHandler(e) {
+    console.log('fire update request');
+    // this.setState({tagText: e.target.value, tagId: parseInt(e.target.id)});
+    console.log(this.state.tagText + " " + this.state.tagId);
+  }
+
+  enterKeystrokeUpdateNote(e) {
+    if (e.which === 13){
+      console.log('hello');
+    }
+  }
+
+  blurAnimation(e) {
+    let textLength = e.target.value.length;
+
+    $(`.tagitemNotesCount.${e.target.id}`).toggle();
+    $('#' + e.target.id).on('click', this.openTagShowPage);
+
+    $('#' + e.target.id).animate(
+      {width: `${textLength * 8}px`, margin: '0px 3px 0px 0px'}
+      , 500, 'linear',
+      () => this.props.updateTag(e.target.id, [e.target.value])
+              .then(() => this.props.fetchAllTags())
+              .then(() => {
+                    let that = this;
+                    return $('.tagItemInput').each(function() {
+                              $('#' + this.id).attr('size', this.placeholder.length + 1);
+                              $('#' + this.id).on('click', that.openTagShowPage);
+                              $('#' + this.id).on('focus', () => $('#' + this.id).animate({width: '300px'}, 500, 'linear'));
+                              $('#' + this.id).on('keypress', that.enterKeystrokeUpdateNote);
+                              $('#' + this.id).on('blur', that.blurAnimation);
+                              $('#' + this.id).on('change', that.inputChangeHandler);
+                            });
+                          }
+                        )
+    );
   }
 
   render() {
@@ -50,14 +111,23 @@ class TagsIndex extends React.Component {
 
       while (firstChar === currentTag.name[0]) {
         let tagId = currentTag.id;
+        let currentTagName = currentTag.name;
         arrOfLis.push(
           <div className='tagItem' key={currentTag.id}>
-            <div id={tagId + 'changeDOMEl'} className='tagItemText'>
-              <text className='tagIndexItemTagName'>{currentTag.name}</text>
-              <text className='tagIndexItemNotesCount'>{currentTag.notesCount}</text>
+            <div className='tagItemInputContainer'>
+              <div className='tagItemInputAndCount'>
+                <input
+                  id={tagId}
+                  size="20"
+                  type='text'
+                  className='tagItemInput'
+                  placeholder={currentTag.name}>
+                </input>
+                <div className={'tagitemNotesCount' + ' ' + tagId}>{currentTag.notesCount}</div>
+              </div>
             </div>
             <div className='tagItemButtons'>
-              <i value={tagId} onClick={this.handleUpdate} className="fa fa-pencil" aria-hidden="true"></i>
+              <label htmlFor={tagId}><i value={tagId} onClick={this.handleUpdateClick} className="fa fa-pencil" aria-hidden="true"></i></label>
               <i onClick={() => this.props.deleteTag(tagId)} className="fa fa-trash" aria-hidden="true"></i>
               <i className="fa fa-star" aria-hidden="true"></i>
             </div>
@@ -140,8 +210,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllTags: () => dispatch(fetchAllTags()),
-    deleteTag: (tagId) => dispatch(deleteTag(tagId))
+    deleteTag: (tagId) => dispatch(deleteTag(tagId)),
+    updateTag: (tagId, names) => dispatch(updateTag(tagId, names))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TagsIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TagsIndex));

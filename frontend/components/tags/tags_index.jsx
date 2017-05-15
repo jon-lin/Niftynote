@@ -36,9 +36,17 @@ class TagsIndex extends React.Component {
 
       while (firstChar === currentTag.name[0]) {
         arrOfLis.push(
-          <li className='tagItem' key={currentTag.id}>
-            {currentTag.name} {currentTag.notesCount}
-          </li>
+          <div className='tagItem' key={currentTag.id}>
+            <div className='tagItemText'>
+              <text className='tagIndexItemTagName'>{currentTag.name}</text>
+              <text className='tagIndexItemNotesCount'>{currentTag.notesCount}</text>
+            </div>
+            <div className='tagItemButtons'>
+              <i className="fa fa-star" aria-hidden="true"></i>
+              <i className="fa fa-pencil" aria-hidden="true"></i>
+              <i className="fa fa-trash" aria-hidden="true"></i>
+            </div>
+          </div>
         );
 
         i++;
@@ -63,9 +71,9 @@ class TagsIndex extends React.Component {
     return(
       <div className="tagsIndexCol">
 
-        <div className="TagsIndexColTopBar">
+        <div className="tagsIndexColTopBar">
 
-          <div className="TagsIndexColTopBarTopRow">
+          <div className="tagsIndexColTopBarTopRow">
             <text>TAGS</text>
             <button onClick={this.openNewTagModal}>
               <i className="fa fa-tags" aria-hidden="true"></i>

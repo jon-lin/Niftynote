@@ -1,17 +1,153 @@
-/*.tagsIndexCol {
+/*fragile z-indexing to keep index in the background*/
+body > div:nth-child(5) > div {
+  z-index: 3;
+}
+
+.tagsIndexCol {
   font-family: 'Yantramanav', sans-serif;
   position: absolute;
   left: 0;
   width: 525px;
   height: 100vh;
   background: white;
-  z-index: 11;
+  z-index: 5;
   -webkit-animation: slide2 0.7s;
   border-right: 1px solid rgb(212, 210, 210);
-}*/
-
-.tagsIndexCol {
-  position: absolute;
-  border: 20px solid blue;
-  top: 200px;
 }
+
+.tagsIndexCol > * {
+  padding-left: 70px;
+}
+
+.tagsIndexColTopBar {
+  position: absolute;
+  width: 452px;
+  z-index: 1;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(212, 210, 210);
+}
+
+.tagsIndexColTopBarTopRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 20px 30px;
+}
+
+.tagsIndexColTopBarTopRow text {
+  font-size: 30px;
+  font-weight: 100;
+  margin-top: 10px;
+  color: gray;
+}
+
+.tagsIndexColTopBarTopRow button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-right: 20px;
+  color: gray;
+}
+
+.tagsIndexColTopBarTopRow button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.tagsIndexColTopBarTopRow button:hover:after {
+  position: absolute;
+  margin-left: -70px;
+  margin-top: 22px;
+  content: "Create a tag";
+  background-color: darkgray;
+  color: white;
+  padding: 5px;
+  -webkit-animation: fadein 1s;
+  width: 70px;
+  font-size: 14px;
+}
+
+.tagsIndexColTopBar .tagsSearchField {
+  margin-left: 30px;
+  margin-bottom: 5px;
+  visibility: hidden;
+}
+
+.tagsIndexColTopBar .tagsSearchField input {
+  outline: none;
+  padding: 0;
+  font-size: 15px;
+  height: 38px;
+  width: 395px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  text-align: center;
+  font-weight: 100;
+}
+
+.tagsListContainer {
+  height: calc(100% - 150px);
+  overflow: auto;
+  border: 1px solid red;
+  margin: 133px 0px 0px 40px;
+  width: auto;
+}
+
+.tagsList > ul {
+  list-style: none;
+}
+
+.tagsList .tagsIndexAlphabetBlock {
+  border: 1px solid purple;
+  margin-top: 20px;
+}
+
+.tagsList .tagsIndexLetterHeader {
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.tagsList .tagItem {
+  display: flex;
+}
+
+.tagsList .tagItem .tagItemText {
+  border: 1px solid lightgray;
+  padding: 2px 5px 2px 5px;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius: 5px;
+  background-color: #F8F8F8;
+  margin: 0px 8px 10px 0px;
+}
+
+.tagsList .tagItem .tagItemText > * {
+  margin: 0px 3px 0px 3px;
+}
+
+.tagsList .tagItem .tagItemButtons {
+  position: relative;
+  top: 5px;
+}
+
+.tagsList .tagItem .tagItemButtons > * {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.tagsList .tagIndexItemNotesCount {
+  color: #2DBE60;
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+};
+
+@-webkit-keyframes slide2 {
+  from { left: -525px }
+  to { left: 0px }
+};

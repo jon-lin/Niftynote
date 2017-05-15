@@ -28,6 +28,7 @@ body > div:nth-child(4) > div {
   flex-direction: column;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(212, 210, 210);
+  color: gray;
 }
 
 .notebooksTopRow {
@@ -47,6 +48,7 @@ body > div:nth-child(4) > div {
   border: none;
   background-color: transparent;
   margin-right: 15px;
+  color: gray;
   /*transition: width 2s, height 2s, background-color 2s, transform 2s;*/
 }
 

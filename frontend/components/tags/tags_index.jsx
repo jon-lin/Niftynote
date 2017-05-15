@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { fetchAllTags, deleteTag, updateTag } from '../../actions/tags_actions';
+import { fetchNote } from '../../actions/notes_actions';
 
 class TagsIndex extends React.Component {
   constructor(props) {
@@ -79,6 +80,7 @@ class TagsIndex extends React.Component {
       , 500, 'linear',
       () => this.props.updateTag(e.target.id, [e.target.value])
               .then(() => this.props.fetchAllTags())
+              .then(() => this.props.fetchNote(this.props.currentNote.id))
               .then(() => {
                     let that = this;
                     return $('.tagItemInput').each(function() {
@@ -204,7 +206,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     tags: Object.values(state.tags).sort(alphabetizeComparator),
-    closeTagsIndex: ownProps.closeTagsIndex
+    closeTagsIndex: ownProps.closeTagsIndex,
+    currentNote: state.currentNote
   };
 };
 
@@ -212,7 +215,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllTags: () => dispatch(fetchAllTags()),
     deleteTag: (tagId) => dispatch(deleteTag(tagId)),
-    updateTag: (tagId, names) => dispatch(updateTag(tagId, names))
+    updateTag: (tagId, names) => dispatch(updateTag(tagId, names)),
+    fetchNote: (id) => dispatch(fetchNote(id))
   };
 };
 

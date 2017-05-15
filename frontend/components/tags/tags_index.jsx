@@ -56,14 +56,15 @@ class TagsIndex extends React.Component {
   }
 
   inputChangeHandler(e) {
-    console.log('fire update request');
+    // <i class="fa fa-check" aria-hidden="true"></i>
+    // console.log('fire update request');
     // this.setState({tagText: e.target.value, tagId: parseInt(e.target.id)});
     console.log(this.state.tagText + " " + this.state.tagId);
   }
 
   enterKeystrokeUpdateNote(e) {
     if (e.which === 13){
-      console.log('hello');
+      this.blurAnimation({target: {id: e.target.id, value: e.target.value}});
     }
   }
 

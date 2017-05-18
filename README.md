@@ -1,2 +1,2 @@
 # Niftynote
-* [Live link](www.niftynote.me)
+* [Live link](https://www.tweettones.me/)

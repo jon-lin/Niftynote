@@ -20,6 +20,10 @@
   display: flex;
 }
 
+.quillContainer .entireTagBar .existingTagsList li .tagBarTagText {
+  white-space: nowrap;
+}
+
 .quillContainer .entireTagBar .existingTagsList li button {
   margin-left: 3px;
   background-color: transparent;

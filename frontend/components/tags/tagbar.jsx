@@ -50,7 +50,7 @@ class Tagbar extends React.Component {
 
     let formatTags = this.state.tags.map(tag =>
       <li key={tag.id}>
-        {tag.name}
+        <div className='tagBarTagText'>{tag.name}</div>
         <button value={tag.id} onClick={this.removeTag}>x</button>
       </li>
     );

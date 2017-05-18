@@ -17,6 +17,7 @@ class TagsIndex extends React.Component {
     this.blurAnimation = this.blurAnimation.bind(this);
     this.enterKeystrokeUpdateNote = this.enterKeystrokeUpdateNote.bind(this);
     this.manualSaveTag = this.manualSaveTag.bind(this);
+    this.removeTag = this.removeTag.bind(this);
   }
 
   componentWillMount() {
@@ -44,6 +45,23 @@ class TagsIndex extends React.Component {
     this.setState({newTagModalIsOpen: false});
   }
 
+  removeTag(e) {
+    let tagId = parseInt(e.currentTarget.getAttribute('value'));
+    this.props.deleteTag(tagId)
+      .then(() => {
+            let that = this;
+            $('.fa-check').css('display', 'none');
+            return $('.tagItemInput').each(function() {
+                      $('#' + this.id).attr('size', this.placeholder.length + 1);
+                      $('#' + this.id).on('click', that.openTagShowPage);
+                      $('#' + this.id).on('focus', () => $('#' + this.id).animate({width: '300px'}, 500, 'linear'));
+                      $('#' + this.id).on('keypress', that.enterKeystrokeUpdateNote);
+                      $('#' + this.id).on('blur', that.blurAnimation);
+                    });
+                  }
+                );
+  }
+
   openTagShowPage(e) {
     e.stopPropagation();
     console.log('i got clicked');
@@ -52,6 +70,8 @@ class TagsIndex extends React.Component {
   handleUpdateClick(e) {
     let tagId = parseInt(e.currentTarget.getAttribute('value'));
     $('#' + tagId).off('click');
+    let placeholderText = $('#' + tagId)[0].placeholder;
+    $('#' + tagId).prop('value', placeholderText);
     console.log('i got edit buttoned');
     $(`.fa-check.${tagId}`).css('display', 'inherit');
     $(`.fa-trash.${tagId}, .fa-pencil.${tagId}`).css('visibility', 'hidden');
@@ -144,7 +164,7 @@ class TagsIndex extends React.Component {
             <div className='tagItemButtons'>
               <i value={tagId} onClick={this.manualSaveTag} className={`fa fa-check ` + tagId} aria-hidden="true"></i>
               <label htmlFor={tagId}><i value={tagId} onClick={this.handleUpdateClick} className={`fa fa-pencil ` + tagId}  aria-hidden="true"></i></label>
-              <i onClick={() => this.props.deleteTag(tagId)} className={`fa fa-trash ` + tagId} aria-hidden="true"></i>
+              <i value={tagId} onClick={this.removeTag} className={`fa fa-trash ` + tagId} aria-hidden="true"></i>
               <i className={`fa fa-star ` + tagId} aria-hidden="true"></i>
             </div>
           </div>

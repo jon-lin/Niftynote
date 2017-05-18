@@ -139,6 +139,7 @@ body > div:nth-child(5) > div {
   outline: none;
   position: relative;
   top: -1px;
+  background-color: #F8F8F8;
 }
 
 .tagItem .tagItemInputAndCount {
@@ -197,7 +198,7 @@ body > div:nth-child(5) > div {
 
 /*hide the star button until that functionality
 becomes available*/
-.tagItem .tagItemButtons > *:last-child {
+.tagItem .tagItemButtons .fa-star {
   display: none;
 }
 

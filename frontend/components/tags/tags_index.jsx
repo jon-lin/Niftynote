@@ -14,9 +14,9 @@ class TagsIndex extends React.Component {
     this.closeNewTagModal = this.closeNewTagModal.bind(this);
     this.handleUpdateClick = this.handleUpdateClick.bind(this);
     this.openTagShowPage = this.openTagShowPage.bind(this);
-    this.inputChangeHandler = this.inputChangeHandler.bind(this);
     this.blurAnimation = this.blurAnimation.bind(this);
     this.enterKeystrokeUpdateNote = this.enterKeystrokeUpdateNote.bind(this);
+    this.manualSaveTag = this.manualSaveTag.bind(this);
   }
 
   componentWillMount() {
@@ -24,6 +24,7 @@ class TagsIndex extends React.Component {
   }
 
   componentDidMount() {
+    $('.fa-check').css('display', 'none');
     let that = this;
     $('.tagItemInput').each(function() {
       $('#' + this.id).attr('size', this.placeholder.length + 1);
@@ -32,7 +33,6 @@ class TagsIndex extends React.Component {
       $('#' + this.id).on('focus', () => $('#' + this.id).animate({width: '300px'}, 500, 'linear'));
       $('#' + this.id).on('keypress', that.enterKeystrokeUpdateNote);
       $('#' + this.id).on('blur', that.blurAnimation);
-      $('#' + this.id).on('change', that.inputChangeHandler);
     });
   }
 
@@ -53,47 +53,59 @@ class TagsIndex extends React.Component {
     let tagId = parseInt(e.currentTarget.getAttribute('value'));
     $('#' + tagId).off('click');
     console.log('i got edit buttoned');
+    $(`.fa-check.${tagId}`).css('display', 'inherit');
+    $(`.fa-trash.${tagId}, .fa-pencil.${tagId}`).css('visibility', 'hidden');
     $(`.tagitemNotesCount.${tagId}`).toggle();
   }
 
-  inputChangeHandler(e) {
-    // <i class="fa fa-check" aria-hidden="true"></i>
-    // console.log('fire update request');
-    // this.setState({tagText: e.target.value, tagId: parseInt(e.target.id)});
-    console.log(this.state.tagText + " " + this.state.tagId);
+  manualSaveTag(e) {
+    let tagId = parseInt(e.currentTarget.getAttribute('value'));
+    let eventToPass = {target: {id: tagId, placeholder: $('#' + tagId)[0].placeholder, value: $('#' + tagId).val()}};
+    this.blurAnimation(eventToPass);
   }
 
   enterKeystrokeUpdateNote(e) {
     if (e.which === 13){
-      this.blurAnimation({target: {id: e.target.id, value: e.target.value}});
+      this.blurAnimation(e);
     }
   }
 
   blurAnimation(e) {
-    let textLength = e.target.value.length;
+    let textLength;
 
-    $(`.tagitemNotesCount.${e.target.id}`).toggle();
     $('#' + e.target.id).on('click', this.openTagShowPage);
 
-    $('#' + e.target.id).animate(
-      {width: `${textLength * 8}px`, margin: '0px 3px 0px 0px'}
-      , 500, 'linear',
-      () => this.props.updateTag(e.target.id, [e.target.value])
-              .then(() => this.props.fetchAllTags())
-              .then(() => this.props.fetchNote(this.props.currentNote.id))
-              .then(() => {
-                    let that = this;
-                    return $('.tagItemInput').each(function() {
-                              $('#' + this.id).attr('size', this.placeholder.length + 1);
-                              $('#' + this.id).on('click', that.openTagShowPage);
-                              $('#' + this.id).on('focus', () => $('#' + this.id).animate({width: '300px'}, 500, 'linear'));
-                              $('#' + this.id).on('keypress', that.enterKeystrokeUpdateNote);
-                              $('#' + this.id).on('blur', that.blurAnimation);
-                              $('#' + this.id).on('change', that.inputChangeHandler);
-                            });
-                          }
-                        )
-    );
+    if (e.target.placeholder === e.target.value || e.target.value === '') {
+      textLength = (e.target.value === '') ? e.target.placeholder.length : e.target.value.length
+      $('#' + e.target.id).animate(
+        {width: `${textLength * 8}px`, margin: '0px 3px 0px 0px'}
+        , 500, 'linear', () => {
+          $(`.tagitemNotesCount.${e.target.id}`).toggle();
+          $(`.fa-check.${e.target.id}`).css('display', 'none');
+          $(`.fa-trash.${e.target.id}, .fa-pencil.${e.target.id}`).css('visibility', 'visible');
+        })
+    } else {
+      textLength = e.target.value.length;
+      $('#' + e.target.id).animate(
+        {width: `${textLength * 8}px`, margin: '0px 3px 0px 0px'}
+        , 500, 'linear',
+        () => this.props.updateTag(e.target.id, [e.target.value])
+                .then(() => this.props.fetchAllTags())
+                .then(() => this.props.fetchNote(this.props.currentNote.id))
+                .then(() => {
+                      let that = this;
+                      $('.fa-check').css('display', 'none');
+                      return $('.tagItemInput').each(function() {
+                                $('#' + this.id).attr('size', this.placeholder.length + 1);
+                                $('#' + this.id).on('click', that.openTagShowPage);
+                                $('#' + this.id).on('focus', () => $('#' + this.id).animate({width: '300px'}, 500, 'linear'));
+                                $('#' + this.id).on('keypress', that.enterKeystrokeUpdateNote);
+                                $('#' + this.id).on('blur', that.blurAnimation);
+                              });
+                            }
+                          )
+      );
+    }
   }
 
   render() {
@@ -116,7 +128,7 @@ class TagsIndex extends React.Component {
         let tagId = currentTag.id;
         let currentTagName = currentTag.name;
         arrOfLis.push(
-          <div className='tagItem' key={currentTag.id}>
+          <div className={`tagItem ` + tagId} key={currentTag.id}>
             <div className='tagItemInputContainer'>
               <div className='tagItemInputAndCount'>
                 <input
@@ -130,9 +142,10 @@ class TagsIndex extends React.Component {
               </div>
             </div>
             <div className='tagItemButtons'>
-              <label htmlFor={tagId}><i value={tagId} onClick={this.handleUpdateClick} className="fa fa-pencil" aria-hidden="true"></i></label>
-              <i onClick={() => this.props.deleteTag(tagId)} className="fa fa-trash" aria-hidden="true"></i>
-              <i className="fa fa-star" aria-hidden="true"></i>
+              <i value={tagId} onClick={this.manualSaveTag} className={`fa fa-check ` + tagId} aria-hidden="true"></i>
+              <label htmlFor={tagId}><i value={tagId} onClick={this.handleUpdateClick} className={`fa fa-pencil ` + tagId}  aria-hidden="true"></i></label>
+              <i onClick={() => this.props.deleteTag(tagId)} className={`fa fa-trash ` + tagId} aria-hidden="true"></i>
+              <i className={`fa fa-star ` + tagId} aria-hidden="true"></i>
             </div>
           </div>
         );

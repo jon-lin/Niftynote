@@ -43,12 +43,14 @@ body > div:nth-child(5) > div {
   color: gray;
 }
 
+/*disable new tag button until standalone tag creation is possible*/
 .tagsIndexColTopBarTopRow button {
   outline: none;
   border: none;
   background-color: transparent;
   margin-right: 20px;
   color: gray;
+  display: none;
 }
 
 .tagsIndexColTopBarTopRow button:hover {

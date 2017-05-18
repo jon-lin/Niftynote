@@ -81,10 +81,13 @@ class NoteIndex extends React.Component {
                         <button>Share</button>
                       </div>
                   );
-        }
-    // else if (this.props.location.pathname.match(/home\/tags\/\d+/)) {
-    //     colHeaderPart = <h1>TAG: {this.props.tag.name}</h1>
-    // }
+        } else if (this.props.tag) {
+        colHeaderPart = (
+                      <div className="showTagNotesHeader">
+                        <p>TAG: {this.props.tag.name}</p>
+                      </div>
+                    );
+      }
 
     let notebook = this.props.notebook ? this.props.notebook : null;
 

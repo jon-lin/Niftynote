@@ -15,16 +15,22 @@ const mapStateToProps = (state, ownProps) => {
         });
 
       notebook = state.notebooks[ownProps.params.notebookId]
-  }
+  } else if (ownProps.location.pathname.match(/home\/tags\/\d+/))  {
+    processed_notes = Object.values(state.notes).filter(
+      noteObj => {
+        let result = false;
+        let tags = noteObj.tags;
 
-  // else if (ownProps.location.pathname.match(/home\/tags\/\d+/))  {
-  //   processed_notes = Object.values(state.notes).filter(
-  //     noteObj => {
-  //       return noteObj.tag_id === parseInt(OwnProps.params.tagId)
-  //     });
-  //
-  //   tag = state.tags[ownProps.params.tagId]
-  // }
+        for (let i = 0; i < tags.length; i++) {
+          if (tags[i].id === parseInt(ownProps.params.tagId)) {
+            result = true;
+            break;
+          }
+        }
+        return result ? true : false;
+      });
+    tag = state.tags[ownProps.params.tagId];
+  }
 
   let sortedAndProcessedNotes = notesSelector(processed_notes);
 

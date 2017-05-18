@@ -114,6 +114,22 @@
   display: none;
 }
 
+.entireNotesIndexCol .showTagNotesHeader {
+  height: 50px;
+  display: flex;
+  width: 351px;
+  margin-bottom: 22px;
+}
+
+.entireNotesIndexCol .showTagNotesHeader p {
+  position: relative;
+  bottom: 20px;
+  left: 5px;
+  margin-left: 10px;
+  font-size: 30px;
+  font-weight: 100;
+}
+
 @keyframes fadein {
   from { opacity: 0 }
   to { opacity: 1 }

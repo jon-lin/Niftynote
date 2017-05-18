@@ -63,8 +63,9 @@ class TagsIndex extends React.Component {
   }
 
   openTagShowPage(e) {
-    e.stopPropagation();
     console.log('i got clicked');
+    this.props.closeTagsIndex();
+    this.props.router.push(`/home/tags/` + e.target.id);
   }
 
   handleUpdateClick(e) {
@@ -85,9 +86,7 @@ class TagsIndex extends React.Component {
   }
 
   enterKeystrokeUpdateNote(e) {
-    if (e.which === 13){
-      this.blurAnimation(e);
-    }
+    if (e.which === 13) { this.blurAnimation(e); }
   }
 
   blurAnimation(e) {

@@ -38,6 +38,10 @@ class Tagbar extends React.Component {
 
       this.props.createTags(copyTagsJustNames, this.props.currentNote.id)
         .then(() => this.setState({newTag: ''}));
+    } else if (e.keyCode === 8) {
+      this.removeTag({target: {
+        value: this.state.tags[this.state.tags.length - 1].id
+      }});
     }
   }
 

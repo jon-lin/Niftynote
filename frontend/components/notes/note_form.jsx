@@ -12,21 +12,11 @@ class NoteForm extends React.Component {
     super(props)
 
     let delayTimer = () => setTimeout(() => {
-
-      //this conditional can be used as temporary fix in case of initial render problems,
-      //specifically when this.props.currentNote is undefined...
-      let noteId;
-      // if (this.props.currentNote) {
-        noteId = this.props.currentNote.id;
-      // } else {
-      //   noteId = null;
-      // }
-
       return this.props.updateNote(
             {
               body: this.state.body,
               title: this.state.title,
-              id: noteId
+              id: this.props.currentNote.id
             }
           )
     }, 500)
@@ -36,20 +26,12 @@ class NoteForm extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  // componentWillMount() {
-  //   if (this.props.currentNote) {
-  //     let timerId = this.state.delayTimer()
-  //     this.setState({timerId: timerId});
-  //   }
-  // }
-
   componentWillReceiveProps(newProps) {
     this.setState({body: newProps.currentNote.body, title: newProps.currentNote.title})
   }
 
   componentWillUnmount() {
     clearTimeout(this.state.timerId);
-    // this.setState({});
   }
 
   handleInputChange(event) {
@@ -84,19 +66,6 @@ class NoteForm extends React.Component {
 
           ['clean']                                         // remove formatting button
         ];
-
-
-      //use jquery to make the toolbar disappear or appear based on whether the user
-      //has selected the textbook
-      // $('.quillContainer .ql-editor').click(
-      //   () => $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'makeQuillToolbarVisible')
-      // )
-      //
-      // $(document).click(function(event) {
-      //   if(!$(event.target).closest('.quillContainer').length) {
-      //     $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'hideQuillToolbar');
-      //   }
-      // })
 
       return (
         <div className="quillContainer">
@@ -134,3 +103,16 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NoteForm));
+
+//Code below uses jquery to make the RTE toolbar disappear or appear based on
+//whether the user has selected the textbook -- may use this in the future
+
+// $('.quillContainer .ql-editor').click(
+//   () => $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'makeQuillToolbarVisible')
+// )
+//
+// $(document).click(function(event) {
+//   if(!$(event.target).closest('.quillContainer').length) {
+//     $('.quillContainer .ql-toolbar.ql-snow').attr('id', 'hideQuillToolbar');
+//   }
+// })

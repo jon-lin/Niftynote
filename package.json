@@ -23,7 +23,7 @@
     "url": "https://github.com/jclin2013/Niftynote/issues"
   },
   "engines": {
-    "node": "7.7.4",
+    "node": "7.10.1",
     "npm": "4.1.2"
   },
   "homepage": "https://github.com/jclin2013/Niftynote#readme",

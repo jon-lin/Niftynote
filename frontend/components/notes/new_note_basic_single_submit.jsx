@@ -22,8 +22,6 @@ class NewNote extends React.Component {
       param = {title: event.target.value};
     }
 
-    console.log(this.state);
-
     this.setState(param);
   }
 

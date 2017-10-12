@@ -63,7 +63,6 @@ class TagsIndex extends React.Component {
   }
 
   openTagShowPage(e) {
-    console.log('i got clicked');
     this.props.closeTagsIndex();
     this.props.router.push(`/home/tags/` + e.target.id);
   }
@@ -73,7 +72,6 @@ class TagsIndex extends React.Component {
     $('#' + tagId).off('click');
     let placeholderText = $('#' + tagId)[0].placeholder;
     $('#' + tagId).prop('value', placeholderText);
-    console.log('i got edit buttoned');
     $(`.fa-check.${tagId}`).css('display', 'inherit');
     $(`.fa-trash.${tagId}, .fa-pencil.${tagId}`).css('visibility', 'hidden');
     $(`.tagitemNotesCount.${tagId}`).toggle();

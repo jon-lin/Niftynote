@@ -52,12 +52,18 @@ class Tagbar extends React.Component {
   render() {
     let placeholderText = 'New tag...';
 
-    let formatTags = this.state.tags.map(tag =>
-      <li key={tag.id}>
-        <div className='tagBarTagText'>{tag.name}</div>
-        <button value={tag.id} onClick={this.removeTag}>x</button>
-      </li>
-    );
+    let formatTags;
+
+    if (this.state.tags) {
+      formatTags = this.state.tags.map(tag =>
+        <li key={tag.id}>
+          <div className='tagBarTagText'>{tag.name}</div>
+          <button value={tag.id} onClick={this.removeTag}>x</button>
+        </li>
+      );
+    } else {
+      formatTags = [<li key="1234"></li>];
+    }
 
     if (formatTags.length !== 0) { placeholderText = ' + '; }
 

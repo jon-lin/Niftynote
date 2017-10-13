@@ -27,7 +27,10 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({body: newProps.currentNote.body, title: newProps.currentNote.title})
+    this.setState({
+      body: newProps.currentNote ? newProps.currentNote.body : "",
+      title: newProps.currentNote ? newProps.currentNote.title : ""
+    })
   }
 
   componentWillUnmount() {

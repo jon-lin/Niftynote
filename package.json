@@ -1,7 +1,7 @@
 {
   "name": "Niftynote",
   "version": "1.0.0",
-  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "description": "A data visualization web app that generates a sentiment analysis of tweets",
   "main": "index.js",
   "directories": {
     "doc": "docs",

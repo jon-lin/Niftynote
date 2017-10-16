@@ -1,7 +1,7 @@
 {
   "name": "Niftynote",
   "version": "1.0.0",
-  "description": "A data visualization web app that generates a sentiment analysis of tweets",
+  "description": "An Evernote-inspired, single-page RESTful web app for note-taking",
   "main": "index.js",
   "directories": {
     "doc": "docs",

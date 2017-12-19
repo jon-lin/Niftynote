@@ -1,5 +1,5 @@
 # Niftynote
-* [Live link](https://www.niftynote.me/)
+* [Live link](https://niftynote.herokuapp.com)
 
 ### Background
 

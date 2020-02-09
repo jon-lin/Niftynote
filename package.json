@@ -33,7 +33,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "html-to-text": "^3.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.15",
     "react": "^15.0",
     "react-dom": "^15.5.4",
     "react-modal": "^1.7.7",
@@ -43,7 +43,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.11.5"
   },
   "devDependencies": {
     "redux-logger": "^3.0.1"

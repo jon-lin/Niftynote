@@ -84,7 +84,7 @@ class NoteIndex extends React.Component {
         } else if (this.props.tag) {
         colHeaderPart = (
                       <div className="showTagNotesHeader">
-                        <p>TAG: {this.props.tag.name}</p>
+                        <p>Tag: {this.props.tag.name}</p>
                       </div>
                     );
       }

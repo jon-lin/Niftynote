@@ -17,8 +17,8 @@ class SplashSidebar extends React.Component {
           </div>
 
           <div className='linksgroup2'>
-            <a href="https://github.com/jclin2013" target="_blank">Github</a>
-            <a href="https://www.linkedin.com/in/jclin2013/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/jon-lin" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/jon-lin/" target="_blank">LinkedIn</a>
             <a href="https://drive.google.com/file/d/0B2wkz0QyfcNAem95ZGdEUEFnMFU/view?usp=sharing" target="_blank">Resume</a>
             <a href="https://www.jon-lin.com/" target="_blank">Website</a>
           </div>
